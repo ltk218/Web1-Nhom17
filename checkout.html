@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html lang="vi">
+    <head>
+        <meta charset="utf-8">
+        <title>CHECK BOOK STORE</title>
+        <meta content="width=device-width, initial-scale=1.0" name="viewport">
+        <meta content="eCommerce HTML Template Free Download" name="keywords">
+        <meta content="eCommerce HTML Template Free Download" name="description">
+
+        <!-- Favicon -->
+        <link href="img/tieude.jpg" rel="icon">
+
+        <!-- Google Fonts -->
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400|Source+Code+Pro:700,900&display=swap" rel="stylesheet">
+
+        <!-- CSS Libraries -->
+        <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet">
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+        <link href="lib/slick/slick.css" rel="stylesheet">
+        <link href="lib/slick/slick-theme.css" rel="stylesheet">
+
+        <!-- Template Stylesheet -->
+        <link href="css/style.css" rel="stylesheet">
+        <link href="css/fix.css" rel="stylesheet">
+    </head>
+
+    <body>
+        <!-- Header Start -->
+        
+        
+        <div class="nav">
+            <div class="container-fluid">
+                <nav class="navbar navbar-expand-md bg-dark navbar-dark">
+                  <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
+                        <div class="navbar-nav mr-auto">
+                            <a href="index2.html" class="nav-item nav-link active">Trang chủ</a>
+                            <a href="danhmuccotaikhoan.html" class="nav-item nav-link">Danh Mục</a>
+                            <a href="contact.html" class="nav-item nav-link">Liên hệ</a>
+                        </div>
+                        <div class="navbar-nav ml-auto">
+                            <div class="nav-item dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown"> <i class="fas fa-user"></i> &nbsp;Huynh Duc</a>
+                                <div class="dropdown-menu">
+                                   <a href="thongtintaikhoan.html" class="dropdown-item"><i class="fa fa-id-card me-2"></i>  &nbsp;Thông tin</a>
+                                    <a href="lichsumuahang.html" class="dropdown-item"> <i class="fa fa-history me-2"></i>&nbsp;Lịch sử mua hàng</a>
+
+                                    <a href="index.html" class="dropdown-item"> <i class="fa fa-sign-out-alt me-2"></i>&nbsp;Đăng xuất</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </nav>
+            </div>
+        </div>
+        
+        <div class="bottom-bar">
+            <div class="container-fluid">
+                <div class="row align-items-center">
+                    <div class="col-md-3">
+                        <div class="logo">
+                            <a href="index.html">
+                                <img src="img/logo.png" alt="Logo">
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="search">
+                            <input type="text" id="searchInput" placeholder="Tìm kiếm sản phẩm">
+                            <button id="searchBtn"><i class="fa fa-search"></i></button>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="user">
+                            <a href="cart.html" class="btn cart">
+                                <i class="fa fa-shopping-cart"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Header End -->
+
+        <!-- Breadcrumb Start -->
+        <div class="breadcrumb-wrap">
+            <div class="container-fluid">
+                <ul class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="home.html">Home</a></li>
+                    <li class="breadcrumb-item"><a href="cart2.html">Giỏ hàng</a></li>
+                    <li class="breadcrumb-item active">Thanh toán</li>
+                </ul>
+            </div>
+        </div>
+        <!-- Breadcrumb End -->
+
+        <!-- Checkout Start -->
+        <div class="checkout">
+            <div class="container-fluid">
+                <!-- Error message placeholder (hidden by default) -->
+                <div class="alert alert-danger text-center" style="display: none;" id="error-message">
+                    <i class="fa fa-exclamation-circle"></i> <span id="error-text"></span>
+                </div>
+                
+                <div class="row">
+                    <div class="col-lg-8">
+                        <form method="POST" action="#" id="checkoutForm">
+                            <div class="checkout-inner">
+                                <div class="billing-address">
+                                    <h2>DANH SÁCH SẢN PHẨM ĐÃ ĐẶT</h2>
+                                    <div class="cart-page-inner">
+                                        <div class="table-responsive">
+                                            <table class="table table-bordered">
+                                                <thead>
+                                                    <tr>
+                                                        <th style="background-color: #ffffff; color: #000000;">Sản phẩm</th>
+                                                        <th style="background-color: #ffffff; color: #000000;">Giá</th>
+                                                        <th style="background-color: #ffffff; color: #000000;">Số lượng</th>
+                                                        <th style="background-color: #ffffff; color: #000000;">Tổng tiền</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody class="align-middle" id="product-list">
+                                                    <!-- Sample product data -->
+                                                    <tr>
+                                                        <td>
+                                                            <div class="img">
+                                                                <img src="img/book1.webp" alt="Image">
+                                                                <p>Hiểu về trái tim</p>
+                                                            </div>
+                                                        </td>
+                                                        <td>70.000đ</td>
+                                                        <td>2</td>
+                                                        <td>140.000đ</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>
+                                                            <div class="img">
+                                                                <img src="img/book4.webp" alt="Image">
+                                                                <p>Sự im lặng của bầy cừu</p>
+                                                            </div>
+                                                        </td>
+                                                        <td>150.000đ</td>
+                                                        <td>1</td>
+                                                        <td>150.000đ</td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Shipping address form (shown by default) -->
+                                <div class="shipping-address mt-4" id="shipping-form">
+                                    <h2>THÔNG TIN GIAO HÀNG</h2>
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <label>Số nhà, tên đường:</label>
+                                                <input class="form-control" type="text" name="street" placeholder="Nhập số nhà, tên đường" required>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label>Quận/Huyện:</label>
+                                                <select class="form-control" name="district" required>
+                                                    <option value="">Chọn Quận/Huyện</option>
+                                                    <option value="Quận 1">Quận 1</option>
+                                                    <option value="Quận 2">Quận 2</option>
+                                                    <option value="Quận 3">Quận 3</option>
+                                                    <option value="Quận 4">Quận 4</option>
+                                                    <option value="Quận 5">Quận 5</option>
+                                                    <option value="Quận 6">Quận 6</option>
+                                                    <option value="Quận 7">Quận 7</option>
+                                                    <option value="Quận 8">Quận 8</option>
+                                                    <option value="Quận 9">Quận 9</option>
+                                                    <option value="Quận 10">Quận 10</option>
+                                                    <option value="Quận 11">Quận 11</option>
+                                                    <option value="Quận 12">Quận 12</option>
+                                                    <option value="Quận Bình Thạnh">Quận Bình Thạnh</option>
+                                                    <option value="Quận Tân Bình">Quận Tân Bình</option>
+                                                    <option value="Quận Tân Phú">Quận Tân Phú</option>
+                                                    <option value="Quận Phú Nhuận">Quận Phú Nhuận</option>
+                                                    <option value="Quận Gò Vấp">Quận Gò Vấp</option>
+                                                    <option value="Quận Thủ Đức">Quận Thủ Đức</option>
+                                                    <option value="Huyện Bình Chánh">Huyện Bình Chánh</option>
+                                                    <option value="Huyện Củ Chi">Huyện Củ Chi</option>
+                                                    <option value="Huyện Hóc Môn">Huyện Hóc Môn</option>
+                                                    <option value="Huyện Nhà Bè">Huyện Nhà Bè</option>
+                                                    <option value="Huyện Cần Giờ">Huyện Cần Giờ</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label>Thành phố:</label>
+                                                <select class="form-control" name="city" required>
+                                                    <option value="">Chọn Thành phố</option>
+                                                    <option value="Hồ Chí Minh">Hồ Chí Minh</option>
+                                                    <option value="Hà Nội">Hà Nội</option>
+                                                    <option value="Đà Nẵng">Đà Nẵng</option>
+                                                    <option value="Cần Thơ">Cần Thơ</option>
+                                                    <option value="Hải Phòng">Hải Phòng</option>
+                                                    <option value="Nha Trang">Nha Trang</option>
+                                                    <option value="Đà Lạt">Đà Lạt</option>
+                                                    <option value="Vũng Tàu">Vũng Tàu</option>
+                                                    <option value="Huế">Huế</option>
+                                                    <option value="Buôn Ma Thuột">Buôn Ma Thuột</option>
+                                                    <option value="Vinh">Vinh</option>
+                                                    <option value="Quy Nhơn">Quy Nhơn</option>
+                                                    <option value="Long Xuyên">Long Xuyên</option>
+                                                    <option value="Thái Nguyên">Thái Nguyên</option>
+                                                    <option value="Nam Định">Nam Định</option>
+                                                    <option value="Rạch Giá">Rạch Giá</option>
+                                                    <option value="Thái Bình">Thái Bình</option>
+                                                    <option value="Thanh Hóa">Thanh Hóa</option>
+                                                    <option value="Hạ Long">Hạ Long</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <!-- Alternative: Pre-filled address display (hidden by default) -->
+                                <div class="shipping-address mt-4" id="existing-address" style="display: none;">
+                                    <h2>THÔNG TIN GIAO HÀNG</h2>
+                                    <p><strong>Địa chỉ giao hàng:</strong> <span id="saved-address">273 An Dương Vương Phường 3 Quận 5 TPHCM</span></p>
+                                </div>
+                            </div>
+                        </div>
+                    <div class="col-lg-4">
+                        <div class="checkout-inner">
+                            <div class="checkout-summary">
+                                <h1>Thông tin đơn hàng</h1>
+                                <p class="sub-total">Tiền Hàng<span id="subtotal">290.000đ</span></p>
+                                <p class="ship-cost">Phí Ship<span>Freeship</span></p>
+                                <h2>Tổng Cộng<span id="total">290.000đ</span></h2>
+                            </div>
+
+                                    <div class="checkout-payment">
+                                        <div class="payment-methods">
+                                            <h2>Phương Thức Thanh Toán</h2>
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <div class="payment-method">
+                                                        <div class="custom-control custom-radio">
+                                                            <input type="radio" class="custom-control-input" id="payment-1" name="payment_method" value="MOMO" onclick="showQRCode('momo')" required>
+                                                            <label class="custom-control-label" for="payment-1">MOMO</label>
+                                                        </div>
+                                                    </div>
+                                                    <div class="payment-method">
+                                                        <div class="custom-control custom-radio">
+                                                            <input type="radio" class="custom-control-input" id="payment-2" name="payment_method" value="Zalo Pay" onclick="showQRCode('zalo')" required>
+                                                            <label class="custom-control-label" for="payment-2">Zalo Pay</label>
+                                                        </div>
+                                                    </div>
+                                                    <div class="payment-method">
+                                                        <div class="custom-control custom-radio">
+                                                            <input type="radio" class="custom-control-input" id="payment-5" name="payment_method" value="COD" onclick="showQRCode('cod')" required>
+                                                            <label class="custom-control-label" for="payment-5">COD</label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <div id="qr-code-container" style="display: none; text-align: center;">
+                                                        <img id="qr-code-image" src="" alt="QR Code" style="max-width: 100%; height: auto; border: 1px solid #ddd; padding: 10px;">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="checkout-btn">
+                                                <a href="chitietdonhang.html" class="btn" onclick="alert('Đơn hàng của bạn đã được đặt thành công!')">XÁC NHẬN</a>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Checkout End -->
+        
+        <!-- Footer Start -->
+        <div class="footer">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-lg-3 col-md-6">
+                        <div class="footer-widget">
+                            <h2>Liên hệ</h2>
+                            <div class="contact-info">
+                                <p><i class="fa fa-map-marker"></i>273 An Dương Vương Phường 3 Quận 5 TPHCM</p>
+                                <p><i class="fa fa-envelope"></i>info@example.com</p>
+                                <p><i class="fa fa-phone"></i>+012-345-67890</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="col-lg-3 col-md-6">
+                        <div class="footer-widget">
+                            <h2>Theo dõi chúng tôi</h2>
+                            <div class="contact-info">
+                                <div class="social">
+                                    <a href=""><i class="fab fa-twitter"></i></a>
+                                    <a href=""><i class="fab fa-facebook-f"></i></a>
+                                    <a href=""><i class="fab fa-linkedin-in"></i></a>
+                                    <a href=""><i class="fab fa-instagram"></i></a>
+                                    <a href=""><i class="fab fa-youtube"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-3 col-md-6">
+                        <div class="footer-widget">
+                            <h2>Thông tin công ty</h2>
+                            <ul>
+                                <li><a href="#">Về chúng tôi</a></li>
+                                <li><a href="#">Chính sách bảo mật</a></li>
+                                <li><a href="#">Điều khoản & Điều kiện</a></li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-3 col-md-6">
+                        <div class="footer-widget">
+                            <h2>Thông tin mua hàng</h2>
+                            <ul>
+                                <li><a href="#">Chính sách thanh toán</a></li>
+                                <li><a href="#">Chính sách vận chuyển</a></li>
+                                <li><a href="#">Chính sách đổi trả</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="row payment align-items-center">
+                    <div class="col-md-6">
+                        <div class="payment-method">
+                            <h2>Chúng tôi chấp nhận:</h2>
+                            <img src="img/payment-method.png" alt="Payment Method" />
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="payment-security">
+                            <h2>Được bảo mật bởi:</h2>
+                            <img src="img/godaddy.svg" alt="Payment Security" />
+                            <img src="img/norton.svg" alt="Payment Security" />
+                            <img src="img/ssl.svg" alt="Payment Security" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Footer End -->
+
+        <!-- Footer Bottom Start -->
+       
+        <!-- Footer Bottom End -->
+
+        <!-- Back to Top -->
+        <a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>
+
+        <!-- JavaScript Libraries -->
+        <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
+        <script src="lib/easing/easing.min.js"></script>
+        <script src="lib/slick/slick.min.js"></script>
+
+        <!-- Template Javascript -->
+        <script src="js/main.js"></script>
+
+        <script>
+            function showQRCode(paymentMethod) {
+                const qrCodeContainer = document.getElementById('qr-code-container');
+                const qrCodeImage = document.getElementById('qr-code-image');
+
+                if (paymentMethod === 'momo') {
+                    qrCodeImage.src = 'img/momo.jpg';
+                    qrCodeContainer.style.display = 'block';
+                } else if (paymentMethod === 'zalo') {
+                    qrCodeImage.src = 'img/zalopay.jpg';
+                    qrCodeContainer.style.display = 'block';
+                } else {
+                    qrCodeContainer.style.display = 'none';
+                }
+            }
+
+            // Static form validation (no backend processing)
+            document.getElementById('checkoutForm').addEventListener('submit', function(e) {
+                e.preventDefault(); // Prevent actual form submission
+                
+                const paymentMethod = document.querySelector('input[name="payment_method"]:checked');
+                const street = document.querySelector('input[name="street"]').value;
+                const district = document.querySelector('select[name="district"]').value;
+                const city = document.querySelector('select[name="city"]').value;
+
+                // Basic validation
+                if (!paymentMethod) {
+                    showError('Vui lòng chọn phương thức thanh toán!');
+                    return;
+                }
+
+                if (!street || !district || !city) {
+                    showError('Vui lòng nhập đầy đủ thông tin địa chỉ giao hàng!');
+                    return;
+                }
+
+                if (confirm('Bạn có chắc chắn muốn đặt hàng không?')) {
+                    // Since this is a static page, just show a success message
+                    alert('Đây là trang web tĩnh - không có chức năng xử lý đơn hàng thực tế!');
+                }
+            });
+
+            function showError(message) {
+                const errorDiv = document.getElementById('error-message');
+                const errorText = document.getElementById('error-text');
+                errorText.textContent = message;
+                errorDiv.style.display = 'block';
+                
+                // Hide error after 5 seconds
+                setTimeout(() => {
+                    errorDiv.style.display = 'none';
+                }, 5000);
+            }
+
+            // Function to toggle between shipping form and saved address display
+            function toggleAddressDisplay(hasSavedAddress = false) {
+                const shippingForm = document.getElementById('shipping-form');
+                const existingAddress = document.getElementById('existing-address');
+                
+                if (hasSavedAddress) {
+                    shippingForm.style.display = 'none';
+                    existingAddress.style.display = 'block';
+                } else {
+                    shippingForm.style.display = 'block';
+                    existingAddress.style.display = 'none';
+                }
+            }
+
+            // Function to add/remove products from the list (for demo purposes)
+            function updateProductList(products = []) {
+                const tbody = document.getElementById('product-list');
+                if (products.length === 0) {
+                    // Show default sample products
+                    return;
+                }
+                
+                tbody.innerHTML = '';
+                let subtotal = 0;
+                
+                products.forEach(product => {
+                    const total = product.price * product.quantity;
+                    subtotal += total;
+                    
+                    const row = `
+                        <tr>
+                            <td>
+                                <div class="img">
+                                    <img src="${product.image}" alt="Image">
+                                    <p>${product.name}</p>
+                                </div>
+                            </td>
+                            <td>${formatPrice(product.price)}</td>
+                            <td>${product.quantity}</td>
+                            <td>${formatPrice(total)}</td>
+                        </tr>
+                    `;
+                    tbody.innerHTML += row;
+                });
+                
+                // Update totals
+                document.getElementById('subtotal').textContent = formatPrice(subtotal);
+                document.getElementById('total').textContent = formatPrice(subtotal + 20000);
+            }
+
+            function formatPrice(price) {
+                return new Intl.NumberFormat('vi-VN').format(price) + 'đ';
+            }
+        </script>
+    </body>
+</html>

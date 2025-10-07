@@ -1,0 +1,694 @@
+<!DOCTYPE html>
+<html lang="vi">
+    <head>
+        <meta charset="utf-8">
+        <title>BOOK STORE </title>
+        <meta content="width=device-width, initial-scale=1.0" name="viewport">
+        <meta content="eCommerce HTML Template Free Download" name="keywords">
+        <meta content="eCommerce HTML Template Free Download" name="description">
+
+        <!-- Favicon -->
+        <link href="img/tieude.jpg" rel="icon">
+         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+        <!-- Google Fonts -->
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400|Source+Code+Pro:700,900&display=swap" rel="stylesheet">
+
+        <!-- CSS Libraries -->
+        <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet">
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+        <link href="lib/slick/slick.css" rel="stylesheet">
+        <link href="lib/slick/slick-theme.css" rel="stylesheet">
+
+        <!-- Template Stylesheet -->
+        <link href="css/style.css" rel="stylesheet">
+        <link href="css/fix.css" rel="stylesheet">
+        <style>
+            .toast-notification {
+                position: fixed;
+                top: 20px;
+                right: 20px;
+                background-color: #4CAF50;
+                color: white;
+                padding: 15px 25px;
+                border-radius: 5px;
+                box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+                z-index: 1000;
+                display: none;
+                animation: slideIn 0.5s ease-in-out;
+            }
+
+            @keyframes slideIn {
+                from {
+                    transform: translateX(100%);
+                    opacity: 0;
+                }
+                to {
+                    transform: translateX(0);
+                    opacity: 1;
+                }
+            }
+
+            @keyframes fadeOut {
+                from {
+                    opacity: 1;
+                }
+                to {
+                    opacity: 0;
+                }
+            }
+
+            /* Buy Now Button Styles */
+            .buy-now-btn {
+                background-color: #ff6f61 !important;
+                color: #fff !important;
+                border: 2px solid #ff6f61 !important;
+                border-radius: 25px;
+                padding: 8px 15px;
+                font-weight: 600;
+                transition: all 0.3s ease;
+            }
+
+            .buy-now-btn:hover {
+                background-color: #fff !important;
+                color: #ff6f61 !important;
+            }
+        </style>
+    </head>
+
+    <body>
+       <!-- Header -->
+       
+        
+        <div class="nav">
+            <div class="container-fluid">
+                <nav class="navbar navbar-expand-md bg-dark navbar-dark">
+                    
+                  <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
+                        <div class="navbar-nav mr-auto">
+                            <a href="index.html" class="nav-item nav-link active">Trang chủ</a>
+                            <a href="danhmuckhongtk.html" class="nav-item nav-link">Danh Mục</a>
+                            <a href="contactkhongtk.html" class="nav-item nav-link">Liên hệ</a>
+                        </div>
+                        <div class="navbar-nav ml-auto">
+                            <div class="nav-item dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown"> <i class="fas fa-user"></i> &nbsp;Tài khoản</a>
+                                <div class="dropdown-menu">
+                                    <a href="login.html" class="dropdown-item"><i class="fa fa-sign-in-alt"></i>&nbsp;&nbsp;Đăng nhập</a>
+                                    <a href="register.html" class="dropdown-item"> <i class="fa fa-user-plus"></i>&nbsp;&nbsp;Đăng ký</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </nav>
+            </div>
+        </div>
+        
+        <div class="bottom-bar">
+            <div class="container-fluid">
+                <div class="row align-items-center">
+                    <div class="col-md-3">
+                        <div class="logo">
+                            <a href="index.html">
+                                <img src="img/logo.png" alt="Logo">
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="search">
+                            <input type="text" id="searchInput" placeholder="Tìm kiếm sản phẩm">
+                            <button id="searchBtn"><i class="fa fa-search"></i></button>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="user">
+                            <a href="login.html" class="btn cart" onclick="alert('Vui lòng đăng nhập để tiếp tục')">
+                                <i class="fa fa-shopping-cart"></i>
+                               
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+
+        <!-- Main Slider Start -->
+        <!-- BANNER: chỉ còn slider ảnh -->
+<div class="header">
+  <div class="container-fluid p-0">
+    <div class="header-slider">
+      <div class="slide"><img src="img/banner1.webp" alt="Gundam 1"></div>
+      <div class="slide"><img src="img/banner2.webp" alt="Gundam 2"></div>
+      <div class="slide"><img src="img/banner3.webp"  alt="Gundam 3"></div>
+    </div>
+  </div>
+</div>
+<!-- jQuery: CHỈ GIỮ 1 BẢN (khuyên dùng 3.6.0) -->
+
+<!-- CHỈ GIỮ MỘT DÒNG NÀY -->
+<!-- CHỈ GIỮ MỘT DÒNG NÀY -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+  $(function () {
+    $('.header-slider').slick({
+      autoplay: true,
+      autoplaySpeed:500,  // tự chuyển sau vài giây
+      infinite: true,
+      speed:10000,
+      fade: false,           // muốn trượt ngang thì đổi thành false
+      dots: true,
+      arrows: true,
+      pauseOnHover: false,
+      pauseOnFocus: false,
+
+      // Nút rỗng (không text, không title) – để CSS vẽ chevron
+      prevArrow: '<button type="button" class="slick-prev" aria-label="Previous"></button>',
+      nextArrow: '<button type="button" class="slick-next" aria-label="Next"></button>'
+    });
+  });
+</script>
+
+
+        <!-- Main Slider End -->
+          <!-- Featured Product Start -->
+        <div class="featured-product product">
+            <div class="container-fluid">
+                <div class="section-header">
+                    <h1>Sản Phẩm Mới Nhất</h1>
+                </div>
+                <div class="row align-items-center product-slider product-slider-4">
+                    <div class="col-lg-3">
+                        <div class="product-item">
+                            <div class="product-title">
+                                <a href="product-detail.html">Tên của đóa hồng</a>
+                                <div class="ratting">
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                </div>
+                            </div>
+                            <div class="product-image">
+                                <a href="product-detail.html">
+                                    <img src="img/newbook1.webp" alt="Product Image">
+                                </a>
+                                <div class="product-action">
+                                    <a href="login.html" class="alert-btn" onclick="alert('Đăng nhập để tiếp tục');"><i class="fa fa-cart-plus"></i></a>
+                                    <a href="product-detail.html"><i class="fa fa-eye"></i></a>
+                                </div>
+                            </div>
+                            <div class="product-price">
+                                <h3><span>187.000VNĐ</span></h3>
+                                <a class="btn buy-now-btn" href="login.html" onclick="alert('Đăng nhập để tiếp tục');"><i class="fab fa-cc-visa"></i>Mua ngay</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3">
+                        <div class="product-item">
+                            <div class="product-title">
+                                <a href="product-detail.html">Khi hơi thở hóa thinh không</a>
+                                <div class="ratting">
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                </div>
+                            </div>
+                            <div class="product-image">
+                                <a href="product-detail.html">
+                                    <img src="img/newbook2.webp" alt="Product Image">
+                                </a>
+                                <div class="product-action">
+                                    <a href="login.html" class="alert-btn"><i class="fa fa-cart-plus" onclick="alert('Đăng nhập để tiếp tục');"></i></a>
+                                    <a href="product-detail.html"><i class="fa fa-eye"></i></a>
+                                </div>
+                            </div>
+                            <div class="product-price">
+                                <h3><span>96.000VNĐ</span></h3>
+                                <a class="btn buy-now-btn" href="login.html" onclick="alert('Đăng nhập để tiếp tục');"><i class="fab fa-cc-visa"></i>Mua ngay</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3">
+                        <div class="product-item">
+                            <div class="product-title">
+                                <a href="product-detail.html">Đàn ông sao hỏa đàn bà sao kim</a>
+                                <div class="ratting">
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                </div>
+                            </div>
+                            <div class="product-image">
+                                <a href="product-detail.html">
+                                    <img src="img/newbook3.webp" alt="Product Image">
+                                </a>
+                                <div class="product-action">
+                                    <a href="login.html" class="alert-btn" onclick="alert('Đăng nhập để tiếp tục');"><i class="fa fa-cart-plus"></i></a>
+                                    <a href="product-detail.html"><i class="fa fa-eye"></i></a>
+                                </div>
+                            </div>
+                            <div class="product-price">
+                                <h3><span>100.000VNĐ</span></h3>
+                                <a class="btn buy-now-btn" href="login.html" onclick="alert('Đăng nhập để tiếp tục');"><i class="fab fa-cc-visa"></i>Mua ngay</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3">
+                        <div class="product-item">
+                            <div class="product-title">
+                                <a href="product-detail.html">Yêu những điều không hoàn hảo</a>
+                                <div class="ratting">
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                </div>
+                            </div>
+                            <div class="product-image">
+                                <a href="product-detail.html">
+                                    <img src="img/newbook4.webp" alt="Product Image">
+                                </a>
+                                <div class="product-action">
+                                    <a href="login.html" class="alert-btn" onclick="alert('Đăng nhập để tiếp tục');"><i class="fa fa-cart-plus"></i></a>
+                                    <a href="product-detail.html"><i class="fa fa-eye"></i></a>
+                                </div>
+                            </div>
+                            <div class="product-price">
+                                <h3><span>120.000VNĐ</span></h3>
+                                <a class="btn buy-now-btn" href="login.html" onclick="alert('Đăng nhập để tiếp tục');"><i class="fab fa-cc-visa"></i>Mua ngay</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Danh sách sản phẩm -->
+    <div>
+        <div id="page1" class="page">
+  <div class="category-products">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="category-item">
+                            <h2>Hiểu về trái tim</h2>
+                            <a href="product-detail.html" class="btn">XEM CHI TIẾT</a>
+                            <img src="img/book1.webp" alt="Mô hình">
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="category-item">
+                            <h2>Cây cam ngọt của tôi</h2>
+                            <a href="product-detail.html" class="btn">XEM CHI TIẾT</a>
+                            <img src="img/book2.webp" alt="Mô hình Gundam">
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="category-item">
+                            <h2>Làm bạn với bầu trời</h2>
+                            <a href="product-detail.html" class="btn">XEM CHI TIẾT</a>
+                            <img src="img/book3.jpg" alt="Mô hình Gundam">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+</div>
+<div id="page2" class="page">
+  <div class="category-products">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="category-item">
+                            <h2>Bản du ca cuối cùng</h2>
+                            <a href="product-detail.html" class="btn">XEM CHI TIẾT</a>
+                            <img src="img/book5.webp" alt="Mô hình">
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="category-item">
+                            <h2>Ngôi nhà kỳ quái</h2>
+                            <a href="product-detail.html" class="btn">XEM CHI TIẾT</a>
+                            <img src="img/book6.webp" alt="Mô hình Gundam">
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="category-item">
+                            <h2>Nụ hôn của sói</h2>
+                            <a href="product-detail.html" class="btn">XEM CHI TIẾT</a>
+                            <img src="img/book7.webp" alt="Mô hình Gundam">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+</div>
+<div id="page3" class="page">
+  <div class="category-products">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="category-item">
+                            <h2>Mưa đỏ</h2>
+                            <a href="product-detail.html" class="btn">XEM CHI TIẾT</a>
+                            <img src="img/book8.webp" alt="Mô hình">
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="category-item">
+                            <h2>Lập trình quỹ đạo cuộc đời</h2>
+                            <a href="product-detail.html" class="btn">XEM CHI TIẾT</a>
+                            <img src="img/book9.jpg" alt="Mô hình Gundam">
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="category-item">
+                            <h2>Lão hạc</h2>
+                            <a href="product-detail.html" class="btn">XEM CHI TIẾT</a>
+                            <img src="img/book10.webp" alt="Mô hình Gundam">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+</div>
+<div id="page4" class="page">
+  <div class="category-products">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="category-item">
+                            <h2>Khu vườn trong thành phố</h2>
+                            <a href="product-detail.html" class="btn">XEM CHI TIẾT</a>
+                            <img src="img/book11.webp" alt="Mô hình">
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="category-item">
+                            <h2>Bồ nông có hiếu</h2>
+                            <a href="product-detail.html" class="btn">XEM CHI TIẾT</a>
+                            <img src="img/book12.jpg" alt="Mô hình Gundam">
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="category-item">
+                            <h2>Thao túng tâm lý</h2>
+                            <a href="product-detail.html" class="btn">XEM CHI TIẾT</a>
+                            <img src="img/book13.webp" alt="Mô hình Gundam">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+</div>
+<div id="page5" class="page">
+  <div class="category-products">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="category-item">
+                            <h2>Quá trẻ để chết</h2>
+                            <a href="product-detail.html" class="btn">Xem chi tiết</a>
+                            <img src="img/book14.jpg" alt="Mô hình">
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="category-item">
+                            <h2>Thất tịch không mưa</h2>
+                            <a href="product-detail.html" class="btn">XEM CHI TIẾT</a>
+                            <img src="img/book15.webp" alt="Mô hình Gundam">
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="category-item">
+                            <h2>Sát nhân trong chiếc hộp mắt ma</h2>
+                            <a href="product-detail.html" class="btn">XEM CHI TIẾT</a>
+                            <img src="img/book16.webp" alt="Mô hình Gundam">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+</div>
+    </div>
+        <!--kết thúc danh sách sản  phẩm--> 
+
+<div class="pagination">
+  <a href="#" onclick="showPage(1); return false;">1</a>
+  <a href="#" onclick="showPage(2); return false;">2</a>
+  <a href="#" onclick="showPage(3); return false;">3</a>
+  <a href="#" onclick="showPage(4); return false;">4</a>
+  <a href="#" onclick="showPage(5); return false;">5</a>
+</div>
+        
+        <!-- JS xử lý phân trang-->
+        <script>
+           // Chỉ áp dụng cho icon fa-eye hoặc các nút chi tiết, KHÔNG áp dụng cho .buy-now-btn
+document.querySelectorAll("a i.fa-eye, a.btn:not(.buy-now-btn):not(.cart)").forEach(el => {
+  let link = el.tagName === "I" ? el.parentElement : el;
+
+  link.onclick = e => {
+    e.preventDefault();
+    location.href = "chitietsanphamkhongtk.html";
+  };
+});
+
+
+function showPage(page) {
+  // Ẩn tất cả các trang
+  document.querySelectorAll(".page").forEach(p => p.classList.remove("active"));
+
+
+  // Hiện đúng trang được chọn
+  document.getElementById("page" + page).classList.add("active");
+
+  // Bỏ active ở tất cả nút phân trang
+  document.querySelectorAll(".pagination a").forEach(a => a.classList.remove("active"));
+
+  // Thêm active vào nút đang chọn
+  document.querySelectorAll(".pagination a")[page - 1].classList.add("active");
+}
+
+// Khi vừa load trang → mặc định hiện trang 1
+document.addEventListener("DOMContentLoaded", () => {
+  showPage(1);
+});
+</script>
+
+<!-- kết thúc js xử lý phân trang-->
+       
+        <!-- Feature Start-->
+        <div class="feature">
+            <div class="container-fluid">
+                <div class="row align-items-center">
+                    <div class="col-lg-3 col-md-6 feature-col">
+                        <div class="feature-content">
+                            <i class="fab fa-cc-mastercard"></i>
+                            <h2>Bảo mật thanh toán</h2>
+                            <p>
+
+                            </p>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6 feature-col">
+                        <div class="feature-content">
+                            <i class="fa fa-truck"></i>
+                            <h2>Free ship toàn quốc</h2>
+                            <p>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6 feature-col">
+                        <div class="feature-content">
+                            <i class="fa fa-sync-alt"></i>
+                            <h2>Đổi trả trong 90 ngày</h2>
+                            <p>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6 feature-col">
+                        <div class="feature-content">
+                            <i class="fa fa-comments"></i>
+                            <h2>Hỗ trợ 24/7</h2>
+                            <p>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Feature End-->
+
+       
+        <!-- Featured Product End -->
+
+        <!-- Footer Start -->
+        <div class="footer">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-lg-3 col-md-6">
+                        <div class="footer-widget">
+                            <h2>Liên hệ</h2>
+                            <div class="contact-info">
+                                <p><i class="fa fa-map-marker"></i>123 Street, New York, USA</p>
+                                <p><i class="fa fa-envelope"></i>info@example.com</p>
+                                <p><i class="fa fa-phone"></i>+012-345-67890</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="col-lg-3 col-md-6">
+                        <div class="footer-widget">
+                            <h2>Theo dõi chúng tôi</h2>
+                            <div class="contact-info">
+                                <div class="social">
+                                    <a href=""><i class="fab fa-twitter"></i></a>
+                                    <a href=""><i class="fab fa-facebook-f"></i></a>
+                                    <a href=""><i class="fab fa-linkedin-in"></i></a>
+                                    <a href=""><i class="fab fa-instagram"></i></a>
+                                    <a href=""><i class="fab fa-youtube"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-3 col-md-6">
+                        <div class="footer-widget">
+                            <h2>Thông tin công ty</h2>
+                            <ul>
+                                <li><a href="#">Về chúng tôi</a></li>
+                                <li><a href="#">Chính sách bảo mật</a></li>
+                                <li><a href="#">Điều khoản & Điều kiện</a></li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-3 col-md-6">
+                        <div class="footer-widget">
+                            <h2>Thông tin mua hàng</h2>
+                            <ul>
+                                <li><a href="#">Chính sách thanh toán</a></li>
+                                <li><a href="#">Chính sách vận chuyển</a></li>
+                                <li><a href="#">Chính sách đổi trả</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="row payment align-items-center">
+                    <div class="col-md-6">
+                        <div class="payment-method">
+                            <h2>Chúng tôi chấp nhận:</h2>
+                            <img src="img/payment-method.png" alt="Payment Method" />
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="payment-security">
+                            <h2>Được bảo mật bởi:</h2>
+                            <img src="img/godaddy.svg" alt="Payment Security" />
+                            <img src="img/norton.svg" alt="Payment Security" />
+                            <img src="img/ssl.svg" alt="Payment Security" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Footer End -->
+
+        
+        <!-- Footer Bottom End -->
+
+        <!-- Back to Top -->
+        <a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>
+
+        <!-- JavaScript Libraries -->
+        <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
+        <script src="lib/easing/easing.min.js"></script>
+        <script src="lib/slick/slick.min.js"></script>
+
+        <!-- Template Javascript -->
+        <script src="js/main.js"></script>
+        
+       
+        <script>
+    $(document).ready(function() {
+        $('.header-slider').slick({
+            autoplay: true,
+            autoplaySpeed: 3000,
+            dots: true,
+            arrows: false,
+            infinite: true,
+            speed: 500,
+            fade: false,
+            cssEase: 'linear'
+        });
+    });
+</script>
+<script>
+    function handleBuyNow(productId) {
+        // Static version - show login notification
+        const loginToast = document.getElementById('login-toast');
+        loginToast.style.display = 'block';
+        setTimeout(() => {
+            loginToast.style.animation = 'fadeOut 0.5s ease-in-out';
+            setTimeout(() => {
+                loginToast.style.display = 'none';
+                loginToast.style.animation = '';
+            }, 500);
+        }, 3000);
+    }
+</script>
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        console.log("DOM đã sẵn sàng, khởi tạo các sự kiện tìm kiếm...");
+
+        // Xử lý sự kiện cho các liên kết danh mục trong header
+        const headerCategoryLinks = document.querySelectorAll(".dropdown-menu .category-link");
+        headerCategoryLinks.forEach(link => {
+            link.addEventListener("click", function(e) {
+                e.preventDefault();
+                const category = this.getAttribute("data-category");
+                console.log("Danh mục từ header được nhấn:", category);
+                // Static version - just show alert
+                alert(`Bạn đã chọn danh mục: ${this.textContent}`);
+            });
+        });
+
+        const searchInput = document.getElementById("searchInput");
+        const searchBtn = document.getElementById("searchBtn");
+        if (searchBtn) {
+            searchBtn.addEventListener("click", function() {
+                console.log("Nút tìm kiếm được nhấn");
+                const searchTerm = searchInput ? searchInput.value.trim() : '';
+                if (searchTerm !== "") {
+                    // Static version - just show alert
+                    alert(`Tìm kiếm: ${searchTerm}`);
+                }
+            });
+        }
+
+        if (searchInput) {
+            searchInput.addEventListener("keypress", function(e) {
+                if (e.key === "Enter") {
+                    console.log("Enter được nhấn trong ô tìm kiếm");
+                    const searchTerm = searchInput.value.trim();
+                    if (searchTerm !== "") {
+                        // Static version - just show alert
+                        alert(`Tìm kiếm: ${searchTerm}`);
+                    }
+                    e.preventDefault();
+                }
+            });
+        }
+    });
+</script>
+    </body>
+</html>

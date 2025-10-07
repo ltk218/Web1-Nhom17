@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="utf-8">
+    <title>BOOK STORE - Đăng nhập</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="eCommerce HTML Template Free Download" name="keywords">
+    <meta content="eCommerce HTML Template Free Download" name="description">
+
+    <!-- Favicon -->
+    <link href="img/tieude.jpg" rel="icon">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400|Source+Code+Pro:700,900&display=swap" rel="stylesheet">
+
+    <!-- CSS Libraries -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+    <link href="lib/slick/slick.css" rel="stylesheet">
+    <link href="lib/slick/slick-theme.css" rel="stylesheet">
+
+    <!-- Template Stylesheet -->
+    <link href="css/style.css" rel="stylesheet">
+    <link href="css/fix.css" rel="stylesheet">
+    <style>
+        /* Main Container Styles */
+        body, html {
+            height: 100%;
+            margin: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        .login-container {
+            position: relative;
+            overflow: hidden;
+            width: 1100px;
+            max-width: 95%;
+            margin: 0 auto;
+            box-shadow: 0 0 25px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            min-height: 650px;
+            background: #000000; /* Fixed black background */
+        }
+        
+        /* Orange sliding panel */
+        .orange-panel {
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 50%;
+            height: 100%;
+            background: #FF6B6B;
+            transition: transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            z-index: 2;
+            clip-path: polygon(60px 0, 100% 0, 100% 100%, 0% 100%);
+        }
+        
+        /* When showing register form, slide orange panel to left */
+        .login-container.show-register .orange-panel {
+            transform: translateX(-100%);
+            clip-path: polygon(0% 0, calc(100% - 60px) 0, 100% 100%, 0% 100%);
+        }
+        
+        /* Content containers */
+        .login-content, .register-content {
+            position: absolute;
+            top: 0;
+            width: 50%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 80px 50px;
+            box-sizing: border-box;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.5s ease-in-out, visibility 0.5s ease-in-out;
+        }
+        
+        /* Login content on the left (black background) */
+        .login-content {
+            left: 0;
+            color: #FF6B6B;
+            z-index: 1;
+        }
+        
+        .login-content.active {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        /* Register content on the right (will be on black when orange slides away) */
+        .register-content {
+            right: 0;
+            color: #FF6B6B;
+            z-index: 1;
+            padding-left: 110px; /* Account for clip-path */
+        }
+        
+        .register-content.active {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        /* Welcome text on orange panel */
+        .orange-content {
+            position: absolute;
+            top: 0;
+            left: 60px;
+            right: 0;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 80px 50px;
+            color: #000;
+            z-index: 3;
+        }
+        .login-title {
+            text-align: center;
+            margin-bottom: 1.5rem;
+            color: #333;
+            font-weight: 600;
+            font-size: 1.5rem;
+        }
+        .form-control {
+            padding: 10px 12px;
+            margin-bottom: 1rem;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 14px;
+        }
+        .btn-login {
+            width: 100%;
+            padding: 12px;
+            background-color: #FF6B35;
+            border: none;
+            border-radius: 5px;
+            color: #000000;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        .btn-login:hover {
+            background-color: #e05a2b;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .divider {
+            display: flex;
+            align-items: center;
+            text-align: center;
+            margin: 1.8rem 0;
+        }
+        .divider::before, .divider::after {
+            content: '';
+            flex: 1;
+            border-bottom: 1px solid #ddd;
+        }
+        .divider-text {
+            padding: 0 15px;
+            color: #777;
+            font-size: 14px;
+            position: relative;
+        }
+        .social-login {
+            display: flex;
+            justify-content: center;
+            gap: 1.2rem;
+            margin: 2rem 0 1rem;
+        }
+        .social-btn {
+            width: 42px;
+            height: 42px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-decoration: none;
+            font-size: 18px;
+            transition: all 0.3s;
+        }
+        .social-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+        }
+        .forgot-password {
+            text-align: center;
+            margin-top: 1.2rem;
+        }
+        .forgot-password a {
+            color: #777;
+            text-decoration: none;
+            font-size: 14px;
+            transition: color 0.2s;
+        }
+        .forgot-password a:hover {
+            color: #FF6B35;
+            text-decoration: underline;
+        }
+        .welcome-text h2 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            color: #333;
+        }
+        .welcome-text p {
+            color: #FF6B6B;
+            font-size: 1rem;
+            line-height: 1.6;
+        }
+    </style>
+</head>
+
+<body>
+       <!-- Header -->
+       
+    
+    <div class="nav">
+        <div class="container-fluid">
+            <nav class="navbar navbar-expand-md bg-dark navbar-dark">
+                <a href="#" class="navbar-brand">MENU</a>
+                <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
+                    <div class="navbar-nav mr-auto">
+                        <a href="index.html" class="nav-item nav-link active">Trang chủ</a>
+                        <a href="danhmuckhongtk.html" class="nav-item nav-link">Danh mục</a>
+                        <a href="contact.html" class="nav-item nav-link">Liên hệ</a>
+                    </div>
+                    <div class="navbar-nav ml-auto">
+                        <div class="nav-item dropdown">
+                            <div class="dropdown-menu">
+                                <a href="login.html" class="dropdown-item">Đăng nhập</a>
+                                <a href="register.html" class="dropdown-item">Đăng ký</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </div>
+    <!-- Nav Bar End -->
+
+    <!-- Login Section Start -->
+    <section style="width: 100%; min-height: 100vh; display: flex; align-items: center; justify-content: center; padding: 20px; box-sizing: border-box;">
+        <div style="width: 100%; display: flex; justify-content: center;">
+            <div class="login-container" id="formContainer">
+                <!-- Orange sliding panel -->
+                <div class="orange-panel">
+                    <div class="orange-content" id="orangeContent">
+                        <div class="welcome-text">
+                            <h2 style="font-weight: 700; color: #000; font-size: 32px; margin-bottom: 20px;">CHÀO MỪNG TRỞ LẠI!</h2>
+                            <p style="font-size: 16px; line-height: 1.6; color: #333;">Đăng nhập để tiếp tục mua sắm và khám phá những ưu đãi hấp dẫn từ cửa hàng của chúng tôi.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Login Form Content -->
+                <div class="login-content active">
+                    <h2 class="login-title" style="color: #FF6B6B;">Đăng nhập</h2>
+                    <form id="loginForm">
+                        <div style="width: 100%; display: flex; justify-content: center;">
+                            <div style="width: 380px;">
+                                <div class="form-group" style="margin-bottom: 30px; width: 100%;">
+                                    <input type="email" class="form-control" id="email" placeholder="Email" required style="width: 100%; padding: 15px; border-radius: 5px; border: 1px solid #ddd; font-size: 16px;">
+                                </div>
+                                <div class="form-group" style="margin-bottom: 40px; width: 100%;">
+                                    <input type="password" class="form-control" id="password" placeholder="Mật khẩu" required style="width: 100%; padding: 15px; border-radius: 5px; border: 1px solid #ddd; font-size: 16px;">
+                                </div>
+                            </div>
+                        </div>
+                        <button type="submit" class="btn btn-login" style="width: 100%; padding: 15px; font-weight: 600; margin-bottom: 30px; font-size: 16px; background: #FF6B6B; color: #000; border: none; border-radius: 5px; cursor: pointer;">ĐĂNG NHẬP</button>
+                        
+                        <div class="signup-prompt" style="text-align: center; margin-top: 40px;">
+                            <span style="color: #FF6B6B; font-size: 15px;">Bạn chưa có tài khoản? </span>
+                            <a href="register.html" id="showRegister" style="color: #FF6B6B; font-weight: 700; text-decoration: underline; font-size: 15px;">Đăng ký ngay</a>
+                        </div>
+                    </form>
+                </div>
+                
+                
+            </div>
+        </div>
+    </section>
+    <!-- Login Section End -->
+    
+        <!-- Footer Start -->
+        <div class="footer">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-lg-3 col-md-6">
+                        <div class="footer-widget">
+                            <h2>Liên hệ</h2>
+                            <div class="contact-info">
+                                <p><i class="fa fa-map-marker"></i>123 Street, New York, USA</p>
+                                <p><i class="fa fa-envelope"></i>info@example.com</p>
+                                <p><i class="fa fa-phone"></i>+012-345-67890</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="col-lg-3 col-md-6">
+                        <div class="footer-widget">
+                            <h2>Theo dõi chúng tôi</h2>
+                            <div class="contact-info">
+                                <div class="social">
+                                    <a href=""><i class="fab fa-twitter"></i></a>
+                                    <a href=""><i class="fab fa-facebook-f"></i></a>
+                                    <a href=""><i class="fab fa-linkedin-in"></i></a>
+                                    <a href=""><i class="fab fa-instagram"></i></a>
+                                    <a href=""><i class="fab fa-youtube"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-3 col-md-6">
+                        <div class="footer-widget">
+                            <h2>Thông tin công ty</h2>
+                            <ul>
+                                <li><a href="#">Về chúng tôi</a></li>
+                                <li><a href="#">Chính sách bảo mật</a></li>
+                                <li><a href="#">Điều khoản & Điều kiện</a></li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-3 col-md-6">
+                        <div class="footer-widget">
+                            <h2>Thông tin mua hàng</h2>
+                            <ul>
+                                <li><a href="#">Chính sách thanh toán</a></li>
+                                <li><a href="#">Chính sách vận chuyển</a></li>
+                                <li><a href="#">Chính sách đổi trả</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="row payment align-items-center">
+                    <div class="col-md-6">
+                        <div class="payment-method">
+                            <h2>Chúng tôi chấp nhận:</h2>
+                            <img src="img/payment-method.png" alt="Payment Method" />
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="payment-security">
+                            <h2>Được bảo mật bởi:</h2>
+                            <img src="img/godaddy.svg" alt="Payment Security" />
+                            <img src="img/norton.svg" alt="Payment Security" />
+                            <img src="img/ssl.svg" alt="Payment Security" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Footer End -->
+
+    <!-- JavaScript Libraries -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
+    <script src="lib/slick/slick.min.js"></script>
+    
+    <!-- Template Javascript -->
+    <script src="js/main.js"></script>
+    
+    <!-- Login Script -->
+    
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Footer End -->
+
+    <!-- Footer Bottom Start -->
+  
+    <!-- Footer Bottom End --> 
+
+    <!-- Back to Top -->
+    <a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>
+
+    <!-- JavaScript Libraries -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
+    <script src="lib/easing/easing.min.js"></script>
+    <script src="lib/slick/slick.min.js"></script>
+
+    <!-- Template Javascript -->
+    <script src="js/main.js"></script>
+
+    <!-- Account JS -->
+    <script src="account/account.js"></script>
+    
+    <!-- Form Switch Animation -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            
+            // Handle form submissions
+            const loginForm = document.getElementById('loginForm');
+            
+            
+            if (loginForm) {
+                loginForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    // Add your login logic here
+                    console.log('Login form submitted');
+                    alert("Đăng nhập thành công");
+                    window.location.href = "index2.html";
+                });
+            }
+            
+            
+        });
+    </script>
+</body>
+</html>
