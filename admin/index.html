@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="icon" type="image/png" href="../img/ryicon.jpg">
+  <title>TOY STORE</title>
+  <!--     Fonts and icons     -->
+  <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900|Roboto+Slab:400,700" />
+  <!-- Material Icons -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round" rel="stylesheet">
+  <!-- Custom CSS - Optimized -->
+  <link href="assets/css/pure-style-optimized.css" rel="stylesheet" />
+
+</head>
+
+<body style="font-family: 'Roboto', sans-serif; background-color: #f0f2f5; color: #344767; line-height: 1.6; overflow-x: hidden;">
+<aside style="position: fixed; top: 0; left: 0; z-index: 1000; width: 250px; height: 100vh; background: linear-gradient(195deg, #42424a, #191919); color: white; transition: all 0.3s ease; box-shadow: 0 0 2rem 0 rgba(0, 0, 0, 0.15);" id="sidenav-main">
+    <div style="padding: 1.5rem 1rem;">
+      <i class="fa fa-times" style="padding: 0.75rem; cursor: pointer; color: white; opacity: 0.5; position: absolute; right: 0; top: 0; display: none;" aria-hidden="true" id="iconSidenav"></i>
+      <a href="#" target="_blank" style="display: flex; align-items: center; font-weight: 600; color: white; text-decoration: none;">
+        <span style="margin-left: 0.25rem; font-weight: 700;">TRUNG TÂM ĐIỀU KHIỂN</span>
+      </a>
+    </div>
+    <hr style="width: 100%; border: none; border-top: 1px solid rgba(255, 255, 255, 0.1); margin: 1rem 0;">
+    <div style="width: 100%; overflow-y: auto; height: 75vh;">
+      <ul style="list-style: none; padding: 0; margin: 0;">
+        <li style="margin: 0.25rem 0;">
+          <a href="index.html" style="display: flex; align-items: center; padding: 0.75rem 1rem; color: white; border-radius: 0.375rem; transition: all 0.3s ease; text-decoration: none; background: linear-gradient(195deg, #ec407a, #d81b60); box-shadow: 0 4px 20px 0 rgba(0, 0, 0, 0.14), 0 7px 10px -5px rgba(233, 30, 99, 0.4);">
+            <div style="display: flex; align-items: center; justify-content: center; width: 32px; height: 32px; margin-right: 0.5rem;">
+              <i class="material-icons" style="opacity: 1; font-size: 20px;">dashboard</i>
+            </div>
+            <span style="margin-left: 0.5rem;">Bảng điều khiển</span>
+          </a>
+        </li>
+        <li style="margin: 0.25rem 0;">
+          <a href="user.html" style="display: flex; align-items: center; padding: 0.75rem 1rem; color: white; border-radius: 0.375rem; transition: all 0.3s ease; text-decoration: none;">
+            <div style="display: flex; align-items: center; justify-content: center; width: 32px; height: 32px; margin-right: 0.5rem;">
+              <i class="material-icons" style="opacity: 1; font-size: 20px;">person</i>
+            </div>
+            <span style="margin-left: 0.5rem;">Quản lý khách hàng</span>
+          </a>
+        </li>
+        <li style="margin: 0.25rem 0;">
+            <a href="order.html" style="display: flex; align-items: center; padding: 0.75rem 1rem; color: white; border-radius: 0.375rem; transition: all 0.3s ease; text-decoration: none;">
+              <div style="display: flex; align-items: center; justify-content: center; width: 32px; height: 32px; margin-right: 0.5rem;">
+                <i class="material-icons" style="opacity: 1; font-size: 20px;">weekend</i>
+              </div>
+              <span style="margin-left: 0.5rem;">Quản lý đơn hàng</span>
+            </a>
+          </li>
+        <li style="margin: 0.25rem 0;">
+          <a href="products.html" style="display: flex; align-items: center; padding: 0.75rem 1rem; color: white; border-radius: 0.375rem; transition: all 0.3s ease; text-decoration: none;">
+            <div style="display: flex; align-items: center; justify-content: center; width: 32px; height: 32px; margin-right: 0.5rem;">
+              <i class="material-icons" style="opacity: 1; font-size: 20px;">table_view</i>
+            </div>
+            <span style="margin-left: 0.5rem;">Quản lý sản phẩm</span>
+          </a>
+        </li>
+        <li style="margin: 0.25rem 0;">
+          <a href="category.html" style="display: flex; align-items: center; padding: 0.75rem 1rem; color: white; border-radius: 0.375rem; transition: all 0.3s ease; text-decoration: none;">
+            <div style="display: flex; align-items: center; justify-content: center; width: 32px; height: 32px; margin-right: 0.5rem;">
+              <i class="material-icons" style="opacity: 1; font-size: 20px;">category</i>
+            </div>
+            <span style="margin-left: 0.5rem;">Tất cả danh mục</span>
+          </a>
+        </li>
+      </ul>
+    </div>
+    <div style="position: absolute; width: 100%; bottom: 0; padding: 1rem;">
+      <div style="margin-left: 1rem; margin-right: 1rem;">
+        <a href="login.html" style="display: inline-block; background: linear-gradient(195deg, #ec407a, #d81b60); color: white; padding: 0.625rem 1.5rem; font-size: 0.875rem; line-height: 1.5; border-radius: 0.25rem; transition: all 0.15s ease-in-out; cursor: pointer; text-decoration: none; width: 100%; text-align: center; margin-top: 1.5rem;">Đăng xuất</a>
+      </div>
+    </div>
+</aside>
+
+<main style="margin-left: 250px; min-height: 100vh; padding: 1.5rem;">
+    <nav style="margin-bottom: 1.5rem; padding: 0.75rem 1.5rem; border-radius: 0.75rem; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06); background-color: white;">
+      <div style="width: 100%; padding-right: 15px; padding-left: 15px; margin-right: auto; margin-left: auto;">
+        <nav aria-label="breadcrumb">
+          <ol style="display: flex; list-style: none; padding: 0; margin: 0;">
+            <li style="display: flex; align-items: center;"><a href="javascript:;" style="color: rgba(52, 71, 103, 0.5); text-decoration: none;"><p style="margin: 0;"><b>Bảng điều khiển</b></p></a></li>
+            <li style="display: flex; align-items: center; color: #344767; font-size: 0.875rem;" aria-current="page">
+            </li>
+          </ol>
+        </nav>
+      </div>
+    </nav>
+
+    <div style="width: 100%; padding-right: 15px; padding-left: 15px; margin-right: auto; margin-left: auto; padding-top: 1.5rem; padding-bottom: 1.5rem;">
+        <div style="display: flex; flex-wrap: wrap; margin-right: -15px; margin-left: -15px;">
+            <div style="flex: 0 0 100%; max-width: 100%; padding-right: 15px; padding-left: 15px;">
+                <h3 style="text-align: center; margin-bottom: 1.5rem; font-weight: 300; color: #344767; margin-top: 1.25rem;">Xin chào, Admin</h3>
+
+                <!-- Dashboard Cards -->
+                <div style="display: flex; flex-wrap: wrap; margin-right: -15px; margin-left: -15px; margin-bottom: 1.5rem;">
+                    <div style="flex: 0 0 25%; max-width: 25%; padding-right: 15px; padding-left: 15px;">
+                        <div style="position: relative; display: flex; flex-direction: column; min-width: 0; word-wrap: break-word; background-color: white; background-clip: border-box; border: 0 solid rgba(0, 0, 0, 0.125); border-radius: 0.75rem; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06); margin-bottom: 1.5rem;">
+                            <div style="padding: 1.25rem; position: relative;">
+                                <div style="width: 3rem; height: 3rem; border-radius: 50%; display: flex; align-items: center; justify-content: center; position: absolute; top: -1.5rem; color: white; font-size: 1.5rem; background: linear-gradient(195deg, #49a3f1, #1A73E8); box-shadow: 0 4px 20px 0 rgba(0, 0, 0, 0.14), 0 7px 10px -5px rgba(73, 163, 241, 0.4);">
+                                    <i class="material-icons" style="opacity: 1;">person</i>
+                                </div>
+                                <div style="text-align: right; padding-top: 0.625rem;">
+                                    <p style="font-size: 0.75rem; text-transform: uppercase; margin-bottom: 0.25rem; color: #6c757d;">Khách hàng</p>
+                                    <h4 style="margin: 0; font-weight: 700;">50</h4>
+                                </div>
+                            </div>
+                            <hr style="margin: 0; border: none; height: 1px; background-color: rgba(0, 0, 0, 0.1);">
+                            <div style="padding: 1rem 1.25rem;"></div>
+                        </div>
+                    </div>
+                    <div style="flex: 0 0 25%; max-width: 25%; padding-right: 15px; padding-left: 15px;">
+                        <div style="position: relative; display: flex; flex-direction: column; min-width: 0; word-wrap: break-word; background-color: white; background-clip: border-box; border: 0 solid rgba(0, 0, 0, 0.125); border-radius: 0.75rem; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06); margin-bottom: 1.5rem;">
+                            <div style="padding: 1.25rem; position: relative;">
+                                <div style="width: 3rem; height: 3rem; border-radius: 50%; display: flex; align-items: center; justify-content: center; position: absolute; top: -1.5rem; color: white; font-size: 1.5rem; background: linear-gradient(195deg, #42424a, #191919); box-shadow: 0 4px 20px 0 rgba(0, 0, 0, 0.14), 0 7px 10px -5px rgba(66, 66, 74, 0.4);">
+                                    <i class="material-icons" style="opacity: 1;">table_view</i>
+                                </div>
+                                <div style="text-align: right; padding-top: 0.625rem;">
+                                    <p style="font-size: 0.75rem; text-transform: uppercase; margin-bottom: 0.25rem; color: #6c757d;">Tổng sản phẩm</p>
+                                    <h4 style="margin: 0; font-weight: 700;">120</h4>
+                                </div>
+                            </div>
+                            <hr style="margin: 0; border: none; height: 1px; background-color: rgba(0, 0, 0, 0.1);">
+                            <div style="padding: 1rem 1.25rem;"></div>
+                        </div>
+                    </div>
+                    <div style="flex: 0 0 25%; max-width: 25%; padding-right: 15px; padding-left: 15px;">
+                        <div style="position: relative; display: flex; flex-direction: column; min-width: 0; word-wrap: break-word; background-color: white; background-clip: border-box; border: 0 solid rgba(0, 0, 0, 0.125); border-radius: 0.75rem; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06); margin-bottom: 1.5rem;">
+                            <div style="padding: 1.25rem; position: relative;">
+                                <div style="width: 3rem; height: 3rem; border-radius: 50%; display: flex; align-items: center; justify-content: center; position: absolute; top: -1.5rem; color: white; font-size: 1.5rem; background: linear-gradient(195deg, #66BB6A, #43A047); box-shadow: 0 4px 20px 0 rgba(0, 0, 0, 0.14), 0 7px 10px -5px rgba(102, 187, 106, 0.4);">
+                                    <i class="material-icons" style="opacity: 1;">receipt_long</i>
+                                </div>
+                                <div style="text-align: right; padding-top: 0.625rem;">
+                                    <p style="font-size: 0.75rem; text-transform: uppercase; margin-bottom: 0.25rem; color: #6c757d;">Tổng đơn hàng</p>
+                                    <h4 style="margin: 0; font-weight: 700;">85</h4>
+                                </div>
+                            </div>
+                            <hr style="margin: 0; border: none; height: 1px; background-color: rgba(0, 0, 0, 0.1);">
+                            <div style="padding: 1rem 1.25rem;"></div>
+                        </div>
+                    </div>
+                    <div style="flex: 0 0 25%; max-width: 25%; padding-right: 15px; padding-left: 15px;">
+                        <div style="position: relative; display: flex; flex-direction: column; min-width: 0; word-wrap: break-word; background-color: white; background-clip: border-box; border: 0 solid rgba(0, 0, 0, 0.125); border-radius: 0.75rem; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06); margin-bottom: 1.5rem;">
+                            <div style="padding: 1.25rem; position: relative;">
+                                <div style="width: 3rem; height: 3rem; border-radius: 50%; display: flex; align-items: center; justify-content: center; position: absolute; top: -1.5rem; color: white; font-size: 1.5rem; background: linear-gradient(195deg, #26c6da, #00acc1); box-shadow: 0 4px 20px 0 rgba(0, 0, 0, 0.14), 0 7px 10px -5px rgba(38, 198, 218, 0.4);">
+                                    <i class="material-icons" style="opacity: 1;">payments</i>
+                                </div>
+                                <div style="text-align: right; padding-top: 0.625rem;">
+                                    <p style="font-size: 0.75rem; text-transform: uppercase; margin-bottom: 0.25rem; color: #6c757d;">Doanh thu</p>
+                                    <h4 style="margin: 0; font-weight: 700;">150.000.000 VNĐ</h4>
+                                </div>
+                            </div>
+                            <hr style="margin: 0; border: none; height: 1px; background-color: rgba(0, 0, 0, 0.1);">
+                            <div style="padding: 1rem 1.25rem;"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Pie Chart Section -->
+        <div style="display: flex; flex-wrap: wrap; margin-right: -15px; margin-left: -15px; margin-top: 1.5rem;">
+            <div style="flex: 0 0 100%; max-width: 100%; padding-right: 15px; padding-left: 15px;">
+                <div style="position: relative; display: flex; flex-direction: column; min-width: 0; word-wrap: break-word; background-color: white; background-clip: border-box; border: 0 solid rgba(0, 0, 0, 0.125); border-radius: 0.75rem; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06); margin-bottom: 1.5rem;">
+                    <div style="display: flex; align-items: center; padding: 1.5rem;">
+                        <h4 style="margin: 0; font-weight: 600; margin-bottom: 0.5rem; text-align: center; width: 100%;">Biểu đồ tròn thống kê tổng quan</h4>
+                    </div>
+
+                    <!-- Chart Legend -->
+                    <div style="display: flex; justify-content: center; flex-wrap: wrap; gap: 30px; padding: 0 1.5rem 1rem 1.5rem; font-size: 12px;">
+                        <div style="display: flex; align-items: center;">
+                            <div style="width: 16px; height: 16px; margin-right: 8px; background-color: #49a3f1; border-radius: 50%;"></div>
+                            <span>Khách hàng</span>
+                        </div>
+                        <div style="display: flex; align-items: center;">
+                            <div style="width: 16px; height: 16px; margin-right: 8px; background-color: #6c757d; border-radius: 50%;"></div>
+                            <span>Tổng sản phẩm</span>
+                        </div>
+                        <div style="display: flex; align-items: center;">
+                            <div style="width: 16px; height: 16px; margin-right: 8px; background-color: #66BB6A; border-radius: 50%;"></div>
+                            <span>Tổng đơn hàng</span>
+                        </div>
+                        <div style="display: flex; align-items: center;">
+                            <div style="width: 16px; height: 16px; margin-right: 8px; background-color: #FFA726; border-radius: 50%;"></div>
+                            <span>Doanh thu (x10)</span>
+                        </div>
+                    </div>
+
+                    <div style="flex: 1 1 auto; padding: 1.5rem;">
+                        <div style="position: relative; height: 800px; width: 100%; display: flex; justify-content: center; align-items: center;">
+                            <!-- Pie Chart -->
+                            <div style="position: relative; width: 760px; height: 760px; display: flex; justify-content: center; align-items: center;">
+                                <!-- Main Pie Circle with 380px radius -->
+                                <div style="position: relative; width: 550px; height: 550px;">
+                                    <!-- Rotating colored pie chart -->
+                                    <div style="position: absolute; width: 100%; height: 100%; border-radius: 50%; background: conic-gradient(
+                                        #49a3f1 0% 25%,
+                                        #6c757d 25% 55%,
+                                        #66BB6A 55% 75%,
+                                        #FFA726 75% 100%
+                                    ); transform: rotate(180deg); animation: rotatePie 2s ease-out forwards, fadeIn 2s ease-out forwards;">
+                                    </div>
+                                    
+                                    <!-- Static center circle -->
+                                    <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 300px; height: 300px; border-radius: 50%; background-color: white; display: flex; justify-content: center; align-items: center; flex-direction: column; box-shadow: inset 0 4px 8px rgba(0, 0, 0, 0.1);">
+                                        <div style="text-align: center; font-weight: bold; color: #344767; font-size: 24px; margin-bottom: 8px;">Thống kê</div>
+                                        <div style="text-align: center; color: #6c757d; font-size: 14px;">Tổng quan</div>
+                                    </div>
+                                </div>
+                                <style>
+                                    @keyframes rotatePie {
+                                        0% {
+                                            transform: rotate(180deg);
+                                        }
+                                        85% {
+                                            transform: rotate(-10deg);
+                                        }
+                                        100% {
+                                            transform: rotate(0deg);
+                                        }
+                                    }
+                                    @keyframes fadeIn {
+                                        0% {
+                                            opacity: 0.7;
+                                        }
+                                        70% {
+                                            opacity: 0.9;
+                                        }
+                                        100% {
+                                            opacity: 1;
+                                        }
+                                    }
+                                </style>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- User Statistics Table -->
+        <div style="display: flex; flex-wrap: wrap; margin-right: -15px; margin-left: -15px; margin-top: 1.5rem;">
+            <div style="flex: 0 0 100%; max-width: 100%; padding-right: 15px; padding-left: 15px;">
+                <div style="position: relative; display: flex; flex-direction: column; min-width: 0; word-wrap: break-word; background-color: white; background-clip: border-box; border: 0 solid rgba(0, 0, 0, 0.125); border-radius: 0.75rem; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06); margin-bottom: 1.5rem;">
+                    <div style="display: flex; align-items: center; padding: 1.5rem;">
+                        <h4 style="margin: 0; font-weight: 600; margin-bottom: 0.5rem; text-align: center; width: 100%;">Thống kê 5 người dùng có mức mua hàng cao nhất (bao gồm cả Admin)</h4>
+                    </div>
+                    <div style="flex: 1 1 auto; padding: 1.5rem;">
+                        <div style="display: block; width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch;">
+                            <table style="width: 100%; margin-bottom: 0; color: #212529; border-collapse: collapse; background-color: white;">
+                                <thead>
+                                    <tr style="background-color: #f8f9fa;">
+                                        <th style="padding: 0.75rem 1rem; vertical-align: middle; border-bottom: 2px solid #dee2e6; font-weight: 600; color: #6c757d; background-color: #f8f9fa; font-size: 12px; text-transform: uppercase; text-align: center;">STT</th>
+                                        <th style="padding: 0.75rem 1rem; vertical-align: middle; border-bottom: 2px solid #dee2e6; font-weight: 600; color: #6c757d; background-color: #f8f9fa; font-size: 12px; text-transform: uppercase; text-align: left;">Tên khách hàng</th>
+                                        <th style="padding: 0.75rem 1rem; vertical-align: middle; border-bottom: 2px solid #dee2e6; font-weight: 600; color: #6c757d; background-color: #f8f9fa; font-size: 12px; text-transform: uppercase; text-align: left;">Email</th>
+                                        <th style="padding: 0.75rem 1rem; vertical-align: middle; border-bottom: 2px solid #dee2e6; font-weight: 600; color: #6c757d; background-color: #f8f9fa; font-size: 12px; text-transform: uppercase; text-align: left;">Số điện thoại</th>
+                                        <th style="padding: 0.75rem 1rem; vertical-align: middle; border-bottom: 2px solid #dee2e6; font-weight: 600; color: #6c757d; background-color: #f8f9fa; font-size: 12px; text-transform: uppercase; text-align: left;">Vai trò</th>
+                                        <th style="padding: 0.75rem 1rem; vertical-align: middle; border-bottom: 2px solid #dee2e6; font-weight: 600; color: #6c757d; background-color: #f8f9fa; font-size: 12px; text-transform: uppercase; text-align: center;">Số đơn hàng</th>
+                                        <th style="padding: 0.75rem 1rem; vertical-align: middle; border-bottom: 2px solid #dee2e6; font-weight: 600; color: #6c757d; background-color: #f8f9fa; font-size: 12px; text-transform: uppercase; text-align: center;">Tổng tiền</th>
+                                        <th style="padding: 0.75rem 1rem; vertical-align: middle; border-bottom: 2px solid #dee2e6; font-weight: 600; color: #6c757d; background-color: #f8f9fa; font-size: 12px; text-transform: uppercase; text-align: center;">Chi tiết</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr style="border-bottom: 1px solid #f0f2f5;">
+                                        <td style="padding: 1rem; vertical-align: middle; text-align: center;">1</td>
+                                        <td style="padding: 1rem; vertical-align: middle; text-align: left;">Nguyễn Văn A</td>
+                                        <td style="padding: 1rem; vertical-align: middle; text-align: left;">admin@example.com</td>
+                                        <td style="padding: 1rem; vertical-align: middle; text-align: left;">0987654321</td>
+                                        <td style="padding: 1rem; vertical-align: middle; text-align: left;">
+                                            <span style="display: inline-block; padding: 0.25rem 0.5rem; font-size: 0.75rem; font-weight: 600; border-radius: 0.25rem; background-color: #007bff; color: white;">Admin</span>
+                                        </td>
+                                        <td style="padding: 1rem; vertical-align: middle; text-align: center;">15</td>
+                                        <td style="padding: 1rem; vertical-align: middle; text-align: center;">25.000.000 VNĐ</td>
+                                        <td style="padding: 1rem; vertical-align: middle; text-align: center;">
+                                            <a href="#" style="display: inline-block; background-color: #17a2b8; color: white; padding: 0.375rem 0.75rem; font-size: 0.75rem; border-radius: 0.25rem; text-decoration: none;">Xem các đơn hàng</a>
+                                        </td>
+                                    </tr>
+                                    <tr style="border-bottom: 1px solid #f0f2f5;">
+                                        <td style="padding: 1rem; vertical-align: middle; text-align: center;">2</td>
+                                        <td style="padding: 1rem; vertical-align: middle; text-align: left;">Trần Thị B</td>
+                                        <td style="padding: 1rem; vertical-align: middle; text-align: left;">khachhang1@example.com</td>
+                                        <td style="padding: 1rem; vertical-align: middle; text-align: left;">0123456789</td>
+                                        <td style="padding: 1rem; vertical-align: middle; text-align: left;">
+                                            <span style="display: inline-block; padding: 0.25rem 0.5rem; font-size: 0.75rem; font-weight: 600; border-radius: 0.25rem; background-color: #17a2b8; color: white;">Khách hàng</span>
+                                        </td>
+                                        <td style="padding: 1rem; vertical-align: middle; text-align: center;">10</td>
+                                        <td style="padding: 1rem; vertical-align: middle; text-align: center;">18.500.000 VNĐ</td>
+                                        <td style="padding: 1rem; vertical-align: middle; text-align: center;">
+                                            <a href="#" style="display: inline-block; background-color: #17a2b8; color: white; padding: 0.375rem 0.75rem; font-size: 0.75rem; border-radius: 0.25rem; text-decoration: none;">Xem các đơn hàng</a>
+                                        </td>
+                                    </tr>
+                                    <tr style="border-bottom: 1px solid #f0f2f5;">
+                                        <td style="padding: 1rem; vertical-align: middle; text-align: center;">3</td>
+                                        <td style="padding: 1rem; vertical-align: middle; text-align: left;">Lê Văn C</td>
+                                        <td style="padding: 1rem; vertical-align: middle; text-align: left;">khachhang2@example.com</td>
+                                        <td style="padding: 1rem; vertical-align: middle; text-align: left;">0912345678</td>
+                                        <td style="padding: 1rem; vertical-align: middle; text-align: left;">
+                                            <span style="display: inline-block; padding: 0.25rem 0.5rem; font-size: 0.75rem; font-weight: 600; border-radius: 0.25rem; background-color: #17a2b8; color: white;">Khách hàng</span>
+                                        </td>
+                                        <td style="padding: 1rem; vertical-align: middle; text-align: center;">8</td>
+                                        <td style="padding: 1rem; vertical-align: middle; text-align: center;">12.000.000 VNĐ</td>
+                                        <td style="padding: 1rem; vertical-align: middle; text-align: center;">
+                                            <a href="#" style="display: inline-block; background-color: #17a2b8; color: white; padding: 0.375rem 0.75rem; font-size: 0.75rem; border-radius: 0.25rem; text-decoration: none;">Xem các đơn hàng</a>
+                                        </td>
+                                    </tr>
+                                    <tr style="border-bottom: 1px solid #f0f2f5;">
+                                        <td style="padding: 1rem; vertical-align: middle; text-align: center;">4</td>
+                                        <td style="padding: 1rem; vertical-align: middle; text-align: left;">Phạm Thị D</td>
+                                        <td style="padding: 1rem; vertical-align: middle; text-align: left;">khachhang3@example.com</td>
+                                        <td style="padding: 1rem; vertical-align: middle; text-align: left;">0909090909</td>
+                                        <td style="padding: 1rem; vertical-align: middle; text-align: left;">
+                                            <span style="display: inline-block; padding: 0.25rem 0.5rem; font-size: 0.75rem; font-weight: 600; border-radius: 0.25rem; background-color: #17a2b8; color: white;">Khách hàng</span>
+                                        </td>
+                                        <td style="padding: 1rem; vertical-align: middle; text-align: center;">5</td>
+                                        <td style="padding: 1rem; vertical-align: middle; text-align: center;">9.800.000 VNĐ</td>
+                                        <td style="padding: 1rem; vertical-align: middle; text-align: center;">
+                                            <a href="#" style="display: inline-block; background-color: #17a2b8; color: white; padding: 0.375rem 0.75rem; font-size: 0.75rem; border-radius: 0.25rem; text-decoration: none;">Xem các đơn hàng</a>
+                                        </td>
+                                    </tr>
+                                    <tr style="border-bottom: 1px solid #f0f2f5;">
+                                        <td style="padding: 1rem; vertical-align: middle; text-align: center;">5</td>
+                                        <td style="padding: 1rem; vertical-align: middle; text-align: left;">Hoàng Văn E</td>
+                                        <td style="padding: 1rem; vertical-align: middle; text-align: left;">khachhang4@example.com</td>
+                                        <td style="padding: 1rem; vertical-align: middle; text-align: left;">0888888888</td>
+                                        <td style="padding: 1rem; vertical-align: middle; text-align: left;">
+                                            <span style="display: inline-block; padding: 0.25rem 0.5rem; font-size: 0.75rem; font-weight: 600; border-radius: 0.25rem; background-color: #17a2b8; color: white;">Khách hàng</span>
+                                        </td>
+                                        <td style="padding: 1rem; vertical-align: middle; text-align: center;">3</td>
+                                        <td style="padding: 1rem; vertical-align: middle; text-align: center;">5.200.000 VNĐ</td>
+                                        <td style="padding: 1rem; vertical-align: middle; text-align: center;">
+                                            <a href="#" style="display: inline-block; background-color: #17a2b8; color: white; padding: 0.375rem 0.75rem; font-size: 0.75rem; border-radius: 0.25rem; text-decoration: none;">Xem các đơn hàng</a>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+</body>
+</html>

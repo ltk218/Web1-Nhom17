@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chi tiết hóa đơn - Admin</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Material Icons -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <style>
+        .bg-gradient-primary {
+            background: linear-gradient(87deg, #5e72e4 0, #825ee4 100%) !important;
+        }
+        .bg-gradient-info {
+            background: linear-gradient(87deg, #11cdef 0, #1171ef 100%) !important;
+        }
+        .bg-gradient-warning {
+            background: linear-gradient(87deg, #fb6340 0, #fbb140 100%) !important;
+        }
+        .bg-gradient-success {
+            background: linear-gradient(87deg, #2dce89 0, #2dcecc 100%) !important;
+        }
+        .bg-gradient-secondary {
+            background: linear-gradient(87deg, #8392ab 0, #8392cc 100%) !important;
+        }
+        .shadow-primary {
+            box-shadow: 0 4px 20px 0 rgba(0, 0, 0, .14), 0 7px 10px -5px rgba(94, 114, 228, .4) !important;
+        }
+        .border-radius-lg {
+            border-radius: 0.75rem !important;
+        }
+        .badge-sm {
+            font-size: 0.75rem;
+            padding: 0.25rem 0.5rem;
+        }
+        .text-xxs {
+            font-size: 0.625rem;
+        }
+        .card {
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        }
+        .alert {
+            padding: 0.75rem 1.25rem;
+            margin-bottom: 1rem;
+            border: 1px solid transparent;
+            border-radius: 0.25rem;
+        }
+        .alert-info {
+            color: #0c5460;
+            background-color: #d1ecf1;
+            border-color: #bee5eb;
+        }
+        .btn-disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+        }
+    </style>
+</head>
+<body>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12">
+                <div class="card my-4">
+                    <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
+                        <div class="bg-gradient-primary shadow-primary border-radius-lg pt-4 pb-3">
+                            <h6 class="text-white text-capitalize ps-3">Chi tiết hóa đơn</h6>
+                        </div>
+                    </div>
+                    <div class="card-body px-0 pb-2">
+                        <!-- Buyer Info -->
+                        <div class="table-responsive p-0">
+                            <div style="padding-left: 20px">
+                                <p class="mb-1 fs-6"><strong>Họ và tên khách hàng:</strong> Nguyễn Văn A</p>
+                                <p class="mb-1 fs-6"><strong>Số điện thoại:</strong> 0123-456-789</p>
+                                <p class="mb-1 fs-6"><strong>Email:</strong> nguyenvana@example.com</p>
+                                <p class="mb-1 fs-6"><strong>Địa chỉ:</strong> 123 Đường ABC, Quận XYZ, TP. Hồ Chí Minh</p>
+                                <p class="mb-1 fs-6"><strong>Trạng thái:</strong></p>
+                                <span class='badge badge-sm bg-gradient-info text-white'>Đang xử lý</span>
+
+                                <div class="alert alert-info mt-3">
+                                    <strong>Thông báo:</strong> Tất cả chức năng đều đã bị vô hiệu hóa. Đây chỉ là giao diện tĩnh để xem.
+                                </div>
+
+                                <!-- Disabled form for UI display -->
+                                <form class="mt-3">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <select name="status" class="form-control form-control-sm fs-6" disabled>
+                                                <option value="">Chọn trạng thái</option>
+                                                <option value="pending">Đang chờ xử lý</option>
+                                                <option value="processing" selected>Đang xử lý</option>
+                                                <option value="shipped">Đang vận chuyển</option>
+                                                <option value="delivered">Đã giao</option>
+                                                <option value="cancelled">Đã hủy</option>
+                                            </select>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <button type="button" class="btn btn-sm text-white fs-6 btn-disabled" style="background-color: #ff6b6b;" disabled>
+                                                Cập nhật (Vô hiệu hóa)
+                                            </button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+
+                        <!-- Items Table -->
+                        <table class="table align-items-center mb-0">
+                            <thead>
+                                <tr>
+                                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">ID</th>
+                                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Mã sản phẩm</th>
+                                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Tên sản phẩm</th>
+                                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Số lượng</th>
+                                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Giá</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><p class="text-xs font-weight-bold mb-0">1</p></td>
+                                    <td><p class="text-xs font-weight-bold mb-0">SP001</p></td>
+                                    <td><p class="text-xs font-weight-bold mb-0">Sản phẩm mẫu 1</p></td>
+                                    <td><p class="text-xs font-weight-bold mb-0">2</p></td>
+                                    <td><p class="text-xs font-weight-bold mb-0">500.000 VNĐ</p></td>
+                                </tr>
+                                <tr>
+                                    <td><p class="text-xs font-weight-bold mb-0">2</p></td>
+                                    <td><p class="text-xs font-weight-bold mb-0">SP002</p></td>
+                                    <td><p class="text-xs font-weight-bold mb-0">Sản phẩm mẫu 2</p></td>
+                                    <td><p class="text-xs font-weight-bold mb-0">1</p></td>
+                                    <td><p class="text-xs font-weight-bold mb-0">750.000 VNĐ</p></td>
+                                </tr>
+                                <tr>
+                                    <td><p class="text-xs font-weight-bold mb-0">3</p></td>
+                                    <td><p class="text-xs font-weight-bold mb-0">SP003</p></td>
+                                    <td><p class="text-xs font-weight-bold mb-0">Sản phẩm mẫu 3</p></td>
+                                    <td><p class="text-xs font-weight-bold mb-0">3</p></td>
+                                    <td><p class="text-xs font-weight-bold mb-0">300.000 VNĐ</p></td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                        <!-- Total -->
+                        <div style="padding-left: 20px">
+                            <p class="fs-5 fw-bold mt-3">Tổng tiền hàng: 2.650.000 VNĐ</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
