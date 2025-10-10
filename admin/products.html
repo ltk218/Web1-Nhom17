@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="icon" type="image/png" href="../img/ryicon.jpg">
+  <title>TOY STORE</title>
+  <!--     Fonts and icons     -->
+  <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900|Roboto+Slab:400,700" />
+  <!-- Material Icons -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round" rel="stylesheet">
+  <!-- Custom CSS -->
+  <link href="assets/css/pure-style.css" rel="stylesheet" />
+  <style>
+    /* Additional styles specific to order.html */
+
+    /* Badge styles for order status */
+    .badge {
+      display: inline-block;
+      padding: 0.35em 0.65em;
+      font-size: 0.75em;
+      font-weight: 700;
+      line-height: 1;
+      text-align: center;
+      white-space: nowrap;
+      vertical-align: baseline;
+      border-radius: 0.25rem;
+    }
+
+    .badge-sm {
+      padding: 0.25rem 0.5rem;
+      font-size: 0.65rem;
+    }
+
+    .bg-gradient-secondary {
+      background: linear-gradient(195deg, #747b8a, #495361);
+      color: white;
+    }
+
+    .bg-gradient-primary {
+      background: linear-gradient(195deg, #ec407a, #d81b60);
+      color: white;
+    }
+
+    .bg-gradient-info {
+      background: linear-gradient(195deg, #49a3f1, #1a73e8);
+      color: white;
+    }
+
+    .bg-gradient-success {
+      background: linear-gradient(195deg, #66bb6a, #43a047);
+      color: white;
+    }
+
+    .bg-gradient-danger {
+      background: linear-gradient(195deg, #d32f2f, #b71c1c);
+      color: white;
+    }
+
+    /* Table styles */
+    .table-responsive {
+      display: block;
+      width: 100%;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+    }
+
+    .table {
+      width: 100%;
+      margin-bottom: 0;
+      color: #212529;
+      border-collapse: collapse;
+      background-color: white;
+    }
+
+    .table thead th {
+      padding: 0.75rem 1rem;
+      vertical-align: middle;
+      border-bottom: 2px solid #dee2e6;
+      font-weight: 600;
+      color: #6c757d;
+      background-color: #f8f9fa;
+      font-size: 12px;
+      text-transform: uppercase;
+    }
+
+    .table tbody td {
+      padding: 1rem;
+      vertical-align: middle;
+      border-top: 1px solid #f0f2f5;
+    }
+
+    .table tbody tr:hover {
+      background-color: #f8f9fa;
+    }
+
+    /* Text utilities */
+    .text-xs {
+      font-size: 0.75rem !important;
+    }
+
+    .text-sm {
+      font-size: 0.875rem !important;
+    }
+
+    .text-secondary {
+      color: #8392ab !important;
+    }
+
+    .font-weight-bold {
+      font-weight: 700 !important;
+    }
+
+    .mb-0 {
+      margin-bottom: 0 !important;
+    }
+
+    .text-center {
+      text-align: center !important;
+    }
+
+    .align-middle {
+      vertical-align: middle !important;
+    }
+
+    /* Custom scrollbar for table */
+    .table-responsive::-webkit-scrollbar {
+      height: 8px;
+    }
+
+    .table-responsive::-webkit-scrollbar-track {
+      background: #f1f1f1;
+      border-radius: 4px;
+    }
+
+    .table-responsive::-webkit-scrollbar-thumb {
+      background: #c1c1c1;
+      border-radius: 4px;
+    }
+
+    .table-responsive::-webkit-scrollbar-thumb:hover {
+      background: #a8a8a8;
+    }
+
+    /* Link styles */
+    a {
+      color: #3f51b5;
+      text-decoration: none;
+    }
+
+    a:hover {
+      color: #1a237e;
+    }
+  </style>
+</head>
+
+<body style="font-family: 'Roboto', sans-serif; background-color: #f0f2f5; color: #344767; line-height: 1.6; overflow-x: hidden;">
+
+    <aside style="position: fixed; top: 0; left: 0; z-index: 1000; width: 250px; height: 100vh; background: linear-gradient(195deg, #42424a, #191919); color: white; transition: all 0.3s ease; box-shadow: 0 0 2rem 0 rgba(0, 0, 0, 0.15);" id="sidenav-main">
+        <div style="padding: 1.5rem 1rem;">
+          <i class="fa fa-times" style="padding: 0.75rem; cursor: pointer; color: white; opacity: 0.5; position: absolute; right: 0; top: 0; display: none;" aria-hidden="true" id="iconSidenav"></i>
+          <a href="#" target="_blank" style="display: flex; align-items: center; font-weight: 600; color: white; text-decoration: none;">
+            <span style="margin-left: 0.25rem; font-weight: 700;">TRUNG TÂM ĐIỀU KHIỂN</span>
+          </a>
+        </div>
+        <hr style="width: 100%; border: none; border-top: 1px solid rgba(255, 255, 255, 0.1); margin: 1rem 0;">
+        <div style="width: 100%; overflow-y: auto; height: 75vh;">
+          <ul style="list-style: none; padding: 0; margin: 0;">
+            <li style="margin: 0.25rem 0;">
+              <a href="index.html" style="display: flex; align-items: center; padding: 0.75rem 1rem; color: white; border-radius: 0.375rem; transition: all 0.3s ease; text-decoration: none;">
+                <div style="display: flex; align-items: center; justify-content: center; width: 32px; height: 32px; margin-right: 0.5rem;">
+                  <i class="material-icons" style="opacity: 1; font-size: 20px;">dashboard</i>
+                </div>
+                <span style="margin-left: 0.5rem;">Bảng điều khiển</span>
+              </a>
+            </li>
+            <li style="margin: 0.25rem 0;">
+              <a href="user.html" style="display: flex; align-items: center; padding: 0.75rem 1rem; color: white; border-radius: 0.375rem; transition: all 0.3s ease; text-decoration: none;">
+                <div style="display: flex; align-items: center; justify-content: center; width: 32px; height: 32px; margin-right: 0.5rem;">
+                  <i class="material-icons" style="opacity: 1; font-size: 20px;">person</i>
+                </div>
+                <span style="margin-left: 0.5rem;">Quản lý khách hàng</span>
+              </a>
+            </li>
+            <li style="margin: 0.25rem 0;">
+                <a href="order.html" style="display: flex; align-items: center; padding: 0.75rem 1rem; color: white; border-radius: 0.375rem; transition: all 0.3s ease; text-decoration: none;">
+                  <div style="display: flex; align-items: center; justify-content: center; width: 32px; height: 32px; margin-right: 0.5rem;">
+                    <i class="material-icons" style="opacity: 1; font-size: 20px;">weekend</i>
+                  </div>
+                  <span style="margin-left: 0.5rem;">Quản lý đơn hàng</span>
+                </a>
+              </li>
+            <li style="margin: 0.25rem 0;">
+              <a href="products.html" style="display: flex; align-items: center; padding: 0.75rem 1rem; color: white; border-radius: 0.375rem; transition: all 0.3s ease; text-decoration: none; background: linear-gradient(195deg, #ec407a, #d81b60); box-shadow: 0 4px 20px 0 rgba(0, 0, 0, 0.14), 0 7px 10px -5px rgba(233, 30, 99, 0.4);">
+                <div style="display: flex; align-items: center; justify-content: center; width: 32px; height: 32px; margin-right: 0.5rem;">
+                  <i class="material-icons" style="opacity: 1; font-size: 20px;">table_view</i>
+                </div>
+                <span style="margin-left: 0.5rem;">Quản lý sản phẩm</span>
+              </a>
+            </li>
+            <li style="margin: 0.25rem 0;">
+              <a href="category.html" style="display: flex; align-items: center; padding: 0.75rem 1rem; color: white; border-radius: 0.375rem; transition: all 0.3s ease; text-decoration: none;">
+                <div style="display: flex; align-items: center; justify-content: center; width: 32px; height: 32px; margin-right: 0.5rem;">
+                  <i class="material-icons" style="opacity: 1; font-size: 20px;">category</i>
+                </div>
+                <span style="margin-left: 0.5rem;">Tất cả danh mục</span>
+              </a>
+            </li>
+
+          </ul>
+        </div>
+        <div style="position: absolute; width: 100%; bottom: 0; padding: 1rem;">
+          <div style="margin-left: 1rem; margin-right: 1rem;">
+            <a href="login.html" style="display: inline-block; background: linear-gradient(195deg, #ec407a, #d81b60); color: white; padding: 0.625rem 1.5rem; font-size: 0.875rem; line-height: 1.5; border-radius: 0.25rem; transition: all 0.15s ease-in-out; cursor: pointer; text-decoration: none; width: 100%; text-align: center; margin-top: 1.5rem;">Đăng xuất</a>
+          </div>
+        </div>
+    </aside>
+
+    <main style="margin-left: 250px; min-height: 100vh; padding: 1.5rem;">
+        <nav style="margin-bottom: 1.5rem; padding: 0.75rem 1.5rem; border-radius: 0.75rem; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06); background-color: white;">
+            <div style="width: 100%; padding-right: 15px; padding-left: 15px; margin-right: auto; margin-left: auto;">
+              <nav aria-label="breadcrumb">
+                <ol style="display: flex; list-style: none; padding: 0; margin: 0;">
+                  <li style="display: flex; align-items: center; color: rgba(52, 71, 103, 0.5); font-size: 0.875rem;"><a href="javascript:;" style="color: rgba(52, 71, 103, 0.5); text-decoration: none;"><p style="margin: 0;"><b>Quản lý sản phẩm</b></p></a></li>
+                </ol>
+              </nav>
+            </div>
+        </nav>
+        <div style="width: 100%; padding-right: 15px; padding-left: 15px; margin-right: auto; margin-left: auto; padding-top: 1.5rem; padding-bottom: 1.5rem;">
+            <div style="display: flex; flex-wrap: wrap; margin-right: -15px; margin-left: -15px;">
+                <div style="flex: 0 0 100%; max-width: 100%; padding-right: 15px; padding-left: 15px;">
+                    <div style="position: relative; display: flex; flex-direction: column; min-width: 0; word-wrap: break-word; background-color: white; background-clip: border-box; border: 0 solid rgba(0, 0, 0, 0.125); border-radius: 0.75rem; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06); margin-bottom: 1.5rem;">
+                        <div style="display: flex; justify-content: space-between; align-items: center; padding: 1.5rem;">
+                            <h4 style="margin: 0; font-weight: 600; margin-bottom: 0.5rem;">Quản lý sản phẩm</h4>
+                        </div>
+                        <div style="flex: 1 1 auto; padding: 1.5rem;">
+                            <div style="display: block; width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch;">
+                                <div style="margin-bottom: 1rem;">
+                                    <a href='#' style="margin-left: 20px; display: inline-block; background: linear-gradient(195deg, #747b8a, #495361); color: white; padding: 0.25rem 0.5rem; font-size: 0.65rem; border-radius: 0.25rem; text-decoration: none;">Tất cả</a>
+                                    <a href='#' style="margin-left: 20px; display: inline-block; background: linear-gradient(195deg, #ec407a, #d81b60); color: white; padding: 0.25rem 0.5rem; font-size: 0.65rem; border-radius: 0.25rem; text-decoration: none;">Đã đặt</a>
+                                    <a href='#' style="margin-left: 20px; display: inline-block; background: linear-gradient(195deg, #49a3f1, #1a73e8); color: white; padding: 0.25rem 0.5rem; font-size: 0.65rem; border-radius: 0.25rem; text-decoration: none;">Đang giao</a>
+                                    <a href='#' style="margin-left: 20px; display: inline-block; background: linear-gradient(195deg, #66bb6a, #43a047); color: white; padding: 0.25rem 0.5rem; font-size: 0.65rem; border-radius: 0.25rem; text-decoration: none;">Hoàn tất</a>
+                                    <a href='#' style="margin-left: 20px; display: inline-block; background: linear-gradient(195deg, #d32f2f, #b71c1c); color: white; padding: 0.25rem 0.5rem; font-size: 0.65rem; border-radius: 0.25rem; text-decoration: none;">Đã hủy</a>
+                                </div>
+
+                                <table style="width: 100%; margin-bottom: 0; color: #212529; border-collapse: collapse; background-color: white;">
+                                    <thead>
+                                        <tr style="background-color: #f8f9fa;">
+                                            <th style="padding: 0.75rem 1rem; vertical-align: middle; border-bottom: 2px solid #dee2e6; font-weight: 600; color: #6c757d; background-color: #f8f9fa; font-size: 12px; text-transform: uppercase;">STT</th>
+                                            <th style="padding: 0.75rem 1rem; vertical-align: middle; border-bottom: 2px solid #dee2e6; font-weight: 600; color: #6c757d; background-color: #f8f9fa; font-size: 12px; text-transform: uppercase;">TÊN</th>
+                                            <th style="padding: 0.75rem 1rem; vertical-align: middle; border-bottom: 2px solid #dee2e6; font-weight: 600; color: #6c757d; background-color: #f8f9fa; font-size: 12px; text-transform: uppercase;">HÌNH ẢNH</th>
+                                            <th style="padding: 0.75rem 1rem; vertical-align: middle; border-bottom: 2px solid #dee2e6; font-weight: 600; color: #6c757d; background-color: #f8f9fa; font-size: 12px; text-transform: uppercase;">GIÁ TIỀN</th>
+                                            <th style="padding: 0.75rem 1rem; vertical-align: middle; border-bottom: 2px solid #dee2e6; font-weight: 600; color: #6c757d; background-color: #f8f9fa; font-size: 12px; text-transform: uppercase;">SỐ LƯỢNG</th>
+                                            <th style="padding: 0.75rem 1rem; vertical-align: middle; border-bottom: 2px solid #dee2e6; font-weight: 600; color: #6c757d; background-color: #f8f9fa; font-size: 12px; text-transform: uppercase;">NGÀY TẠO</th>
+                                            <th style="padding: 0.75rem 1rem; vertical-align: middle; border-bottom: 2px solid #dee2e6; font-weight: 600; color: #6c757d; background-color: #f8f9fa; font-size: 12px; text-transform: uppercase;">TRẠNG THÁI</th>
+                                            <th style="padding: 0.75rem 1rem; vertical-align: middle; border-bottom: 2px solid #dee2e6; font-weight: 600; color: #6c757d; background-color: #f8f9fa; font-size: 12px; text-transform: uppercase; text-align: center;">THAO TÁC</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <!-- Product Row 1 -->
+                                        <tr style="border-bottom: 1px solid #f0f2f5;">
+                                            <td style="padding: 1rem; vertical-align: middle; text-align: center;"><p style="font-size: 0.875rem; font-weight: 700; margin: 0;">1</p></td>
+                                            <td style="padding: 1rem; vertical-align: middle; text-align: center;"><h6 style="margin: 0; font-size: 0.875rem; font-weight: 600;">LEGO Classic</h6></td>
+                                            <td style="padding: 1rem; vertical-align: middle; text-align: center;"><img src="../img/book1.webp" alt="LEGO Classic" style="width: 60px; height: 60px; object-fit: cover; border-radius: 0.375rem;"></td>
+                                            <td style="padding: 1rem; vertical-align: middle; text-align: center;"><span style="font-size: 0.875rem; font-weight: 700; color: #28a745;">1,250,000đ</span></td>
+                                            <td style="padding: 1rem; vertical-align: middle; text-align: center;"><span style="font-size: 0.875rem; font-weight: 700;">15</span></td>
+                                            <td style="padding: 1rem; vertical-align: middle; text-align: center;"><span style="font-size: 0.75rem; color: #6c757d;">04/11/2023</span></td>
+                                            <td style="padding: 1rem; vertical-align: middle; text-align: center;"><span style="display: inline-block; background: linear-gradient(195deg, #66bb6a, #43a047); color: white; padding: 0.25rem 0.5rem; font-size: 0.65rem; border-radius: 0.25rem; font-weight: 600;">HIỂN</span></td>
+                                            <td style="padding: 1rem; vertical-align: middle; text-align: center;">
+                                                <button style="background: linear-gradient(195deg, #49a3f1, #1a73e8); color: white; border: none; padding: 0.375rem 0.75rem; font-size: 0.75rem; border-radius: 0.25rem; margin-right: 0.25rem; cursor: pointer; font-weight: 600;">SỬA</button>
+                                                <button style="background: linear-gradient(195deg, #d32f2f, #b71c1c); color: white; border: none; padding: 0.375rem 0.75rem; font-size: 0.75rem; border-radius: 0.25rem; cursor: pointer; font-weight: 600;">XÓA</button>
+                                            </td>
+                                        </tr>
+                                        <!-- Product Row 2 -->
+                                        <tr style="border-bottom: 1px solid #f0f2f5;">
+                                            <td style="padding: 1rem; vertical-align: middle; text-align: center;"><p style="font-size: 0.875rem; font-weight: 700; margin: 0;">2</p></td>
+                                            <td style="padding: 1rem; vertical-align: middle; text-align: center;"><h6 style="margin: 0; font-size: 0.875rem; font-weight: 600;">Gundam Model</h6></td>
+                                            <td style="padding: 1rem; vertical-align: middle; text-align: center;"><img src="../img/book2.webp" alt="Gundam Model" style="width: 60px; height: 60px; object-fit: cover; border-radius: 0.375rem;"></td>
+                                            <td style="padding: 1rem; vertical-align: middle; text-align: center;"><span style="font-size: 0.875rem; font-weight: 700; color: #28a745;">3,012,500đ</span></td>
+                                            <td style="padding: 1rem; vertical-align: middle; text-align: center;"><span style="font-size: 0.875rem; font-weight: 700;">8</span></td>
+                                            <td style="padding: 1rem; vertical-align: middle; text-align: center;"><span style="font-size: 0.75rem; color: #6c757d;">04/11/2023</span></td>
+                                            <td style="padding: 1rem; vertical-align: middle; text-align: center;"><span style="display: inline-block; background: linear-gradient(195deg, #747b8a, #495361); color: white; padding: 0.25rem 0.5rem; font-size: 0.65rem; border-radius: 0.25rem; font-weight: 600;">ẨN</span></td>
+                                            <td style="padding: 1rem; vertical-align: middle; text-align: center;">
+                                                <button style="background: linear-gradient(195deg, #49a3f1, #1a73e8); color: white; border: none; padding: 0.375rem 0.75rem; font-size: 0.75rem; border-radius: 0.25rem; margin-right: 0.25rem; cursor: pointer; font-weight: 600;">SỬA</button>
+                                                <button style="background: linear-gradient(195deg, #d32f2f, #b71c1c); color: white; border: none; padding: 0.375rem 0.75rem; font-size: 0.75rem; border-radius: 0.25rem; cursor: pointer; font-weight: 600;">XÓA</button>
+                                            </td>
+                                        </tr>
+                                        <!-- Product Row 3 -->
+                                        <tr style="border-bottom: 1px solid #f0f2f5;">
+                                            <td style="padding: 1rem; vertical-align: middle; text-align: center;"><p style="font-size: 0.875rem; font-weight: 700; margin: 0;">3</p></td>
+                                            <td style="padding: 1rem; vertical-align: middle; text-align: center;"><h6 style="margin: 0; font-size: 0.875rem; font-weight: 600;">Hot Wheels Car</h6></td>
+                                            <td style="padding: 1rem; vertical-align: middle; text-align: center;"><img src="../img/book3.jpg" alt="Hot Wheels Car" style="width: 60px; height: 60px; object-fit: cover; border-radius: 0.375rem;"></td>
+                                            <td style="padding: 1rem; vertical-align: middle; text-align: center;"><span style="font-size: 0.875rem; font-weight: 700; color: #28a745;">150,000đ</span></td>
+                                            <td style="padding: 1rem; vertical-align: middle; text-align: center;"><span style="font-size: 0.875rem; font-weight: 700;">30</span></td>
+                                            <td style="padding: 1rem; vertical-align: middle; text-align: center;"><span style="font-size: 0.75rem; color: #6c757d;">04/11/2023</span></td>
+                                            <td style="padding: 1rem; vertical-align: middle; text-align: center;"><span style="display: inline-block; background: linear-gradient(195deg, #66bb6a, #43a047); color: white; padding: 0.25rem 0.5rem; font-size: 0.65rem; border-radius: 0.25rem; font-weight: 600;">HIỂN</span></td>
+                                            <td style="padding: 1rem; vertical-align: middle; text-align: center;">
+                                                <button style="background: linear-gradient(195deg, #49a3f1, #1a73e8); color: white; border: none; padding: 0.375rem 0.75rem; font-size: 0.75rem; border-radius: 0.25rem; margin-right: 0.25rem; cursor: pointer; font-weight: 600;">SỬA</button>
+                                                <button style="background: linear-gradient(195deg, #d32f2f, #b71c1c); color: white; border: none; padding: 0.375rem 0.75rem; font-size: 0.75rem; border-radius: 0.25rem; cursor: pointer; font-weight: 600;">XÓA</button>
+                                            </td>
+                                        </tr>
+                                        <!-- Product Row 4 -->
+                                        <tr style="border-bottom: 1px solid #f0f2f5;">
+                                            <td style="padding: 1rem; vertical-align: middle; text-align: center;"><p style="font-size: 0.875rem; font-weight: 700; margin: 0;">4</p></td>
+                                            <td style="padding: 1rem; vertical-align: middle; text-align: center;"><h6 style="margin: 0; font-size: 0.875rem; font-weight: 600;">Barbie Doll</h6></td>
+                                            <td style="padding: 1rem; vertical-align: middle; text-align: center;"><img src="../img/book4.webp" alt="Barbie Doll" style="width: 60px; height: 60px; object-fit: cover; border-radius: 0.375rem;"></td>
+                                            <td style="padding: 1rem; vertical-align: middle; text-align: center;"><span style="font-size: 0.875rem; font-weight: 700; color: #28a745;">625,000đ</span></td>
+                                            <td style="padding: 1rem; vertical-align: middle; text-align: center;"><span style="font-size: 0.875rem; font-weight: 700;">25</span></td>
+                                            <td style="padding: 1rem; vertical-align: middle; text-align: center;"><span style="font-size: 0.75rem; color: #6c757d;">04/11/2023</span></td>
+                                            <td style="padding: 1rem; vertical-align: middle; text-align: center;"><span style="display: inline-block; background: linear-gradient(195deg, #66bb6a, #43a047); color: white; padding: 0.25rem 0.5rem; font-size: 0.65rem; border-radius: 0.25rem; font-weight: 600;">HIỂN</span></td>
+                                            <td style="padding: 1rem; vertical-align: middle; text-align: center;">
+                                                <button style="background: linear-gradient(195deg, #49a3f1, #1a73e8); color: white; border: none; padding: 0.375rem 0.75rem; font-size: 0.75rem; border-radius: 0.25rem; margin-right: 0.25rem; cursor: pointer; font-weight: 600;">SỬA</button>
+                                                <button style="background: linear-gradient(195deg, #d32f2f, #b71c1c); color: white; border: none; padding: 0.375rem 0.75rem; font-size: 0.75rem; border-radius: 0.25rem; cursor: pointer; font-weight: 600;">XÓA</button>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+</body>
+</html>
