@@ -654,7 +654,21 @@ window.location.href = "checkout.html";
         });
     });
 </script>
-
+              <script>
+        const searchInput = document.getElementById("searchInput");
+        if (searchInput) {
+            searchInput.addEventListener("keypress", function(e) {
+                if (e.key === "Enter") {
+                    console.log("Enter được nhấn trong ô tìm kiếm");
+                    const searchTerm = searchInput.value.trim();
+                    if (searchTerm !== "") {
+                        window.location.href = "timkiemcotk.html";
+                    }
+                    e.preventDefault();
+                }
+            });
+        }
+     </script> 
 
     </body>
 </html>

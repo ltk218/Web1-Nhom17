@@ -670,7 +670,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 const searchTerm = searchInput ? searchInput.value.trim() : '';
                 if (searchTerm !== "") {
                     // Static version - just show alert
-                    alert(`Tìm kiếm: ${searchTerm}`);
+                    window.location.href = "timkiemkhongtk.html";
                 }
             });
         }
@@ -681,8 +681,8 @@ document.addEventListener("DOMContentLoaded", () => {
                     console.log("Enter được nhấn trong ô tìm kiếm");
                     const searchTerm = searchInput.value.trim();
                     if (searchTerm !== "") {
-                        // Static version - just show alert
-                        alert(`Tìm kiếm: ${searchTerm}`);
+                        // Chuyển đến trang tìm kiếm không tài khoản
+                        window.location.href = "timkiemkhongtk.html";
                     }
                     e.preventDefault();
                 }

@@ -4,9 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Chi tiết hóa đơn - Admin</title>
-    <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Material Icons -->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <style>
         .bg-gradient-primary {
@@ -58,7 +56,83 @@
     </style>
 </head>
 <body>
-    <div class="container-fluid">
+    <!-- Sidebar -->
+    <aside style="position: fixed; top: 0; left: 0; z-index: 1000; width: 250px; height: 100vh; background: linear-gradient(195deg, #42424a, #191919); color: white; transition: all 0.3s ease; box-shadow: 0 0 2rem 0 rgba(0, 0, 0, 0.15);" id="sidenav-main">
+        <div style="padding: 1.5rem 1rem;">
+          <i class="fa fa-times" style="padding: 0.75rem; cursor: pointer; color: white; opacity: 0.5; position: absolute; right: 0; top: 0; display: none;" aria-hidden="true" id="iconSidenav"></i>
+          <a href="#" target="_blank" style="display: flex; align-items: center; font-weight: 600; color: white; text-decoration: none;">
+            <span style="margin-left: 0.25rem; font-weight: 700;">TRUNG TÂM ĐIỀU KHIỂN</span>
+          </a>
+        </div>
+        <hr style="width: 100%; border: none; border-top: 1px solid rgba(255, 255, 255, 0.1); margin: 1rem 0;">
+        <div style="width: 100%; overflow-y: auto; height: 75vh;">
+          <ul style="list-style: none; padding: 0; margin: 0;">
+            <li style="margin: 0.25rem 0;">
+              <a href="index.html" style="display: flex; align-items: center; padding: 0.75rem 1rem; color: white; border-radius: 0.375rem; transition: all 0.3s ease; text-decoration: none;">
+                <div style="display: flex; align-items: center; justify-content: center; width: 32px; height: 32px; margin-right: 0.5rem;">
+                  <i class="material-icons" style="opacity: 1; font-size: 20px;">dashboard</i>
+                </div>
+                <span style="margin-left: 0.5rem;">Bảng điều khiển</span>
+              </a>
+            </li>
+            <li style="margin: 0.25rem 0;">
+              <a href="user.html" style="display: flex; align-items: center; padding: 0.75rem 1rem; color: white; border-radius: 0.375rem; transition: all 0.3s ease; text-decoration: none;">
+                <div style="display: flex; align-items: center; justify-content: center; width: 32px; height: 32px; margin-right: 0.5rem;">
+                  <i class="material-icons" style="opacity: 1; font-size: 20px;">person</i>
+                </div>
+                <span style="margin-left: 0.5rem;">Quản lý khách hàng</span>
+              </a>
+            </li>
+            <li style="margin: 0.25rem 0;">
+                <a href="order.html" style="display: flex; align-items: center; padding: 0.75rem 1rem; color: white; border-radius: 0.375rem; transition: all 0.3s ease; text-decoration: none; background: linear-gradient(195deg, #ec407a, #d81b60); box-shadow: 0 4px 20px 0 rgba(0, 0, 0, 0.14), 0 7px 10px -5px rgba(233, 30, 99, 0.4);">
+                  <div style="display: flex; align-items: center; justify-content: center; width: 32px; height: 32px; margin-right: 0.5rem;">
+                    <i class="material-icons" style="opacity: 1; font-size: 20px;">weekend</i>
+                  </div>
+                  <span style="margin-left: 0.5rem;">Quản lý đơn hàng</span>
+                </a>
+              </li>
+            <li style="margin: 0.25rem 0;">
+              <a href="products.html" style="display: flex; align-items: center; padding: 0.75rem 1rem; color: white; border-radius: 0.375rem; transition: all 0.3s ease; text-decoration: none;">
+                <div style="display: flex; align-items: center; justify-content: center; width: 32px; height: 32px; margin-right: 0.5rem;">
+                  <i class="material-icons" style="opacity: 1; font-size: 20px;">table_view</i>
+                </div>
+                <span style="margin-left: 0.5rem;">Quản lý sản phẩm</span>
+              </a>
+            </li>
+            <li style="margin: 0.25rem 0;">
+              <a href="category.html" style="display: flex; align-items: center; padding: 0.75rem 1rem; color: white; border-radius: 0.375rem; transition: all 0.3s ease; text-decoration: none;">
+                <div style="display: flex; align-items: center; justify-content: center; width: 32px; height: 32px; margin-right: 0.5rem;">
+                  <i class="material-icons" style="opacity: 1; font-size: 20px;">category</i>
+                </div>
+                <span style="margin-left: 0.5rem;">Tất cả danh mục</span>
+              </a>
+            </li>
+            <li style="margin: 0.25rem 0;">
+              <a href="add-product.html" style="display: flex; align-items: center; padding: 0.75rem 1rem; color: white; border-radius: 0.375rem; transition: all 0.3s ease; text-decoration: none;">
+                <div style="display: flex; align-items: center; justify-content: center; width: 32px; height: 32px; margin-right: 0.5rem;">
+                  <i class="material-icons" style="opacity: 1; font-size: 20px;">add_box</i>
+                </div>
+                <span style="margin-left: 0.5rem;">Thêm sản phẩm</span>
+              </a>
+            </li>
+            <li style="margin: 0.25rem 0;">
+              <a href="add-category.html" style="display: flex; align-items: center; padding: 0.75rem 1rem; color: white; border-radius: 0.375rem; transition: all 0.3s ease; text-decoration: none;">
+                <div style="display: flex; align-items: center; justify-content: center; width: 32px; height: 32px; margin-right: 0.5rem;">
+                  <i class="material-icons" style="opacity: 1; font-size: 20px;">add_circle</i>
+                </div>
+                <span style="margin-left: 0.5rem;">Thêm danh mục</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+        <div style="position: absolute; width: 100%; bottom: 0; padding: 1rem;">
+          <div style="margin-left: 1rem; margin-right: 1rem;">
+            <a href="login.html" style="display: inline-block; background: linear-gradient(195deg, #ec407a, #d81b60); color: white; padding: 0.625rem 1.5rem; font-size: 0.875rem; line-height: 1.5; border-radius: 0.25rem; transition: all 0.15s ease-in-out; cursor: pointer; text-decoration: none; width: 100%; text-align: center; margin-top: 1.5rem;">Đăng xuất</a>
+          </div>
+        </div>
+    </aside>
+
+    <div class="container-fluid" style="margin-left: 250px; padding: 1.5rem;">
         <div class="row">
             <div class="col-12">
                 <div class="card my-4">
@@ -78,10 +152,6 @@
                                 <p class="mb-1 fs-6"><strong>Trạng thái:</strong></p>
                                 <span class='badge badge-sm bg-gradient-info text-white'>Đang xử lý</span>
 
-                                <div class="alert alert-info mt-3">
-                                    <strong>Thông báo:</strong> Tất cả chức năng đều đã bị vô hiệu hóa. Đây chỉ là giao diện tĩnh để xem.
-                                </div>
-
                                 <!-- Disabled form for UI display -->
                                 <form class="mt-3">
                                     <div class="row">
@@ -96,8 +166,8 @@
                                             </select>
                                         </div>
                                         <div class="col-md-6">
-                                            <button type="button" class="btn btn-sm text-white fs-6 btn-disabled" style="background-color: #ff6b6b;" disabled>
-                                                Cập nhật (Vô hiệu hóa)
+                                            <button type="button" class="btn btn-sm text-white fs-6 btn" style="background-color: lch(57.9% 67.44 28.81);">
+                                                Cập nhật
                                             </button>
                                         </div>
                                     </div>

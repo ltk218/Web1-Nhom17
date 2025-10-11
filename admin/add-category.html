@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="icon" type="image/png" href="../img/ryicon.jpg">
+  <title>BookStore - Thêm danh mục</title>
+  <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900|Roboto+Slab:400,700" />
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round" rel="stylesheet">
+  <link href="assets/css/pure-style.css" rel="stylesheet" />
+  <style>
+    /* Additional styles specific to add-category.html */
+
+    /* Preview section styles */
+    .preview-section {
+      background-color: #f8f9fa;
+      border: 1px solid #dee2e6;
+      border-radius: 0.375rem;
+      padding: 1rem;
+      margin-top: 1rem;
+    }
+
+    .preview-title {
+      font-weight: 600;
+      color: #344767;
+      margin-bottom: 0.5rem;
+      font-size: 0.875rem;
+    }
+
+    .preview-content {
+      color: #6c757d;
+      font-size: 0.875rem;
+    }
+  </style>
+</head>
+
+<body style="font-family: 'Roboto', sans-serif; background-color: #f0f2f5; color: #344767; line-height: 1.6; overflow-x: hidden;">
+
+    <aside style="position: fixed; top: 0; left: 0; z-index: 1000; width: 250px; height: 100vh; background: linear-gradient(195deg, #42424a, #191919); color: white; transition: all 0.3s ease; box-shadow: 0 0 2rem 0 rgba(0, 0, 0, 0.15);" id="sidenav-main">
+        <div style="padding: 1.5rem 1rem;">
+          <i class="fa fa-times" style="padding: 0.75rem; cursor: pointer; color: white; opacity: 0.5; position: absolute; right: 0; top: 0; display: none;" aria-hidden="true" id="iconSidenav"></i>
+          <a href="#" target="_blank" style="display: flex; align-items: center; font-weight: 600; color: white; text-decoration: none;">
+            <span style="margin-left: 0.25rem; font-weight: 700;">TRUNG TÂM ĐIỀU KHIỂN</span>
+          </a>
+        </div>
+        <hr style="width: 100%; border: none; border-top: 1px solid rgba(255, 255, 255, 0.1); margin: 1rem 0;">
+        <div style="width: 100%; overflow-y: auto; height: 75vh;">
+          <ul style="list-style: none; padding: 0; margin: 0;">
+            <li style="margin: 0.25rem 0;">
+              <a href="index.html" style="display: flex; align-items: center; padding: 0.75rem 1rem; color: white; border-radius: 0.375rem; transition: all 0.3s ease; text-decoration: none;">
+                <div style="display: flex; align-items: center; justify-content: center; width: 32px; height: 32px; margin-right: 0.5rem;">
+                  <i class="material-icons" style="opacity: 1; font-size: 20px;">dashboard</i>
+                </div>
+                <span style="margin-left: 0.5rem;">Bảng điều khiển</span>
+              </a>
+            </li>
+            <li style="margin: 0.25rem 0;">
+              <a href="user.html" style="display: flex; align-items: center; padding: 0.75rem 1rem; color: white; border-radius: 0.375rem; transition: all 0.3s ease; text-decoration: none;">
+                <div style="display: flex; align-items: center; justify-content: center; width: 32px; height: 32px; margin-right: 0.5rem;">
+                  <i class="material-icons" style="opacity: 1; font-size: 20px;">person</i>
+                </div>
+                <span style="margin-left: 0.5rem;">Quản lý khách hàng</span>
+              </a>
+            </li>
+            <li style="margin: 0.25rem 0;">
+                <a href="order.html" style="display: flex; align-items: center; padding: 0.75rem 1rem; color: white; border-radius: 0.375rem; transition: all 0.3s ease; text-decoration: none;">
+                  <div style="display: flex; align-items: center; justify-content: center; width: 32px; height: 32px; margin-right: 0.5rem;">
+                    <i class="material-icons" style="opacity: 1; font-size: 20px;">weekend</i>
+                  </div>
+                  <span style="margin-left: 0.5rem;">Quản lý đơn hàng</span>
+                </a>
+              </li>
+            <li style="margin: 0.25rem 0;">
+              <a href="products.html" style="display: flex; align-items: center; padding: 0.75rem 1rem; color: white; border-radius: 0.375rem; transition: all 0.3s ease; text-decoration: none;">
+                <div style="display: flex; align-items: center; justify-content: center; width: 32px; height: 32px; margin-right: 0.5rem;">
+                  <i class="material-icons" style="opacity: 1; font-size: 20px;">table_view</i>
+                </div>
+                <span style="margin-left: 0.5rem;">Quản lý sản phẩm</span>
+              </a>
+            </li>
+        <li style="margin: 0.25rem 0;">
+          <a href="category.html" style="display: flex; align-items: center; padding: 0.75rem 1rem; color: white; border-radius: 0.375rem; transition: all 0.3s ease; text-decoration: none;">
+            <div style="display: flex; align-items: center; justify-content: center; width: 32px; height: 32px; margin-right: 0.5rem;">
+              <i class="material-icons" style="opacity: 1; font-size: 20px;">category</i>
+            </div>
+            <span style="margin-left: 0.5rem;">Tất cả danh mục</span>
+          </a>
+        </li>
+        <li style="margin: 0.25rem 0;">
+          <a href="add-product.html" style="display: flex; align-items: center; padding: 0.75rem 1rem; color: white; border-radius: 0.375rem; transition: all 0.3s ease; text-decoration: none;">
+            <div style="display: flex; align-items: center; justify-content: center; width: 32px; height: 32px; margin-right: 0.5rem;">
+              <i class="material-icons" style="opacity: 1; font-size: 20px;">add_box</i>
+            </div>
+            <span style="margin-left: 0.5rem;">Thêm sản phẩm</span>
+          </a>
+        </li>
+        <li style="margin: 0.25rem 0;">
+          <a href="add-category.html" style="display: flex; align-items: center; padding: 0.75rem 1rem; color: white; border-radius: 0.375rem; transition: all 0.3s ease; text-decoration: none; background: linear-gradient(195deg, #ec407a, #d81b60); box-shadow: 0 4px 20px 0 rgba(0, 0, 0, 0.14), 0 7px 10px -5px rgba(233, 30, 99, 0.4);">
+            <div style="display: flex; align-items: center; justify-content: center; width: 32px; height: 32px; margin-right: 0.5rem;">
+              <i class="material-icons" style="opacity: 1; font-size: 20px;">add_circle</i>
+            </div>
+            <span style="margin-left: 0.5rem;">Thêm danh mục</span>
+          </a>
+        </li>
+
+          </ul>
+        </div>
+        <div style="position: absolute; width: 100%; bottom: 0; padding: 1rem;">
+          <div style="margin-left: 1rem; margin-right: 1rem;">
+            <a href="login.html" style="display: inline-block; background: linear-gradient(195deg, #ec407a, #d81b60); color: white; padding: 0.625rem 1.5rem; font-size: 0.875rem; line-height: 1.5; border-radius: 0.25rem; transition: all 0.15s ease-in-out; cursor: pointer; text-decoration: none; width: 100%; text-align: center; margin-top: 1.5rem;">Đăng xuất</a>
+          </div>
+        </div>
+    </aside>
+
+    <main style="margin-left: 250px; min-height: 100vh; padding: 1.5rem;">
+        <nav style="margin-bottom: 1.5rem; padding: 0.75rem 1.5rem; border-radius: 0.75rem; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06); background-color: white;">
+            <div style="width: 100%; padding-right: 15px; padding-left: 15px; margin-right: auto; margin-left: auto;">
+              <nav aria-label="breadcrumb">
+                <ol style="display: flex; list-style: none; padding: 0; margin: 0;">
+                  <li style="display: flex; align-items: center; color: rgba(52, 71, 103, 0.5); font-size: 0.875rem;"><a href="javascript:;" style="color: rgba(52, 71, 103, 0.5); text-decoration: none;"><p style="margin: 0;"><b>Thêm danh mục mới</b></p></a></li>
+                </ol>
+              </nav>
+            </div>
+        </nav>
+
+        <div style="width: 100%; padding-right: 15px; padding-left: 15px; margin-right: auto; margin-left: auto; padding-top: 1.5rem; padding-bottom: 1.5rem;">
+            <div style="display: flex; flex-wrap: wrap; margin-right: -15px; margin-left: -15px;">
+                <div style="flex: 0 0 100%; max-width: 100%; padding-right: 15px; padding-left: 15px;">
+                    <div class="card">
+                        <div class="card-header">
+                            <h4 style="margin: 0; font-weight: 600; margin-bottom: 0.5rem; color: #344767;">Thông tin danh mục</h4>
+                            <p style="margin: 0; color: #6c757d; font-size: 0.875rem;">Nhập đầy đủ thông tin để thêm danh mục mới vào cửa hàng</p>
+                        </div>
+                        <div class="card-body">
+                            <!-- Alert messages -->
+                            <div id="success-alert" class="alert alert-success" style="display: none;">
+                                <strong>Thành công!</strong> Danh mục đã được thêm thành công.
+                            </div>
+                            <div id="error-alert" class="alert alert-danger" style="display: none;">
+                                <strong>Lỗi!</strong> Có lỗi xảy ra khi thêm danh mục. Vui lòng thử lại.
+                            </div>
+
+                            <form id="addCategoryForm">
+                                <div class="form-group">
+                                    <label for="categoryName" class="form-label">Tên danh mục <span style="color: #dc3545;">*</span></label>
+                                    <input type="text" class="form-control" id="categoryName" name="categoryName" placeholder="Nhập tên danh mục" required>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="categoryDescription" class="form-label">Mô tả danh mục</label>
+                                    <textarea class="form-control" id="categoryDescription" name="categoryDescription" rows="4" placeholder="Nhập mô tả chi tiết về danh mục này"></textarea>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="form-label">Trạng thái danh mục</label>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="categoryStatus" id="statusActive" value="active" checked>
+                                        <label class="form-check-label" for="statusActive">
+                                            Hiện (Hiển thị danh mục)
+                                        </label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="categoryStatus" id="statusInactive" value="inactive">
+                                        <label class="form-check-label" for="statusInactive">
+                                            Ẩn (Không hiển thị danh mục)
+                                        </label>
+                                    </div>
+                                    <div class="form-text">Chọn trạng thái hiển thị của danh mục</div>
+                                </div>
+
+                                <!-- Preview Section -->
+                                <div class="preview-section">
+                                    <div class="preview-title">Xem trước danh mục:</div>
+                                    <div class="preview-content">
+                                        <strong>Tên danh mục:</strong> <span id="previewName">Chưa nhập tên danh mục</span><br>
+                                        <strong>Mô tả:</strong> <span id="previewDescription">Chưa nhập mô tả</span><br>
+                                        <strong>Trạng thái:</strong> <span id="previewStatus" style="color: #28a745; font-weight: 600;">Hiện</span>
+                                    </div>
+                                </div>
+
+                                <!-- Form buttons -->
+                                <div style="display: flex; justify-content: center; gap: 1rem; margin-top: 2rem; padding-top: 2rem; border-top: 1px solid #dee2e6;">
+                                    <button type="button" class="btn btn-secondary" onclick="resetForm()">Làm mới</button>
+                                    <button type="submit" class="btn btn-gradient" style="padding: 0.75rem 2rem; font-weight: 600;">
+                                        <i class="material-icons" style="font-size: 1rem; margin-right: 0.5rem; vertical-align: middle;">add_circle</i>
+                                        Thêm danh mục
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        // Update preview when user types
+        document.getElementById('categoryName').addEventListener('input', function() {
+            const previewName = document.getElementById('previewName');
+            previewName.textContent = this.value || 'Chưa nhập tên danh mục';
+        });
+
+        document.getElementById('categoryDescription').addEventListener('input', function() {
+            const previewDescription = document.getElementById('previewDescription');
+            previewDescription.textContent = this.value || 'Chưa nhập mô tả';
+        });
+
+        // Update status preview
+        document.querySelectorAll('input[name="categoryStatus"]').forEach(function(radio) {
+            radio.addEventListener('change', function() {
+                const previewStatus = document.getElementById('previewStatus');
+                if (this.value === 'active') {
+                    previewStatus.textContent = 'Hiện';
+                    previewStatus.style.color = '#28a745';
+                } else {
+                    previewStatus.textContent = 'Ẩn';
+                    previewStatus.style.color = '#6c757d';
+                }
+            });
+        });
+
+        // Form submission
+        document.getElementById('addCategoryForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            // Get form data
+            const formData = new FormData(this);
+            const categoryData = {
+                name: formData.get('categoryName'),
+                description: formData.get('categoryDescription'),
+                status: formData.get('categoryStatus')
+            };
+
+            // Basic validation
+            if (!categoryData.name) {
+                showAlert('error', 'Vui lòng nhập tên danh mục!');
+                return;
+            }
+
+            // Check for duplicate category names (simulate)
+            const existingCategories = ['Thiếu Nhi', 'Tâm Lý / Tình Cảm', 'Tôn Giáo', 'Lịch Sử', 'Văn Học'];
+            if (existingCategories.some(cat => cat.toLowerCase() === categoryData.name.toLowerCase())) {
+                showAlert('error', 'Tên danh mục đã tồn tại! Vui lòng chọn tên khác.');
+                return;
+            }
+
+            // Simulate form submission
+            showAlert('success', 'Đang xử lý...');
+
+            setTimeout(() => {
+                // Hiển thị alert trình duyệt với đúng nội dung yêu cầu
+                alert('Thêm danh mục thành công !');
+
+                // Cập nhật thông báo trên trang
+                showAlert('success', `Danh mục "${categoryData.name}" đã được thêm thành công!`);
+                resetForm();
+            }, 1500);
+        });
+
+        // Show alert messages
+        function showAlert(type, message) {
+            const successAlert = document.getElementById('success-alert');
+            const errorAlert = document.getElementById('error-alert');
+
+            if (type === 'success') {
+                successAlert.style.display = 'block';
+                errorAlert.style.display = 'none';
+                successAlert.innerHTML = `<strong>Thành công!</strong> ${message}`;
+            } else {
+                errorAlert.style.display = 'block';
+                successAlert.style.display = 'none';
+                errorAlert.innerHTML = `<strong>Lỗi!</strong> ${message}`;
+            }
+
+            // Auto hide after 5 seconds
+            setTimeout(() => {
+                successAlert.style.display = 'none';
+                errorAlert.style.display = 'none';
+            }, 5000);
+        }
+
+        // Reset form
+        function resetForm() {
+            document.getElementById('addCategoryForm').reset();
+
+            // Reset preview
+            document.getElementById('previewName').textContent = 'Chưa nhập tên danh mục';
+            document.getElementById('previewDescription').textContent = 'Chưa nhập mô tả';
+            document.getElementById('previewStatus').textContent = 'Hiện';
+            document.getElementById('previewStatus').style.color = '#28a745';
+
+            // Hide alerts
+            document.getElementById('success-alert').style.display = 'none';
+            document.getElementById('error-alert').style.display = 'none';
+        }
+
+        // Validate category name on blur
+        document.getElementById('categoryName').addEventListener('blur', function() {
+            const value = this.value.trim();
+            if (value && value.length < 1) {
+                showAlert('error', 'Tên danh mục không được để trống!');
+                this.focus();
+            }
+        });
+
+        // Auto-capitalize first letter of category name
+        document.getElementById('categoryName').addEventListener('input', function() {
+            const words = this.value.split(' ');
+            for (let i = 0; i < words.length; i++) {
+                if (words[i]) {
+                    words[i] = words[i].charAt(0).toUpperCase() + words[i].slice(1).toLowerCase();
+                }
+            }
+            this.value = words.join(' ');
+        });
+    </script>
+</body>
+</html>

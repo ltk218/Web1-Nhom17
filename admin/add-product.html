@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="icon" type="image/png" href="../img/ryicon.jpg">
+  <title>BookStore - Thêm sản phẩm</title>
+  <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900|Roboto+Slab:400,700" />
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round" rel="stylesheet">
+  <link href="assets/css/pure-style.css" rel="stylesheet" />
+  <style>
+    /* Additional styles specific to add-product.html */
+
+    /* Image preview styles */
+    .image-preview {
+      max-width: 200px;
+      max-height: 200px;
+      border: 2px dashed #dee2e6;
+      border-radius: 0.375rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: #f8f9fa;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .image-preview:hover {
+      border-color: #e91e63;
+      background-color: #fff5f8;
+    }
+
+    .image-preview img {
+      max-width: 100%;
+      max-height: 100%;
+      object-fit: cover;
+    }
+
+    .image-upload-text {
+      text-align: center;
+      color: #6c757d;
+      font-size: 0.875rem;
+    }
+  </style>
+</head>
+
+<body style="font-family: 'Roboto', sans-serif; background-color: #f0f2f5; color: #344767; line-height: 1.6; overflow-x: hidden;">
+
+    <aside style="position: fixed; top: 0; left: 0; z-index: 1000; width: 250px; height: 100vh; background: linear-gradient(195deg, #42424a, #191919); color: white; transition: all 0.3s ease; box-shadow: 0 0 2rem 0 rgba(0, 0, 0, 0.15);" id="sidenav-main">
+        <div style="padding: 1.5rem 1rem;">
+          <i class="fa fa-times" style="padding: 0.75rem; cursor: pointer; color: white; opacity: 0.5; position: absolute; right: 0; top: 0; display: none;" aria-hidden="true" id="iconSidenav"></i>
+          <a href="#" target="_blank" style="display: flex; align-items: center; font-weight: 600; color: white; text-decoration: none;">
+            <span style="margin-left: 0.25rem; font-weight: 700;">TRUNG TÂM ĐIỀU KHIỂN</span>
+          </a>
+        </div>
+        <hr style="width: 100%; border: none; border-top: 1px solid rgba(255, 255, 255, 0.1); margin: 1rem 0;">
+        <div style="width: 100%; overflow-y: auto; height: 75vh;">
+          <ul style="list-style: none; padding: 0; margin: 0;">
+            <li style="margin: 0.25rem 0;">
+              <a href="index.html" style="display: flex; align-items: center; padding: 0.75rem 1rem; color: white; border-radius: 0.375rem; transition: all 0.3s ease; text-decoration: none;">
+                <div style="display: flex; align-items: center; justify-content: center; width: 32px; height: 32px; margin-right: 0.5rem;">
+                  <i class="material-icons" style="opacity: 1; font-size: 20px;">dashboard</i>
+                </div>
+                <span style="margin-left: 0.5rem;">Bảng điều khiển</span>
+              </a>
+            </li>
+            <li style="margin: 0.25rem 0;">
+              <a href="user.html" style="display: flex; align-items: center; padding: 0.75rem 1rem; color: white; border-radius: 0.375rem; transition: all 0.3s ease; text-decoration: none;">
+                <div style="display: flex; align-items: center; justify-content: center; width: 32px; height: 32px; margin-right: 0.5rem;">
+                  <i class="material-icons" style="opacity: 1; font-size: 20px;">person</i>
+                </div>
+                <span style="margin-left: 0.5rem;">Quản lý khách hàng</span>
+              </a>
+            </li>
+            <li style="margin: 0.25rem 0;">
+                <a href="order.html" style="display: flex; align-items: center; padding: 0.75rem 1rem; color: white; border-radius: 0.375rem; transition: all 0.3s ease; text-decoration: none;">
+                  <div style="display: flex; align-items: center; justify-content: center; width: 32px; height: 32px; margin-right: 0.5rem;">
+                    <i class="material-icons" style="opacity: 1; font-size: 20px;">weekend</i>
+                  </div>
+                  <span style="margin-left: 0.5rem;">Quản lý đơn hàng</span>
+                </a>
+              </li>
+            <li style="margin: 0.25rem 0;">
+              <a href="products.html" style="display: flex; align-items: center; padding: 0.75rem 1rem; color: white; border-radius: 0.375rem; transition: all 0.3s ease; text-decoration: none;">
+                <div style="display: flex; align-items: center; justify-content: center; width: 32px; height: 32px; margin-right: 0.5rem;">
+                  <i class="material-icons" style="opacity: 1; font-size: 20px;">table_view</i>
+                </div>
+                <span style="margin-left: 0.5rem;">Quản lý sản phẩm</span>
+              </a>
+            </li>
+        <li style="margin: 0.25rem 0;">
+          <a href="category.html" style="display: flex; align-items: center; padding: 0.75rem 1rem; color: white; border-radius: 0.375rem; transition: all 0.3s ease; text-decoration: none;">
+            <div style="display: flex; align-items: center; justify-content: center; width: 32px; height: 32px; margin-right: 0.5rem;">
+              <i class="material-icons" style="opacity: 1; font-size: 20px;">category</i>
+            </div>
+            <span style="margin-left: 0.5rem;">Tất cả danh mục</span>
+          </a>
+        </li>
+        <li style="margin: 0.25rem 0;">
+          <a href="add-product.html" style="display: flex; align-items: center; padding: 0.75rem 1rem; color: white; border-radius: 0.375rem; transition: all 0.3s ease; text-decoration: none; background: linear-gradient(195deg, #ec407a, #d81b60); box-shadow: 0 4px 20px 0 rgba(0, 0, 0, 0.14), 0 7px 10px -5px rgba(233, 30, 99, 0.4);">
+            <div style="display: flex; align-items: center; justify-content: center; width: 32px; height: 32px; margin-right: 0.5rem;">
+              <i class="material-icons" style="opacity: 1; font-size: 20px;">add_box</i>
+            </div>
+            <span style="margin-left: 0.5rem;">Thêm sản phẩm</span>
+          </a>
+        </li>
+        <li style="margin: 0.25rem 0;">
+          <a href="add-category.html" style="display: flex; align-items: center; padding: 0.75rem 1rem; color: white; border-radius: 0.375rem; transition: all 0.3s ease; text-decoration: none;">
+            <div style="display: flex; align-items: center; justify-content: center; width: 32px; height: 32px; margin-right: 0.5rem;">
+              <i class="material-icons" style="opacity: 1; font-size: 20px;">add_circle</i>
+            </div>
+            <span style="margin-left: 0.5rem;">Thêm danh mục</span>
+          </a>
+        </li>
+
+          </ul>
+        </div>
+        <div style="position: absolute; width: 100%; bottom: 0; padding: 1rem;">
+          <div style="margin-left: 1rem; margin-right: 1rem;">
+            <a href="login.html" style="display: inline-block; background: linear-gradient(195deg, #ec407a, #d81b60); color: white; padding: 0.625rem 1.5rem; font-size: 0.875rem; line-height: 1.5; border-radius: 0.25rem; transition: all 0.15s ease-in-out; cursor: pointer; text-decoration: none; width: 100%; text-align: center; margin-top: 1.5rem;">Đăng xuất</a>
+          </div>
+        </div>
+    </aside>
+
+    <main style="margin-left: 250px; min-height: 100vh; padding: 1.5rem;">
+        <nav style="margin-bottom: 1.5rem; padding: 0.75rem 1.5rem; border-radius: 0.75rem; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06); background-color: white;">
+            <div style="width: 100%; padding-right: 15px; padding-left: 15px; margin-right: auto; margin-left: auto;">
+              <nav aria-label="breadcrumb">
+                <ol style="display: flex; list-style: none; padding: 0; margin: 0;">
+                  <li style="display: flex; align-items: center; color: rgba(52, 71, 103, 0.5); font-size: 0.875rem;"><a href="javascript:;" style="color: rgba(52, 71, 103, 0.5); text-decoration: none;"><p style="margin: 0;"><b>Thêm sản phẩm mới</b></p></a></li>
+                </ol>
+              </nav>
+            </div>
+        </nav>
+
+        <div style="width: 100%; padding-right: 15px; padding-left: 15px; margin-right: auto; margin-left: auto; padding-top: 1.5rem; padding-bottom: 1.5rem;">
+            <div style="display: flex; flex-wrap: wrap; margin-right: -15px; margin-left: -15px;">
+                <div style="flex: 0 0 100%; max-width: 100%; padding-right: 15px; padding-left: 15px;">
+                    <div class="card">
+                        <div class="card-header">
+                            <h4 style="margin: 0; font-weight: 600; margin-bottom: 0.5rem; color: #344767;">Thông tin sản phẩm</h4>
+                            <p style="margin: 0; color: #6c757d; font-size: 0.875rem;">Nhập các thông tin của sản phẩm</p>
+                        </div>
+                        <div class="card-body">
+                            <!-- Demo Alert -->
+
+                            <!-- Alert messages -->
+                            <div id="success-alert" class="alert alert-success" style="display: none;">
+                                <strong>Thành công!</strong> Sản phẩm đã được thêm thành công.
+                            </div>
+                            <div id="error-alert" class="alert alert-danger" style="display: none;">
+                                <strong>Lỗi!</strong> Có lỗi xảy ra khi thêm sản phẩm. Vui lòng thử lại.
+                            </div>
+
+                            <form id="addProductForm">
+                                <div style="display: flex; flex-wrap: wrap; margin-right: -15px; margin-left: -15px;">
+                                    <!-- Left column -->
+                                    <div style="flex: 0 0 66.666667%; max-width: 66.666667%; padding-right: 15px; padding-left: 15px;">
+                                        <div class="form-group">
+                                            <label for="productName" class="form-label">Tên sản phẩm <span style="color: #dc3545;">*</span></label>
+                                            <input type="text" class="form-control" id="productName" name="productName" placeholder="Nhập tên sản phẩm" required>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label for="productDescription" class="form-label">Mô tả sản phẩm</label>
+                                            <textarea class="form-control" id="productDescription" name="productDescription" rows="4" placeholder="Nhập mô tả chi tiết về sản phẩm"></textarea>
+                                        </div>
+
+                                        <div style="display: flex; flex-wrap: wrap; margin-right: -15px; margin-left: -15px;">
+                                            <div style="flex: 0 0 50%; max-width: 50%; padding-right: 15px; padding-left: 15px;">
+                                                <div class="form-group">
+                                                    <label for="productPrice" class="form-label">Giá sản phẩm <span style="color: #dc3545;">*</span></label>
+                                                    <input type="number" class="form-control" id="productPrice" name="productPrice" placeholder="0" min="0" step="1">
+                                                    <div class="form-text">Đơn vị: VNĐ</div>
+                                                </div>
+                                            </div>
+                                            <div style="flex: 0 0 50%; max-width: 50%; padding-right: 15px; padding-left: 15px;">
+                                                <div class="form-group">
+                                                    <label for="productQuantity" class="form-label">Số lượng <span style="color: #dc3545;">*</span></label>
+                                                    <input type="number" class="form-control" id="productQuantity" name="productQuantity" placeholder="0" min="0" required>
+                                                    <div class="form-text">Số lượng sản phẩm trong kho</div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label for="productCategory" class="form-label">Danh mục <span style="color: #dc3545;">*</span></label>
+                                            <select class="form-control" id="productCategory" name="productCategory" required>
+                                                <option value="">Chọn danh mục</option>
+                                                <option value="thieu-nhi">Thiếu Nhi</option>
+                                                <option value="tam-ly-tinh-cam">Tâm Lý / Tình Cảm</option>
+                                                <option value="ton-giao">Tôn Giáo</option>
+                                                <option value="lich-su">Lịch Sử</option>
+                                                <option value="van-hoc">Văn Học</option>
+                                            </select>
+                                            <div class="form-text">Chọn danh mục phù hợp cho sản phẩm</div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Right column -->
+                                    <div style="flex: 0 0 33.333333%; max-width: 33.333333%; padding-right: 15px; padding-left: 15px;">
+                                        <div class="form-group">
+                                            <label class="form-label">Hình ảnh sản phẩm</label>
+                                            <div class="image-preview" onclick="document.getElementById('productImage').click()">
+                                                <div class="image-upload-text">
+                                                    <i class="material-icons" style="font-size: 48px; color: #dee2e6; margin-bottom: 0.5rem;">add_photo_alternate</i>
+                                                    <div> Chọn ảnh cho sản phẩm</div>
+                                                </div>
+                                                <img id="imagePreview" src="" alt="Preview" style="display: none;">
+                                            </div>
+                                            <input type="file" class="form-control" id="productImage" name="productImage" accept="image/*" style="display: none;">
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label class="form-label">Trạng thái sản phẩm</label>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="radio" name="productStatus" id="statusActive" value="active" checked>
+                                                <label class="form-check-label" for="statusActive">
+                                                    Hiển thị
+                                                </label>
+                                            </div>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="radio" name="productStatus" id="statusInactive" value="inactive">
+                                                <label class="form-check-label" for="statusInactive">
+                                                    Ẩn
+                                                </label>
+                                            </div>
+                                            <div class="form-text">Chọn trạng thái hiển thị của sản phẩm</div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Form buttons -->
+                                <div style="display: flex; justify-content: center; gap: 1rem; margin-top: 2rem; padding-top: 2rem; border-top: 1px solid #dee2e6;">
+                                    <button type="button" class="btn btn-secondary" onclick="resetForm()">Làm mới</button>
+                                    <button type="submit" class="btn btn-gradient" style="padding: 0.75rem 2rem; font-weight: 600;">
+                                        <i class="material-icons" style="font-size: 1rem; margin-right: 0.5rem; vertical-align: middle;">add_box</i>
+                                        Thêm sản phẩm
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+<script>
+  // Hiển thị ảnh preview khi chọn file
+  document.getElementById('productImage').addEventListener('change', function (e) {
+    const file = e.target.files[0];
+    const preview = document.getElementById('imagePreview');
+    const imagePreviewContainer = document.querySelector('.image-preview');
+    const uploadText = document.querySelector('.image-upload-text');
+
+    if (file) {
+      const reader = new FileReader();
+      reader.onload = function (ev) {
+        preview.src = ev.target.result;
+        preview.style.display = 'block';
+        uploadText.style.display = 'none';
+        imagePreviewContainer.style.borderColor = '#28a745';
+        imagePreviewContainer.style.backgroundColor = '#f8fff9';
+      }
+      reader.readAsDataURL(file);
+    } else {
+      preview.style.display = 'none';
+      uploadText.style.display = 'block';
+      imagePreviewContainer.style.borderColor = '#dee2e6';
+      imagePreviewContainer.style.backgroundColor = '#f8f9fa';
+    }
+  });
+
+  // Hàm showAlert (hiện alert trên trang và tự ẩn sau 4s)
+  function showAlert(type, message) {
+    const success = document.getElementById('success-alert');
+    const error = document.getElementById('error-alert');
+
+    // Ẩn cả 2 trước
+    success.style.display = 'none';
+    error.style.display = 'none';
+
+    if (type === 'success') {
+      success.innerHTML = '<strong>Thành công!</strong> ' + message;
+      success.style.display = 'block';
+    } else if (type === 'error') {
+      error.innerHTML = '<strong>Lỗi!</strong> ' + message;
+      error.style.display = 'block';
+    }
+
+// Auto hide after 5 seconds (sử dụng getElementById để tránh ReferenceError)
+setTimeout(() => {
+  const successAlert = document.getElementById('success-alert');
+  const errorAlert = document.getElementById('error-alert');
+  if (successAlert) successAlert.style.display = 'none';
+  if (errorAlert) errorAlert.style.display = 'none';
+}, 5000);
+  }
+
+  // Reset form
+  function resetForm() {
+    const form = document.getElementById('addProductForm');
+    form.reset();
+    document.getElementById('imagePreview').style.display = 'none';
+    const uploadText = document.querySelector('.image-upload-text');
+    if (uploadText) uploadText.style.display = 'block';
+    document.querySelector('.image-preview').style.borderColor = '#dee2e6';
+    document.querySelector('.image-preview').style.backgroundColor = '#f8f9fa';
+
+    // Ẩn alerts
+    document.getElementById('success-alert').style.display = 'none';
+    document.getElementById('error-alert').style.display = 'none';
+
+    // Xóa giá lưu nếu có
+    if (localStorage.getItem('productPrice')) localStorage.removeItem('productPrice');
+  }
+
+  // Xử lý submit form
+  document.getElementById('addProductForm').addEventListener('submit', function (e) {
+    e.preventDefault();
+
+    const form = this;
+    const formData = new FormData(form);
+    const productData = {
+      name: formData.get('productName'),
+      description: formData.get('productDescription'),
+      price: formData.get('productPrice'),
+      quantity: formData.get('productQuantity'),
+      category: formData.get('productCategory'),
+      status: formData.get('productStatus'),
+      image: formData.get('productImage')
+    };
+
+    // Kiểm tra bắt buộc
+    if (!productData.name || !productData.price || !productData.quantity || !productData.category) {
+      showAlert('error', 'Vui lòng điền đầy đủ thông tin bắt buộc!');
+      return;
+    }
+
+    // Hiện message xử lý (trên trang)
+    showAlert('success', 'Đang xử lý...');
+
+    // Mô phỏng gửi lên server
+    setTimeout(() => {
+      // Hiển thị alert trình duyệt với đúng nội dung yêu cầu
+      alert('Thêm sản phẩm thành công !');
+
+      // Cập nhật thông báo trên trang
+      showAlert('success', 'Thêm sản phẩm thành công!');
+
+      // Reset form sau khi thêm thành công
+      resetForm();
+    }, 800); // 0.8s giả lập
+  });
+
+  // Lưu giá tạm trong localStorage (giữ hành vi trước)
+  const priceInput = document.getElementById('productPrice');
+  window.addEventListener('load', function () {
+    const saved = localStorage.getItem('productPrice');
+    if (saved) priceInput.value = saved;
+  });
+
+  priceInput.addEventListener('input', function (e) {
+    const v = e.target.value.replace(/[^0-9]/g, '');
+    if (v) {
+      e.target.dataset.rawValue = v;
+      localStorage.setItem('productPrice', v);
+    }
+  });
+
+  priceInput.addEventListener('blur', function (e) {
+    const raw = e.target.dataset.rawValue || e.target.value.replace(/[^0-9]/g, '');
+    if (raw && parseInt(raw, 10) <= 0) {
+      showAlert('error', 'Giá sản phẩm phải lớn hơn 0 VNĐ!');
+      e.target.focus();
+    }
+  });
+
+  document.getElementById('addProductForm').addEventListener('reset', function () {
+    localStorage.removeItem('productPrice');
+    priceInput.removeAttribute('data-raw-value');
+  });
+
+  // Validate quantity
+  document.getElementById('productQuantity').addEventListener('blur', function (e) {
+    const v = e.target.value;
+    if (v !== '' && (isNaN(parseInt(v, 10)) || parseInt(v, 10) < 0)) {
+      showAlert('error', 'Số lượng phải là số không âm!');
+      e.target.focus();
+    }
+  });
+</script>
+
+</body>
+</html>

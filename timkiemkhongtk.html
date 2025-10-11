@@ -88,7 +88,7 @@
         <div class="container-fluid">
             <ul class="breadcrumb">
                 <li class="breadcrumb-item"><a href="index.html">Trang chủ</a></li>
-                <li class="breadcrumb-item active">Danh mục</li>
+                <li class="breadcrumb-item active">Kết quả tìm kiếm</li>
             </ul>
         </div>
     </div>
@@ -753,22 +753,6 @@ document.querySelectorAll("i.fa.fa-eye").forEach(icon => {
     <script src="lib/slick/slick.min.js"></script>
 
     <!-- Template Javascript -->
-     <script>
-        const searchInput = document.getElementById("searchInput");
-        if (searchInput) {
-            searchInput.addEventListener("keypress", function(e) {
-                if (e.key === "Enter") {
-                    console.log("Enter được nhấn trong ô tìm kiếm");
-                    const searchTerm = searchInput.value.trim();
-                    if (searchTerm !== "") {
-                        // Chuyển đến trang tìm kiếm không tài khoản
-                        window.location.href = "timkiemkhongtk.html";
-                    }
-                    e.preventDefault();
-                }
-            });
-        }
-     </script>
     <script src="js/main.js"></script>
 </body>
 </html>
