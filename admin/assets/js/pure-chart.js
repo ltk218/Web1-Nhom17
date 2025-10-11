@@ -1,31 +1,22 @@
-// Pure JavaScript replacement for Chart.js with animations
-
 document.addEventListener('DOMContentLoaded', function() {
-  // Create a simple donut chart with CSS
   const chartContainer = document.getElementById('myChart');
   if (chartContainer) {
-    // Remove the canvas element
     chartContainer.innerHTML = '';
-    
-    // Create the donut chart container
+
     const donutChartContainer = document.createElement('div');
     donutChartContainer.className = 'donut-chart-container';
-    
-    // Create the donut chart
+
     const donutChart = document.createElement('div');
     donutChart.className = 'donut-chart';
-    
-    // Create the donut hole
+
     const donutHole = document.createElement('div');
     donutHole.className = 'donut-hole';
     donutHole.innerHTML = '<div style="text-align: center; font-weight: bold;">Thống kê</div>';
-    
-    // Append elements
+
     donutChart.appendChild(donutHole);
     donutChartContainer.appendChild(donutChart);
     chartContainer.appendChild(donutChartContainer);
-    
-    // Chart data - only showing categories with significant values
+
     const chartData = [
       { label: 'Đơn hàng', value: 33, color: '#ff7675' },
       { label: 'Sản phẩm', value: 28, color: '#ffa94d' },
@@ -33,7 +24,6 @@ document.addEventListener('DOMContentLoaded', function() {
       { label: 'Danh mục', value: 17, color: '#a29bfe' }
     ];
     
-    // Create horizontal legend below the chart
     const legendContainer = document.createElement('div');
     legendContainer.style.display = 'flex';
     legendContainer.style.justifyContent = 'center';
