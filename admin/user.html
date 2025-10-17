@@ -1,110 +1,157 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="vi">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <link rel="icon" type="image/png" href="../img/ryicon.jpg">
-  <title>BookStore</title>
+  <title>BookStore - Quản lý khách hàng</title>
   <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900|Roboto+Slab:400,700" />
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round" rel="stylesheet">
-  <link href="assets/css/pure-style.css" rel="stylesheet" />
+  <link href="assets/css/pure-style-optimized.css" rel="stylesheet" />
   <style>
-    /* Additional styles specific to user.html */
-    .table-responsive {
-      display: block;
-      width: 100%;
-      overflow-x: auto;
-      -webkit-overflow-scrolling: touch;
+    .status-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  font-size: 13px;
+  font-weight: 600;
+  border-radius: 50px;
+  padding: 4px 10px;
+  min-width: 105px;
+  line-height: 1; /* ✅ Giúp ô không cao quá */
+  vertical-align: middle; /* ✅ Căn giữa so với dòng */
+}
+
+.status-badge i {
+  font-size: 16px;
+  line-height: 1; /* ✅ Giúp icon và chữ ngang hàng */
+  position: relative;
+  top: 1px; /* ✅ Nhích icon lên 1px cho cân hơn */
+}
+
+    body {
+      font-family: 'Roboto', sans-serif;
+      background-color: #f0f2f5;
+      color: #344767;
+      line-height: 1.6;
+      overflow-x: hidden;
     }
 
-    .table {
+    /* ==== Table ==== */
+    table {
       width: 100%;
-      margin-bottom: 0;
-      color: #212529;
       border-collapse: collapse;
-      background-color: white;
+      background: white;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
     }
 
-    .table thead th {
-      padding: 0.75rem 1rem;
-      vertical-align: middle;
-      border-bottom: 2px solid #dee2e6;
-      font-weight: 600;
-      color: #6c757d;
-      background-color: #f8f9fa;
-      font-size: 12px;
-      text-transform: uppercase;
-      text-align: center;
+    thead {
+      background: linear-gradient(195deg, #ec407a, #d81b60);
+      color: white;
     }
 
-    .table tbody td {
-      padding: 1rem;
-      vertical-align: middle;
-      border-top: 1px solid #f0f2f5;
-      text-align: center;
-    }
-
-    .table tbody td:first-child,
-    .table thead th:first-child {
-      text-align: center;
-    }
-
-    .table tbody td:nth-child(2),
-    .table tbody td:nth-child(3),
-    .table tbody td:nth-child(4),
-    .table tbody td:nth-child(5),
-    .table thead th:nth-child(2),
-    .table thead th:nth-child(3),
-    .table thead th:nth-child(4),
-    .table thead th:nth-child(5) {
+    th, td {
+      padding: 14px 16px;
+      font-size: 14px;
       text-align: left;
+      vertical-align: middle; /* Thêm dòng này để căn giữa theo chiều dọc */
     }
 
-    .table tbody tr:hover {
-      background-color: #f8f9fa;
+    /* Thêm style đặc biệt cho cột Tên và Trạng thái */
+    td:nth-child(2), /* Cột Tên */
+    td:nth-child(8) /* Cột Trạng thái */ {
+      text-align: center;
     }
 
-    /* Custom modal backdrop */
-    .modal-backdrop-custom {
-      display: none;
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background-color: rgba(0, 0, 0, 0.5);
-      z-index: 1040;
+    tbody tr:nth-child(even) {
+      background-color: #fafafa;
     }
 
-    .modal-backdrop-custom.show {
-      display: block;
+    tbody tr:hover {
+      background-color: #f3f4f8;
+      transition: 0.2s;
     }
 
-    /* Custom scrollbar for table */
-    .table-responsive::-webkit-scrollbar {
-      height: 8px;
+    th {
+      text-transform: uppercase;
+      font-size: 12px;
+      letter-spacing: 0.5px;
+      text-align: center; /* Căn giữa tiêu đề cột */
     }
 
-    .table-responsive::-webkit-scrollbar-track {
-      background: #f1f1f1;
-      border-radius: 4px;
+    /* Căn giữa tiêu đề cho cột Tên và Trạng thái */
+    th:nth-child(2),
+    th:nth-child(8) {
+      text-align: center;
     }
 
-    .table-responsive::-webkit-scrollbar-thumb {
-      background: #c1c1c1;
-      border-radius: 4px;
+    /* ==== Status Badge ==== */
+    .status-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 13px;
+      font-weight: 600;
+      border-radius: 50px;
+      padding: 5px 12px;
+      min-width: 110px;
+      justify-content: center;
     }
 
-    .table-responsive::-webkit-scrollbar-thumb:hover {
-      background: #a8a8a8;
+    .status-active {
+      background-color: rgba(76, 175, 80, 0.1);
+      color: #2e7d32;
+      border: 1px solid #81c784;
     }
+
+    .status-locked {
+      background-color: rgba(244, 67, 54, 0.1);
+      color: #c62828;
+      border: 1px solid #ef9a9a;
+    }
+
+    .material-icons-round {
+      font-size: 18px;
+      vertical-align: middle;
+    }
+
+    /* ==== Actions ==== */
+    .actions {
+      display: flex;
+      justify-content: center;
+      gap: 8px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      padding: 6px 10px;
+      border-radius: 6px;
+      border: none;
+      color: white;
+      font-size: 13px;
+      cursor: pointer;
+      transition: 0.2s;
+    }
+
+    .btn-edit { background-color: #1976d2; }
+    .btn-edit:hover { background-color: #2196f3; }
+
+    .btn-delete { background-color: #e53935; }
+    .btn-delete:hover { background-color: #ef5350; }
+
   </style>
 </head>
-<body style="font-family: 'Roboto', sans-serif; background-color: #f0f2f5; color: #344767; line-height: 1.6; overflow-x: hidden;">
 
-<aside style="position: fixed; top: 0; left: 0; z-index: 1000; width: 250px; height: 100vh; background: linear-gradient(195deg, #42424a, #191919); color: white; transition: all 0.3s ease; box-shadow: 0 0 2rem 0 rgba(0, 0, 0, 0.15);" id="sidenav-main">
-    <div style="padding: 1.5rem 1rem;">
-      <i class="fa fa-times" style="padding: 0.75rem; cursor: pointer; color: white; opacity: 0.5; position: absolute; right: 0; top: 0; display: none;" aria-hidden="true" id="iconSidenav"></i>
+<body>
+
+  <!-- SIDEBAR (Giữ nguyên như index.html) -->
+  <aside style="position: fixed; top: 0; left: 0; z-index: 1000; width: 250px; height: 100vh; background: linear-gradient(195deg, #42424a, #191919); color: white; transition: all 0.3s ease; box-shadow: 0 0 2rem 0 rgba(0, 0, 0, 0.15);" id="sidenav-main">
+    <div style="padding: 1.5em 1rem;">
       <a href="#" target="_blank" style="display: flex; align-items: center; font-weight: 600; color: white; text-decoration: none;">
         <span style="margin-left: 0.25rem; font-weight: 700;">TRUNG TÂM ĐIỀU KHIỂN</span>
       </a>
@@ -113,429 +160,120 @@
     <div style="width: 100%; overflow-y: auto; height: 75vh;">
       <ul style="list-style: none; padding: 0; margin: 0;">
         <li style="margin: 0.25rem 0;">
-          <a href="index.html" style="display: flex; align-items: center; padding: 0.75rem 1rem; color: white; border-radius: 0.375rem; transition: all 0.3s ease; text-decoration: none;">
-            <div style="display: flex; align-items: center; justify-content: center; width: 32px; height: 32px; margin-right: 0.5rem;">
-              <i class="material-icons" style="opacity: 1; font-size: 20px;">dashboard</i>
-            </div>
-            <span style="margin-left: 0.5rem;">Bảng điều khiển</span>
+          <a href="index.html" style="display: flex; align-items: center; padding: 0.75rem 1rem; color: white; border-radius: 0.375rem; text-decoration: none;">
+            <i class="material-icons" style="font-size:20px; margin-right:10px;">dashboard</i> Tổng quan
           </a>
         </li>
         <li style="margin: 0.25rem 0;">
-          <a href="#" style="display: flex; align-items: center; padding: 0.75rem 1rem; color: white; border-radius: 0.375rem; transition: all 0.3s ease; text-decoration: none; background: linear-gradient(195deg, #ec407a, #d81b60); box-shadow: 0 4px 20px 0 rgba(0, 0, 0, 0.14), 0 7px 10px -5px rgba(233, 30, 99, 0.4);">
-            <div style="display: flex; align-items: center; justify-content: center; width: 32px; height: 32px; margin-right: 0.5rem;">
-              <i class="material-icons" style="opacity: 1; font-size: 20px;">person</i>
-            </div>
-            <span style="margin-left: 0.5rem;">Quản lý khách hàng</span>
+          <a href="#" style="display: flex; align-items: center; padding: 0.75rem 1rem; color: white; border-radius: 0.375rem; text-decoration: none; background: linear-gradient(195deg,#ec407a,#d81b60); box-shadow: 0 4px 20px rgba(0,0,0,0.14),0 7px 10px -5px rgba(233,30,99,0.4);">
+            <i class="material-icons" style="font-size:20px; margin-right:10px;">person</i> Quản lý khách hàng
           </a>
         </li>
-        <li style="margin: 0.25rem 0;">
-            <a href="order.html" style="display: flex; align-items: center; padding: 0.75rem 1rem; color: white; border-radius: 0.375rem; transition: all 0.3s ease; text-decoration: none;">
-              <div style="display: flex; align-items: center; justify-content: center; width: 32px; height: 32px; margin-right: 0.5rem;">
-                <i class="material-icons" style="opacity: 1; font-size: 20px;">weekend</i>
-              </div>
-              <span style="margin-left: 0.5rem;">Quản lý đơn hàng</span>
-            </a>
-          </li>
-        <li style="margin: 0.25rem 0;">
-          <a href="products.html" style="display: flex; align-items: center; padding: 0.75rem 1rem; color: white; border-radius: 0.375rem; transition: all 0.3s ease; text-decoration: none;">
-            <div style="display: flex; align-items: center; justify-content: center; width: 32px; height: 32px; margin-right: 0.5rem;">
-              <i class="material-icons" style="opacity: 1; font-size: 20px;">table_view</i>
-            </div>
-            <span style="margin-left: 0.5rem;">Quản lý sản phẩm</span>
-          </a>
-        </li>
-        <li style="margin: 0.25rem 0;">
-          <a href="category.html" style="display: flex; align-items: center; padding: 0.75rem 1rem; color: white; border-radius: 0.375rem; transition: all 0.3s ease; text-decoration: none;">
-            <div style="display: flex; align-items: center; justify-content: center; width: 32px; height: 32px; margin-right: 0.5rem;">
-              <i class="material-icons" style="opacity: 1; font-size: 20px;">category</i>
-            </div>
-            <span style="margin-left: 0.5rem;">Tất cả danh mục</span>
-          </a>
-        </li>
-        <li style="margin: 0.25rem 0;">
-          <a href="add-product.html" style="display: flex; align-items: center; padding: 0.75rem 1rem; color: white; border-radius: 0.375rem; transition: all 0.3s ease; text-decoration: none;">
-            <div style="display: flex; align-items: center; justify-content: center; width: 32px; height: 32px; margin-right: 0.5rem;">
-              <i class="material-icons" style="opacity: 1; font-size: 20px;">add_box</i>
-            </div>
-            <span style="margin-left: 0.5rem;">Thêm sản phẩm</span>
-          </a>
-        </li>
-        <li style="margin: 0.25rem 0;">
-          <a href="add-category.html" style="display: flex; align-items: center; padding: 0.75rem 1rem; color: white; border-radius: 0.375rem; transition: all 0.3s ease; text-decoration: none;">
-            <div style="display: flex; align-items: center; justify-content: center; width: 32px; height: 32px; margin-right: 0.5rem;">
-              <i class="material-icons" style="opacity: 1; font-size: 20px;">add_circle</i>
-            </div>
-            <span style="margin-left: 0.5rem;">Thêm danh mục</span>
-          </a>
-        </li>
+        <li><a href="order.html" style="display: flex; align-items: center; padding: 0.75rem 1rem; color: white; border-radius: 0.375rem; text-decoration: none;"><i class="material-icons" style="font-size:20px; margin-right:10px;">weekend</i> Quản lý đơn hàng</a></li>
+        <li><a href="products.html" style="display: flex; align-items: center; padding: 0.75rem 1rem; color: white; border-radius: 0.375rem; text-decoration: none;"><i class="material-icons" style="font-size:20px; margin-right:10px;">table_view</i> Quản lý sản phẩm</a></li>
+        <li><a href="category.html" style="display: flex; align-items: center; padding: 0.75rem 1rem; color: white; border-radius: 0.375rem; text-decoration: none;"><i class="material-icons" style="font-size:20px; margin-right:10px;">category</i> Quản lý danh mục</a></li>
+        <li><a href="phieunhap.html" style="display: flex; align-items: center; padding: 0.75rem 1rem; color: white; border-radius: 0.375rem; text-decoration: none;"><i class="material-icons" style="font-size:20px; margin-right:10px;">inventory_2</i> Quản lý nhập hàng</a></li>
+         <li><a href="giaban.html" style="display: flex; align-items: center; padding: 0.75rem 1rem; color: white; border-radius: 0.375rem; text-decoration: none;"><i class="material-icons" style="font-size:20px; margin-right:10px;">attach_money</i> Quản lý giá bán</a></li>
+         <li><a href="tonkho.html" style="display: flex; align-items: center; padding: 0.75rem 1rem; color: white; border-radius: 0.375rem; text-decoration: none;"><i class="material-icons" style="font-size:20px; margin-right:10px;">inventory</i> Quản lý tồn kho</a></li>
+
+
       </ul>
     </div>
     <div style="position: absolute; width: 100%; bottom: 0; padding: 1rem;">
-      <div style="margin-left: 1rem; margin-right: 1rem;">
-        <a href="login.html" style="display: inline-block; background: linear-gradient(195deg, #ec407a, #d81b60); color: white; padding: 0.625rem 1.5rem; font-size: 0.875rem; line-height: 1.5; border-radius: 0.25rem; transition: all 0.15s ease-in-out; cursor: pointer; text-decoration: none; width: 100%; text-align: center; margin-top: 1.5rem;">Đăng xuất</a>
-      </div>
+      <a href="login.html" style="display: inline-block; background: linear-gradient(195deg, #ec407a, #d81b60); color: white; padding: 0.625rem 1.5rem; font-size: 0.875rem; border-radius: 0.25rem; text-decoration: none; width: 100%; text-align: center;">Đăng xuất</a>
     </div>
-</aside>
+  </aside>
 
-<main style="margin-left: 250px; min-height: 100vh; padding: 1.5rem;">
-    <nav style="margin-bottom: 1.5rem; padding: 0.75rem 1.5rem; border-radius: 0.75rem; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06); background-color: white;">
-      <div style="width: 100%; padding-right: 15px; padding-left: 15px; margin-right: auto; margin-left: auto;">
-        <nav aria-label="breadcrumb">
-          <ol style="display: flex; list-style: none; padding: 0; margin: 0;">
-            <li style="display: flex; align-items: center; color: #344767; font-size: 0.875rem;" aria-current="page">
-              Quản lý khách hàng
-            </li>
-          </ol>
-        </nav>
-      </div>
+  <!-- MAIN -->
+  <main style="margin-left: 250px; min-height: 100vh; padding: 1.5rem;">
+    <nav style="margin-bottom: 1.5rem; padding: 0.75rem 1.5rem; border-radius: 0.75rem; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -1px rgba(0,0,0,0.06); background-color: white;">
+      <ol style="list-style: none; margin: 0; padding: 0;">
+        <li style="color: #e91e63; font-size: 1rem; font-weight: 600;">Quản lý khách hàng</li>
+      </ol>
     </nav>
 
-    <div style="width: 100%; padding-right: 15px; padding-left: 15px; margin-right: auto; margin-left: auto; padding-top: 1.5rem; padding-bottom: 1.5rem;">
-        <div style="display: flex; flex-wrap: wrap; margin-right: -15px; margin-left: -15px;">
-            <div style="flex: 0 0 100%; max-width: 100%; padding-right: 15px; padding-left: 15px;">
-                <div style="position: relative; display: flex; flex-direction: column; min-width: 0; word-wrap: break-word; background-color: white; background-clip: border-box; border: 0 solid rgba(0, 0, 0, 0.125); border-radius: 0.75rem; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06); margin-bottom: 1.5rem;">
-                    <div style="display: flex; justify-content: space-between; align-items: center; padding: 1.5rem;">
-                        <h4 style="margin: 0; font-weight: 600; margin-bottom: 0.5rem;">Quản lý khách hàng</h4>
-                        <a href="user.html#" style="display: inline-block; background: linear-gradient(195deg, #ec407a, #d81b60); color: white; border: none; padding: 0.375rem 0.75rem; font-size: 0.75rem; border-radius: 0.25rem; cursor: pointer; text-decoration: none;">+ Thêm khách hàng</a>
-                    </div>
-                    <div style="flex: 1 1 auto; padding: 1.5rem;">
-                        <div style="display: block; width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch;">
-                            <table style="width: 100%; margin-bottom: 0; color: #212529; border-collapse: collapse; background-color: white;">
-                                <thead>
-                                    <tr style="background-color: #f8f9fa;">
-                                        <th style="padding: 0.75rem 1rem; vertical-align: middle; border-bottom: 2px solid #dee2e6; font-weight: 600; color: #6c757d; background-color: #f8f9fa; font-size: 12px; text-transform: uppercase; text-align: center;">STT</th>
-                                        <th style="padding: 0.75rem 1rem; vertical-align: middle; border-bottom: 2px solid #dee2e6; font-weight: 600; color: #6c757d; background-color: #f8f9fa; font-size: 12px; text-transform: uppercase; text-align: left;">Tên</th>
-                                        <th style="padding: 0.75rem 1rem; vertical-align: middle; border-bottom: 2px solid #dee2e6; font-weight: 600; color: #6c757d; background-color: #f8f9fa; font-size: 12px; text-transform: uppercase; text-align: left;">Tên Tài Khoản</th>
-                                        <th style="padding: 0.75rem 1rem; vertical-align: middle; border-bottom: 2px solid #dee2e6; font-weight: 600; color: #6c757d; background-color: #f8f9fa; font-size: 12px; text-transform: uppercase; text-align: left;">Số điện thoại</th>
-                                        <th style="padding: 0.75rem 1rem; vertical-align: middle; border-bottom: 2px solid #dee2e6; font-weight: 600; color: #6c757d; background-color: #f8f9fa; font-size: 12px; text-transform: uppercase; text-align: left;">Địa chỉ</th>
-                                        <th style="padding: 0.75rem 1rem; vertical-align: middle; border-bottom: 2px solid #dee2e6; font-weight: 600; color: #6c757d; background-color: #f8f9fa; font-size: 12px; text-transform: uppercase; text-align: center;">Tổng đơn</th>
-                                        <th style="padding: 0.75rem 1rem; vertical-align: middle; border-bottom: 2px solid #dee2e6; font-weight: 600; color: #6c757d; background-color: #f8f9fa; font-size: 12px; text-transform: uppercase; text-align: center;">Ngày tạo</th>
-                                        <th style="padding: 0.75rem 1rem; vertical-align: middle; border-bottom: 2px solid #dee2e6; font-weight: 600; color: #6c757d; background-color: #f8f9fa; font-size: 12px; text-transform: uppercase; text-align: center;">Thao tác</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <!-- Dòng dữ liệu tĩnh 1 -->
-                                    <tr style="border-bottom: 1px solid #f0f2f5;">
-                                        <td style="padding: 1rem; vertical-align: middle; text-align: center;">
-                                            <div style="text-align: center;">
-                                                <h6 style="margin: 0; font-size: 0.875rem;">1</h6>
-                                            </div>
-                                        </td>
-                                        <td style="padding: 1rem; vertical-align: middle; text-align: left;">
-                                            <div style="display: flex; padding: 0.5rem;">
-                                                <div style="display: flex; flex-direction: column; justify-content: center;">
-                                                    <h6 style="margin: 0; font-size: 0.875rem;">Nguyễn Văn A</h6>
-                                                    <p style="color: #8392ab; font-size: 0.75rem; margin: 0;">nguyenvana@example.com</p>
-                                                </div>
-                                            </div>
-                                        </td>
-                                        <td style="padding: 1rem; vertical-align: middle; text-align: left;">
-                                            <div style="display: flex; flex-direction: column; justify-content: center; padding-left: 5px;">
-                                                <h6 style="margin: 0; font-size: 0.875rem;">nguyenvana</h6>
-                                            </div>
-                                        </td>
-                                        <td style="padding: 1rem; vertical-align: middle; text-align: left;">
-                                            <p style="font-size: 0.75rem; font-weight: 700; margin: 0;">0987654321</p>
-                                        </td>
-                                        <td style="padding: 1rem; vertical-align: middle; text-align: left;">
-                                            <p style="font-size: 0.75rem; font-weight: 700; margin: 0;">123 Đường ABC, Quận 1, TP. HCM</p>
-                                        </td>
-                                        <td style="padding: 1rem; vertical-align: middle; text-align: center; font-size: 0.875rem;">5</td>
-                                        <td style="padding: 1rem; vertical-align: middle; text-align: center;">
-                                            <span style="color: #8392ab; font-size: 0.75rem; font-weight: 700;">01-01-2023</span>
-                                        </td>
-                                        <td style="padding: 1rem; vertical-align: middle; text-align: center;">
-                                            <a href="#" style="margin-bottom: 0; background-color: #fb8c00; color: white; border: none; padding: 0.375rem 0.75rem; font-size: 0.75rem; border-radius: 0.25rem; cursor: pointer; text-decoration: none; display: inline-block; width: 60px; line-height: normal;">Sửa</a>
-                                            <button style="margin-bottom: 0; background-color: #6c757d; color: white; border: none; padding: 0.375rem 0.75rem; font-size: 0.75rem; border-radius: 0.25rem; cursor: pointer; margin-left: 0.25rem; width: 60px; display: inline-block; line-height: normal;">Khóa</button>
-                                            <a href="#" style="margin-bottom: 0; background-color: #f44336; color: white; border: none; padding: 0.375rem 0.75rem; font-size: 0.75rem; border-radius: 0.25rem; cursor: pointer; margin-left: 0.25rem; text-decoration: none; display: inline-block; width: 60px; line-height: normal;" onclick="showModal('confirmModal')">Xóa</a>
-                                        </td>
-                                    </tr>
-                                    <!-- Dòng dữ liệu tĩnh 2 -->
-                                    <tr style="border-bottom: 1px solid #f0f2f5;">
-                                        <td style="padding: 1rem; vertical-align: middle; text-align: center;">
-                                            <div style="text-align: center;">
-                                                <h6 style="margin: 0; font-size: 0.875rem;">2</h6>
-                                            </div>
-                                        </td>
-                                        <td style="padding: 1rem; vertical-align: middle; text-align: left;">
-                                            <div style="display: flex; padding: 0.5rem;">
-                                                <div style="display: flex; flex-direction: column; justify-content: center;">
-                                                    <h6 style="margin: 0; font-size: 0.875rem;">Trần Thị B</h6>
-                                                    <p style="color: #8392ab; font-size: 0.75rem; margin: 0;">tranthib@example.com</p>
-                                                </div>
-                                            </div>
-                                        </td>
-                                        <td style="padding: 1rem; vertical-align: middle; text-align: left;">
-                                            <div style="display: flex; flex-direction: column; justify-content: center; padding-left: 5px;">
-                                                <h6 style="margin: 0; font-size: 0.875rem;">tranthib</h6>
-                                            </div>
-                                        </td>
-                                        <td style="padding: 1rem; vertical-align: middle; text-align: left;">
-                                            <p style="font-size: 0.75rem; font-weight: 700; margin: 0;">0123456789</p>
-                                        </td>
-                                        <td style="padding: 1rem; vertical-align: middle; text-align: left;">
-                                            <p style="font-size: 0.75rem; font-weight: 700; margin: 0;">456 Đường XYZ, Quận 2, TP. HCM</p>
-                                        </td>
-                                        <td style="padding: 1rem; vertical-align: middle; text-align: center; font-size: 0.875rem;">2</td>
-                                        <td style="padding: 1rem; vertical-align: middle; text-align: center;">
-                                            <span style="color: #8392ab; font-size: 0.75rem; font-weight: 700;">15-02-2023</span>
-                                        </td>
-                                        <td style="padding: 1rem; vertical-align: middle; text-align: center;">
-                                            <a href="#" style="margin-bottom: 0; background-color: #fb8c00; color: white; border: none; padding: 0.375rem 0.75rem; font-size: 0.75rem; border-radius: 0.25rem; cursor: pointer; text-decoration: none; display: inline-block; width: 60px; line-height: normal;">Sửa</a>
-                                            <button style="margin-bottom: 0; background-color: #4caf50; color: white; border: none; padding: 0.375rem 0.75rem; font-size: 0.75rem; border-radius: 0.25rem; cursor: pointer; margin-left: 0.25rem; width: 60px; display: inline-block; line-height: normal;">Mở</button>
-                                            <a href="#" style="margin-bottom: 0; background-color: #f44336; color: white; border: none; padding: 0.375rem 0.75rem; font-size: 0.75rem; border-radius: 0.25rem; cursor: pointer; margin-left: 0.25rem; text-decoration: none; display: inline-block; width: 60px; line-height: normal;">Xóa</a>
-                                        </td>
-                                    </tr>
-                                    <!-- Dòng dữ liệu tĩnh 3 -->
-                                    <tr style="border-bottom: 1px solid #f0f2f5;">
-                                        <td style="padding: 1rem; vertical-align: middle; text-align: center;">
-                                            <div style="text-align: center;">
-                                                <h6 style="margin: 0; font-size: 0.875rem;">3</h6>
-                                            </div>
-                                        </td>
-                                        <td style="padding: 1rem; vertical-align: middle; text-align: left;">
-                                            <div style="display: flex; padding: 0.5rem;">
-                                                <div style="display: flex; flex-direction: column; justify-content: center;">
-                                                    <h6 style="margin: 0; font-size: 0.875rem;">Lê Văn C</h6>
-                                                    <p style="color: #8392ab; font-size: 0.75rem; margin: 0;">levanc@example.com</p>
-                                                </div>
-                                            </div>
-                                        </td>
-                                        <td style="padding: 1rem; vertical-align: middle; text-align: left;">
-                                            <div style="display: flex; flex-direction: column; justify-content: center; padding-left: 5px;">
-                                                <h6 style="margin: 0; font-size: 0.875rem;">levanc</h6>
-                                            </div>
-                                        </td>
-                                        <td style="padding: 1rem; vertical-align: middle; text-align: left;">
-                                            <p style="font-size: 0.75rem; font-weight: 700; margin: 0;">0912345678</p>
-                                        </td>
-                                        <td style="padding: 1rem; vertical-align: middle; text-align: left;">
-                                            <p style="font-size: 0.75rem; font-weight: 700; margin: 0;">789 Đường DEF, Quận 3, TP. HCM</p>
-                                        </td>
-                                        <td style="padding: 1rem; vertical-align: middle; text-align: center; font-size: 0.875rem;">10</td>
-                                        <td style="padding: 1rem; vertical-align: middle; text-align: center;">
-                                            <span style="color: #8392ab; font-size: 0.75rem; font-weight: 700;">20-03-2023</span>
-                                        </td>
-                                        <td style="padding: 1rem; vertical-align: middle; text-align: center;">
-                                            <a href="#" style="margin-bottom: 0; background-color: #fb8c00; color: white; border: none; padding: 0.375rem 0.75rem; font-size: 0.75rem; border-radius: 0.25rem; cursor: pointer; text-decoration: none; display: inline-block; width: 60px; line-height: normal;">Sửa</a>
-                                            <button style="margin-bottom: 0; background-color: #6c757d; color: white; border: none; padding: 0.375rem 0.75rem; font-size: 0.75rem; border-radius: 0.25rem; cursor: pointer; margin-left: 0.25rem; width: 60px; display: inline-block; line-height: normal;">Khóa</button>
-                                            <a href="#" style="margin-bottom: 0; background-color: #f44336; color: white; border: none; padding: 0.375rem 0.75rem; font-size: 0.75rem; border-radius: 0.25rem; cursor: pointer; margin-left: 0.25rem; text-decoration: none; display: inline-block; width: 60px; line-height: normal;" onclick="showModal('confirmModal')">Xóa</a>
-                                        </td>
-                                    </tr>
-                                    <!-- Dòng dữ liệu tĩnh 4 -->
-                                    <tr style="border-bottom: 1px solid #f0f2f5;">
-                                        <td style="padding: 1rem; vertical-align: middle; text-align: center;">
-                                            <div style="text-align: center;">
-                                                <h6 style="margin: 0; font-size: 0.875rem;">4</h6>
-                                            </div>
-                                        </td>
-                                        <td style="padding: 1rem; vertical-align: middle; text-align: left;">
-                                            <div style="display: flex; padding: 0.5rem;">
-                                                <div style="display: flex; flex-direction: column; justify-content: center;">
-                                                    <h6 style="margin: 0; font-size: 0.875rem;">Phạm Thị D</h6>
-                                                    <p style="color: #8392ab; font-size: 0.75rem; margin: 0;">phamthid@example.com</p>
-                                                </div>
-                                            </div>
-                                        </td>
-                                        <td style="padding: 1rem; vertical-align: middle; text-align: left;">
-                                            <div style="display: flex; flex-direction: column; justify-content: center; padding-left: 5px;">
-                                                <h6 style="margin: 0; font-size: 0.875rem;">phamthid</h6>
-                                            </div>
-                                        </td>
-                                        <td style="padding: 1rem; vertical-align: middle; text-align: left;">
-                                            <p style="font-size: 0.75rem; font-weight: 700; margin: 0;">0909090909</p>
-                                        </td>
-                                        <td style="padding: 1rem; vertical-align: middle; text-align: left;">
-                                            <p style="font-size: 0.75rem; font-weight: 700; margin: 0;">101 Đường GHI, Quận 4, TP. HCM</p>
-                                        </td>
-                                        <td style="padding: 1rem; vertical-align: middle; text-align: center; font-size: 0.875rem;">1</td>
-                                        <td style="padding: 1rem; vertical-align: middle; text-align: center;">
-                                            <span style="color: #8392ab; font-size: 0.75rem; font-weight: 700;">05-04-2023</span>
-                                        </td>
-                                        <td style="padding: 1rem; vertical-align: middle; text-align: center;">
-                                            <a href="#" style="margin-bottom: 0; background-color: #fb8c00; color: white; border: none; padding: 0.375rem 0.75rem; font-size: 0.75rem; border-radius: 0.25rem; cursor: pointer; text-decoration: none; display: inline-block; width: 60px; line-height: normal;">Sửa</a>
-                                            <button style="margin-bottom: 0; background-color: #4caf50; color: white; border: none; padding: 0.375rem 0.75rem; font-size: 0.75rem; border-radius: 0.25rem; cursor: pointer; margin-left: 0.25rem; width: 60px; display: inline-block; line-height: normal;">Mở</button>
-                                            <a href="#" style="margin-bottom: 0; background-color: #f44336; color: white; border: none; padding: 0.375rem 0.75rem; font-size: 0.75rem; border-radius: 0.25rem; cursor: pointer; margin-left: 0.25rem; text-decoration: none; display: inline-block; width: 60px; line-height: normal;">Xóa</a>
-                                        </td>
-                                    </tr>
-                                    <!-- Dòng dữ liệu tĩnh 5 -->
-                                    <tr style="border-bottom: 1px solid #f0f2f5;">
-                                        <td style="padding: 1rem; vertical-align: middle; text-align: center;">
-                                            <div style="text-align: center;">
-                                                <h6 style="margin: 0; font-size: 0.875rem;">5</h6>
-                                            </div>
-                                        </td>
-                                        <td style="padding: 1rem; vertical-align: middle; text-align: left;">
-                                            <div style="display: flex; padding: 0.5rem;">
-                                                <div style="display: flex; flex-direction: column; justify-content: center;">
-                                                    <h6 style="margin: 0; font-size: 0.875rem;">Hoàng Văn E</h6>
-                                                    <p style="color: #8392ab; font-size: 0.75rem; margin: 0;">hoangvane@example.com</p>
-                                                </div>
-                                            </div>
-                                        </td>
-                                        <td style="padding: 1rem; vertical-align: middle; text-align: left;">
-                                            <div style="display: flex; flex-direction: column; justify-content: center; padding-left: 5px;">
-                                                <h6 style="margin: 0; font-size: 0.875rem;">hoangvane</h6>
-                                            </div>
-                                        </td>
-                                        <td style="padding: 1rem; vertical-align: middle; text-align: left;">
-                                            <p style="font-size: 0.75rem; font-weight: 700; margin: 0;">0888888888</p>
-                                        </td>
-                                        <td style="padding: 1rem; vertical-align: middle; text-align: left;">
-                                            <p style="font-size: 0.75rem; font-weight: 700; margin: 0;">222 Đường JKL, Quận 5, TP. HCM</p>
-                                        </td>
-                                        <td style="padding: 1rem; vertical-align: middle; text-align: center; font-size: 0.875rem;">8</td>
-                                        <td style="padding: 1rem; vertical-align: middle; text-align: center;">
-                                            <span style="color: #8392ab; font-size: 0.75rem; font-weight: 700;">10-05-2023</span>
-                                        </td>
-                                        <td style="padding: 1rem; vertical-align: middle; text-align: center;">
-                                            <a href="#" style="margin-bottom: 0; background-color: #fb8c00; color: white; border: none; padding: 0.375rem 0.75rem; font-size: 0.75rem; border-radius: 0.25rem; cursor: pointer; text-decoration: none; display: inline-block; width: 60px; line-height: normal;">Sửa</a>
-                                            <button style="margin-bottom: 0; background-color: #6c757d; color: white; border: none; padding: 0.375rem 0.75rem; font-size: 0.75rem; border-radius: 0.25rem; cursor: pointer; margin-left: 0.25rem; width: 60px; display: inline-block; line-height: normal;">Khóa</button>
-                                            <a href="#" style="margin-bottom: 0; background-color: #f44336; color: white; border: none; padding: 0.375rem 0.75rem; font-size: 0.75rem; border-radius: 0.25rem; cursor: pointer; margin-left: 0.25rem; text-decoration: none; display: inline-block; width: 60px; line-height: normal;">Xóa</a>
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+    <div>
+      <table>
+        <thead>
+          <tr>
+            <th>STT</th>
+            <th>Tên</th>
+            <th>Tài khoản</th>
+            <th>Số điện thoại</th>
+            <th>Địa chỉ</th>
+            <th>Tổng đơn</th>
+            <th>Ngày tạo</th>
+            <th>Trạng thái</th>
+            <th>Thao tác</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>1</td>
+            <td>Nguyễn Văn A<br><small style="color:#888;">nguyenvana@example.com</small></td>
+            <td>nguyenvana</td>
+            <td>0987654321</td>
+            <td>123 Đường ABC, Quận 1</td>
+            <td>5</td>
+            <td>01-01-2023</td>
+            <td><span class="status-badge status-active"><i class="material-icons-round">check_circle</i>Hoạt động</span></td>
+            <td>
+              <div class="actions">
+                <button class="btn btn-edit"><i class="material-icons-round">edit</i>Sửa</button>
+                <button class="btn btn-delete"><i class="material-icons-round">lock</i>Khóa</button>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td>2</td>
+            <td>Trần Thị B<br><small style="color:#888;">tranthib@example.com</small></td>
+            <td>tranthib</td>
+            <td>0123456789</td>
+            <td>456 Đường XYZ, Quận 2</td>
+            <td>2</td>
+            <td>15-02-2023</td>
+            <td><span class="status-badge status-active"><i class="material-icons-round">check_circle</i>Hoạt động</span></td>
+            <td>
+              <div class="actions">
+                <button class="btn btn-edit"><i class="material-icons-round">edit</i>Sửa</button>
+                <button class="btn btn-delete"><i class="material-icons-round">lock</i>Khóa</button>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td>3</td>
+            <td>Lê Văn C<br><small style="color:#888;">levanc@example.com</small></td>
+            <td>levanc</td>
+            <td>0912345678</td>
+            <td>789 Đường DEF, Quận 3</td>
+            <td>10</td>
+            <td>20-03-2023</td>
+            <td><span class="status-badge status-locked"><i class="material-icons-round">lock</i>Đã khóa</span></td>
+            <td>
+              <div class="actions">
+                <button class="btn btn-edit"><i class="material-icons-round">edit</i>Sửa</button>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
     </div>
-
-    <!-- Phân trang tĩnh -->
-    <div style="flex: 0 0 100%; max-width: 100%; padding-right: 15px; padding-left: 15px; padding-top: 20px;">
-        <nav aria-label="Page navigation">
-            <ul style="display: flex; list-style: none; padding: 0; margin: 0; justify-content: center; border-radius: 0.375rem;">
-                <li style="margin: 0 0.25rem;"><a href="#" style="display: block; padding: 0.5rem 0.75rem; color: #6c757d; text-decoration: none; background-color: #f8f9fa; border: 1px solid #dee2e6; border-radius: 0.375rem; pointer-events: none;"><<</a></li>
-                <li style="margin: 0 0.25rem;"><a href="#" style="display: block; padding: 0.5rem 0.75rem; color: white; text-decoration: none; background: linear-gradient(195deg, #ec407a, #d81b60); border: 1px solid #e91e63; border-radius: 0.375rem;">1</a></li>
-                <li style="margin: 0 0.25rem;"><a href="#" style="display: block; padding: 0.5rem 0.75rem; color: #344767; text-decoration: none; background-color: white; border: 1px solid #dee2e6; border-radius: 0.375rem;">2</a></li>
-                <li style="margin: 0 0.25rem;"><a href="#" style="display: block; padding: 0.5rem 0.75rem; color: #344767; text-decoration: none; background-color: white; border: 1px solid #dee2e6; border-radius: 0.375rem;">3</a></li>
-                <li style="margin: 0 0.25rem;"><a href="#" style="display: block; padding: 0.5rem 0.75rem; color: #344767; text-decoration: none; background-color: white; border: 1px solid #dee2e6; border-radius: 0.375rem;">>></a></li>
-            </ul>
-        </nav>
-    </div>
-
-    <!-- Modal: Thêm user -->
-    <div id="themKhachHangModal" style="display: none; position: fixed; z-index: 1050; left: 0; top: 0; width: 100%; height: 100%; overflow: hidden; background-color: rgba(0, 0, 0, 0.5); backdrop-filter: blur(2px);">
-        <div style="max-width: 500px; width: 90%; margin: 1.75rem auto; animation: slideDown 0.3s ease-out;">
-            <div style="position: relative; display: flex; flex-direction: column; background-color: white; border-radius: 0.75rem; box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);">
-                <div style="display: flex; align-items: center; justify-content: space-between; padding: 1.5rem; border-bottom: 1px solid #dee2e6;">
-                    <h5 style="margin: 0; font-size: 1.25rem; font-weight: 600; color: #344767;">Thêm Mới Khách Hàng</h5>
-                    <button type="button" style="background: transparent; border: none; font-size: 1.5rem; font-weight: 700; line-height: 1; color: #000; opacity: 0.5; cursor: pointer; padding: 0; width: 1em; height: 1em;" onclick="hideModal('themKhachHangModal')">×</button>
-                </div>
-                <div style="position: relative; flex: 1 1 auto; padding: 1.5rem;">
-                    <p>Chức năng thêm mới đã bị vô hiệu hóa.</p>
-                </div>
-                <div style="display: flex; align-items: center; justify-content: center; padding: 1rem 1.5rem; border-top: 1px solid #dee2e6;">
-                    <button type="button" style="background-color: #6c757d; color: white; border: none; padding: 0.375rem 0.75rem; font-size: 0.75rem; border-radius: 0.25rem; cursor: pointer; margin-right: 0.5rem;" onclick="hideModal('themKhachHangModal')">Đóng</button>
-                    <button type="button" style="background: linear-gradient(195deg, #ec407a, #d81b60); color: white; border: none; padding: 0.375rem 0.75rem; font-size: 0.75rem; border-radius: 0.25rem; cursor: pointer;">Đăng Ký</button>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Modal: Sửa thông tin user -->
-    <div id="chinhSuaKhachHangModal" style="display: none; position: fixed; z-index: 1050; left: 0; top: 0; width: 100%; height: 100%; overflow: hidden; background-color: rgba(0, 0, 0, 0.5); backdrop-filter: blur(2px);">
-        <div style="max-width: 500px; width: 90%; margin: 1.75rem auto; animation: slideDown 0.3s ease-out;">
-            <div style="position: relative; display: flex; flex-direction: column; background-color: white; border-radius: 0.75rem; box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);">
-                <div style="display: flex; align-items: center; justify-content: space-between; padding: 1.5rem; border-bottom: 1px solid #dee2e6;">
-                    <h5 style="margin: 0; font-size: 1.25rem; font-weight: 600; color: #344767;">Chỉnh Sửa Thông Tin Khách Hàng</h5>
-                    <button type="button" style="background: transparent; border: none; font-size: 1.5rem; font-weight: 700; line-height: 1; color: #000; opacity: 0.5; cursor: pointer; padding: 0; width: 1em; height: 1em;" onclick="hideModal('chinhSuaKhachHangModal')">×</button>
-                </div>
-                <div style="position: relative; flex: 1 1 auto; padding: 1.5rem;">
-                    <p>Chức năng chỉnh sửa đã bị vô hiệu hóa.</p>
-                </div>
-                <div style="display: flex; align-items: center; justify-content: center; padding: 1rem 1.5rem; border-top: 1px solid #dee2e6;">
-                    <button type="button" style="background-color: #6c757d; color: white; border: none; padding: 0.375rem 0.75rem; font-size: 0.75rem; border-radius: 0.25rem; cursor: pointer; margin-right: 0.5rem;" onclick="hideModal('chinhSuaKhachHangModal')">Đóng</button>
-                    <button type="button" style="background: linear-gradient(195deg, #ec407a, #d81b60); color: white; border: none; padding: 0.375rem 0.75rem; font-size: 0.75rem; border-radius: 0.25rem; cursor: pointer;">Cập Nhật</button>
-                </div>
-            </div>
-        </div>
-    </div>
-
-</main>
-
-<script>
-    function showModal(modalId) {
-        var modal = document.getElementById(modalId);
-        if (modal) {
-            modal.style.display = 'flex';
-            modal.style.alignItems = 'center';
-            modal.style.justifyContent = 'center';
-            modal.style.animation = 'fadeIn 0.3s ease-out';
-
-            // Add backdrop
-            var backdrop = document.createElement('div');
-            backdrop.className = 'modal-backdrop-custom';
-            backdrop.style.display = 'block';
-            document.body.appendChild(backdrop);
-
-            // Close modal when clicking backdrop
-            backdrop.onclick = function() {
-                hideModal(modalId);
-            };
-        }
-    }
-
-    function hideModal(modalId) {
-        var modal = document.getElementById(modalId);
-        if (modal) {
-            modal.style.display = 'none';
-
-            // Remove backdrop
-            var backdrop = document.querySelector('.modal-backdrop-custom');
-            if (backdrop) {
-                backdrop.remove();
-            }
-        }
-    }
-
-    // Add CSS animations
-    var style = document.createElement('style');
-    style.textContent = `
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-
-        @keyframes slideDown {
-            from {
-                transform: translateY(-50px);
-                opacity: 0;
-            }
-            to {
-                transform: translateY(0);
-                opacity: 1;
-            }
-        }
-    `;
-    document.head.appendChild(style);
-
-    // Close modal when clicking outside modal content
-    document.addEventListener('click', function(event) {
-        var modals = document.querySelectorAll('[id$="Modal"]');
-        modals.forEach(function(modal) {
-            if (event.target === modal) {
-                var modalId = modal.id;
-                hideModal(modalId);
-            }
-        });
+  </main>
+  <script>
+  // Lấy tất cả các nút có class .btn-edit
+  const editButtons = document.querySelectorAll('.btn-edit');
+  const deletebuttons= document.querySelectorAll('.btn-delete');
+ // Gắn sự kiện click cho từng nút
+  editButtons.forEach((button) => {
+    button.addEventListener('click', () => {
+      window.location.href = 'edit-user.html'; 
     });
-
-    // Close modal with Escape key
-    document.addEventListener('keydown', function(event) {
-        if (event.key === 'Escape') {
-            var modals = document.querySelectorAll('[id$="Modal"]');
-            modals.forEach(function(modal) {
-                if (modal.style.display === 'flex') {
-                    var modalId = modal.id;
-                    hideModal(modalId);
-                }
-            });
-        }
+  });
+  deletebuttons.forEach((button) => {
+    button.addEventListener('click', () => {
+        alert('Xóa thành công')
     });
+  });
 </script>
-
 </body>
 </html>

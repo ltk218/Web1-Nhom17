@@ -24,6 +24,7 @@
         <link href="css/style.css" rel="stylesheet">
         <link href="css/fix.css" rel="stylesheet">
         <style>
+            
             .toast-notification {
                 position: fixed;
                 top: 20px;
@@ -72,6 +73,22 @@
             .buy-now-btn:hover {
                 background-color: #fff !important;
                 color: #ff6f61 !important;
+            }
+
+            /* Tùy chỉnh dots slider */
+            .header-slider .slick-dots {
+                bottom: 20px;
+            }
+
+            .header-slider .slick-dots li button:before {
+                font-size: 12px;
+                color: #ddd;
+                opacity: 1;
+            }
+
+            .header-slider .slick-dots li.slick-active button:before {
+                color: #ff6f61;
+                opacity: 1;
             }
         </style>
     </head>
@@ -537,7 +554,7 @@ document.addEventListener("DOMContentLoaded", () => {
                         <div class="footer-widget">
                             <h2>Liên hệ</h2>
                             <div class="contact-info">
-                                <p><i class="fa fa-map-marker"></i>123 Street, New York, USA</p>
+                                <p><i class="fa fa-map-marker"></i>273 An Dương Vương Phường 3 Quận 5 TPHCM</p>
                                 <p><i class="fa fa-envelope"></i>info@example.com</p>
                                 <p><i class="fa fa-phone"></i>+012-345-67890</p>
                             </div>
@@ -633,62 +650,25 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 </script>
 <script>
-    function handleBuyNow(productId) {
-        // Static version - show login notification
-        const loginToast = document.getElementById('login-toast');
-        loginToast.style.display = 'block';
-        setTimeout(() => {
-            loginToast.style.animation = 'fadeOut 0.5s ease-in-out';
-            setTimeout(() => {
-                loginToast.style.display = 'none';
-                loginToast.style.animation = '';
-            }, 500);
-        }, 3000);
-    }
-</script>
-<script>
-    document.addEventListener("DOMContentLoaded", function() {
-        console.log("DOM đã sẵn sàng, khởi tạo các sự kiện tìm kiếm...");
+  // Khi bấm nút tìm kiếm hoặc nhấn Enter trong ô input
+  document.addEventListener("DOMContentLoaded", () => {
+    const searchBtn = document.getElementById("searchBtn");
+    const searchInput = document.getElementById("searchInput");
 
-        // Xử lý sự kiện cho các liên kết danh mục trong header
-        const headerCategoryLinks = document.querySelectorAll(".dropdown-menu .category-link");
-        headerCategoryLinks.forEach(link => {
-            link.addEventListener("click", function(e) {
-                e.preventDefault();
-                const category = this.getAttribute("data-category");
-                console.log("Danh mục từ header được nhấn:", category);
-                // Static version - just show alert
-                alert(`Bạn đã chọn danh mục: ${this.textContent}`);
-            });
-        });
-
-        const searchInput = document.getElementById("searchInput");
-        const searchBtn = document.getElementById("searchBtn");
-        if (searchBtn) {
-            searchBtn.addEventListener("click", function() {
-                console.log("Nút tìm kiếm được nhấn");
-                const searchTerm = searchInput ? searchInput.value.trim() : '';
-                if (searchTerm !== "") {
-                    // Static version - just show alert
-                    window.location.href = "timkiemkhongtk.html";
-                }
-            });
-        }
-
-        if (searchInput) {
-            searchInput.addEventListener("keypress", function(e) {
-                if (e.key === "Enter") {
-                    console.log("Enter được nhấn trong ô tìm kiếm");
-                    const searchTerm = searchInput.value.trim();
-                    if (searchTerm !== "") {
-                        // Chuyển đến trang tìm kiếm không tài khoản
-                        window.location.href = "timkiemkhongtk.html";
-                    }
-                    e.preventDefault();
-                }
-            });
-        }
+    // Khi click nút tìm kiếm
+    searchBtn.addEventListener("click", () => {
+      window.location.href = "searchkhongtk.html"; // 👉 trang bạn muốn chuyển tới
     });
+
+    // Khi nhấn Enter trong ô tìm kiếm
+    searchInput.addEventListener("keypress", (e) => {
+      if (e.key === "Enter") {
+        e.preventDefault();
+        window.location.href = "searchkhongtk.html";
+      }
+    });
+  });
 </script>
+
     </body>
 </html>

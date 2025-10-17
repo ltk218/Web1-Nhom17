@@ -146,9 +146,15 @@
                                                 <button type="button" class="btn">Tâm lý tình cảm </button>
                                             </div>
                                         </div>
-                                        <div class="action">
-                                            <a class="btn" href="cart.html"> <i class="fa fa-shopping-cart"></i>Thêm vào giỏ hàng</a>
-                                        </div>
+                                        <div class="action d-flex align-items-center">
+    <a class="btn mr-2" href="cart.html" onclick="alert('Thêm vào giỏ hàng thành công')">
+        <i class="fa fa-shopping-cart"></i> Thêm vào giỏ hàng
+    </a>
+    <a class="btn btn-primary" href="checkout.html">
+        <i class="fab fa-cc-visa"></i> Mua ngay
+    </a>
+</div>
+
                                     </div>
                                 </div>
                             </div>
@@ -302,7 +308,7 @@
                         <div class="footer-widget">
                             <h2>Giữ liên lạc</h2>
                             <div class="contact-info">
-                                <p><i class="fa fa-map-marker"></i>123 E Store, Los Angeles, USA</p>
+                                <p><i class="fa fa-map-marker"></i>273 An Dương Vương Phường 3 Quận 5 TPHCM</p>
                                 <p><i class="fa fa-envelope"></i>email@example.com</p>
                                 <p><i class="fa fa-phone"></i>+123-456-7890</p>
                             </div>
@@ -367,6 +373,22 @@
         </div>
         <!-- Footer End -->
         
-        
+        <script>
+            const searchBtn = document.getElementById("searchBtn");
+    const searchInput = document.getElementById("searchInput");
+
+    // Khi click nút tìm kiếm
+    searchBtn.addEventListener("click", () => {
+      window.location.href = "searchcotaikhoan.html"; // 👉 trang bạn muốn chuyển tới
+    });
+
+    // Khi nhấn Enter trong ô tìm kiếm
+    searchInput.addEventListener("keypress", (e) => {
+      if (e.key === "Enter") {
+        e.preventDefault();
+        window.location.href = "searchcotaikhoan.html";
+      }
+    });
+        </script>
     </body>
 </html>

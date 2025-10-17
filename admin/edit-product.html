@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <link rel="icon" type="image/png" href="../img/ryicon.jpg">
-  <title>BookStore - Thêm sản phẩm</title>
+  <title>BookStore - Cập nhật sản phẩm</title>
   <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900|Roboto+Slab:400,700" />
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round" rel="stylesheet">
   <link href="assets/css/pure-style.css" rel="stylesheet" />
@@ -21,15 +21,18 @@
       cursor: pointer;
       transition: all 0.3s ease;
     }
+
     .image-preview:hover {
       border-color: #e91e63;
       background-color: #fff5f8;
     }
+
     .image-preview img {
       max-width: 100%;
       max-height: 100%;
       object-fit: cover;
     }
+
     .image-upload-text {
       text-align: center;
       color: #6c757d;
@@ -38,17 +41,17 @@
   </style>
 </head>
 
-<body style="font-family:'Roboto',sans-serif;background-color:#f0f2f5;color:#344767;line-height:1.6;overflow-x:hidden;">
+<body style="font-family: 'Roboto', sans-serif; background-color: #f0f2f5; color: #344767; line-height: 1.6; overflow-x: hidden;">
 
-  <!-- SIDEBAR -->
-  <aside style="position:fixed;top:0;left:0;z-index:1000;width:250px;height:100vh;background:linear-gradient(195deg,#42424a,#191919);color:white;box-shadow:0 0 2rem rgba(0,0,0,0.15);">
-    <div style="padding:1.5em 1rem;">
-      <a href="#" style="display:flex;align-items:center;font-weight:700;color:white;text-decoration:none;">
+  <!-- Sidebar -->
+  <aside style="position: fixed; top: 0; left: 0; z-index: 1000; width: 250px; height: 100vh; background: linear-gradient(195deg, #42424a, #191919); color: white; box-shadow: 0 0 2rem rgba(0, 0, 0, 0.15);">
+    <div style="padding: 1.5em 1rem;">
+      <a href="#" style="display: flex; align-items: center; font-weight: 700; color: white; text-decoration: none;">
         <span>TRUNG TÂM ĐIỀU KHIỂN</span>
       </a>
     </div>
-    <hr style="border-top:1px solid rgba(255,255,255,0.1);margin:1rem 0;">
-    <ul style="list-style:none;padding:0;margin:0;">
+    <hr style="border-top: 1px solid rgba(255,255,255,0.1); margin: 1rem 0;">
+    <ul style="list-style: none; padding: 0; margin: 0;">
       <li><a href="index.html" style="display:flex;align-items:center;padding:0.75rem 1rem;color:white;text-decoration:none;"><i class="material-icons" style="margin-right:10px;">dashboard</i>Tổng quan</a></li>
       <li><a href="user.html" style="display:flex;align-items:center;padding:0.75rem 1rem;color:white;text-decoration:none;"><i class="material-icons" style="margin-right:10px;">person</i>Quản lý khách hàng</a></li>
       <li><a href="order.html" style="display:flex;align-items:center;padding:0.75rem 1rem;color:white;text-decoration:none;"><i class="material-icons" style="margin-right:10px;">weekend</i>Quản lý đơn hàng</a></li>
@@ -63,87 +66,76 @@
     </div>
   </aside>
 
-  <!-- MAIN CONTENT -->
-  <main style="margin-left:250px;min-height:100vh;padding:1.5rem;">
-    <nav style="margin-bottom:1.5rem;padding:0.75rem 1.5rem;border-radius:0.75rem;box-shadow:0 4px 6px -1px rgba(0,0,0,0.1),0 2px 4px -1px rgba(0,0,0,0.06);background-color:white;">
-      <div style="width:100%;padding-right:15px;padding-left:15px;margin:auto;">
-        <ol style="display:flex;list-style:none;padding:0;margin:0;">
-          <li style="display:flex;align-items:center;color:rgba(52,71,103,0.5);font-size:0.875rem;">
-            <a href="javascript:;" style="color:#e91e63;text-decoration:none;"><b>Thêm sản phẩm mới</b></a>
-          </li>
-        </ol>
+  <!-- Main -->
+  <main style="margin-left: 250px; min-height: 100vh; padding: 1.5rem;">
+    <nav style="margin-bottom: 1.5rem; padding: 0.75rem 1.5rem; border-radius: 0.75rem; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06); background-color: white;">
+      <div>
+        <b style="color:#e91e63;">Cập nhật sản phẩm</b>
       </div>
     </nav>
 
-    <div style="width:100%;padding:1.5rem;">
+    <div style="padding-top: 1.5rem; padding-bottom: 1.5rem;">
       <div class="card">
         <div class="card-header">
-          <h4 style="margin:0;font-weight:600;margin-bottom:0.5rem;color:#344767;">Thông tin sản phẩm</h4>
-          <p style="margin:0;color:#6c757d;font-size:0.875rem;">Nhập các thông tin của sản phẩm</p>
+          <h4 style="margin: 0; font-weight: 600; margin-bottom: 0.5rem; color: #344767;">Thông tin sản phẩm</h4>
+          <p style="margin: 0; color: #6c757d; font-size: 0.875rem;">Cập nhật các thông tin của sản phẩm</p>
         </div>
-
         <div class="card-body">
-          <div id="success-alert" class="alert alert-success" style="display:none;">
-            <strong>Thành công!</strong> Sản phẩm đã được thêm thành công.
-          </div>
-          <div id="error-alert" class="alert alert-danger" style="display:none;">
-            <strong>Lỗi!</strong> Có lỗi xảy ra khi thêm sản phẩm. Vui lòng thử lại.
-          </div>
-
-          <form id="addProductForm">
-            <div style="display:flex;flex-wrap:wrap;margin:0 -15px;">
+          <form id="updateProductForm">
+            <div style="display: flex; flex-wrap: wrap; margin-right: -15px; margin-left: -15px;">
               <!-- Left column -->
-              <div style="flex:0 0 50%;max-width:50%;padding:0 15px;">
+              <div style="flex: 0 0 66.666667%; max-width: 66.666667%; padding-right: 15px; padding-left: 15px;">
                 <div class="form-group">
-                  <label for="productName" class="form-label">Tên sản phẩm <span style="color:#dc3545;">*</span></label>
-                  <input type="text" class="form-control" id="productName" name="productName" placeholder="Nhập tên sản phẩm" required>
+                  <label for="productName" class="form-label">Tên sản phẩm <span style="color: #dc3545;">*</span></label>
+                  <input type="text" class="form-control" id="productName" name="productName" value="Sách Lập Trình JavaScript" required>
                 </div>
 
                 <div class="form-group">
                   <label for="productDescription" class="form-label">Mô tả sản phẩm</label>
-                  <textarea class="form-control" id="productDescription" name="productDescription" rows="4" placeholder="Nhập mô tả chi tiết về sản phẩm"></textarea>
+                  <textarea class="form-control" id="productDescription" name="productDescription" rows="4">Cuốn sách này cung cấp kiến thức toàn diện về JavaScript, từ cơ bản đến nâng cao. Phù hợp cho cả người mới bắt đầu và lập trình viên có kinh nghiệm muốn nâng cao kỹ năng.</textarea>
                 </div>
 
                 <div class="form-group">
-                  <label for="productPrice" class="form-label">Giá sản phẩm <span style="color:#dc3545;">*</span></label>
-                  <input type="number" class="form-control" id="productPrice" name="productPrice" placeholder="0" min="0" step="1">
+                  <label for="productPrice" class="form-label">Giá sản phẩm <span style="color: #dc3545;">*</span></label>
+                  <input type="number" class="form-control" id="productPrice" name="productPrice" min="0" step="1" value="120000">
                   <div class="form-text">Đơn vị: VNĐ</div>
                 </div>
 
                 <div class="form-group">
-                  <label for="productCategory" class="form-label">Danh mục <span style="color:#dc3545;">*</span></label>
+                  <label for="productCategory" class="form-label">Danh mục <span style="color: #dc3545;">*</span></label>
                   <select class="form-control" id="productCategory" name="productCategory" required>
                     <option value="">Chọn danh mục</option>
                     <option value="thieu-nhi">Thiếu Nhi</option>
                     <option value="tam-ly-tinh-cam">Tâm Lý / Tình Cảm</option>
                     <option value="ton-giao">Tôn Giáo</option>
                     <option value="lich-su">Lịch Sử</option>
-                    <option value="van-hoc">Văn Học</option>
+                    <option value="van-hoc" selected>Văn Học</option>
                   </select>
                 </div>
               </div>
 
               <!-- Right column -->
-              <div style="flex:0 0 50%;max-width:50%;padding:0 15px;">
+              <div style="flex: 0 0 33.333333%; max-width: 33.333333%; padding-right: 15px; padding-left: 15px;">
                 <div class="form-group">
                   <label class="form-label">Hình ảnh sản phẩm</label>
                   <div class="image-preview" onclick="document.getElementById('productImage').click()">
                     <div class="image-upload-text">
-                      <i class="material-icons" style="font-size:48px;color:#dee2e6;margin-bottom:0.5rem;">add_photo_alternate</i>
+                      <i class="material-icons" style="font-size: 48px; color: #dee2e6; margin-bottom: 0.5rem;">add_photo_alternate</i>
                       <div>Chọn ảnh cho sản phẩm</div>
                     </div>
-                    <img id="imagePreview" src="" alt="Preview" style="display:none;">
+                    <img id="imagePreview" src="" alt="Preview" style="display: none;">
                   </div>
-                  <input type="file" class="form-control" id="productImage" name="productImage" accept="image/*" style="display:none;">
+                  <input type="file" id="productImage" name="productImage" accept="image/*" style="display: none;">
                 </div>
               </div>
             </div>
 
-            <div style="display:flex;justify-content:center;gap:1rem;margin-top:2rem;padding-top:2rem;border-top:1px solid #dee2e6;">
+            <!-- Buttons -->
+            <div style="display: flex; justify-content: center; gap: 1rem; margin-top: 2rem; padding-top: 2rem; border-top: 1px solid #dee2e6;">
               <button type="button" class="btn btn-secondary" onclick="window.location.href='products.html'">Quay về</button>
-              <button type="submit" class="btn btn-gradient" style="padding:0.75rem 2rem;font-weight:600;" onclick="alert('Thêm thành công');window.location.href='products.html';">
-                <i class="material-icons" style="font-size:1rem;margin-right:0.5rem;vertical-align:middle;">add_circle</i>
-                Thêm sản phẩm
+              <button type="button" class="btn btn-gradient" style="padding: 0.75rem 2rem; font-weight: 600;" onclick="alert('Cập nhật sản phẩm thành công!'); window.location.href='products.html';">
+                <i class="material-icons" style="font-size: 1rem; margin-right: 0.5rem; vertical-align: middle;">save</i>
+                Lưu thay đổi
               </button>
             </div>
           </form>
@@ -153,26 +145,28 @@
   </main>
 
   <script>
-    document.getElementById('productImage').addEventListener('change', function(e) {
+    // Hiển thị ảnh preview khi chọn file
+    document.getElementById('productImage').addEventListener('change', function (e) {
       const file = e.target.files[0];
       const preview = document.getElementById('imagePreview');
-      const imagePreviewContainer = document.querySelector('.image-preview');
       const uploadText = document.querySelector('.image-upload-text');
+      const container = document.querySelector('.image-preview');
+
       if (file) {
         const reader = new FileReader();
-        reader.onload = function(ev) {
+        reader.onload = function (ev) {
           preview.src = ev.target.result;
           preview.style.display = 'block';
           uploadText.style.display = 'none';
-          imagePreviewContainer.style.borderColor = '#28a745';
-          imagePreviewContainer.style.backgroundColor = '#f8fff9';
+          container.style.borderColor = '#28a745';
+          container.style.backgroundColor = '#f8fff9';
         };
         reader.readAsDataURL(file);
       } else {
         preview.style.display = 'none';
         uploadText.style.display = 'block';
-        imagePreviewContainer.style.borderColor = '#dee2e6';
-        imagePreviewContainer.style.backgroundColor = '#f8f9fa';
+        container.style.borderColor = '#dee2e6';
+        container.style.backgroundColor = '#f8f9fa';
       }
     });
   </script>

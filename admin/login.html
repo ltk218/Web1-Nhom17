@@ -139,24 +139,10 @@
                 <label for="password">Mật khẩu</label>
                 <input type="password" class="form-control" id="password" placeholder="Nhập mật khẩu" required>
             </div>
-            <button type="submit" class="btn btn-primary">Đăng nhập</button>
+            <button type="button" class="btn btn-primary" onclick="window.location.href='index.html'">Đăng nhập</button>
         </form>
-        <div id="login-error">Sai tên đăng nhập hoặc mật khẩu!</div>
     </div>
 
-    <script>
-    function checkLogin(event) {
-        event.preventDefault();
-        var username = document.getElementById('username').value;
-        var password = document.getElementById('password').value;
-        if(username === 'admin' && password === 'admin') {
-            window.location.href = 'index.html';
-            return true;
-        } else {
-            document.getElementById('login-error').style.display = 'block';
-            return false;
-        }
-    }
-    </script>
+   
 </body>
 </html>

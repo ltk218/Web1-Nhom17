@@ -31,9 +31,9 @@
                 <nav class="navbar navbar-expand-md bg-dark navbar-dark">
                   <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
                         <div class="navbar-nav mr-auto">
-                            <a href="index.html" class="nav-item nav-link active">Trang chủ</a>
+                            <a href="index.html" class="nav-item nav-link">Trang chủ</a>
                             <a href="danhmuckhongtk.html" class="nav-item nav-link">Danh Mục</a>
-                            <a href="contactkhongtk.html" class="nav-item nav-link">Liên hệ</a>
+                            <a href="contactkhongtk.html" class="nav-item nav-link active">Liên hệ</a>
                         </div>
                         <div class="navbar-nav ml-auto">
                             <div class="nav-item dropdown">
@@ -87,8 +87,8 @@
         <div class="breadcrumb-wrap">
             <div class="container-fluid">
                 <ul class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="#">Trang Chủ</a></li>
-                    <li class="breadcrumb-item"><a href="#">Sản Phẩm</a></li>
+                    <li class="breadcrumb-item"><a href="index.html">Trang Chủ</a></li>
+                    <li class="breadcrumb-item"><a href="danhmuckhongtk.html">Sản Phẩm</a></li>
                     <li class="breadcrumb-item active">Liên Hệ</li>
                 </ul>
             </div>
@@ -140,38 +140,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="row mt-4">
-                    <div class="col-lg-6">
-                        <div class="contact-info">
-                            <h2>Văn phòng chúng tôi</h2>
-                            <h3><i class="fa fa-map-marker"></i>273 Đ. An Dương Vương, Phường 2, Quận 5, Hồ Chí Minh</h3>
-                            <h3><i class="fa fa-envelope"></i>123@egmail.com</h3>
-                            <h3><i class="fa fa-phone"></i>0123456789   </h3>
-                            <div class="social">
-                                <a href=""><i class="fab fa-twitter"></i></a>
-                                <a href=""><i class="fab fa-facebook-f"></i></a>
-                                <a href=""><i class="fab fa-linkedin-in"></i></a>
-                                <a href=""><i class="fab fa-instagram"></i></a>
-                                <a href=""><i class="fab fa-youtube"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-6">
-                        <div class="contact-info">
-                            <h2>Cửa hàng</h2>
-                            <h3><i class="fa fa-map-marker"></i>273 Đ. An Dương Vương, Phường 2, Quận 5, Hồ Chí Minh</h3>
-                            <h3><i class="fa fa-envelope"></i>123@egmail.com</h3>
-                            <h3><i class="fa fa-phone"></i>0123456789</h3>
-                            <div class="social">
-                                <a href=""><i class="fab fa-twitter"></i></a>
-                                <a href=""><i class="fab fa-facebook-f"></i></a>
-                                <a href=""><i class="fab fa-linkedin-in"></i></a>
-                                <a href=""><i class="fab fa-instagram"></i></a>
-                                <a href=""><i class="fab fa-youtube"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                
             </div>
         </div>
         <!-- Contact End -->
@@ -184,7 +153,7 @@
                         <div class="footer-widget">
                             <h2>Liên hệ</h2>
                             <div class="contact-info">
-                                <p><i class="fa fa-map-marker"></i>123 Street, New York, USA</p>
+                                <p><i class="fa fa-map-marker"></i>273 An Dương Vương Phường 3 Quận 5 TPHCM</p>
                                 <p><i class="fa fa-envelope"></i>info@example.com</p>
                                 <p><i class="fa fa-phone"></i>+012-345-67890</p>
                             </div>
@@ -271,12 +240,22 @@
                     const searchTerm = searchInput.value.trim();
                     if (searchTerm !== "") {
                         // Chuyển đến trang tìm kiếm không tài khoản
-                        window.location.href = "timkiemkhongtk.html";
+                        window.location.href = "searchkhongtk.html";
                     }
                     e.preventDefault();
                 }
             });
         }
+        searchBtn.addEventListener("click", function () {
+    // Có thể thêm logic lấy giá trị tìm kiếm nếu cần
+    const query = document.getElementById("searchInput").value.trim();
+
+    // Nếu bạn muốn truyền query qua URL:
+    // window.location.href = `search.html?query=${encodeURIComponent(query)}`;
+
+    // Nếu chỉ muốn chuyển sang trang khác (không cần query):
+    window.location.href = "searchkhongtk.html";
+  });
      </script>
         <script src="js/main.js"></script>
     </body>

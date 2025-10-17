@@ -12,9 +12,8 @@
 </head>
 
 <body style="font-family: 'Roboto', sans-serif; background-color: #f0f2f5; color: #344767; line-height: 1.6; overflow-x: hidden;">
-<aside style="position: fixed; top: 0; left: 0; z-index: 1000; width: 250px; height: 100vh; background: linear-gradient(195deg, #42424a, #191919); color: white; transition: all 0.3s ease; box-shadow: 0 0 2rem 0 rgba(0, 0, 0, 0.15);" id="sidenav-main">
-    <div style="padding: 1.5rem 1rem;">
-      <i class="fa fa-times" style="padding: 0.75rem; cursor: pointer; color: white; opacity: 0.5; position: absolute; right: 0; top: 0; display: none;" aria-hidden="true" id="iconSidenav"></i>
+ <aside style="position: fixed; top: 0; left: 0; z-index: 1000; width: 250px; height: 100vh; background: linear-gradient(195deg, #42424a, #191919); color: white; transition: all 0.3s ease; box-shadow: 0 0 2rem 0 rgba(0, 0, 0, 0.15);" id="sidenav-main">
+    <div style="padding: 1.5em 1rem;">
       <a href="#" target="_blank" style="display: flex; align-items: center; font-weight: 600; color: white; text-decoration: none;">
         <span style="margin-left: 0.25rem; font-weight: 700;">TRUNG TÂM ĐIỀU KHIỂN</span>
       </a>
@@ -23,76 +22,33 @@
     <div style="width: 100%; overflow-y: auto; height: 75vh;">
       <ul style="list-style: none; padding: 0; margin: 0;">
         <li style="margin: 0.25rem 0;">
-          <a href="index.html" style="display: flex; align-items: center; padding: 0.75rem 1rem; color: white; border-radius: 0.375rem; transition: all 0.3s ease; text-decoration: none; background: linear-gradient(195deg, #ec407a, #d81b60); box-shadow: 0 4px 20px 0 rgba(0, 0, 0, 0.14), 0 7px 10px -5px rgba(233, 30, 99, 0.4);">
-            <div style="display: flex; align-items: center; justify-content: center; width: 32px; height: 32px; margin-right: 0.5rem;">
-              <i class="material-icons" style="opacity: 1; font-size: 20px;">dashboard</i>
-            </div>
-            <span style="margin-left: 0.5rem;">Bảng điều khiển</span>
+          <a href="index.html" style="display: flex; align-items: center; padding: 0.75rem 1rem; color: white; border-radius: 0.375rem; text-decoration: none; background: linear-gradient(195deg,#ec407a,#d81b60); box-shadow: 0 4px 20px rgba(0,0,0,0.14),0 7px 10px -5px rgba(233,30,99,0.4);">
+            <i class="material-icons" style="font-size:20px; margin-right:10px;">dashboard</i> Tổng quan
           </a>
         </li>
-        <li style="margin: 0.25rem 0;">
-          <a href="user.html" style="display: flex; align-items: center; padding: 0.75rem 1rem; color: white; border-radius: 0.375rem; transition: all 0.3s ease; text-decoration: none;">
-            <div style="display: flex; align-items: center; justify-content: center; width: 32px; height: 32px; margin-right: 0.5rem;">
-              <i class="material-icons" style="opacity: 1; font-size: 20px;">person</i>
-            </div>
-            <span style="margin-left: 0.5rem;">Quản lý khách hàng</span>
-          </a>
-        </li>
-        <li style="margin: 0.25rem 0;">
-            <a href="order.html" style="display: flex; align-items: center; padding: 0.75rem 1rem; color: white; border-radius: 0.375rem; transition: all 0.3s ease; text-decoration: none;">
-              <div style="display: flex; align-items: center; justify-content: center; width: 32px; height: 32px; margin-right: 0.5rem;">
-                <i class="material-icons" style="opacity: 1; font-size: 20px;">weekend</i>
-              </div>
-              <span style="margin-left: 0.5rem;">Quản lý đơn hàng</span>
-            </a>
-          </li>
-        <li style="margin: 0.25rem 0;">
-          <a href="products.html" style="display: flex; align-items: center; padding: 0.75rem 1rem; color: white; border-radius: 0.375rem; transition: all 0.3s ease; text-decoration: none;">
-            <div style="display: flex; align-items: center; justify-content: center; width: 32px; height: 32px; margin-right: 0.5rem;">
-              <i class="material-icons" style="opacity: 1; font-size: 20px;">table_view</i>
-            </div>
-            <span style="margin-left: 0.5rem;">Quản lý sản phẩm</span>
-          </a>
-        </li>
-        <li style="margin: 0.25rem 0;">
-          <a href="category.html" style="display: flex; align-items: center; padding: 0.75rem 1rem; color: white; border-radius: 0.375rem; transition: all 0.3s ease; text-decoration: none;">
-            <div style="display: flex; align-items: center; justify-content: center; width: 32px; height: 32px; margin-right: 0.5rem;">
-              <i class="material-icons" style="opacity: 1; font-size: 20px;">category</i>
-            </div>
-            <span style="margin-left: 0.5rem;">Tất cả danh mục</span>
-          </a>
-        </li>
-        <li style="margin: 0.25rem 0;">
-          <a href="add-product.html" style="display: flex; align-items: center; padding: 0.75rem 1rem; color: white; border-radius: 0.375rem; transition: all 0.3s ease; text-decoration: none;">
-            <div style="display: flex; align-items: center; justify-content: center; width: 32px; height: 32px; margin-right: 0.5rem;">
-              <i class="material-icons" style="opacity: 1; font-size: 20px;">add_box</i>
-            </div>
-            <span style="margin-left: 0.5rem;">Thêm sản phẩm</span>
-          </a>
-        </li>
-        <li style="margin: 0.25rem 0;">
-          <a href="add-category.html" style="display: flex; align-items: center; padding: 0.75rem 1rem; color: white; border-radius: 0.375rem; transition: all 0.3s ease; text-decoration: none;">
-            <div style="display: flex; align-items: center; justify-content: center; width: 32px; height: 32px; margin-right: 0.5rem;">
-              <i class="material-icons" style="opacity: 1; font-size: 20px;">add_circle</i>
-            </div>
-            <span style="margin-left: 0.5rem;">Thêm danh mục</span>
-          </a>
-        </li>
+       <li><a href="user.html" style="display: flex; align-items: center; padding: 0.75rem 1rem; color: white; border-radius: 0.375rem; text-decoration: none;"><i class="material-icons" style="font-size:20px; margin-right:10px;">weekend</i> Quản lý khách hàng</a></li>
+
+        <li><a href="order.html" style="display: flex; align-items: center; padding: 0.75rem 1rem; color: white; border-radius: 0.375rem; text-decoration: none;"><i class="material-icons" style="font-size:20px; margin-right:10px;">person</i> Quản lý đơn hàng</a></li>
+        <li><a href="products.html" style="display: flex; align-items: center; padding: 0.75rem 1rem; color: white; border-radius: 0.375rem; text-decoration: none;"><i class="material-icons" style="font-size:20px; margin-right:10px;">table_view</i> Quản lý sản phẩm</a></li>
+        <li><a href="category.html" style="display: flex; align-items: center; padding: 0.75rem 1rem; color: white; border-radius: 0.375rem; text-decoration: none;"><i class="material-icons" style="font-size:20px; margin-right:10px;">category</i> Quản lý danh mục</a></li>
+        <li><a href="phieunhap.html" style="display: flex; align-items: center; padding: 0.75rem 1rem; color: white; border-radius: 0.375rem; text-decoration: none;"><i class="material-icons" style="font-size:20px; margin-right:10px;">inventory_2</i> Quản lý nhập hàng</a></li>
+         <li><a href="giaban.html" style="display: flex; align-items: center; padding: 0.75rem 1rem; color: white; border-radius: 0.375rem; text-decoration: none;"><i class="material-icons" style="font-size:20px; margin-right:10px;">attach_money</i> Quản lý giá bán</a></li>
+         <li><a href="tonkho.html" style="display: flex; align-items: center; padding: 0.75rem 1rem; color: white; border-radius: 0.375rem; text-decoration: none;"><i class="material-icons" style="font-size:20px; margin-right:10px;">inventory</i> Quản lý tồn kho</a></li>
+
+
       </ul>
     </div>
     <div style="position: absolute; width: 100%; bottom: 0; padding: 1rem;">
-      <div style="margin-left: 1rem; margin-right: 1rem;">
-        <a href="login.html" style="display: inline-block; background: linear-gradient(195deg, #ec407a, #d81b60); color: white; padding: 0.625rem 1.5rem; font-size: 0.875rem; line-height: 1.5; border-radius: 0.25rem; transition: all 0.15s ease-in-out; cursor: pointer; text-decoration: none; width: 100%; text-align: center; margin-top: 1.5rem;">Đăng xuất</a>
-      </div>
+      <a href="login.html" style="display: inline-block; background: linear-gradient(195deg, #ec407a, #d81b60); color: white; padding: 0.625rem 1.5rem; font-size: 0.875rem; border-radius: 0.25rem; text-decoration: none; width: 100%; text-align: center;">Đăng xuất</a>
     </div>
-</aside>
+  </aside>
 
 <main style="margin-left: 250px; min-height: 100vh; padding: 1.5rem;">
     <nav style="margin-bottom: 1.5rem; padding: 0.75rem 1.5rem; border-radius: 0.75rem; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06); background-color: white;">
       <div style="width: 100%; padding-right: 15px; padding-left: 15px; margin-right: auto; margin-left: auto;">
         <nav aria-label="breadcrumb">
           <ol style="display: flex; list-style: none; padding: 0; margin: 0;">
-            <li style="display: flex; align-items: center;"><a href="javascript:;" style="color: rgba(52, 71, 103, 0.5); text-decoration: none;"><p style="margin: 0;"><b>Bảng điều khiển</b></p></a></li>
+            <li style="display: flex; align-items: center;"><a href="javascript:;" style="color: #e91e63; text-decoration: none;"><p style="margin: 0;"><b>Tổng quan</b></p></a></li>
             <li style="display: flex; align-items: center; color: #344767; font-size: 0.875rem;" aria-current="page">
             </li>
           </ol>
@@ -285,7 +241,7 @@
                                         <td style="padding: 1rem; vertical-align: middle; text-align: center;">15</td>
                                         <td style="padding: 1rem; vertical-align: middle; text-align: center;">25.000.000 VNĐ</td>
                                         <td style="padding: 1rem; vertical-align: middle; text-align: center;">
-                                            <a href="#" style="display: inline-block; background-color: #17a2b8; color: white; padding: 0.375rem 0.75rem; font-size: 0.75rem; border-radius: 0.25rem; text-decoration: none;">Xem các đơn hàng</a>
+                                            <a href="order-detail.html" style="display: inline-block; background-color: #17a2b8; color: white; padding: 0.375rem 0.75rem; font-size: 0.75rem; border-radius: 0.25rem; text-decoration: none;">Xem chi tiết</a>
                                         </td>
                                     </tr>
                                     <tr style="border-bottom: 1px solid #f0f2f5;">
@@ -299,7 +255,7 @@
                                         <td style="padding: 1rem; vertical-align: middle; text-align: center;">10</td>
                                         <td style="padding: 1rem; vertical-align: middle; text-align: center;">18.500.000 VNĐ</td>
                                         <td style="padding: 1rem; vertical-align: middle; text-align: center;">
-                                            <a href="#" style="display: inline-block; background-color: #17a2b8; color: white; padding: 0.375rem 0.75rem; font-size: 0.75rem; border-radius: 0.25rem; text-decoration: none;">Xem các đơn hàng</a>
+                                            <a href="order-detail.html" style="display: inline-block; background-color: #17a2b8; color: white; padding: 0.375rem 0.75rem; font-size: 0.75rem; border-radius: 0.25rem; text-decoration: none;">Xem chi tiết</a>
                                         </td>
                                     </tr>
                                     <tr style="border-bottom: 1px solid #f0f2f5;">
@@ -313,7 +269,7 @@
                                         <td style="padding: 1rem; vertical-align: middle; text-align: center;">8</td>
                                         <td style="padding: 1rem; vertical-align: middle; text-align: center;">12.000.000 VNĐ</td>
                                         <td style="padding: 1rem; vertical-align: middle; text-align: center;">
-                                            <a href="#" style="display: inline-block; background-color: #17a2b8; color: white; padding: 0.375rem 0.75rem; font-size: 0.75rem; border-radius: 0.25rem; text-decoration: none;">Xem các đơn hàng</a>
+                                            <a href="order-detail.html" style="display: inline-block; background-color: #17a2b8; color: white; padding: 0.375rem 0.75rem; font-size: 0.75rem; border-radius: 0.25rem; text-decoration: none;">Xem chi tiết</a>
                                         </td>
                                     </tr>
                                     <tr style="border-bottom: 1px solid #f0f2f5;">
@@ -327,7 +283,7 @@
                                         <td style="padding: 1rem; vertical-align: middle; text-align: center;">5</td>
                                         <td style="padding: 1rem; vertical-align: middle; text-align: center;">9.800.000 VNĐ</td>
                                         <td style="padding: 1rem; vertical-align: middle; text-align: center;">
-                                            <a href="#" style="display: inline-block; background-color: #17a2b8; color: white; padding: 0.375rem 0.75rem; font-size: 0.75rem; border-radius: 0.25rem; text-decoration: none;">Xem các đơn hàng</a>
+                                            <a href="order-detail.html" style="display: inline-block; background-color: #17a2b8; color: white; padding: 0.375rem 0.75rem; font-size: 0.75rem; border-radius: 0.25rem; text-decoration: none;">Xem chi tiết</a>
                                         </td>
                                     </tr>
                                     <tr style="border-bottom: 1px solid #f0f2f5;">
@@ -341,7 +297,7 @@
                                         <td style="padding: 1rem; vertical-align: middle; text-align: center;">3</td>
                                         <td style="padding: 1rem; vertical-align: middle; text-align: center;">5.200.000 VNĐ</td>
                                         <td style="padding: 1rem; vertical-align: middle; text-align: center;">
-                                            <a href="#" style="display: inline-block; background-color: #17a2b8; color: white; padding: 0.375rem 0.75rem; font-size: 0.75rem; border-radius: 0.25rem; text-decoration: none;">Xem các đơn hàng</a>
+                                            <a href="order-detail.html" style="display: inline-block; background-color: #17a2b8; color: white; padding: 0.375rem 0.75rem; font-size: 0.75rem; border-radius: 0.25rem; text-decoration: none;">Xem chi tiết</a>
                                         </td>
                                     </tr>
                                 </tbody>

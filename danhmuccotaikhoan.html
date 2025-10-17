@@ -694,7 +694,7 @@
                     <div class="footer-widget">
                         <h2>Giữ liên lạc</h2>
                         <div class="contact-info">
-                            <p><i class="fa fa-map-marker"></i>123 E Store, Los Angeles, USA</p>
+                            <p><i class="fa fa-map-marker"></i>273 An Dương Vương Phường 3 Quận 5 TPHCM</p>
                             <p><i class="fa fa-envelope"></i>email@example.com</p>
                             <p><i class="fa fa-phone"></i>+123-456-7890</p>
                         </div>
@@ -774,21 +774,55 @@
 
     <!-- Template Javascript -->
           <script>
-        const searchInput = document.getElementById("searchInput");
-        if (searchInput) {
-            searchInput.addEventListener("keypress", function(e) {
-                if (e.key === "Enter") {
-                    console.log("Enter được nhấn trong ô tìm kiếm");
-                    const searchTerm = searchInput.value.trim();
-                    if (searchTerm !== "") {
-                        // Chuyển đến trang tìm kiếm không tài khoản
-                        window.location.href = "timkiemcotk.html";
-                    }
-                    e.preventDefault();
-                }
-            });
-        }
-     </script>
+  // Luôn đảm bảo nút có icon tìm kiếm
+  const searchBtn = document.getElementById("searchBtn");
+  const icon = searchBtn.querySelector("i");
+
+  // Nếu biểu tượng khác, thay về kính lúp
+  if (!icon.classList.contains("fa-search")) {
+    icon.className = "fa fa-search";
+  }
+
+  // Khi bấm vào nút → chuyển sang trang khác
+  searchBtn.addEventListener("click", function () {
+    // Có thể thêm logic lấy giá trị tìm kiếm nếu cần
+    const query = document.getElementById("searchInput").value.trim();
+
+    // Nếu bạn muốn truyền query qua URL:
+    // window.location.href = `search.html?query=${encodeURIComponent(query)}`;
+
+    // Nếu chỉ muốn chuyển sang trang khác (không cần query):
+    window.location.href = "searchcotaikhoan.html";
+    
+  });
+   searchInput.addEventListener("keypress", (e) => {
+      if (e.key === "Enter") {
+        e.preventDefault();
+        window.location.href = "searchcotaikhoan.html";
+      }
+    });
+</script>
     <script src="js/main.js"></script>
+    <script>
+document.addEventListener("DOMContentLoaded", function() {
+  // Lấy tất cả các thẻ <a> có chứa icon giỏ hàng
+  const cartLinks = document.querySelectorAll('a[href="cart.html"] i.fa-cart-plus');
+
+  cartLinks.forEach(icon => {
+    // Gắn sự kiện click cho icon
+    icon.parentElement.addEventListener("click", function(event) {
+      event.preventDefault(); // chặn chuyển sang cart.html
+
+      // Ví dụ: hiện thông báo
+      alert("Thêm vào giỏ hàng thành công!");
+      window.location.href="cart.html"
+
+      // Nếu bạn muốn chuyển hướng:
+      // window.location.href = "login.html";
+    });
+  });
+});
+</script>
+
 </body>
 </html>

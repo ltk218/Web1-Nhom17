@@ -253,7 +253,23 @@
         <!-- Template Javascript -->
         <script src="js/main.js"></script>
         <script src="js/cart.js"></script>
-                
+        <script>
+            const searchBtn = document.getElementById("searchBtn");
+    const searchInput = document.getElementById("searchInput");
+
+    // Khi click nút tìm kiếm
+    searchBtn.addEventListener("click", () => {
+      window.location.href = "searchcotaikhoan.html"; // 👉 trang bạn muốn chuyển tới
+    });
+
+    // Khi nhấn Enter trong ô tìm kiếm
+    searchInput.addEventListener("keypress", (e) => {
+      if (e.key === "Enter") {
+        e.preventDefault();
+        window.location.href = "searchcotaikhoan.html";
+      }
+    });
+        </script>             
 
                 
     </body>

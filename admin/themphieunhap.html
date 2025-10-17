@@ -1,0 +1,785 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="icon" type="image/png" href="../img/ryicon.jpg">
+  <title>BookStore - Thêm phiếu nhập</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900|Roboto+Slab:400,700">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round" rel="stylesheet">
+  <link href="assets/css/pure-style-optimized.css" rel="stylesheet">
+
+  <style>
+    body {
+      font-family: 'Roboto', sans-serif;
+      background-color: #f0f2f5;
+      color: #344767;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    .card {
+      background: white;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+      margin-bottom: 1.5rem;
+      overflow: hidden;
+    }
+
+    .card-header {
+      background: linear-gradient(195deg, #ec407a, #d81b60);
+      color: white;
+      padding: 1rem 1.5rem;
+    }
+
+    .card-body {
+      padding: 1.5rem;
+    }
+
+    .form-group {
+      margin-bottom: 1.5rem;
+    }
+
+    .form-label {
+      display: block;
+      margin-bottom: 0.5rem;
+      font-weight: 600;
+      color: #344767;
+    }
+
+    .form-control {
+      width: 100%;
+      padding: 0.75rem;
+      border: 1px solid #d2d6da;
+      border-radius: 0.5rem;
+      font-size: 0.875rem;
+      transition: all 0.2s;
+    }
+
+    .form-control:focus {
+      border-color: #e91e63;
+      box-shadow: 0 0 0 2px rgba(233, 30, 99, 0.2);
+      outline: none;
+    }
+
+    .form-row {
+      display: flex;
+      flex-wrap: wrap;
+      margin: 0 -0.5rem;
+    }
+
+    .form-col {
+      flex: 1;
+      padding: 0 0.5rem;
+      min-width: 200px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      padding: 0.75rem 1.5rem;
+      border-radius: 6px;
+      border: none;
+      color: white;
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: 0.2s;
+    }
+
+    .btn-primary { 
+      background: linear-gradient(195deg, #ec407a, #d81b60); 
+    }
+    .btn-primary:hover { 
+      background: linear-gradient(195deg, #f06292, #e91e63); 
+    }
+
+    .btn-secondary { 
+      background: #6c757d; 
+    }
+    .btn-secondary:hover { 
+      background: #5a6268; 
+    }
+
+    .btn-success { 
+      background: #28a745; 
+    }
+    .btn-success:hover { 
+      background: #218838; 
+    }
+
+    .btn-danger { 
+      background: #dc3545; 
+    }
+    .btn-danger:hover { 
+      background: #c82333; 
+    }
+
+    .form-actions {
+      display: flex;
+      justify-content: flex-end;
+      gap: 0.5rem;
+      margin-top: 1.5rem;
+    }
+
+    .product-row {
+      display: flex;
+      gap: 1rem;
+      margin-bottom: 1rem;
+      padding: 1rem;
+      background: #f8f9fa;
+      border-radius: 0.5rem;
+      align-items: center;
+    }
+
+    .product-select {
+      flex: 2;
+    }
+
+    .product-price {
+      flex: 1;
+    }
+
+    .product-quantity {
+      flex: 1;
+    }
+
+    .product-total {
+      flex: 1;
+      font-weight: 600;
+      color: #e91e63;
+    }
+
+    .product-actions {
+      flex: 0.5;
+      display: flex;
+      justify-content: center;
+    }
+
+    .material-icons-round { 
+      font-size: 18px; 
+      vertical-align: middle; 
+    }
+
+    .summary-card {
+      background: #f8f9fa;
+      border-radius: 0.5rem;
+      padding: 1rem;
+      margin-top: 1.5rem;
+    }
+
+    .summary-row {
+      display: flex;
+      justify-content: space-between;
+      padding: 0.5rem 0;
+      border-bottom: 1px solid #dee2e6;
+    }
+
+    .summary-total {
+      font-weight: 700;
+      font-size: 1.2rem;
+      color: #e91e63;
+    }
+
+    /* Custom select with product info */
+    .custom-select {
+      position: relative;
+      width: 100%;
+    }
+
+    .custom-select select {
+      display: none;
+    }
+
+    .select-selected {
+      background-color: white;
+      border: 1px solid #d2d6da;
+      border-radius: 0.5rem;
+      padding: 0.75rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .select-selected:after {
+      position: absolute;
+      content: "";
+      top: 50%;
+      right: 15px;
+      width: 0;
+      height: 0;
+      border: 6px solid transparent;
+      border-color: #344767 transparent transparent transparent;
+      transform: translateY(-50%);
+    }
+
+    .select-selected.select-arrow-active:after {
+      border-color: transparent transparent #344767 transparent;
+      top: 40%;
+    }
+
+    .select-items {
+      position: absolute;
+      background-color: white;
+      top: 100%;
+      left: 0;
+      right: 0;
+      z-index: 99;
+      border: 1px solid #d2d6da;
+      border-radius: 0.5rem;
+      max-height: 300px;
+      overflow-y: auto;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+
+    .select-items div {
+      padding: 0.75rem;
+      cursor: pointer;
+      border-bottom: 1px solid #f0f2f5;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .select-items div:hover {
+      background-color: #f8f9fa;
+    }
+
+    .select-hide {
+      display: none;
+    }
+
+    .product-option {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .product-image {
+      width: 40px;
+      height: 50px;
+      object-fit: cover;
+      border-radius: 4px;
+      flex-shrink: 0;
+    }
+
+    .product-info {
+      flex: 1;
+    }
+
+    .product-name {
+      font-weight: 600;
+      margin-bottom: 0.25rem;
+    }
+
+    .product-author {
+      font-size: 0.8rem;
+      color: #6c757d;
+    }
+
+    @media (max-width: 768px) {
+      .form-col {
+        flex: 100%;
+        margin-bottom: 1rem;
+      }
+      
+      .product-row {
+        flex-direction: column;
+        align-items: stretch;
+      }
+      
+      .form-actions {
+        flex-direction: column;
+      }
+      
+      .btn {
+        width: 100%;
+        justify-content: center;
+        margin-bottom: 0.5rem;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- SIDEBAR -->
+<aside style="position: fixed; top: 0; left: 0; z-index: 1000; width: 250px; height: 100vh; background: linear-gradient(195deg, #42424a, #191919); color: white; transition: all 0.3s ease; box-shadow: 0 0 2rem 0 rgba(0, 0, 0, 0.15);" id="sidenav-main">
+  <div style="padding: 1.5em 1rem;">
+    <a href="#" target="_blank" style="display: flex; align-items: center; font-weight: 600; color: white; text-decoration: none;">
+      <span style="margin-left: 0.25rem; font-weight: 700;">TRUNG TÂM ĐIỀU KHIỂN</span>
+    </a>
+  </div>
+  <hr style="width: 100%; border: none; border-top: 1px solid rgba(255, 255, 255, 0.1); margin: 1rem 0;">
+  <div style="width: 100%; overflow-y: auto; height: 75vh;">
+    <ul style="list-style: none; padding: 0; margin: 0;">
+      <li><a href="index.html" style="display: flex; align-items: center; padding: 0.75rem 1rem; color: white; text-decoration: none;"><i class="material-icons" style="font-size:20px; margin-right:10px;">dashboard</i>Tổng quan</a></li>
+      <li><a href="user.html" style="display: flex; align-items: center; padding: 0.75rem 1rem; color: white; text-decoration: none;"><i class="material-icons" style="font-size:20px; margin-right:10px;">person</i>Quản lý khách hàng</a></li>
+      <li><a href="order.html" style="display: flex; align-items: center; padding: 0.75rem 1rem; color: white; text-decoration: none;"><i class="material-icons" style="font-size:20px; margin-right:10px;">weekend</i>Quản lý đơn hàng</a></li>
+      <li><a href="products.html" style="display: flex; align-items: center; padding: 0.75rem 1rem; color: white; text-decoration: none;"><i class="material-icons" style="font-size:20px; margin-right:10px;">table_view</i>Quản lý sản phẩm</a></li>
+      <li><a href="category.html" style="display: flex; align-items: center; padding: 0.75rem 1rem; color: white; text-decoration: none;"><i class="material-icons" style="font-size:20px; margin-right:10px;">category</i>Quản lý danh mục</a></li>
+      <li><a href="phieunhap.html" style="display: flex; align-items: center; padding: 0.75rem 1rem; color: white; text-decoration: none; background: linear-gradient(195deg,#ec407a,#d81b60); box-shadow: 0 4px 20px rgba(0,0,0,0.14),0 7px 10px -5px rgba(233,30,99,0.4);"><i class="material-icons" style="font-size:20px; margin-right:10px;">inventory_2</i>Quản lý nhập hàng</a></li>
+      <li><a href="giaban.html" style="display: flex; align-items: center; padding: 0.75rem 1rem; color: white; text-decoration: none;"><i class="material-icons" style="font-size:20px; margin-right:10px;">attach_money</i>Quản lý giá bán</a></li>
+      <li><a href="tonkho.html" style="display: flex; align-items: center; padding: 0.75rem 1rem; color: white; text-decoration: none;"><i class="material-icons" style="font-size:20px; margin-right:10px;">inventory</i>Quản lý tồn kho</a></li>
+    </ul>
+  </div>
+  <div style="position: absolute; width: 100%; bottom: 0; padding: 1rem;">
+    <a href="login.html" style="display: inline-block; background: linear-gradient(195deg, #ec407a, #d81b60); color: white; padding: 0.625rem 1.5rem; font-size: 0.875rem; border-radius: 0.25rem; text-decoration: none; width: 100%; text-align: center;">Đăng xuất</a>
+  </div>
+</aside>
+
+  <!-- MAIN -->
+  <main style="margin-left: 250px; min-height: 100vh; padding: 1.5rem;">
+    <nav style="margin-bottom: 1.5rem; background:white; padding:1rem 1.5rem; border-radius:0.75rem; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">
+      <span style="color:#e91e63; font-weight:600;">Thêm phiếu nhập hàng</span>
+    </nav>
+
+    <div class="card">
+      <div class="card-header">
+        <h3 style="margin: 0; font-size: 1.2rem;">Thông tin phiếu nhập</h3>
+      </div>
+      <div class="card-body">
+        <div class="form-row">
+          <div class="form-col">
+            <div class="form-group">
+              <label class="form-label" for="import-date">Ngày nhập *</label>
+              <input type="date" id="import-date" class="form-control" required>
+            </div>
+          </div>
+          <div class="form-col">
+            <div class="form-group">
+              <label class="form-label" for="import-code">Mã phiếu nhập</label>
+              <input type="text" id="import-code" class="form-control" value="#PN004" readonly>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+            <label class="form-label">Danh sách sản phẩm nhập</label>
+            <button type="button" class="btn btn-success" id="add-product-btn">
+              <i class="material-icons-round">add</i> Thêm sản phẩm
+            </button>
+          </div>
+          
+          <div id="products-container">
+            <!-- Product rows will be added here dynamically -->
+            <div class="product-row">
+              <div class="product-select">
+                <div class="custom-select">
+                  <select class="form-control product-select" style="display: none;">
+                    <option value="">Chọn sản phẩm</option>
+                    <option value="1" data-image="../img/book8.webp" data-author="Chu Lai">Mưa đỏ</option>
+                    <option value="2" data-image="../img/book2.webp" data-author="José Mauro de Vasconcelos">Cây cam ngọt của tôi</option>
+                    <option value="3" data-image="../img/book3.jpg" data-author="Hector Malot">Không gia đình</option>
+                    <option value="4" data-image="../img/book4.webp" data-author="Phùng Quán">Tuổi thơ dữ dội</option>
+                    <option value="5" data-image="../img/book5.webp" data-author="Dale Carnegie">Đắc nhân tâm</option>
+                  </select>
+                  <div class="select-selected">
+                    <div class="product-option">
+                      <div class="product-info">
+                        <div class="product-name">Chọn sản phẩm</div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="select-items select-hide">
+                    <div data-value="">
+                      <div class="product-option">
+                        <div class="product-info">
+                          <div class="product-name">Chọn sản phẩm</div>
+                        </div>
+                      </div>
+                    </div>
+                    <div data-value="1">
+                      <div class="product-option">
+                        <img src="../img/book8.webp" alt="Mưa đỏ" class="product-image">
+                        <div class="product-info">
+                          <div class="product-name">Mưa đỏ</div>
+                          <div class="product-author">Tác giả: Chu Lai</div>
+                        </div>
+                      </div>
+                    </div>
+                    <div data-value="2">
+                      <div class="product-option">
+                        <img src="../img/book2.webp" alt="Cây cam ngọt của tôi" class="product-image">
+                        <div class="product-info">
+                          <div class="product-name">Cây cam ngọt của tôi</div>
+                          <div class="product-author">Tác giả: José Mauro de Vasconcelos</div>
+                        </div>
+                      </div>
+                    </div>
+                    <div data-value="3">
+                      <div class="product-option">
+                        <img src="../img/book3.jpg" alt="Không gia đình" class="product-image">
+                        <div class="product-info">
+                          <div class="product-name">Không gia đình</div>
+                          <div class="product-author">Tác giả: Hector Malot</div>
+                        </div>
+                      </div>
+                    </div>
+                    <div data-value="4">
+                      <div class="product-option">
+                        <img src="../img/book4.webp" alt="Tuổi thơ dữ dội" class="product-image">
+                        <div class="product-info">
+                          <div class="product-name">Tuổi thơ dữ dội</div>
+                          <div class="product-author">Tác giả: Phùng Quán</div>
+                        </div>
+                      </div>
+                    </div>
+                    <div data-value="5">
+                      <div class="product-option">
+                        <img src="../img/book5.webp" alt="Đắc nhân tâm" class="product-image">
+                        <div class="product-info">
+                          <div class="product-name">Đắc nhân tâm</div>
+                          <div class="product-author">Tác giả: Dale Carnegie</div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="product-price">
+                <input type="number" class="form-control price-input" placeholder="Giá nhập" min="0">
+              </div>
+              <div class="product-quantity">
+                <input type="number" class="form-control quantity-input" placeholder="Số lượng" min="1" value="1">
+              </div>
+              <div class="product-total">
+                0 VNĐ
+              </div>
+              <div class="product-actions">
+                <button type="button" class="btn btn-danger remove-product">
+                  <i class="material-icons-round">delete</i>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="summary-card">
+          <div class="summary-row">
+            <span>Tổng số sản phẩm:</span>
+            <span id="total-products">1</span>
+          </div>
+          <div class="summary-row">
+            <span>Tổng số lượng:</span>
+            <span id="total-quantity">1</span>
+          </div>
+          <div class="summary-row summary-total">
+            <span>Tổng giá trị:</span>
+            <span id="total-value">0 VNĐ</span>
+          </div>
+        </div>
+
+        <div class="form-actions">
+          <button type="button" class="btn btn-secondary" onclick="window.location.href='phieunhap.html'">
+            <i class="material-icons-round">cancel</i> Hủy bỏ
+          </button>
+          <button type="button" class="btn btn-primary" id="save-import">
+            <i class="material-icons-round">save</i> Lưu phiếu nhập
+          </button>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <script>
+    // Custom select functionality
+    function initializeCustomSelects() {
+      const customSelects = document.querySelectorAll('.custom-select');
+      
+      customSelects.forEach(select => {
+        const selected = select.querySelector('.select-selected');
+        const items = select.querySelector('.select-items');
+        const originalSelect = select.querySelector('select');
+        
+        // Set initial selected value
+        updateSelected(selected, originalSelect);
+        
+        // Toggle dropdown
+        selected.addEventListener('click', function(e) {
+          e.stopPropagation();
+          closeAllSelect(this);
+          this.nextElementSibling.classList.toggle('select-hide');
+          this.classList.toggle('select-arrow-active');
+        });
+        
+        // Handle item selection
+        items.querySelectorAll('div').forEach(item => {
+          item.addEventListener('click', function() {
+            const value = this.getAttribute('data-value');
+            const text = this.querySelector('.product-name').textContent;
+            const image = this.querySelector('.product-image')?.src;
+            const author = this.querySelector('.product-author')?.textContent;
+            
+            originalSelect.value = value;
+            updateSelected(selected, originalSelect, image, author);
+            
+            items.classList.add('select-hide');
+            selected.classList.remove('select-arrow-active');
+          });
+        });
+      });
+      
+      // Close dropdown when clicking outside
+      document.addEventListener('click', closeAllSelect);
+    }
+    
+    function updateSelected(selectedElement, selectElement, imageUrl, author) {
+      const selectedOption = selectElement.options[selectElement.selectedIndex];
+      const productOption = selectedElement.querySelector('.product-option');
+      
+      if (selectElement.value === "") {
+        productOption.innerHTML = `
+          <div class="product-info">
+            <div class="product-name">Chọn sản phẩm</div>
+          </div>
+        `;
+      } else {
+        productOption.innerHTML = `
+          ${imageUrl ? `<img src="${imageUrl}" alt="${selectedOption.text}" class="product-image">` : ''}
+          <div class="product-info">
+            <div class="product-name">${selectedOption.text}</div>
+            ${author ? `<div class="product-author">${author}</div>` : ''}
+          </div>
+        `;
+      }
+    }
+    
+    function closeAllSelect(elmnt) {
+      const selectItems = document.querySelectorAll('.select-items');
+      const selectSelected = document.querySelectorAll('.select-selected');
+      
+      selectItems.forEach(item => {
+        if (elmnt && (elmnt === item || item.contains(elmnt))) return;
+        item.classList.add('select-hide');
+      });
+      
+      selectSelected.forEach(selected => {
+        if (elmnt && (elmnt === selected || selected.contains(elmnt))) return;
+        selected.classList.remove('select-arrow-active');
+      });
+    }
+    
+    // Add new product row
+    document.getElementById('add-product-btn').addEventListener('click', function() {
+      const productsContainer = document.getElementById('products-container');
+      const productRow = document.createElement('div');
+      productRow.className = 'product-row';
+      productRow.innerHTML = `
+        <div class="product-select">
+          <div class="custom-select">
+            <select class="form-control product-select" style="display: none;">
+              <option value="">Chọn sản phẩm</option>
+              <option value="1" data-image="../img/book8.webp" data-author="Chu Lai">Mưa đỏ</option>
+              <option value="2" data-image="../img/book2.webp" data-author="José Mauro de Vasconcelos">Cây cam ngọt của tôi</option>
+              <option value="3" data-image="../img/book3.jpg" data-author="Hector Malot">Không gia đình</option>
+              <option value="4" data-image="../img/book4.webp" data-author="Phùng Quán">Tuổi thơ dữ dội</option>
+              <option value="5" data-image="../img/book5.webp" data-author="Dale Carnegie">Đắc nhân tâm</option>
+            </select>
+            <div class="select-selected">
+              <div class="product-option">
+                <div class="product-info">
+                  <div class="product-name">Chọn sản phẩm</div>
+                </div>
+              </div>
+            </div>
+            <div class="select-items select-hide">
+              <div data-value="">
+                <div class="product-option">
+                  <div class="product-info">
+                    <div class="product-name">Chọn sản phẩm</div>
+                  </div>
+                </div>
+              </div>
+              <div data-value="1">
+                <div class="product-option">
+                  <img src="../img/book8.webp" alt="Mưa đỏ" class="product-image">
+                  <div class="product-info">
+                    <div class="product-name">Mưa đỏ</div>
+                    <div class="product-author">Tác giả: Chu Lai</div>
+                  </div>
+                </div>
+              </div>
+              <div data-value="2">
+                <div class="product-option">
+                  <img src="../img/book2.webp" alt="Cây cam ngọt của tôi" class="product-image">
+                  <div class="product-info">
+                    <div class="product-name">Cây cam ngọt của tôi</div>
+                    <div class="product-author">Tác giả: José Mauro de Vasconcelos</div>
+                  </div>
+                </div>
+              </div>
+              <div data-value="3">
+                <div class="product-option">
+                  <img src="../img/book3.jpg" alt="Không gia đình" class="product-image">
+                  <div class="product-info">
+                    <div class="product-name">Không gia đình</div>
+                    <div class="product-author">Tác giả: Hector Malot</div>
+                  </div>
+                </div>
+              </div>
+              <div data-value="4">
+                <div class="product-option">
+                  <img src="../img/book4.webp" alt="Tuổi thơ dữ dội" class="product-image">
+                  <div class="product-info">
+                    <div class="product-name">Tuổi thơ dữ dội</div>
+                    <div class="product-author">Tác giả: Phùng Quán</div>
+                  </div>
+                </div>
+              </div>
+              <div data-value="5">
+                <div class="product-option">
+                  <img src="../img/book5.webp" alt="Đắc nhân tâm" class="product-image">
+                  <div class="product-info">
+                    <div class="product-name">Đắc nhân tâm</div>
+                    <div class="product-author">Tác giả: Dale Carnegie</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="product-price">
+          <input type="number" class="form-control price-input" placeholder="Giá nhập" min="0">
+        </div>
+        <div class="product-quantity">
+          <input type="number" class="form-control quantity-input" placeholder="Số lượng" min="1" value="1">
+        </div>
+        <div class="product-total">
+          0 VNĐ
+        </div>
+        <div class="product-actions">
+          <button type="button" class="btn btn-danger remove-product">
+            <i class="material-icons-round">delete</i>
+          </button>
+        </div>
+      `;
+      
+      productsContainer.appendChild(productRow);
+      
+      // Initialize custom select for new row
+      initializeCustomSelects();
+      
+      // Add event listeners to new inputs
+      const priceInput = productRow.querySelector('.price-input');
+      const quantityInput = productRow.querySelector('.quantity-input');
+      
+      priceInput.addEventListener('input', calculateTotals);
+      quantityInput.addEventListener('input', calculateTotals);
+      
+      // Add event listener to remove button
+      productRow.querySelector('.remove-product').addEventListener('click', function() {
+        productRow.remove();
+        calculateTotals();
+      });
+      
+      calculateTotals();
+    });
+
+    // Calculate totals
+    function calculateTotals() {
+      let totalProducts = 0;
+      let totalQuantity = 0;
+      let totalValue = 0;
+      
+      document.querySelectorAll('.product-row').forEach(row => {
+        const price = parseFloat(row.querySelector('.price-input').value) || 0;
+        const quantity = parseInt(row.querySelector('.quantity-input').value) || 0;
+        const total = price * quantity;
+        
+        // Update row total
+        row.querySelector('.product-total').textContent = formatCurrency(total);
+        
+        // Update global totals
+        totalProducts++;
+        totalQuantity += quantity;
+        totalValue += total;
+      });
+      
+      document.getElementById('total-products').textContent = totalProducts;
+      document.getElementById('total-quantity').textContent = totalQuantity;
+      document.getElementById('total-value').textContent = formatCurrency(totalValue);
+    }
+
+    // Format currency
+    function formatCurrency(amount) {
+      return new Intl.NumberFormat('vi-VN', { 
+        style: 'currency', 
+        currency: 'VND' 
+      }).format(amount);
+    }
+
+    // Save import
+    document.getElementById('save-import').addEventListener('click', function() {
+      const importDate = document.getElementById('import-date').value;
+      
+      if (!importDate) {
+        alert('Vui lòng chọn ngày nhập');
+        return;
+      }
+      
+      const products = [];
+      let hasErrors = false;
+      
+      document.querySelectorAll('.product-row').forEach(row => {
+        const productSelect = row.querySelector('.product-select select');
+        const priceInput = row.querySelector('.price-input');
+        const quantityInput = row.querySelector('.quantity-input');
+        
+        if (!productSelect.value) {
+          alert('Vui lòng chọn sản phẩm cho tất cả các dòng');
+          hasErrors = true;
+          return;
+        }
+        
+        if (!priceInput.value || priceInput.value <= 0) {
+          alert('Vui lòng nhập giá nhập hợp lệ cho tất cả sản phẩm');
+          hasErrors = true;
+          return;
+        }
+        
+        if (!quantityInput.value || quantityInput.value <= 0) {
+          alert('Vui lòng nhập số lượng hợp lệ cho tất cả sản phẩm');
+          hasErrors = true;
+          return;
+        }
+        
+        products.push({
+          productId: productSelect.value,
+          productName: productSelect.options[productSelect.selectedIndex].text,
+          price: parseFloat(priceInput.value),
+          quantity: parseInt(quantityInput.value)
+        });
+      });
+      
+      if (hasErrors) return;
+      
+      if (products.length === 0) {
+        alert('Vui lòng thêm ít nhất một sản phẩm');
+        return;
+      }
+      
+      // In a real application, you would send this data to the server
+      console.log({
+        importDate: importDate,
+        products: products
+      });
+      
+      alert('Phiếu nhập đã được lưu thành công!');
+      window.location.href = 'phieunhap.html';
+    });
+
+    // Initialize on page load
+    document.addEventListener('DOMContentLoaded', function() {
+      initializeCustomSelects();
+      calculateTotals();
+      
+      // Set today's date as default
+      const today = new Date().toISOString().split('T')[0];
+      document.getElementById('import-date').value = today;
+    });
+  </script>
+</body>
+</html>

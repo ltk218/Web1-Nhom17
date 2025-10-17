@@ -73,6 +73,22 @@
                 background-color: #fff !important;
                 color: #ff6f61 !important;
             }
+
+            /* Tùy chỉnh dots slider */
+            .header-slider .slick-dots {
+                bottom: 20px;
+            }
+
+            .header-slider .slick-dots li button:before {
+                font-size: 12px;
+                color: #ddd; /* Màu xám cho dots không active */
+                opacity: 1;
+            }
+
+            .header-slider .slick-dots li.slick-active button:before {
+                color: #ff6f61; /* Màu cam cho dot active */
+                opacity: 1;
+            }
         </style>
     </head>
 
@@ -551,7 +567,7 @@ window.location.href = "checkout.html";
                         <div class="footer-widget">
                             <h2>Liên hệ</h2>
                             <div class="contact-info">
-                                <p><i class="fa fa-map-marker"></i>123 Street, New York, USA</p>
+                                <p><i class="fa fa-map-marker"></i>273 An Dương Vương Phường 3 Quận 5 TPHCM</p>
                                 <p><i class="fa fa-envelope"></i>info@example.com</p>
                                 <p><i class="fa fa-phone"></i>+012-345-67890</p>
                             </div>
@@ -655,20 +671,25 @@ window.location.href = "checkout.html";
     });
 </script>
               <script>
-        const searchInput = document.getElementById("searchInput");
-        if (searchInput) {
-            searchInput.addEventListener("keypress", function(e) {
-                if (e.key === "Enter") {
-                    console.log("Enter được nhấn trong ô tìm kiếm");
-                    const searchTerm = searchInput.value.trim();
-                    if (searchTerm !== "") {
-                        window.location.href = "timkiemcotk.html";
-                    }
-                    e.preventDefault();
-                }
-            });
-        }
-     </script> 
+  // Khi bấm nút tìm kiếm hoặc nhấn Enter trong ô input
+  document.addEventListener("DOMContentLoaded", () => {
+    const searchBtn = document.getElementById("searchBtn");
+    const searchInput = document.getElementById("searchInput");
+
+    // Khi click nút tìm kiếm
+    searchBtn.addEventListener("click", () => {
+      window.location.href = "searchcotaikhoan.html"; // 👉 trang bạn muốn chuyển tới
+    });
+
+    // Khi nhấn Enter trong ô tìm kiếm
+    searchInput.addEventListener("keypress", (e) => {
+      if (e.key === "Enter") {
+        e.preventDefault();
+        window.location.href = "searchcotaikhoan.html";
+      }
+    });
+  });
+</script>
 
     </body>
 </html>
