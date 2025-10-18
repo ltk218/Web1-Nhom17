@@ -161,8 +161,28 @@
                             </div>
                             
                             <div class="form-group">
-                                <label for="address"><strong>Địa chỉ</strong></label>
-                                <textarea class="form-control" id="address" rows="3" required>123 Đường Mai Chí Thọ Phường 3, Quận Thủ Đức, TP.HCM</textarea>
+                                <!-- Địa chỉ: tách 3 trường, không dùng JS -->
+<div class="form-group">
+  <label><strong>Địa chỉ</strong></label>
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <label for="streetAddress">Số nhà & Tên đường</label>
+      <input type="text" class="form-control" id="streetAddress"
+             value="123 Đường Mai Chí Thọ" placeholder="VD: 123 Đường Mai Chí Thọ" required>
+    </div>
+    <div class="form-group col-md-3">
+      <label for="district">Quận/Huyện</label>
+      <input type="text" class="form-control" id="district"
+             value="Quận Thủ Đức" placeholder="VD: Quận Thủ Đức" required>
+    </div>
+    <div class="form-group col-md-3">
+      <label for="city">Thành phố</label>
+      <input type="text" class="form-control" id="city"
+             value="TP.HCM" placeholder="VD: TP.HCM" required>
+    </div>
+  </div>
+</div>
+
                             </div>
                             
                             <div class="form-group">
