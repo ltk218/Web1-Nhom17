@@ -9,32 +9,151 @@
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round" rel="stylesheet">
   <link href="assets/css/pure-style.css" rel="stylesheet" />
   <style>
-    /* Simple styling for password toggle */
-    .password-field {
+    body {
+      font-family: 'Roboto', sans-serif; 
+      background-color: #f0f2f5; 
+      color: #344767; 
+      line-height: 1.6; 
+      overflow-x: hidden;
+    }
+
+    /* Card styles */
+    .card {
+      background-color: white;
+      border-radius: 0.75rem;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+      overflow: hidden;
+    }
+
+    .card-header {
+      padding: 1.5rem;
+      border-bottom: 1px solid #e9ecef;
+    }
+
+    .card-body {
+      padding: 1.5rem;
+    }
+
+    /* Form styles */
+    .form-group {
+      margin-bottom: 1.5rem;
+    }
+
+    .form-label {
+      display: block;
+      margin-bottom: 0.5rem;
+      font-weight: 500;
+      color: #344767;
+    }
+
+    .form-control {
+      display: block;
+      width: 100%;
+      padding: 0.75rem 1rem;
+      font-size: 1rem;
+      font-weight: 400;
+      line-height: 1.5;
+      color: #495057;
+      background-color: #fff;
+      background-clip: padding-box;
+      border: 1px solid #ced4da;
+      border-radius: 0.375rem;
+      transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+      box-sizing: border-box;
+    }
+
+    .form-control:focus {
+      color: #495057;
+      background-color: #fff;
+      border-color: #e91e63;
+      outline: 0;
+      box-shadow: 0 0 0 0.2rem rgba(233, 30, 99, 0.25);
+    }
+
+    /* Password field */
+    .password-field { /* chứa label + khối input-with-icon */
       position: relative;
     }
 
-    .toggle-password {
+    /* BỌC riêng input + icon để căn giữa chính xác theo chiều cao input */
+    .input-with-icon {
+      position: relative; /* làm mốc cho nút tuyệt đối */
+    }
+
+    .input-with-icon .form-control {
+      padding-right: 3rem; /* chừa chỗ cho icon */
+    }
+
+    .input-with-icon .toggle-password {
       position: absolute;
-      right: 0.75rem;
+      right: 0.5rem;
       top: 50%;
-      transform: translateY(-50%);
+      transform: translateY(-50%); /* căn giữa theo ô input */
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 2.25rem;
+      height: 2.25rem;
       background: transparent;
       border: none;
       color: #7b8794;
       cursor: pointer;
-      padding: 0.5rem;
-      font-size: 1.2rem;
-      transition: color 0.3s ease;
+      border-radius: 50%;
+      transition: background-color 0.3s ease, color 0.3s ease;
     }
 
-    .toggle-password:hover {
+    .input-with-icon .toggle-password:hover {
+      background-color: rgba(233, 30, 99, 0.1);
       color: #e91e63;
+    }
+
+    .input-with-icon .toggle-password .material-icons {
+      line-height: 1;
+      font-size: 1.2rem;
+    }
+
+    /* Button styles */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.75rem 1.5rem;
+      font-size: 1rem;
+      font-weight: 500;
+      line-height: 1.5;
+      text-align: center;
+      text-decoration: none;
+      vertical-align: middle;
+      cursor: pointer;
+      user-select: none;
+      border: 1px solid transparent;
+      border-radius: 0.375rem;
+      transition: all 0.15s ease-in-out;
+    }
+
+     .btn-secondary {
+      background: #6c757d;
+    }
+    .btn-secondary:hover {
+      background: #5a6268;
+    }
+
+    .btn-gradient {
+      color: #fff;
+      background: linear-gradient(195deg, #ec407a, #d81b60);
+      border-color: transparent;
+      box-shadow: 0 4px 6px rgba(233, 30, 99, 0.2);
+    }
+
+    .btn-gradient:hover {
+      background: linear-gradient(195deg, #e91e63, #ad1457);
+      box-shadow: 0 6px 10px rgba(233, 30, 99, 0.3);
+      transform: translateY(-2px);
     }
   </style>
 </head>
 
-<body style="font-family: 'Roboto', sans-serif; background-color: #f0f2f5; color: #344767; line-height: 1.6; overflow-x: hidden;">
+<body>
 
   <!-- Sidebar -->
   <aside style="position: fixed; top: 0; left: 0; z-index: 1000; width: 250px; height: 100vh; background: linear-gradient(195deg, #42424a, #191919); color: white; box-shadow: 0 0 2rem rgba(0, 0, 0, 0.15);">
@@ -92,10 +211,15 @@
 
             <div class="form-group password-field">
               <label for="password" class="form-label">Mật khẩu <span style="color: #dc3545;">*</span></label>
-              <input type="password" class="form-control" id="password" name="password" value="123456" required>
-              <button type="button" class="toggle-password" onclick="togglePassword()" title="Hiển thị mật khẩu">
-                <i class="material-icons" id="eyeIcon">visibility_off</i>
-              </button>
+
+              <!-- BỌC input + icon -->
+              <div class="input-with-icon">
+                <input type="password" class="form-control" id="password" name="password" value="123456" required>
+                <button type="button" class="toggle-password" onclick="togglePassword()" title="Hiển thị mật khẩu" aria-label="Hiển thị/ẩn mật khẩu">
+                  <i class="material-icons" id="eyeIcon">visibility_off</i>
+                </button>
+              </div>
+              <!-- hết bọc -->
             </div>
 
             <div class="form-group">
@@ -118,9 +242,12 @@
 
             <!-- Buttons -->
             <div style="display: flex; justify-content: center; gap: 1rem; margin-top: 2rem; padding-top: 2rem; border-top: 1px solid #dee2e6;">
-              <button type="button" class="btn btn-secondary" onclick="window.location.href='user.html'">Quay về</button>
+              <button type="button" class="btn btn-secondary" onclick="window.location.href='user.html'">
+                <i class="material-icons" style="font-size: 1rem; vertical-align: middle;">arrow_back</i>
+                Quay về
+              </button>
               <button type="submit" class="btn btn-gradient" style="padding: 0.75rem 2rem; font-weight: 600;">
-                <i class="material-icons" style="font-size: 1rem; margin-right: 0.5rem; vertical-align: middle;">save</i>
+                <i class="material-icons" style="font-size: 1rem; vertical-align: middle;">save</i>
                 Lưu thay đổi
               </button>
             </div>

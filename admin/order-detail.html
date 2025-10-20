@@ -54,12 +54,15 @@
       text-decoration: none;
     }
 
-    .btn-primary {
-      background: linear-gradient(195deg, #ec407a, #d81b60);
-    }
-    .btn-primary:hover {
-      background: linear-gradient(195deg, #f06292, #e91e63);
-    }
+    .btn-success {
+  background: linear-gradient(195deg, #4caf50, #388e3c);
+  color: white;
+}
+.btn-success:hover {
+  background: linear-gradient(195deg, #66bb6a, #43a047);
+  transform: translateY(-1px);
+  box-shadow: 0 3px 8px rgba(76, 175, 80, 0.3);
+}
 
     .btn-secondary {
       background: #6c757d;
@@ -222,6 +225,15 @@
       color: #e91e63;
     }
 
+    /* Product image styles */
+    .product-image {
+      width: 60px;
+      height: 60px;
+      border-radius: 6px;
+      object-fit: cover;
+      border: 1px solid #e9ecef;
+    }
+
     /* Responsive */
     @media (max-width: 768px) {
       .info-grid {
@@ -232,6 +244,11 @@
         flex-direction: column;
         gap: 1rem;
         align-items: flex-start;
+      }
+      
+      .product-image {
+        width: 50px;
+        height: 50px;
       }
     }
   </style>
@@ -333,9 +350,9 @@
               </select>
             </div>
             <div class="form-group">
-              <button type="submit" class="btn btn-primary">
-                <i class="material-icons-round">save</i> Cập nhật trạng thái
-              </button>
+              <button type="submit" class="btn btn-success">
+  <i class="material-icons-round">save</i> Cập nhật trạng thái
+</button>
             </div>
           </form>
         </div>
@@ -348,6 +365,7 @@
               <tr>
                 <th>STT</th>
                 <th>Mã sản phẩm</th>
+                <th>Hình ảnh</th>
                 <th>Tên sản phẩm</th>
                 <th class="text-center">Số lượng</th>
                 <th class="text-right">Đơn giá</th>
@@ -358,6 +376,9 @@
               <tr>
                 <td>1</td>
                 <td>SP001</td>
+                <td class="text-center">
+                  <img src="../img/newbook2.webp" alt="Khi hơi thở hóa thinh không" class="product-image">
+                </td>
                 <td>Khi hơi thở hóa thinh không</td>
                 <td class="text-center">2</td>
                 <td class="text-right">230,000 VNĐ</td>
@@ -366,15 +387,21 @@
               <tr>
                 <td>2</td>
                 <td>SP002</td>
-                <td>Tên của đóa hồng</td>
+                <td class="text-center">
+                  <img src="../img/book8.webp" alt="Tên của đóa hồng" class="product-image">
+                </td>
+                <td>Mưa đỏ</td>
                 <td class="text-center">1</td>
                 <td class="text-right">187,000 VNĐ</td>
-                <td class="text-right">750,000 VNĐ</td>
+                <td class="text-right">187,000 VNĐ</td>
               </tr>
               <tr>
                 <td>3</td>
                 <td>SP003</td>
-                <td>Yêu những điều không hoàn hảo</td>
+                <td class="text-center">
+                  <img src="../img/book3.jpg" alt="Yêu những điều không hoàn hảo" class="product-image">
+                </td>
+                <td>Làm bạn với bầu trời</td>
                 <td class="text-center">3</td>
                 <td class="text-right">300,000 VNĐ</td>
                 <td class="text-right">900,000 VNĐ</td>
@@ -394,7 +421,7 @@
             </div>
             <div class="summary-row summary-total">
               <span>Tổng tiền hàng:</span>
-              <span>4,370,000 VNĐ</span>
+              <span>1,547,000 VNĐ</span>
             </div>
           </div>
         </div>

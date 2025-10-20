@@ -59,7 +59,7 @@
       transition: 0.2s;
     }
 
-    /* ✅ Căn giữa cột “Tên” và “Thao tác” */
+    /* ✅ Căn giữa cột "Tên" và "Thao tác" */
     td:nth-child(2),
     th:nth-child(2),
     td:last-child,
@@ -115,6 +115,118 @@
       transform: translateY(-2px);
       box-shadow: 0 6px 10px rgba(255, 152, 0, 0.4);
     }
+
+    /* ==== Search Section ==== */
+    .search-section {
+      display: flex;
+      gap: 15px;
+      margin-bottom: 1.5rem;
+      flex-wrap: wrap;
+      align-items: flex-end;
+    }
+
+    .search-group {
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+      min-width: 200px;
+    }
+
+    .search-label {
+      font-size: 14px;
+      font-weight: 500;
+      margin-bottom: 5px;
+      color: #344767;
+    }
+
+    .search-input, .search-select {
+      padding: 10px 12px;
+      border: 1px solid #ddd;
+      border-radius: 6px;
+      font-size: 14px;
+      transition: border 0.2s;
+    }
+
+    .search-input:focus, .search-select:focus {
+      outline: none;
+      border-color: #2196f3;
+      box-shadow: 0 0 0 2px rgba(33, 150, 243, 0.2);
+    }
+
+    /* ==== Nút tìm kiếm đã được điều chỉnh ==== */
+    .btn-search {
+      background: linear-gradient(195deg, #4caf50, #388e3c);
+      color: white;
+      border: none;
+      padding: 8px 16px; /* Đã giảm padding để nút nhỏ hơn */
+      border-radius: 6px;
+      font-size: 13px; /* Đã giảm kích thước chữ */
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.2s;
+      white-space: nowrap;
+      height: 38px; /* Chiều cao cố định để đồng bộ với các input */
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 5px;
+    }
+
+    .btn-search:hover {
+      background: linear-gradient(195deg, #66bb6a, #43a047);
+      transform: translateY(-1px);
+      box-shadow: 0 3px 8px rgba(76, 175, 80, 0.3);
+    }
+
+    /* ==== Pagination ==== */
+    .pagination {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-top: 1.5rem;
+      gap: 8px;
+    }
+
+    .pagination-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 36px;
+      height: 36px;
+      border-radius: 6px;
+      border: 1px solid #ddd;
+      background-color: white;
+      color: #344767;
+      font-size: 14px;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .pagination-btn:hover {
+      background-color: #f5f5f5;
+    }
+
+    .pagination-btn.active {
+      background: linear-gradient(195deg, #ec407a, #d81b60);
+      color: white;
+      border-color: #d81b60;
+    }
+
+    .pagination-btn.disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+
+    .pagination-btn.disabled:hover {
+      background-color: white;
+    }
+
+    .pagination-info {
+      margin-top: 10px;
+      text-align: center;
+      font-size: 14px;
+      color: #666;
+    }
   </style>
 </head>
 
@@ -134,11 +246,8 @@
       <li><a href="products.html" style="display:flex;align-items:center;padding:0.75rem 1rem;color:white;text-decoration:none;background:linear-gradient(195deg,#ec407a,#d81b60);box-shadow:0 4px 20px rgba(0,0,0,0.14),0 7px 10px -5px rgba(233,30,99,0.4);"><i class="material-icons" style="margin-right:10px;">table_view</i>Quản lý sản phẩm</a></li>
       <li><a href="category.html" style="display:flex;align-items:center;padding:0.75rem 1rem;color:white;text-decoration:none;"><i class="material-icons" style="margin-right:10px;">category</i>Quản lý danh mục</a></li>
       <li><a href="phieunhap.html" style="display:flex;align-items:center;padding:0.75rem 1rem;color:white;text-decoration:none;"><i class="material-icons" style="margin-right:10px;">inventory_2</i>Quản lý nhập hàng</a></li>
-            <li><a href="giaban.html" style="display:flex;align-items:center;padding:0.75rem 1rem;color:white;text-decoration:none;"><i class="material-icons" style="margin-right:10px;">attach_money</i>Quản lý giá bán</a></li>
-                        <li><a href="tonkho.html" style="display:flex;align-items:center;padding:0.75rem 1rem;color:white;text-decoration:none;"><i class="material-icons" style="margin-right:10px;">inventory</i>Quản lý tồn kho</a></li>
-
-
-
+      <li><a href="giaban.html" style="display:flex;align-items:center;padding:0.75rem 1rem;color:white;text-decoration:none;"><i class="material-icons" style="margin-right:10px;">attach_money</i>Quản lý giá bán</a></li>
+      <li><a href="tonkho.html" style="display:flex;align-items:center;padding:0.75rem 1rem;color:white;text-decoration:none;"><i class="material-icons" style="margin-right:10px;">inventory</i>Quản lý tồn kho</a></li>
     </ul>
     <div style="position:absolute;bottom:0;width:100%;padding:1rem;">
       <a href="login.html" style="display:inline-block;background:linear-gradient(195deg,#ec407a,#d81b60);color:white;padding:0.625rem 1.5rem;border-radius:0.25rem;text-decoration:none;width:100%;text-align:center;">Đăng xuất</a>
@@ -158,6 +267,30 @@
       </button>
     </div>
 
+    <!-- Search Section -->
+    <div class="search-section">
+      <div class="search-group">
+        <label class="search-label" for="product-name">Tìm theo tên</label>
+        <input type="text" id="product-name" class="search-input" placeholder="Nhập tên sản phẩm...">
+      </div>
+      
+      <div class="search-group">
+        <label class="search-label" for="product-category">Tìm theo danh mục</label>
+        <select id="product-category" class="search-select">
+          <option value="">Tất cả danh mục</option>
+          <option value="1">Văn học</option>
+          <option value="2">Kinh tế</option>
+          <option value="3">Khoa học</option>
+          <option value="4">Tiểu thuyết</option>
+          <option value="5">Truyện ngắn</option>
+        </select>
+      </div>
+      
+      <button class="btn-search" id="search-btn">
+        <i class="material-icons-round">search</i> Tìm kiếm
+      </button>
+    </div>
+
     <table>
       <thead>
         <tr>
@@ -170,7 +303,7 @@
           <th>Thao tác</th>
         </tr>
       </thead>
-      <tbody>
+      <tbody id="product-table-body">
         <tr>
           <td>1</td>
           <td>Mưa đỏ : Chu Lai</td>
@@ -243,12 +376,35 @@
         </tr>
       </tbody>
     </table>
+
+    <!-- Pagination -->
+    <div class="pagination">
+      <button class="pagination-btn" id="prev-btn" disabled>
+        <i class="material-icons-round">chevron_left</i>
+      </button>
+      <button class="pagination-btn active">1</button>
+      <button class="pagination-btn">2</button>
+      <button class="pagination-btn">3</button>
+      <button class="pagination-btn">4</button>
+      <button class="pagination-btn">5</button>
+      <button class="pagination-btn" id="next-btn">
+        <i class="material-icons-round">chevron_right</i>
+      </button>
+    </div>
+    <div class="pagination-info">
+      Hiển thị 1-5 của 25 sản phẩm
+    </div>
   </main>
 
   <script>
     const editButtons = document.querySelectorAll('.btn-edit');
     const deleteButtons = document.querySelectorAll('.btn-delete');
+    const searchBtn = document.getElementById('search-btn');
+    const prevBtn = document.getElementById('prev-btn');
+    const nextBtn = document.getElementById('next-btn');
+    const paginationBtns = document.querySelectorAll('.pagination-btn:not(#prev-btn):not(#next-btn)');
 
+    // Edit and Delete buttons
     editButtons.forEach(btn => btn.addEventListener('click', () => {
       window.location.href = 'edit-product.html';
     }));
@@ -256,6 +412,62 @@
     deleteButtons.forEach(btn => btn.addEventListener('click', () => {
       alert('Xóa sản phẩm thành công!');
     }));
+
+    // Search functionality
+    searchBtn.addEventListener('click', () => {
+      const productName = document.getElementById('product-name').value;
+      const productCategory = document.getElementById('product-category').value;
+      
+      // In a real application, this would make an API call
+      
+      // Reset pagination to first page
+      paginationBtns.forEach((btn, index) => {
+        btn.classList.remove('active');
+        if (index === 0) btn.classList.add('active');
+      });
+      
+      prevBtn.disabled = true;
+      nextBtn.disabled = false;
+    });
+
+    // Pagination functionality
+    paginationBtns.forEach(btn => {
+      btn.addEventListener('click', function() {
+        // Remove active class from all buttons
+        paginationBtns.forEach(b => b.classList.remove('active'));
+        
+        // Add active class to clicked button
+        this.classList.add('active');
+        
+        // Enable/disable prev and next buttons based on current page
+        const currentPage = parseInt(this.textContent);
+        prevBtn.disabled = currentPage === 1;
+        nextBtn.disabled = currentPage === 5; // In a real app, this would be the last page
+      });
+    });
+
+    // Previous and Next buttons
+    prevBtn.addEventListener('click', function() {
+      if (this.disabled) return;
+      
+      const activeBtn = document.querySelector('.pagination-btn.active');
+      const currentPage = parseInt(activeBtn.textContent);
+      
+      if (currentPage > 1) {
+        paginationBtns[currentPage - 2].click();
+      }
+    });
+
+    nextBtn.addEventListener('click', function() {
+      if (this.disabled) return;
+      
+      const activeBtn = document.querySelector('.pagination-btn.active');
+      const currentPage = parseInt(activeBtn.textContent);
+      
+      if (currentPage < 5) { // In a real app, this would be the last page
+        paginationBtns[currentPage].click();
+      }
+    });
   </script>
 </body>
 </html>

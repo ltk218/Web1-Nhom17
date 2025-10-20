@@ -100,6 +100,170 @@
       transform: translateY(-2px);
       box-shadow: 0 6px 10px rgba(255, 152, 0, 0.4);
     }
+
+    /* ==== Search Form ==== */
+    .search-form {
+      background: white;
+      padding: 1.5rem;
+      border-radius: 0.75rem;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+      margin-bottom: 1.5rem;
+    }
+    
+    .form-group {
+      margin-bottom: 1rem;
+    }
+    
+    .form-label {
+      display: block;
+      margin-bottom: 0.5rem;
+      font-weight: 600;
+      color: #344767;
+    }
+    
+    .form-control {
+      width: 100%;
+      padding: 0.75rem;
+      border: 1px solid #d2d6da;
+      border-radius: 0.5rem;
+      font-size: 0.875rem;
+      transition: all 0.2s;
+    }
+    
+    .form-control:focus {
+      border-color: #e91e63;
+      box-shadow: 0 0 0 2px rgba(233, 30, 99, 0.2);
+      outline: none;
+    }
+    
+    .form-row {
+      display: flex;
+      flex-wrap: wrap;
+      margin: 0 -0.5rem;
+    }
+    
+    .form-col {
+      flex: 1;
+      padding: 0 0.5rem;
+      min-width: 200px;
+    }
+    
+    /* ==== Nút tìm kiếm với màu xanh ==== */
+    .btn-search {
+      background: linear-gradient(195deg, #4caf50, #388e3c);
+      color: white;
+      padding: 8px 16px;
+      border: none;
+      border-radius: 6px;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.2s;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 13px;
+      height: 38px;
+    }
+    
+    .btn-search:hover {
+      background: linear-gradient(195deg, #66bb6a, #43a047);
+      transform: translateY(-1px);
+      box-shadow: 0 3px 8px rgba(76, 175, 80, 0.3);
+    }
+    
+    .btn-reset {
+      background: #6c757d;
+      color: white;
+      padding: 8px 16px;
+      border: none;
+      border-radius: 6px;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.2s;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin-left: 0.5rem;
+      font-size: 13px;
+      height: 38px;
+    }
+    
+    .btn-reset:hover {
+      background: #5a6268;
+    }
+    
+    .form-actions {
+      display: flex;
+      justify-content: flex-end;
+      margin-top: 1rem;
+    }
+    
+    /* ==== Phân trang ==== */
+    .pagination {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-top: 1.5rem;
+      gap: 8px;
+    }
+
+    .pagination-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 36px;
+      height: 36px;
+      border-radius: 6px;
+      border: 1px solid #ddd;
+      background-color: white;
+      color: #344767;
+      font-size: 14px;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .pagination-btn:hover {
+      background-color: #f5f5f5;
+    }
+
+    .pagination-btn.active {
+      background: linear-gradient(195deg, #ec407a, #d81b60);
+      color: white;
+      border-color: #d81b60;
+    }
+
+    .pagination-btn.disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+
+    .pagination-btn.disabled:hover {
+      background-color: white;
+    }
+
+    .pagination-info {
+      margin-top: 10px;
+      text-align: center;
+      font-size: 14px;
+      color: #666;
+    }
+    
+    /* Responsive */
+    @media (max-width: 768px) {
+      .form-col {
+        flex: 100%;
+        margin-bottom: 1rem;
+      }
+      
+      .form-actions {
+        justify-content: center;
+      }
+      
+      .btn-search, .btn-reset {
+        width: 100%;
+        margin: 0.25rem 0;
+      }
+    }
   </style>
 </head>
 
@@ -122,7 +286,6 @@
       <li><a href="phieunhap.html" style="display: flex; align-items: center; padding: 0.75rem 1rem; color: white; text-decoration: none; background: linear-gradient(195deg,#ec407a,#d81b60); box-shadow: 0 4px 20px rgba(0,0,0,0.14),0 7px 10px -5px rgba(233,30,99,0.4);"><i class="material-icons" style="font-size:20px; margin-right:10px;">inventory_2</i>Quản lý nhập hàng</a></li>
       <li><a href="giaban.html" style="display: flex; align-items: center; padding: 0.75rem 1rem; color: white; text-decoration: none;"><i class="material-icons" style="font-size:20px; margin-right:10px;">attach_money</i>Quản lý giá bán</a></li>
       <li><a href="tonkho.html" style="display: flex; align-items: center; padding: 0.75rem 1rem; color: white; text-decoration: none;"><i class="material-icons" style="font-size:20px; margin-right:10px;">inventory</i>Quản lý tồn kho</a></li>
-
     </ul>
   </div>
   <div style="position: absolute; width: 100%; bottom: 0; padding: 1rem;">
@@ -141,6 +304,45 @@
       <button class="btn-add" onclick="window.location.href='themphieunhap.html'">
         <i class="material-icons-round">add_box</i> Thêm phiếu nhập
       </button>
+    </div>
+
+    <!-- Search Form -->
+    <div class="search-form">
+      <h3 style="margin-top: 0; color: #344767; margin-bottom: 1.5rem;">Tra cứu phiếu nhập</h3>
+      <div class="form-row">
+        <div class="form-col">
+          <div class="form-group">
+            <label class="form-label" for="from-date">Từ ngày</label>
+            <input type="date" id="from-date" class="form-control">
+          </div>
+        </div>
+        <div class="form-col">
+          <div class="form-group">
+            <label class="form-label" for="to-date">Đến ngày</label>
+            <input type="date" id="to-date" class="form-control">
+          </div>
+        </div>
+        <div class="form-col">
+          <div class="form-group">
+            <label class="form-label" for="min-total">Tổng giá trị từ</label>
+            <input type="number" id="min-total" class="form-control" placeholder="0" min="0">
+          </div>
+        </div>
+        <div class="form-col">
+          <div class="form-group">
+            <label class="form-label" for="max-total">Đến</label>
+            <input type="number" id="max-total" class="form-control" placeholder="100000000" min="0">
+          </div>
+        </div>
+      </div>
+      <div class="form-actions">
+        <button class="btn-search" id="search-btn">
+          <i class="material-icons-round">search</i> Tìm kiếm
+        </button>
+        <button class="btn-reset" id="reset-btn">
+          <i class="material-icons-round">refresh</i> Đặt lại
+        </button>
+      </div>
     </div>
 
     <table>
@@ -179,15 +381,135 @@
           <td>15.200.000 VNĐ</td>
           <td><div class="actions"><button class="btn btn-view"><i class="material-icons-round">visibility</i>Xem</button></div></td>
         </tr>
+        <!-- Thêm 2 bản ghi mẫu mới -->
+        <tr>
+          <td>4</td>
+          <td>#PN004</td>
+          <td>10-07-2025</td>
+          <td>20</td>
+          <td>18.500.000 VNĐ</td>
+          <td><div class="actions"><button class="btn btn-view"><i class="material-icons-round">visibility</i>Xem</button></div></td>
+        </tr>
+        <tr>
+          <td>5</td>
+          <td>#PN005</td>
+          <td>05-07-2025</td>
+          <td>6</td>
+          <td>7.800.000 VNĐ</td>
+          <td><div class="actions"><button class="btn btn-view"><i class="material-icons-round">visibility</i>Xem</button></div></td>
+        </tr>
       </tbody>
     </table>
+
+    <!-- Phân trang -->
+    <div class="pagination">
+      <button class="pagination-btn" id="prev-btn" disabled>
+        <i class="material-icons-round">chevron_left</i>
+      </button>
+      <button class="pagination-btn active">1</button>
+      <button class="pagination-btn">2</button>
+      <button class="pagination-btn">3</button>
+      <button class="pagination-btn">4</button>
+      <button class="pagination-btn">5</button>
+      <button class="pagination-btn" id="next-btn">
+        <i class="material-icons-round">chevron_right</i>
+      </button>
+    </div>
+    <div class="pagination-info">
+      Hiển thị 1-5 của 25 phiếu nhập
+    </div>
   </main>
 
   <script>
+    // Xử lý nút Xem chi tiết
     document.querySelectorAll('.btn-view').forEach(btn => {
       btn.addEventListener('click', () => {
         window.location.href = 'chitietphieunhap.html';
       });
+    });
+
+    // Xử lý tìm kiếm
+    document.getElementById('search-btn').addEventListener('click', function() {
+      const fromDate = document.getElementById('from-date').value;
+      const toDate = document.getElementById('to-date').value;
+      const minTotal = document.getElementById('min-total').value;
+      const maxTotal = document.getElementById('max-total').value;
+      
+      // Kiểm tra nếu ngày bắt đầu lớn hơn ngày kết thúc
+      if (fromDate && toDate && fromDate > toDate) {
+        alert('Ngày bắt đầu không thể lớn hơn ngày kết thúc');
+        return;
+      }
+      
+      // Kiểm tra nếu giá trị tối thiểu lớn hơn giá trị tối đa
+      if (minTotal && maxTotal && parseInt(minTotal) > parseInt(maxTotal)) {
+        alert('Giá trị tối thiểu không thể lớn hơn giá trị tối đa');
+        return;
+      }
+      
+      // Ở đây sẽ thực hiện gọi API hoặc lọc dữ liệu
+      
+      // Reset pagination to first page
+      const paginationBtns = document.querySelectorAll('.pagination-btn:not(#prev-btn):not(#next-btn)');
+      paginationBtns.forEach((btn, index) => {
+        btn.classList.remove('active');
+        if (index === 0) btn.classList.add('active');
+      });
+      
+      document.getElementById('prev-btn').disabled = true;
+      document.getElementById('next-btn').disabled = false;
+    });
+
+    // Xử lý nút Đặt lại
+    document.getElementById('reset-btn').addEventListener('click', function() {
+      document.getElementById('from-date').value = '';
+      document.getElementById('to-date').value = '';
+      document.getElementById('min-total').value = '';
+      document.getElementById('max-total').value = '';
+    });
+
+    // Phân trang
+    const prevBtn = document.getElementById('prev-btn');
+    const nextBtn = document.getElementById('next-btn');
+    const paginationBtns = document.querySelectorAll('.pagination-btn:not(#prev-btn):not(#next-btn)');
+
+    // Xử lý phân trang
+    paginationBtns.forEach(btn => {
+      btn.addEventListener('click', function() {
+        // Xóa active class từ tất cả các nút
+        paginationBtns.forEach(b => b.classList.remove('active'));
+        
+        // Thêm active class cho nút được nhấn
+        this.classList.add('active');
+        
+        // Bật/tắt nút prev và next dựa trên trang hiện tại
+        const currentPage = parseInt(this.textContent);
+        prevBtn.disabled = currentPage === 1;
+        nextBtn.disabled = currentPage === 5; // Trong thực tế, đây sẽ là trang cuối
+      });
+    });
+
+    // Nút Previous và Next
+    prevBtn.addEventListener('click', function() {
+      if (this.disabled) return;
+      
+      const activeBtn = document.querySelector('.pagination-btn.active');
+      const currentPage = parseInt(activeBtn.textContent);
+      
+      if (currentPage > 1) {
+        paginationBtns[currentPage - 2].click();
+      }
+    });
+
+    nextBtn.addEventListener('click', function() {
+      if (this.disabled) return;
+      
+      const activeBtn = document.querySelector('.pagination-btn.active');
+      const currentPage = parseInt(activeBtn.textContent);
+      
+      if (currentPage < 5) { // Trong thực tế, đây sẽ là trang cuối
+        paginationBtns[currentPage].click();
+      }
     });
   </script>
 </body>

@@ -143,38 +143,44 @@
       min-width: 200px;
     }
     
+    /* ==== Nút tìm kiếm với màu xanh ==== */
     .btn-search {
-      background: linear-gradient(195deg, #ec407a, #d81b60);
+      background: linear-gradient(195deg, #4caf50, #388e3c); /* Màu xanh */
       color: white;
-      padding: 0.75rem 1.5rem;
+      padding: 8px 16px;
       border: none;
-      border-radius: 0.5rem;
-      font-weight: 600;
+      border-radius: 6px;
+      font-weight: 500;
       cursor: pointer;
       transition: all 0.2s;
       display: inline-flex;
       align-items: center;
       gap: 0.5rem;
+      font-size: 13px;
+      height: 38px;
     }
     
     .btn-search:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 4px 8px rgba(233, 30, 99, 0.3);
+      background: linear-gradient(195deg, #66bb6a, #43a047);
+      transform: translateY(-1px);
+      box-shadow: 0 3px 8px rgba(76, 175, 80, 0.3);
     }
     
     .btn-reset {
       background: #6c757d;
       color: white;
-      padding: 0.75rem 1.5rem;
+      padding: 8px 16px;
       border: none;
-      border-radius: 0.5rem;
-      font-weight: 600;
+      border-radius: 6px;
+      font-weight: 500;
       cursor: pointer;
       transition: all 0.2s;
       display: inline-flex;
       align-items: center;
       gap: 0.5rem;
       margin-left: 0.5rem;
+      font-size: 13px;
+      height: 38px;
     }
     
     .btn-reset:hover {
@@ -185,6 +191,56 @@
       display: flex;
       justify-content: flex-end;
       margin-top: 1rem;
+    }
+    
+    /* ==== Phân trang ==== */
+    .pagination {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-top: 1.5rem;
+      gap: 8px;
+    }
+
+    .pagination-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 36px;
+      height: 36px;
+      border-radius: 6px;
+      border: 1px solid #ddd;
+      background-color: white;
+      color: #344767;
+      font-size: 14px;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .pagination-btn:hover {
+      background-color: #f5f5f5;
+    }
+
+    .pagination-btn.active {
+      background: linear-gradient(195deg, #ec407a, #d81b60);
+      color: white;
+      border-color: #d81b60;
+    }
+
+    .pagination-btn.disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+
+    .pagination-btn.disabled:hover {
+      background-color: white;
+    }
+
+    .pagination-info {
+      margin-top: 10px;
+      text-align: center;
+      font-size: 14px;
+      color: #666;
     }
     
     /* Responsive */
@@ -338,8 +394,38 @@
           <td><span class="status-badge status-cancelled"><i class="material-icons-round">cancel</i>Đã hủy</span></td>
           <td><div class="actions"><button class="btn btn-view"><i class="material-icons-round">visibility</i>Xem</button></div></td>
         </tr>
+        <tr>
+          <td>5</td>
+          <td>#DH105</td>
+          <td>Hoàng Văn E<br><small style="color:#888;">hoangvane@example.com</small></td>
+          <td>202 Đường LMN, Quận 5</td>
+          <td>0934567890</td>
+          <td>15-07-2025</td>
+          <td>2.100.000 VNĐ</td>
+                    <td><span class="status-badge status-completed"><i class="material-icons-round">check_circle</i>Hoàn tất</span></td>
+
+          <td><div class="actions"><button class="btn btn-view"><i class="material-icons-round">visibility</i>Xem</button></div></td>
+        </tr>
       </tbody>
     </table>
+
+    <!-- Phân trang -->
+    <div class="pagination">
+      <button class="pagination-btn" id="prev-btn" disabled>
+        <i class="material-icons-round">chevron_left</i>
+      </button>
+      <button class="pagination-btn active">1</button>
+      <button class="pagination-btn">2</button>
+      <button class="pagination-btn">3</button>
+      <button class="pagination-btn">4</button>
+      <button class="pagination-btn">5</button>
+      <button class="pagination-btn" id="next-btn">
+        <i class="material-icons-round">chevron_right</i>
+      </button>
+    </div>
+    <div class="pagination-info">
+      Hiển thị 1-5 của 25 đơn hàng
+    </div>
   </main>
 
   <script>
@@ -363,7 +449,6 @@
       }
       
       // Ở đây sẽ thực hiện gọi API hoặc lọc dữ liệu
-      alert(`Tìm kiếm đơn hàng:\nTừ ngày: ${fromDate || 'Tất cả'}\nĐến ngày: ${toDate || 'Tất cả'}\nTrạng thái: ${status || 'Tất cả'}`);
       
       // Trong thực tế, bạn sẽ gửi yêu cầu tìm kiếm đến server hoặc lọc dữ liệu client-side
       // filterOrders(fromDate, toDate, status);
@@ -377,6 +462,50 @@
       
       // Trong thực tế, bạn sẽ tải lại tất cả đơn hàng
       // loadAllOrders();
+    });
+
+    // Phân trang
+    const prevBtn = document.getElementById('prev-btn');
+    const nextBtn = document.getElementById('next-btn');
+    const paginationBtns = document.querySelectorAll('.pagination-btn:not(#prev-btn):not(#next-btn)');
+
+    // Xử lý phân trang
+    paginationBtns.forEach(btn => {
+      btn.addEventListener('click', function() {
+        // Xóa active class từ tất cả các nút
+        paginationBtns.forEach(b => b.classList.remove('active'));
+        
+        // Thêm active class cho nút được nhấn
+        this.classList.add('active');
+        
+        // Bật/tắt nút prev và next dựa trên trang hiện tại
+        const currentPage = parseInt(this.textContent);
+        prevBtn.disabled = currentPage === 1;
+        nextBtn.disabled = currentPage === 5; // Trong thực tế, đây sẽ là trang cuối
+      });
+    });
+
+    // Nút Previous và Next
+    prevBtn.addEventListener('click', function() {
+      if (this.disabled) return;
+      
+      const activeBtn = document.querySelector('.pagination-btn.active');
+      const currentPage = parseInt(activeBtn.textContent);
+      
+      if (currentPage > 1) {
+        paginationBtns[currentPage - 2].click();
+      }
+    });
+
+    nextBtn.addEventListener('click', function() {
+      if (this.disabled) return;
+      
+      const activeBtn = document.querySelector('.pagination-btn.active');
+      const currentPage = parseInt(activeBtn.textContent);
+      
+      if (currentPage < 5) { // Trong thực tế, đây sẽ là trang cuối
+        paginationBtns[currentPage].click();
+      }
     });
 
     // Hàm lọc đơn hàng (ví dụ - cần triển khai thực tế)
