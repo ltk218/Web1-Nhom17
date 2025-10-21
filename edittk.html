@@ -2,363 +2,357 @@
 <html lang="vi">
 
 <head>
-    <meta charset="utf-8">
-    <title>Chỉnh Sửa Thông Tin - BOOK STORE</title>
-    <meta content="width=device-width, initial-scale=1.0" name="viewport">
-    <meta content="eCommerce HTML Template Free Download" name="keywords">
-    <meta content="eCommerce HTML Template Free Download" name="description">
+  <meta charset="utf-8">
+  <title>Chỉnh Sửa Thông Tin - BOOK STORE</title>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-    <!-- Favicon -->
-    <link href="img/tieude.jpg" rel="icon">
+  <!-- Favicon -->
+  <link href="img/tieude.jpg" rel="icon">
 
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400|Source+Code+Pro:700,900&display=swap" rel="stylesheet">
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400|Source+Code+Pro:700,900&display=swap" rel="stylesheet">
 
-    <!-- CSS Libraries -->
-    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
-    <link href="lib/slick/slick.css" rel="stylesheet">
-    <link href="lib/slick/slick-theme.css" rel="stylesheet">
+  <!-- CSS Libraries -->
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+  <link href="lib/slick/slick.css" rel="stylesheet">
+  <link href="lib/slick/slick-theme.css" rel="stylesheet">
 
-    <!-- Template Stylesheet -->
-    <link href="css/style.css" rel="stylesheet">
-    <link href="css/fix.css" rel="stylesheet">
-    <style>
-        .my-account {
-            margin-bottom: 200px;
-        }
-        .section-title {
-            font-size: 24px;
-            font-weight: bold;
-            color: #333;
-            margin-bottom: 20px;
-            padding-bottom: 10px;
-            border-bottom: 2px solid #ff6f61;
-        }
-        .form-container {
-            background-color: #f8f9fa;
-            padding: 30px;
-            border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0,0,0,0.1);
-        }
-        .btn-custom {
-            background-color: #ff6f61;
-            color: white;
-            border: none;
-            padding: 10px 20px;
-            border-radius: 5px;
-            font-weight: bold;
-            transition: background-color 0.3s;
-        }
-        .btn-custom:hover {
-            background-color: #e65a50;
-            color: white;
-        }
-        .btn-secondary-custom {
-            background-color: #6c757d;
-            color: white;
-            border: none;
-            padding: 10px 20px;
-            border-radius: 5px;
-            font-weight: bold;
-            transition: background-color 0.3s;
-        }
-        .btn-secondary-custom:hover {
-            background-color: #5a6268;
-            color: white;
-        }
-    </style>
+  <!-- Template Stylesheet -->
+  <link href="css/style.css" rel="stylesheet">
+  <link href="css/fix.css" rel="stylesheet">
+
+  <style>
+    .my-account {
+        margin-bottom: 200px;
+    }
+    .section-title {
+        font-size: 24px;
+        font-weight: bold;
+        color: #333;
+        margin-bottom: 20px;
+        padding-bottom: 10px;
+        border-bottom: 2px solid #ff6f61;
+    }
+    .edit-form-container {
+        background: #fff;
+        padding: 20px;
+        border-radius: 5px;
+        box-shadow: 0 0 10px rgba(0,0,0,0.05);
+    }
+    .form-group label {
+        font-weight: bold;
+        color: #333;
+    }
+    .form-actions {
+        text-align: right;
+        margin-top: 20px;
+    }
+    .btn-edit {
+        background-color: #ff6f61;
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 5px;
+        font-weight: bold;
+        transition: background-color 0.3s;
+    }
+    .btn-edit:hover {
+        background-color: #e65a50;
+        color: white;
+    }
+    .btn-secondary-custom {
+        background-color: #6c757d;
+        color: #fff;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 5px;
+        font-weight: bold;
+        transition: background-color 0.3s;
+        margin-right: 10px;
+    }
+    .btn-secondary-custom:hover {
+        background-color: #5a6268;
+        color: #fff;
+    }
+    .address-group {
+        background-color: #f8f9fa;
+        padding: 15px;
+        border-radius: 5px;
+        margin-bottom: 15px;
+    }
+    .address-group label {
+        font-weight: bold;
+        margin-bottom: 8px;
+    }
+    .password-section {
+        margin-top: 30px;
+        padding-top: 20px;
+        border-top: 1px solid #dee2e6;
+    }
+    .password-section h5 {
+        font-weight: bold;
+        color: #333;
+        margin-bottom: 15px;
+    }
+  </style>
 </head>
 
 <body>
-    <!-- Header Start -->
-    <div class="nav">
-        <div class="container-fluid">
-            <nav class="navbar navbar-expand-md bg-dark navbar-dark">
-                <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
-                    <div class="navbar-nav mr-auto">
-                        <a href="index2.html" class="nav-item nav-link">Trang chủ</a>
-                        <a href="danhmuccotaikhoan.html" class="nav-item nav-link">Danh mục</a>
-                        <a href="contact.html" class="nav-item nav-link">Liên hệ</a>
-                    </div>
-                    <div class="navbar-nav ml-auto">
-                        <div class="nav-item dropdown">
-                            <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown"><i class="fas fa-user"></i> &nbsp;Huynh Duc</a>
-                            <div class="dropdown-menu">
-                                 <a href="thongtintaikhoan.html" class="dropdown-item"><i class="fa fa-id-card me-2"></i>  &nbsp;Thông tin</a>
-                                    <a href="lichsumuahang.html" class="dropdown-item"> <i class="fa fa-history me-2"></i>&nbsp;Lịch sử mua hàng</a>
-                                    <a href="index.html" class="dropdown-item"> <i class="fa fa-sign-out-alt me-2"></i>&nbsp;Đăng xuất</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </nav>
-        </div>
-    </div>
-    
-    <div class="bottom-bar">
-        <div class="container-fluid">
-            <div class="row align-items-center">
-                <div class="col-md-3">
-                    <div class="logo">
-                        <a href="index.html">
-                            <img src="img/logo.png" alt="Logo">
-                        </a>
-                    </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="search">
-                        <input type="text" id="searchInput" placeholder="Tìm kiếm sản phẩm">
-                        <button id="searchBtn"><i class="fa fa-search"></i></button>
-                    </div>
-                </div>
-                <div class="col-md-3">
-                    <div class="user">
-                        <a href="cart.html" class="btn cart">
-                            <i class="fa fa-shopping-cart"></i>
-                        </a>
-                    </div>
-                </div>
+  <!-- Header Start -->
+  <div class="nav">
+    <div class="container-fluid">
+      <nav class="navbar navbar-expand-md bg-dark navbar-dark">
+        <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
+          <div class="navbar-nav mr-auto">
+            <a href="index2.html" class="nav-item nav-link">Trang chủ</a>
+            <a href="contact.html" class="nav-item nav-link">Liên hệ</a>
+          </div>
+          <div class="navbar-nav ml-auto">
+            <div class="nav-item dropdown">
+              <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown"><i class="fas fa-user"></i> &nbsp;Huynh Duc</a>
+              <div class="dropdown-menu">
+                <a href="thongtintaikhoan.html" class="dropdown-item"><i class="fa fa-id-card me-2"></i>  &nbsp;Thông tin</a>
+                <a href="lichsumuahang.html" class="dropdown-item"><i class="fa fa-history me-2"></i>&nbsp;Lịch sử mua hàng</a>
+                <a href="index.html" class="dropdown-item"><i class="fa fa-sign-out-alt me-2"></i>&nbsp;Đăng xuất</a>
+              </div>
             </div>
+          </div>
         </div>
-    </div>
-    <!-- Header End -->
-
-    <!-- Breadcrumb Start -->
-    <div class="breadcrumb-wrap">
-        <div class="container-fluid">
-            <ul class="breadcrumb">
-                <li class="breadcrumb-item"><a href="index2.html">Trang chủ</a></li>
-                <li class="breadcrumb-item"><a href="thongtintaikhoan.html">Tài khoản</a></li>
-                <li class="breadcrumb-item active">Chỉnh sửa thông tin</li>
-            </ul>
-        </div>
-    </div>
-    <!-- Breadcrumb End -->
-
-    <!-- My Account Start -->
-    <div class="my-account">
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-md-8 offset-md-2">
-                    <h2 class="section-title">Chỉnh Sửa Thông Tin Tài Khoản</h2>
-                    <div class="form-container">
-                        <form id="editAccountForm">
-                            <div class="form-group">
-                                <label for="fullName"><strong>Họ và tên</strong></label>
-                                <input type="text" class="form-control" id="fullName" value="Huỳnh Hữu Đức" required>
-                            </div>
-                            
-                            <div class="form-group">
-                                <label for="email"><strong>Email</strong></label>
-                                <input type="email" class="form-control" id="email" value="huuduc123@gmail.com" required>
-                                <small class="form-text text-muted">Email này sẽ được sử dụng để đăng nhập và nhận thông báo</small>
-                            </div>
-                            
-                            <div class="form-group">
-                                <label for="phone"><strong>Số điện thoại</strong></label>
-                                <input type="tel" class="form-control" id="phone" value="033456789" required>
-                            </div>
-                            
-                            <div class="form-group">
-                                <!-- Địa chỉ: tách 3 trường, không dùng JS -->
-<div class="form-group">
-  <label><strong>Địa chỉ</strong></label>
-  <div class="form-row">
-    <div class="form-group col-md-6">
-      <label for="streetAddress">Số nhà & Tên đường</label>
-      <input type="text" class="form-control" id="streetAddress"
-             value="123 Đường Mai Chí Thọ" placeholder="VD: 123 Đường Mai Chí Thọ" required>
-    </div>
-    <div class="form-group col-md-3">
-      <label for="district">Quận/Huyện</label>
-      <input type="text" class="form-control" id="district"
-             value="Quận Thủ Đức" placeholder="VD: Quận Thủ Đức" required>
-    </div>
-    <div class="form-group col-md-3">
-      <label for="city">Thành phố</label>
-      <input type="text" class="form-control" id="city"
-             value="TP.HCM" placeholder="VD: TP.HCM" required>
+      </nav>
     </div>
   </div>
-</div>
 
-                            </div>
-                            
-                            <div class="form-group">
-                                <label for="password"><strong>Mật khẩu hiện tại</strong></label>
-                                <input type="password" class="form-control" id="password" placeholder="Nhập mật khẩu hiện tại để xác nhận thay đổi">
-                            </div>
-                            
-                            <div class="form-group mt-4">
-                                <h5>Thay đổi mật khẩu (tùy chọn)</h5>
-                                <div class="row">
-                                    <div class="col-md-6">
-                                        <label for="newPassword">Mật khẩu mới</label>
-                                        <input type="password" class="form-control" id="newPassword" placeholder="Mật khẩu mới">
-                                    </div>
-                                    <div class="col-md-6">
-                                        <label for="confirmPassword">Xác nhận mật khẩu mới</label>
-                                        <input type="password" class="form-control" id="confirmPassword" placeholder="Xác nhận mật khẩu mới">
-                                    </div>
-                                </div>
-                                <small class="form-text text-muted">Để trống nếu không muốn thay đổi mật khẩu</small>
-                            </div>
-                            
-                            
-                            
-                            <div class="form-group mt-4 text-right">
-                                <button type="button" class="btn btn-secondary-custom mr-2" onclick="window.location.href='thongtintaikhoan.html'">
-                                    <i class="fas fa-times"></i> Hủy bỏ
-                                </button>
-                                <button type="submit" class="btn btn-custom">
-                                    <i class="fas fa-save"></i> Lưu thay đổi
-                                </button>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-            </div>
+  <div class="bottom-bar">
+    <div class="container-fluid">
+      <div class="row align-items-center">
+        <div class="col-md-3">
+          <div class="logo">
+            <a href="index.html"><img src="img/logo.png" alt="Logo"></a>
+          </div>
         </div>
-    </div>
-    <!-- My Account End -->
-
-    <!-- Footer Start -->
-    <div class="footer">
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-lg-3 col-md-6">
-                    <div class="footer-widget">
-                        <h2>Liên hệ</h2>
-                        <div class="contact-info">
-                            <p><i class="fa fa-map-marker"></i>273 An Dương Vương Phường 3 Quận 5 TPHCM</p>
-                            <p><i class="fa fa-envelope"></i>info@example.com</p>
-                            <p><i class="fa fa-phone"></i>+012-345-67890</p>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="col-lg-3 col-md-6">
-                    <div class="footer-widget">
-                        <h2>Theo dõi chúng tôi</h2>
-                        <div class="contact-info">
-                            <div class="social">
-                                <a href=""><i class="fab fa-twitter"></i></a>
-                                <a href=""><i class="fab fa-facebook-f"></i></a>
-                                <a href=""><i class="fab fa-linkedin-in"></i></a>
-                                <a href=""><i class="fab fa-instagram"></i></a>
-                                <a href=""><i class="fab fa-youtube"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-lg-3 col-md-6">
-                    <div class="footer-widget">
-                        <h2>Thông tin công ty</h2>
-                        <ul>
-                            <li><a href="#">Về chúng tôi</a></li>
-                            <li><a href="#">Chính sách bảo mật</a></li>
-                            <li><a href="#">Điều khoản & Điều kiện</a></li>
-                        </ul>
-                    </div>
-                </div>
-
-                <div class="col-lg-3 col-md-6">
-                    <div class="footer-widget">
-                        <h2>Thông tin mua hàng</h2>
-                        <ul>
-                            <li><a href="#">Chính sách thanh toán</a></li>
-                            <li><a href="#">Chính sách vận chuyển</a></li>
-                            <li><a href="#">Chính sách đổi trả</a></li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="row payment align-items-center">
-                <div class="col-md-6">
-                    <div class="payment-method">
-                        <h2>Chúng tôi chấp nhận:</h2>
-                        <img src="img/payment-method.png" alt="Payment Method" />
-                    </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="payment-security">
-                        <h2>Được bảo mật bởi:</h2>
-                        <img src="img/godaddy.svg" alt="Payment Security" />
-                        <img src="img/norton.svg" alt="Payment Security" />
-                        <img src="img/ssl.svg" alt="Payment Security" />
-                    </div>
-                </div>
-            </div>
+        <div class="col-md-6">
+          <div class="search">
+            <input type="text" id="searchInput" placeholder="Tìm kiếm sản phẩm">
+            <button id="searchBtn"><i class="fa fa-search"></i></button>
+          </div>
         </div>
+        <div class="col-md-3">
+          <div class="user">
+            <a href="cart.html" class="btn cart"><i class="fa fa-shopping-cart"></i></a>
+          </div>
+        </div>
+      </div>
     </div>
-    <!-- Footer End -->
+  </div>
+  <!-- Header End -->
 
-    <!-- Footer Bottom Start -->
-    
-    <!-- Footer Bottom End -->
+  <!-- Breadcrumb Start -->
+  <div class="breadcrumb-wrap">
+    <div class="container-fluid">
+      <ul class="breadcrumb">
+        <li class="breadcrumb-item"><a href="index2.html">Trang chủ</a></li>
+        <li class="breadcrumb-item"><a href="thongtintaikhoan.html">Tài khoản</a></li>
+        <li class="breadcrumb-item active">Chỉnh sửa thông tin</li>
+      </ul>
+    </div>
+  </div>
+  <!-- Breadcrumb End -->
 
-    <!-- Back to Top -->
-    <a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>
+  <!-- Edit Account Start -->
+  <div class="my-account">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-8 offset-md-2">
+          <h2 class="section-title">Chỉnh Sửa Thông Tin Tài Khoản</h2>
 
-    <!-- JavaScript Libraries -->
-    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
-    <script src="lib/easing/easing.min.js"></script>
-    <script src="lib/slick/slick.min.js"></script>
+          <div class="edit-form-container">
+            <form id="editAccountForm" novalidate>
+              <div class="form-group">
+                <label for="fullName">Họ và tên</label>
+                <input type="text" class="form-control" id="fullName" value="Huỳnh Hữu Đức" required>
+              </div>
 
-    <!-- Template Javascript -->
-    <script src="js/main.js"></script>
-    <script>
-        // Xử lý form chỉnh sửa thông tin
-        document.getElementById('editAccountForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            // Lấy giá trị từ form
-            
-            
-            // Kiểm tra mật khẩu hiện tại
-          
-            
-            // Kiểm tra mật khẩu mới nếu có
-           
-                
-                
-            // Giả lập gửi dữ liệu lên server
-            // Trong thực tế, bạn sẽ gửi AJAX request đến server ở đây
-            
-            // Hiển thị thông báo thành công
-            alert('Thông tin tài khoản đã được cập nhật thành công!');
-            
-            // Chuyển hướng về trang thông tin tài khoản
-            window.location.href = 'thongtintaikhoan.html';
-        });
-        
-        // Xử lý nút hủy bỏ
-        document.querySelector('.btn-secondary-custom').addEventListener('click', function() {
-            if (confirm('Bạn có chắc chắn muốn hủy bỏ các thay đổi?')) {
-                window.location.href = 'thongtintaikhoan.html';
-            }
-        });
+              <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" class="form-control" id="email" value="huuduc123@gmail.com" required>
+                <small class="form-text text-muted">Email này sẽ được sử dụng để đăng nhập và nhận thông báo</small>
+              </div>
 
-        const searchBtn = document.getElementById("searchBtn");
-    const searchInput = document.getElementById("searchInput");
+              <div class="form-group">
+                <label for="phone">Số điện thoại</label>
+                <input type="tel" class="form-control" id="phone" value="033456789" required>
+              </div>
 
-    // Khi click nút tìm kiếm
-    searchBtn.addEventListener("click", () => {
-      window.location.href = "searchcotaikhoan.html"; // 👉 trang bạn muốn chuyển tới
+              <div class="address-group">
+                <label>Địa chỉ</label>
+                <div class="form-row">
+                  <div class="form-group col-md-6">
+                    <label for="streetAddress">Số nhà & Tên đường</label>
+                    <input type="text" class="form-control" id="streetAddress"
+                           value="123 Đường Mai Chí Thọ" placeholder="VD: 123 Đường Mai Chí Thọ" required>
+                  </div>
+                  <div class="form-group col-md-3">
+                    <label for="district">Quận/Huyện</label>
+                    <input type="text" class="form-control" id="district"
+                           value="Quận Thủ Đức" placeholder="VD: Quận Thủ Đức" required>
+                  </div>
+                  <div class="form-group col-md-3">
+                    <label for="city">Thành phố</label>
+                    <input type="text" class="form-control" id="city"
+                           value="TP.HCM" placeholder="VD: TP.HCM" required>
+                  </div>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="password">Mật khẩu hiện tại</label>
+                <input type="password" class="form-control" id="password" placeholder="Nhập mật khẩu hiện tại để xác nhận thay đổi">
+              </div>
+
+              <div class="password-section">
+                <h5>Thay đổi mật khẩu (tùy chọn)</h5>
+                <div class="row">
+                  <div class="col-md-6">
+                    <label for="newPassword">Mật khẩu mới</label>
+                    <input type="password" class="form-control" id="newPassword" placeholder="Mật khẩu mới">
+                  </div>
+                  <div class="col-md-6">
+                    <label for="confirmPassword">Xác nhận mật khẩu mới</label>
+                    <input type="password" class="form-control" id="confirmPassword" placeholder="Xác nhận mật khẩu mới">
+                  </div>
+                </div>
+                <small class="form-text text-muted">Để trống nếu không muốn thay đổi mật khẩu</small>
+              </div>
+
+              <div class="form-actions">
+                <button type="button" class="btn btn-secondary-custom" id="btnCancel">
+                  <i class="fas fa-times"></i> Hủy bỏ
+                </button>
+                <button type="submit" class="btn btn-edit">
+                  <i class="fas fa-save"></i> Lưu thay đổi
+                </button>
+              </div>
+            </form>
+          </div> <!-- /edit-form-container -->
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Edit Account End -->
+
+  <!-- Footer Start -->
+  <div class="footer">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-lg-3 col-md-6">
+          <div class="footer-widget">
+            <h2>Liên hệ</h2>
+            <div class="contact-info">
+              <p><i class="fa fa-map-marker"></i>273 An Dương Vương Phường 3 Quận 5 TPHCM</p>
+              <p><i class="fa fa-envelope"></i>info@example.com</p>
+              <p><i class="fa fa-phone"></i>+012-345-67890</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-3 col-md-6">
+          <div class="footer-widget">
+            <h2>Theo dõi chúng tôi</h2>
+            <div class="contact-info">
+              <div class="social">
+                <a href=""><i class="fab fa-twitter"></i></a>
+                <a href=""><i class="fab fa-facebook-f"></i></a>
+                <a href=""><i class="fab fa-linkedin-in"></i></a>
+                <a href=""><i class="fab fa-instagram"></i></a>
+                <a href=""><i class="fab fa-youtube"></i></a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-3 col-md-6">
+          <div class="footer-widget">
+            <h2>Thông tin công ty</h2>
+            <ul>
+              <li><a href="#">Về chúng tôi</a></li>
+              <li><a href="#">Chính sách bảo mật</a></li>
+              <li><a href="#">Điều khoản & Điều kiện</a></li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="col-lg-3 col-md-6">
+          <div class="footer-widget">
+            <h2>Thông tin mua hàng</h2>
+            <ul>
+              <li><a href="#">Chính sách thanh toán</a></li>
+              <li><a href="#">Chính sách vận chuyển</a></li>
+              <li><a href="#">Chính sách đổi trả</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="row payment align-items-center">
+        <div class="col-md-6">
+          <div class="payment-method">
+            <h2>Chúng tôi chấp nhận:</h2>
+            <img src="img/payment-method.png" alt="Payment Method" />
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="payment-security">
+            <h2>Được bảo mật bởi:</h2>
+            <img src="img/godaddy.svg" alt="Payment Security" />
+            <img src="img/norton.svg" alt="Payment Security" />
+            <img src="img/ssl.svg" alt="Payment Security" />
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Footer End -->
+
+  <!-- Back to Top -->
+  <a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>
+
+  <!-- JavaScript Libraries -->
+  <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
+  <script src="lib/easing/easing.min.js"></script>
+  <script src="lib/slick/slick.min.js"></script>
+
+  <!-- Template Javascript -->
+  <script src="js/main.js"></script>
+
+  <script>
+    // Submit form
+    document.getElementById('editAccountForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      alert('Thông tin tài khoản đã được cập nhật thành công!');
+      window.location.href = 'thongtintaikhoan.html';
     });
 
-    // Khi nhấn Enter trong ô tìm kiếm
+    // Hủy bỏ
+    document.getElementById('btnCancel').addEventListener('click', function() {
+      if (confirm('Bạn có chắc chắn muốn hủy bỏ các thay đổi?')) {
+        window.location.href = 'thongtintaikhoan.html';
+      }
+    });
+
+    // Search chuyển trang
+    const searchBtn = document.getElementById("searchBtn");
+    const searchInput = document.getElementById("searchInput");
+    searchBtn.addEventListener("click", () => {
+      window.location.href = "searchcotaikhoan.html";
+    });
     searchInput.addEventListener("keypress", (e) => {
       if (e.key === "Enter") {
         e.preventDefault();
         window.location.href = "searchcotaikhoan.html";
       }
     });
-    </script>
+  </script>
 </body>
-
 </html>
