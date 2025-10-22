@@ -27,6 +27,11 @@
     <style>
         .my-account {
             margin-bottom: 200px;
+            margin-top: 5px;
+        }
+
+        .my-account .container-fluid {
+            padding-top: 30px;
         }
         .section-title {
             font-size: 24px;
@@ -35,6 +40,209 @@
             margin-bottom: 20px;
             padding-bottom: 10px;
             border-bottom: 2px solid #ff6f61;
+        }
+
+        /* Container tổng cho vùng search */
+        .search-container {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            width: 100%;
+        }
+
+        /* Thanh search bên trái */
+        .search {
+            position: relative;
+            flex: 1;
+            display: flex;
+            align-items: center;
+        }
+
+        .search input {
+            width: 100%;
+            padding-right: 30px; /* Chừa chỗ cho nút search sát rìa */
+        }
+
+        .search button {
+            position: absolute !important;
+            right: 0 !important;
+            top: 0 !important;
+            bottom: 0 !important;
+            z-index: 2;
+            background: transparent !important;
+            border: none !important;
+            padding: 0 18px !important;
+            color: #ff6f61 !important;
+            height: 100% !important;
+            display: flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+            border-radius: 0 !important;
+            cursor: pointer;
+            margin: 0 !important;
+        }
+
+        .search button:hover {
+            background: #ff6f61 !important;
+            color: white !important;
+        }
+
+        .search button i {
+            font-size: 16px;
+            line-height: 1;
+        }
+
+        /* Nút phễu bên phải thanh search */
+        .filter-button-container {
+            flex-shrink: 0;
+        }
+
+        /* Nút phễu lọc */
+        .filter-btn {
+            width: 45px;
+            height: 45px;
+            border-radius: 8px;
+            background: white;
+            border: 2px solid #28a745;
+            color: #28a745;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 16px;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .filter-btn:hover {
+            background: #28a745;
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+        }
+
+        /* Modal tìm kiếm nâng cao */
+        .advanced-search-modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.5);
+            animation: fadeIn 0.3s ease;
+        }
+
+        @keyframes fadeIn {
+            from {opacity: 0;}
+            to {opacity: 1;}
+        }
+
+        .modal-content {
+            background-color: white;
+            margin: 10% auto;
+            padding: 0;
+            border-radius: 10px;
+            width: 90%;
+            max-width: 500px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            animation: slideIn 0.3s ease;
+        }
+
+        @keyframes slideIn {
+            from {
+                transform: translateY(-50px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .modal-header {
+            padding: 15px 20px;
+            border-bottom: 1px solid #eee;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .modal-header h3 {
+            margin: 0;
+            color: #333;
+        }
+
+        .close-modal {
+            background: none;
+            border: none;
+            font-size: 24px;
+            cursor: pointer;
+            color: #999;
+        }
+
+        .close-modal:hover {
+            color: #333;
+        }
+
+        .modal-body {
+            padding: 20px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 600;
+            color: #333;
+        }
+
+        .form-group input,
+        .form-group select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 14px;
+        }
+
+        .price-range {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .price-range input {
+            width: calc(50% - 5px);
+        }
+
+        .form-actions {
+            display: flex;
+            gap: 10px;
+            justify-content: flex-end;
+        }
+
+        .btn-search {
+            background: #28a745;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: 600;
+        }
+
+        .btn-reset {
+            background: #6c757d;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
         }
     </style>
 </head>
@@ -80,16 +288,23 @@
                     </div>
                 </div>
                 <div class="col-md-6">
-                    <div class="search">
-                        <input type="text" id="searchInput" placeholder="Tìm kiếm sản phẩm">
-                        <button id="searchBtn"><i class="fa fa-search"></i></button>
+                    <div class="search-container">
+                        <div class="search">
+                            <input type="text" id="searchInput" placeholder="Tìm kiếm sản phẩm">
+                            <button id="searchBtn"><i class="fa fa-search"></i></button>
+                        </div>
+                        <div class="filter-button-container">
+                            <button id="filterBtn" class="filter-btn" title="Tìm kiếm nâng cao">
+                                <i class="fas fa-filter"></i>
+                            </button>
+                        </div>
                     </div>
                 </div>
                 <div class="col-md-3">
                     <div class="user">
                         <a href="cart.html" class="btn cart">
                             <i class="fa fa-shopping-cart"></i>
-                            
+
                         </a>
                     </div>
                 </div>
@@ -248,8 +463,63 @@
     <!-- Footer End -->
 
     <!-- Footer Bottom Start -->
-    
+
     <!-- Footer Bottom End -->
+
+    <!-- Form tìm kiếm nâng cao -->
+    <div id="advancedSearchModal" class="advanced-search-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Tìm kiếm nâng cao</h3>
+                <button class="close-modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form id="advancedSearchForm">
+                    <div class="form-group">
+                        <label>Từ khóa:</label>
+                        <input type="text" name="keyword" placeholder="Nhập từ khóa tìm kiếm...">
+                    </div>
+
+                    <div class="form-group">
+                        <label>Danh mục:</label>
+                        <select name="category">
+                            <option value="">Tất cả</option>
+                            <option value="thieunhi">Thiếu nhi</option>
+                            <option value="tamly">Tâm lý/tình cảm</option>
+                            <option value="tongiao">Tôn giáo</option>
+                            <option value="lichsu">Lịch sử</option>
+                            <option value="vanhoc">Văn học</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Khoảng giá:</label>
+                        <div class="price-range">
+                            <input type="number" name="minPrice" placeholder="Từ">
+                            <span>-</span>
+                            <input type="number" name="maxPrice" placeholder="Đến">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Sắp xếp theo:</label>
+                        <select name="sort">
+                            <option value="">Mặc định</option>
+                            <option value="price_asc">Giá tăng dần</option>
+                            <option value="price_desc">Giá giảm dần</option>
+                            <option value="name_asc">Tên A-Z</option>
+                            <option value="name_desc">Tên Z-A</option>
+                        </select>
+                    </div>
+
+                    <div class="form-actions">
+                        <button type="submit" class="btn-search">Tìm kiếm</button>
+                        <button type="button" class="btn-reset">Đặt lại</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
 
     <!-- Back to Top -->
     <a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>
@@ -283,21 +553,83 @@
             }
         });
 
+        // JavaScript cho nút phễu lọc và form tìm kiếm nâng cao
+        document.addEventListener('DOMContentLoaded', function() {
+            const filterBtn = document.getElementById('filterBtn');
+            const modal = document.getElementById('advancedSearchModal');
+            const closeModal = document.querySelector('.close-modal');
+            const form = document.getElementById('advancedSearchForm');
+            const resetBtn = document.querySelector('.btn-reset');
+
+            // Hiển thị modal khi click nút phễu
+            filterBtn.addEventListener('click', function() {
+                modal.style.display = 'block';
+                document.body.style.overflow = 'hidden'; // Ngăn cuộn trang
+            });
+
+            // Đóng modal
+            function closeModalHandler() {
+                modal.style.display = 'none';
+                document.body.style.overflow = 'auto';
+            }
+
+            closeModal.addEventListener('click', closeModalHandler);
+
+            // Đóng modal khi click bên ngoài
+            window.addEventListener('click', function(event) {
+                if (event.target === modal) {
+                    closeModalHandler();
+                }
+            });
+
+            // Đóng modal khi nhấn ESC
+            document.addEventListener('keydown', function(event) {
+                if (event.key === 'Escape' && modal.style.display === 'block') {
+                    closeModalHandler();
+                }
+            });
+
+            // Xử lý form submit
+            form.addEventListener('submit', function(e) {
+                e.preventDefault();
+
+                // Thu thập dữ liệu form
+                const formData = new FormData(form);
+                const searchParams = new URLSearchParams();
+
+                for (let [key, value] of formData.entries()) {
+                    if (value.trim() !== '') {
+                        searchParams.append(key, value);
+                    }
+                }
+
+                // Đóng modal và chuyển hướng
+                closeModalHandler();
+                window.location.href = 'searchcotaikhoan.html?' + searchParams.toString();
+            });
+
+            // Reset form
+            resetBtn.addEventListener('click', function() {
+                form.reset();
+            });
+        });
+
+        // Search functionality
         const searchBtn = document.getElementById("searchBtn");
-    const searchInput = document.getElementById("searchInput");
+        const searchInput = document.getElementById("searchInput");
 
-    // Khi click nút tìm kiếm
-    searchBtn.addEventListener("click", () => {
-      window.location.href = "searchcotaikhoan.html"; // 👉 trang bạn muốn chuyển tới
-    });
+        // Khi click nút tìm kiếm
+        searchBtn.addEventListener("click", () => {
+          window.location.href = "searchcotaikhoan.html"; // 👉 trang bạn muốn chuyển tới
+        });
 
-    // Khi nhấn Enter trong ô tìm kiếm
-    searchInput.addEventListener("keypress", (e) => {
-      if (e.key === "Enter") {
-        e.preventDefault();
-        window.location.href = "searchcotaikhoan.html";
-      }
-    });
+        // Khi nhấn Enter trong ô tìm kiếm
+        searchInput.addEventListener("keypress", (e) => {
+          if (e.key === "Enter") {
+            e.preventDefault();
+            window.location.href = "searchcotaikhoan.html";
+          }
+        });
     </script>
 </body>
 

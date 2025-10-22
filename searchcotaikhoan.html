@@ -340,17 +340,220 @@
                 .category-product-image {
                     height: 200px;
                 }
-                
+
                 .pagination a {
                     padding: 6px 12px;
                     margin: 0 2px;
                     font-size: 14px;
                 }
-                
+
                 .product-stats {
                     flex-direction: column;
                     gap: 5px;
                 }
+            }
+
+            /* Container tổng cho vùng search */
+            .search-container {
+                display: flex;
+                align-items: center;
+                gap: 10px;
+                width: 100%;
+            }
+
+            /* Thanh search bên trái */
+            .search {
+                position: relative;
+                flex: 1;
+                display: flex;
+                align-items: center;
+            }
+
+            .search input {
+                width: 100%;
+                padding-right: 30px; /* Chừa chỗ cho nút search sát rìa */
+            }
+
+            .search button {
+                position: absolute !important;
+                right: 0 !important;
+                top: 0 !important;
+                bottom: 0 !important;
+                z-index: 2;
+                background: transparent !important;
+                border: none !important;
+                padding: 0 18px !important;
+                color: #ff6f61 !important;
+                height: 100% !important;
+                display: flex !important;
+                align-items: center !important;
+                justify-content: center !important;
+                border-radius: 0 !important;
+                cursor: pointer;
+                margin: 0 !important;
+            }
+
+            .search button:hover {
+                background: #ff6f61 !important;
+                color: white !important;
+            }
+
+            .search button i {
+                font-size: 16px;
+                line-height: 1;
+            }
+
+            /* Nút phễu bên phải thanh search */
+            .filter-button-container {
+                flex-shrink: 0;
+            }
+
+            /* Nút phễu lọc */
+            .filter-btn {
+                width: 45px;
+                height: 45px;
+                border-radius: 8px;
+                background: white;
+                border: 2px solid #28a745;
+                color: #28a745;
+                cursor: pointer;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-size: 16px;
+                transition: all 0.3s ease;
+                box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            }
+
+            .filter-btn:hover {
+                background: #28a745;
+                color: white;
+                transform: translateY(-2px);
+                box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+            }
+
+            /* Modal tìm kiếm nâng cao */
+            .advanced-search-modal {
+                display: none;
+                position: fixed;
+                z-index: 1000;
+                left: 0;
+                top: 0;
+                width: 100%;
+                height: 100%;
+                background-color: rgba(0,0,0,0.5);
+                animation: fadeIn 0.3s ease;
+            }
+
+            @keyframes fadeIn {
+                from {opacity: 0;}
+                to {opacity: 1;}
+            }
+
+            .modal-content {
+                background-color: white;
+                margin: 10% auto;
+                padding: 0;
+                border-radius: 10px;
+                width: 90%;
+                max-width: 500px;
+                box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+                animation: slideIn 0.3s ease;
+            }
+
+            @keyframes slideIn {
+                from {
+                    transform: translateY(-50px);
+                    opacity: 0;
+                }
+                to {
+                    transform: translateY(0);
+                    opacity: 1;
+                }
+            }
+
+            .modal-header {
+                padding: 15px 20px;
+                border-bottom: 1px solid #eee;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+            }
+
+            .modal-header h3 {
+                margin: 0;
+                color: #333;
+            }
+
+            .close-modal {
+                background: none;
+                border: none;
+                font-size: 24px;
+                cursor: pointer;
+                color: #999;
+            }
+
+            .close-modal:hover {
+                color: #333;
+            }
+
+            .modal-body {
+                padding: 20px;
+            }
+
+            .form-group {
+                margin-bottom: 20px;
+            }
+
+            .form-group label {
+                display: block;
+                margin-bottom: 5px;
+                font-weight: 600;
+                color: #333;
+            }
+
+            .form-group input,
+            .form-group select {
+                width: 100%;
+                padding: 10px;
+                border: 1px solid #ddd;
+                border-radius: 5px;
+                font-size: 14px;
+            }
+
+            .price-range {
+                display: flex;
+                align-items: center;
+                gap: 10px;
+            }
+
+            .price-range input {
+                width: calc(50% - 5px);
+            }
+
+            .form-actions {
+                display: flex;
+                gap: 10px;
+                justify-content: flex-end;
+            }
+
+            .btn-search {
+                background: #28a745;
+                color: white;
+                border: none;
+                padding: 10px 20px;
+                border-radius: 5px;
+                cursor: pointer;
+                font-weight: 600;
+            }
+
+            .btn-reset {
+                background: #6c757d;
+                color: white;
+                border: none;
+                padding: 10px 20px;
+                border-radius: 5px;
+                cursor: pointer;
             }
         </style>
     </head>
@@ -392,9 +595,16 @@
                         </div>
                     </div>
                     <div class="col-md-6">
-                        <div class="search">
-                            <input type="text" id="searchInput" placeholder="Tìm kiếm sản phẩm">
-                            <button id="searchBtn"><i class="fa fa-search"></i></button>
+                        <div class="search-container">
+                            <div class="search">
+                                <input type="text" id="searchInput" placeholder="Tìm kiếm sản phẩm">
+                                <button id="searchBtn"><i class="fa fa-search"></i></button>
+                            </div>
+                            <div class="filter-button-container">
+                                <button id="filterBtn" class="filter-btn" title="Tìm kiếm nâng cao">
+                                    <i class="fas fa-filter"></i>
+                                </button>
+                            </div>
                         </div>
                     </div>
                     <div class="col-md-3">
@@ -652,150 +862,312 @@
         <script src="js/main.js"></script>
         
         <script>
-            // Biến lưu trang hiện tại
-            let currentPage = 1;
-            const totalPages = 3;
+            // Consolidated JavaScript for searchcotaikhoan.html (logged-in user version)
+            document.addEventListener("DOMContentLoaded", function() {
+                // Initialize pagination functionality
+                initializePagination();
 
-            // Hàm chọn danh mục
-            function selectCategory(element) {
-                // Xóa active khỏi tất cả các danh mục
-                document.querySelectorAll(".category-filter a").forEach(a => a.classList.remove("active"));
-                
-                // Thêm active vào danh mục được chọn
-                element.classList.add("active");
-                
-                // Ở đây có thể thêm logic lọc sản phẩm theo danh mục nếu cần
-                // Hiện tại chỉ tô sáng danh mục được chọn
+                // Initialize search functionality
+                initializeSearch();
+
+                // Initialize category selection
+                initializeCategorySelection();
+
+                // Initialize quick view functionality
+                initializeQuickView();
+
+                // Initialize advanced search modal
+                initializeAdvancedSearch();
+            });
+
+            // Pagination functionality
+            function initializePagination() {
+                const container = document.querySelector(".pagination");
+                if (!container) return;
+
+                const prev = container.querySelector(".page-prev");
+                const next = container.querySelector(".page-next");
+                const numberBtns = [...container.querySelectorAll(".page-btn")].filter(b =>
+                    !b.classList.contains("page-prev") && !b.classList.contains("page-next"));
+
+                function setActiveByIndex(idx) {
+                    numberBtns.forEach(b => b.classList.remove("active"));
+                    if (numberBtns[idx]) {
+                        numberBtns[idx].classList.add("active");
+                    }
+                    if (prev) prev.classList.toggle("is-disabled", idx === 0);
+                    if (next) next.classList.toggle("is-disabled", idx === numberBtns.length - 1);
+                }
+
+                // Add click listeners to number buttons
+                numberBtns.forEach((b, i) => {
+                    b.addEventListener("click", e => {
+                        e.preventDefault();
+                        setActiveByIndex(i);
+                    });
+                });
+
+                // Add click listeners to prev/next buttons
+                if (prev) {
+                    prev.addEventListener("click", e => {
+                        e.preventDefault();
+                        const cur = numberBtns.findIndex(b => b.classList.contains("active"));
+                        if (cur > 0) setActiveByIndex(cur - 1);
+                    });
+                }
+
+                if (next) {
+                    next.addEventListener("click", e => {
+                        e.preventDefault();
+                        const cur = numberBtns.findIndex(b => b.classList.contains("active"));
+                        if (cur < numberBtns.length - 1) setActiveByIndex(cur + 1);
+                    });
+                }
+
+                // Set initial active state
+                setActiveByIndex(0);
             }
 
-            // Hàm chuyển trang
-            
-            // Thêm sự kiện cho các nút phân trang
-            // Phân trang tĩnh: chỉ đổi highlight, không đổi nội dung
-document.addEventListener("DOMContentLoaded", () => {
-  const container = document.querySelector(".pagination");
-  if(!container) return;
-
-  const prev = container.querySelector(".page-prev");
-  const next = container.querySelector(".page-next");
-  const numberBtns = [...container.querySelectorAll(".page-btn")].filter(b => !b.classList.contains("page-prev") && !b.classList.contains("page-next"));
-
-  function setActiveByIndex(idx){
-    numberBtns.forEach(b => b.classList.remove("active"));
-    numberBtns[idx].classList.add("active");
-    prev.classList.toggle("is-disabled", idx === 0);
-    next.classList.toggle("is-disabled", idx === numberBtns.length - 1);
-  }
-
-  numberBtns.forEach((b,i)=>{
-    b.addEventListener("click", e=>{
-      e.preventDefault();
-      setActiveByIndex(i);
-    });
-  });
-
-  prev.addEventListener("click", e=>{
-    e.preventDefault();
-    const cur = numberBtns.findIndex(b=>b.classList.contains("active"));
-    if(cur>0) setActiveByIndex(cur-1);
-  });
-
-  next.addEventListener("click", e=>{
-    e.preventDefault();
-    const cur = numberBtns.findIndex(b=>b.classList.contains("active"));
-    if(cur<numberBtns.length-1) setActiveByIndex(cur+1);
-  });
-
-  setActiveByIndex(0); // mặc định nút 1 sáng
-});
-
-
-            // Xử lý tìm kiếm
-            document.addEventListener("DOMContentLoaded", () => {
+            // Search functionality
+            function initializeSearch() {
                 const searchBtn = document.getElementById("searchBtn");
                 const searchInput = document.getElementById("searchInput");
 
-                // Khi click nút tìm kiếm
-                searchBtn.addEventListener("click", () => {
-                    window.location.href = "searchcotaikhoan.html";
+                if (searchBtn) {
+                    searchBtn.addEventListener("click", () => {
+                        window.location.href = "searchcotaikhoan.html";
+                    });
+                }
+
+                if (searchInput) {
+                    searchInput.addEventListener("keypress", (e) => {
+                        if (e.key === "Enter") {
+                            e.preventDefault();
+                            window.location.href = "searchcotaikhoan.html";
+                        }
+                    });
+                }
+            }
+
+            // Category selection functionality
+            function initializeCategorySelection() {
+                // Category selection is handled inline via onclick attributes
+                // This function can be used for additional logic if needed
+            }
+
+            // Quick view functionality
+            function initializeQuickView() {
+                const QV_FIXED_IMAGE = 'img/book8.webp';
+
+                function ensureQuickViewRoot() {
+                    let root = document.querySelector('.qv-overlay');
+                    if (root) return root;
+                    root = document.createElement('div');
+                    root.className = 'qv-overlay';
+                    document.body.appendChild(root);
+                    return root;
+                }
+
+                function openQuickViewFromCard(card) {
+                    const titleEl = card.querySelector('.category-product-title');
+                    const priceEl = card.querySelector('.category-product-price');
+
+                    const title = titleEl?.textContent?.trim() || 'Tên sản phẩm';
+                    const price = priceEl?.textContent?.trim() || '';
+                    const alt = title;
+                    const src = QV_FIXED_IMAGE;
+
+                    const root = ensureQuickViewRoot();
+                    root.innerHTML = `
+                        <div class="qv-card" role="dialog" aria-modal="true" aria-label="Xem nhanh sản phẩm">
+                            <button class="qv-close" aria-label="Đóng">✖</button>
+                            <div class="qv-body">
+                                <div class="qv-img">
+                                    <img src="${src}" alt="${alt}">
+                                </div>
+                                <div class="qv-content">
+                                    <h2 class="qv-title">Mưa đỏ</h2>
+                                    <div class="qv-meta"><i class="fas fa-tag"></i><span>Tác Giả: <em>Chu Lai</em></span></div>
+                                    <div class="qv-price">Giá: 180,000 VND</div>
+                                    <div class="qv-desc">Mô tả: "Mưa Đỏ" là một trong những tiểu thuyết chiến tranh đặc sắc nhất về 81 ngày đêm đỏ lửa tại Thành cổ Quảng Trị năm 1972. Không chỉ tái hiện sự khốc liệt của một trong những trận đánh ác liệt nhất lịch sử, tác phẩm còn mở ra một không gian nhân văn, nơi người đọc được chạm đến cả nỗi đau, sự hy sinh và khát vọng hòa bình.</div>
+                                    <div class="qv-note"><i class="fas fa-id-card"></i><span>Nhận sản phẩm như mô tả. Thông tin thẻ của bạn được bảo mật và không được chia sẻ với người bán.</span></div>
+                                    <button class="qv-add"><i class="fa fa-shopping-cart"></i><span>thêm vào giỏ</span></button>
+                                </div>
+                            </div>
+                        </div>
+                    `;
+
+                    root.style.display = 'flex';
+
+                    const close = () => {
+                        root.style.display = 'none';
+                        root.innerHTML = '';
+                    };
+
+                    root.addEventListener('click', (e) => {
+                        if (e.target === root) close();
+                    });
+
+                    const closeBtn = root.querySelector('.qv-close');
+                    if (closeBtn) {
+                        closeBtn.addEventListener('click', close);
+                    }
+
+                    const onEsc = (e) => {
+                        if (e.key === 'Escape') {
+                            close();
+                            document.removeEventListener('keydown', onEsc);
+                        }
+                    };
+                    document.addEventListener('keydown', onEsc);
+
+                    const addBtn = root.querySelector('.qv-add');
+                    if (addBtn) {
+                        addBtn.addEventListener('click', () => {
+                            alert('Thêm vào giỏ hàng thành công!');
+                            window.location.href = 'cart.html';
+                        });
+                    }
+                }
+
+                // Add event listener for view detail buttons
+                document.addEventListener('click', function(e) {
+                    const viewBtn = e.target.closest('.view-detail');
+                    if (!viewBtn) return;
+                    e.preventDefault();
+                    const card = viewBtn.closest('.category-product-item');
+                    if (!card) return;
+                    openQuickViewFromCard(card);
                 });
 
-                // Khi nhấn Enter trong ô tìm kiếm
-                searchInput.addEventListener("keypress", (e) => {
-                    if (e.key === "Enter") {
-                        e.preventDefault();
-                        window.location.href = "searchcotaikhoan.html";
+                // Ensure quick view root exists
+                ensureQuickViewRoot();
+            }
+
+            // Advanced search modal functionality
+            function initializeAdvancedSearch() {
+                const filterBtn = document.getElementById('filterBtn');
+                const modal = document.getElementById('advancedSearchModal');
+                const closeModal = document.querySelector('.close-modal');
+                const form = document.getElementById('advancedSearchForm');
+                const resetBtn = document.querySelector('.btn-reset');
+
+                if (filterBtn && modal) {
+                    filterBtn.addEventListener('click', function() {
+                        modal.style.display = 'block';
+                        document.body.style.overflow = 'hidden';
+                    });
+                }
+
+                function closeModalHandler() {
+                    if (modal) {
+                        modal.style.display = 'none';
+                        document.body.style.overflow = 'auto';
+                    }
+                }
+
+                if (closeModal) {
+                    closeModal.addEventListener('click', closeModalHandler);
+                }
+
+                // Close modal when clicking outside
+                if (modal) {
+                    modal.addEventListener('click', function(event) {
+                        if (event.target === modal) {
+                            closeModalHandler();
+                        }
+                    });
+                }
+
+                // Close modal on ESC key
+                document.addEventListener('keydown', function(event) {
+                    if (event.key === 'Escape' && modal && modal.style.display === 'block') {
+                        closeModalHandler();
                     }
                 });
-            });
+
+                // Handle form submission
+                if (form) {
+                    form.addEventListener('submit', function(e) {
+                        e.preventDefault();
+                        const formData = new FormData(form);
+                        const searchParams = new URLSearchParams();
+
+                        for (let [key, value] of formData.entries()) {
+                            if (value.trim() !== '') {
+                                searchParams.append(key, value);
+                            }
+                        }
+
+                        closeModalHandler();
+                        window.location.href = 'searchcotaikhoan.html?' + searchParams.toString();
+                    });
+                }
+
+                // Reset form
+                if (resetBtn) {
+                    resetBtn.addEventListener('click', function() {
+                        if (form) form.reset();
+                    });
+                }
+            }
         </script>
-        <script>
-  // Ảnh cố định cho Quick View
-  const QV_FIXED_IMAGE = 'img/book8.webp';
 
-  function ensureQuickViewRoot(){
-    let root = document.querySelector('.qv-overlay');
-    if(root) return root;
-    root = document.createElement('div');
-    root.className = 'qv-overlay';
-    document.body.appendChild(root);
-    return root;
-  }
-
-  // Mở Quick View từ card sản phẩm (ảnh cố định)
-  function openQuickViewFromCard(card){
-    const titleEl = card.querySelector('.category-product-title, .new-product-title');
-    const priceEl = card.querySelector('.category-product-price, .new-product-price');
-
-    const title = titleEl?.textContent?.trim() || 'Tên sản phẩm';
-    const price = priceEl?.textContent?.trim() || '';
-    const alt   = title;                               // alt đơn giản theo tên
-    const src   = QV_FIXED_IMAGE;                      // <-- luôn dùng ảnh cố định
-
-    const root = ensureQuickViewRoot();
-    root.innerHTML = `
-      <div class="qv-card" role="dialog" aria-modal="true" aria-label="Xem nhanh sản phẩm">
-        <button class="qv-close" aria-label="Đóng">✖</button>
-        <div class="qv-body">
-          <div class="qv-img">
-            <img src="${src}" alt="${alt}">
-          </div>
-          <div class="qv-content">
-            <h2 class="qv-title">Mưa đỏ</h2>
-            <div class="qv-meta"><i class="fas fa-tag"></i><span>Tác Giả: <em>Chu Lai</em></span></div>
-            <div class="qv-price">Giá: 180,000 VND</div>
-            <div class="qv-desc">Mô tả : "Mưa Đỏ" là một trong những tiểu thuyets chiến tranh đặc sắc nhất về 81 ngày đêm đỏ lửa tại Thành cổ Quảng Trị năm 1972. Không chỉ tái hiện sự khốc liệt của một trong những trận đánh ác liệt nhất lịch sử, tác phẩm còn mở ra một không gian nhân văn, nơi người đọc được chạm đến cả nỗi đau, sự hy sinh và khát vọng hòa bình.</div>
-            <div class="qv-note"><i class="fas fa-id-card"></i><span>Nhận sản phẩm như mô tả. Thông tin thẻ của bạn được bảo mật và không được chia sẻ với người bán.</span></div>
-            <button class="qv-add"><i class="fa fa-shopping-cart"></i><span>thêm vào giỏ</span></button>
-          </div>
+<!-- Form tìm kiếm nâng cao -->
+<div id="advancedSearchModal" class="advanced-search-modal">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h3>Tìm kiếm nâng cao</h3>
+            <button class="close-modal">&times;</button>
         </div>
-      </div>
-    `;
+        <div class="modal-body">
+            <form id="advancedSearchForm">
+                <div class="form-group">
+                    <label>Từ khóa:</label>
+                    <input type="text" name="keyword" placeholder="Nhập từ khóa tìm kiếm...">
+                </div>
 
-    root.style.display = 'flex';
+                <div class="form-group">
+                    <label>Danh mục:</label>
+                    <select name="category">
+                        <option value="">Tất cả</option>
+                        <option value="thieunhi">Thiếu nhi</option>
+                        <option value="tamly">Tâm lý/tình cảm</option>
+                        <option value="tongiao">Tôn giáo</option>
+                        <option value="lichsu">Lịch sử</option>
+                        <option value="vanhoc">Văn học</option>
+                    </select>
+                </div>
 
-    const close = () => { root.style.display = 'none'; root.innerHTML = ''; };
-    root.addEventListener('click', (e) => { if(e.target === root) close(); });
-    root.querySelector('.qv-close').addEventListener('click', close);
-    const onEsc = (e) => { if(e.key === 'Escape') { close(); document.removeEventListener('keydown', onEsc);} };
-    document.addEventListener('keydown', onEsc);
+                <div class="form-group">
+                    <label>Khoảng giá:</label>
+                    <div class="price-range">
+                        <input type="number" name="minPrice" placeholder="Từ">
+                        <span>-</span>
+                        <input type="number" name="maxPrice" placeholder="Đến">
+                    </div>
+                </div>
 
-    root.querySelector('.qv-add').addEventListener('click', () => {
-      alert('Thêm vào giỏ hàng thành công!');
-      window.location.href = 'cart.html';
-    });
-  }
+                <div class="form-group">
+                    <label>Sắp xếp theo:</label>
+                    <select name="sort">
+                        <option value="">Mặc định</option>
+                        <option value="price_asc">Giá tăng dần</option>
+                        <option value="price_desc">Giá giảm dần</option>
+                        <option value="name_asc">Tên A-Z</option>
+                        <option value="name_desc">Tên Z-A</option>
+                    </select>
+                </div>
 
-  document.addEventListener('click', function(e){
-    const viewBtn = e.target.closest('.view-detail');
-    if(!viewBtn) return;
-    e.preventDefault();
-    const card = viewBtn.closest('.category-product-item, .new-product-item');
-    if(!card) return;
-    openQuickViewFromCard(card);
-  });
+                <div class="form-actions">
+                    <button type="submit" class="btn-search">Tìm kiếm</button>
+                    <button type="button" class="btn-reset">Đặt lại</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
 
-  ensureQuickViewRoot();
-</script>
+
     </body>
 </html>
