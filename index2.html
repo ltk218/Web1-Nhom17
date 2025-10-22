@@ -24,15 +24,52 @@
         <link href="css/style.css" rel="stylesheet">
         <link href="css/fix.css" rel="stylesheet">
         <style>
+            /* ===== FIX BANNER SLIDER ===== */
+            .header {
+                overflow: hidden;
+                position: relative;
+                width: 100%;
+            }
+            
+            .header-slider {
+                width: 100%;
+                margin: 0 auto;
+            }
+            
+            .header-slider .slick-slide {
+                position: relative;
+            }
+            
+            .header-slider .slick-slide img {
+                width: 100%;
+                height: auto;
+                max-height: 500px;
+                object-fit: cover;
+                display: block;
+            }
+            
+            /* Đảm bảo slider chiếm toàn bộ chiều rộng */
+            .container-fluid.p-0 {
+                padding-right: 0 !important;
+                padding-left: 0 !important;
+            }
+            
+            /* Thêm responsive cho mobile */
+            @media (max-width: 768px) {
+                .header-slider .slick-slide img {
+                    max-height: 300px;
+                }
+            }
+
             /* Chỉ áp dụng cho tiêu đề ở khu Featured Product */
-.featured-product .section-header h1{
-  color: #000 !important;
-}
+            .featured-product .section-header h1{
+              color: #000 !important;
+            }
 
             .pagination .page-btn.is-disabled {
-  opacity: 0.45;
-  pointer-events: none;
-}
+              opacity: 0.45;
+              pointer-events: none;
+            }
 
             /* Toast notification styles */
             .toast-notification {
@@ -246,159 +283,159 @@
             
             /* Style cho danh mục sản phẩm */
             /* ==== Category as buttons (pill) ==== */
-.category-filter {
-  background: #fff;
-  border-radius: 14px;
-  padding: 20px;
-  margin-bottom: 30px;
-  box-shadow: 0 6px 20px rgba(0,0,0,0.06);
-}
+            .category-filter {
+              background: #fff;
+              border-radius: 14px;
+              padding: 20px;
+              margin-bottom: 30px;
+              box-shadow: 0 6px 20px rgba(0,0,0,0.06);
+            }
 
-.category-filter h3 {
-  font-size: 18px;
-  font-weight: 700;
-  margin-bottom: 16px;
-  padding-bottom: 12px;
-  border-bottom: 1px solid #eee;
-}
+            .category-filter h3 {
+              font-size: 18px;
+              font-weight: 700;
+              margin-bottom: 16px;
+              padding-bottom: 12px;
+              border-bottom: 1px solid #eee;
+            }
 
-.category-filter ul{
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;              /* khoảng cách giữa các nút */
-}
+            .category-filter ul{
+              list-style: none;
+              padding: 0;
+              margin: 0;
+              display: flex;
+              flex-direction: column;
+              gap: 10px;              /* khoảng cách giữa các nút */
+            }
 
-.category-filter li{ margin:0; }
+            .category-filter li{ margin:0; }
 
-.category-filter a.cat-btn{
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 12px;
-  width: 100%;
-  padding: 12px 16px;
-  border-radius: 999px;   /* pill */
-  border: 1px solid #e9e9e9;
-  background: #fff;
-  color: #333;
-  font-weight: 600;
-  text-decoration: none;
-  transition: background-color .2s, border-color .2s, color .2s, box-shadow .2s, transform .1s;
-  box-shadow: 0 1px 2px rgba(0,0,0,.04);
-}
+            .category-filter a.cat-btn{
+              display: flex;
+              align-items: center;
+              justify-content: space-between;
+              gap: 12px;
+              width: 100%;
+              padding: 12px 16px;
+              border-radius: 999px;   /* pill */
+              border: 1px solid #e9e9e9;
+              background: #fff;
+              color: #333;
+              font-weight: 600;
+              text-decoration: none;
+              transition: background-color .2s, border-color .2s, color .2s, box-shadow .2s, transform .1s;
+              box-shadow: 0 1px 2px rgba(0,0,0,.04);
+            }
 
-/* chấm nhỏ bên trái cho đẹp */
-.category-filter a.cat-btn::before{
-  content:"";
-  width: 8px; height: 8px;
-  border-radius: 50%;
-  background: #ff6f61;
-  opacity: .55;
-  margin-right: 8px;
-}
+            /* chấm nhỏ bên trái cho đẹp */
+            .category-filter a.cat-btn::before{
+              content:"";
+              width: 8px; height: 8px;
+              border-radius: 50%;
+              background: #ff6f61;
+              opacity: .55;
+              margin-right: 8px;
+            }
 
-/* mũi tên nhẹ bên phải */
-.category-filter a.cat-btn::after{
-  content: "›";
-  font-size: 16px;
-  opacity: .35;
-  transform: translateX(0);
-  transition: transform .18s ease;
-}
-/* ===== QUICK VIEW MODAL ===== */
-.qv-overlay{
-  position: fixed; inset: 0; background: rgba(0,0,0,.45);
-  display: none; align-items: center; justify-content: center; z-index: 2000;
-}
-.qv-card{
-  background: #fff; border-radius: 14px; max-width: 980px; width: calc(100% - 32px);
-  box-shadow: 0 20px 60px rgba(0,0,0,.25); position: relative; padding: 28px;
-}
-.qv-close{
-  position: absolute; top: 12px; right: 12px; width: 40px; height: 40px;
-  border-radius: 50%; border: 2px solid #1e6bd6; color: #1e6bd6; background: #fff;
-  display: inline-flex; align-items: center; justify-content: center; font-size: 18px; cursor: pointer;
-}
-.qv-body{ display: grid; grid-template-columns: 1fr 1.2fr; gap: 24px; align-items: start; }
-.qv-img{
-  border: 2px solid #1e6bd6; border-radius: 8px; padding: 8px; display: grid; place-items: center;
-}
-.qv-img img{ max-width: 100%; height: auto; }
-.qv-title{ font-size: 28px; font-weight: 700; margin: 0 0 6px; }
-.qv-meta{ margin: 8px 0 14px; color: #1e6bd6; font-weight: 600; display: flex; gap: 8px; align-items: center; }
-.qv-price{ font-size: 28px; font-weight: 800; color: #ff6f61; margin: 0 0 14px; }
-.qv-desc{ color: #6b7280; line-height: 1.6; margin-bottom: 12px; }
-.qv-note{ color: #1e6bd6; margin: 8px 0 18px; display: flex; gap: 10px; align-items: flex-start; }
-.qv-add{
-  display: inline-flex; align-items: center; gap: 10px; border: none; cursor: pointer;
-  padding: 12px 20px; border-radius: 999px; background: #1e6bd6; color: #fff; font-weight: 700; font-size: 18px;
-}
-.qv-add i{ font-size: 18px; }
+            /* mũi tên nhẹ bên phải */
+            .category-filter a.cat-btn::after{
+              content: "›";
+              font-size: 16px;
+              opacity: .35;
+              transform: translateX(0);
+              transition: transform .18s ease;
+            }
+            /* ===== QUICK VIEW MODAL ===== */
+            .qv-overlay{
+              position: fixed; inset: 0; background: rgba(0,0,0,.45);
+              display: none; align-items: center; justify-content: center; z-index: 2000;
+            }
+            .qv-card{
+              background: #fff; border-radius: 14px; max-width: 980px; width: calc(100% - 32px);
+              box-shadow: 0 20px 60px rgba(0,0,0,.25); position: relative; padding: 28px;
+            }
+            .qv-close{
+              position: absolute; top: 12px; right: 12px; width: 40px; height: 40px;
+              border-radius: 50%; border: 2px solid #1e6bd6; color: #1e6bd6; background: #fff;
+              display: inline-flex; align-items: center; justify-content: center; font-size: 18px; cursor: pointer;
+            }
+            .qv-body{ display: grid; grid-template-columns: 1fr 1.2fr; gap: 24px; align-items: start; }
+            .qv-img{
+              border: 2px solid #1e6bd6; border-radius: 8px; padding: 8px; display: grid; place-items: center;
+            }
+            .qv-img img{ max-width: 100%; height: auto; }
+            .qv-title{ font-size: 28px; font-weight: 700; margin: 0 0 6px; }
+            .qv-meta{ margin: 8px 0 14px; color: #1e6bd6; font-weight: 600; display: flex; gap: 8px; align-items: center; }
+            .qv-price{ font-size: 28px; font-weight: 800; color: #ff6f61; margin: 0 0 14px; }
+            .qv-desc{ color: #6b7280; line-height: 1.6; margin-bottom: 12px; }
+            .qv-note{ color: #1e6bd6; margin: 8px 0 18px; display: flex; gap: 10px; align-items: flex-start; }
+            .qv-add{
+              display: inline-flex; align-items: center; gap: 10px; border: none; cursor: pointer;
+              padding: 12px 20px; border-radius: 999px; background: #1e6bd6; color: #fff; font-weight: 700; font-size: 18px;
+            }
+            .qv-add i{ font-size: 18px; }
 
-/* Mobile */
-@media (max-width: 768px){
-  .qv-body{ grid-template-columns: 1fr; }
-}
-/* Bỏ viền xanh quanh ảnh trong Quick View */
-.qv-img{
-  border: none !important;
-  padding: 0 !important;
-  box-shadow: none !important;
-}
-.qv-img img{
-  display: block;
-  border: none !important;
-  outline: none !important;
-  box-shadow: none !important;
-}
+            /* Mobile */
+            @media (max-width: 768px){
+              .qv-body{ grid-template-columns: 1fr; }
+            }
+            /* Bỏ viền xanh quanh ảnh trong Quick View */
+            .qv-img{
+              border: none !important;
+              padding: 0 !important;
+              box-shadow: none !important;
+            }
+            .qv-img img{
+              display: block;
+              border: none !important;
+              outline: none !important;
+              box-shadow: none !important;
+            }
 
-/* Nếu trình duyệt thêm outline khi focus */
-.qv-img:focus,
-.qv-img img:focus{
-  outline: none !important;
-}
+            /* Nếu trình duyệt thêm outline khi focus */
+            .qv-img:focus,
+            .qv-img img:focus{
+              outline: none !important;
+            }
 
-/* Tắt highlight xanh khi chạm trên mobile */
-* { -webkit-tap-highlight-color: transparent; }
+            /* Tắt highlight xanh khi chạm trên mobile */
+            * { -webkit-tap-highlight-color: transparent; }
 
-.category-filter a.cat-btn:hover{
-  transform: translateY(-1px);
-  border-color: #ffd1c9;
-  background: #fff7f6;
-  color: #ff6f61;
-  box-shadow: 0 6px 16px rgba(255,111,97,.15);
-}
+            .category-filter a.cat-btn:hover{
+              transform: translateY(-1px);
+              border-color: #ffd1c9;
+              background: #fff7f6;
+              color: #ff6f61;
+              box-shadow: 0 6px 16px rgba(255,111,97,.15);
+            }
 
-.category-filter a.cat-btn:hover::after{
-  transform: translateX(3px);
-  opacity: .6;
-}
+            .category-filter a.cat-btn:hover::after{
+              transform: translateX(3px);
+              opacity: .6;
+            }
 
-/* đang chọn */
-.category-filter a.cat-btn.active{
-  background: #ff6f61;
-  color: #fff;
-  border-color: #ff6f61;
-  box-shadow: 0 8px 18px rgba(255,111,97,.35);
-}
+            /* đang chọn */
+            .category-filter a.cat-btn.active{
+              background: #ff6f61;
+              color: #fff;
+              border-color: #ff6f61;
+              box-shadow: 0 8px 18px rgba(255,111,97,.35);
+            }
 
-.category-filter a.cat-btn.active::before{
-  background:#fff;
-  opacity: 1;
-}
+            .category-filter a.cat-btn.active::before{
+              background:#fff;
+              opacity: 1;
+            }
 
-.category-filter a.cat-btn.active::after{
-  opacity: .9;
-  color:#fff;
-}
+            .category-filter a.cat-btn.active::after{
+              opacity: .9;
+              color:#fff;
+            }
 
-/* mobile */
-@media (max-width: 768px){
-  .category-filter a.cat-btn{ padding: 12px 14px; }
-}
+            /* mobile */
+            @media (max-width: 768px){
+              .category-filter a.cat-btn{ padding: 12px 14px; }
+            }
 
             
             /* Style cho các sản phẩm trong danh mục */
@@ -508,37 +545,37 @@
             
             /* Phân trang */
            /* Phân trang (tĩnh, hình tròn) */
-.pagination {
-  display: flex;
-  justify-content: center;
-  margin: 30px 0;
-  align-items: center;
-  gap: 8px;
-}
+            .pagination {
+              display: flex;
+              justify-content: center;
+              margin: 30px 0;
+              align-items: center;
+              gap: 8px;
+            }
 
-.pagination .page-btn {
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  border: 1px solid #ddd;
-  background: transparent;
-  color: #333;
-  font-weight: 600;
-  cursor: pointer;
-  outline: none;
-  transition: background-color 0.2s, border-color 0.2s, color 0.2s, transform 0.1s;
-}
+            .pagination .page-btn {
+              width: 40px;
+              height: 40px;
+              border-radius: 50%;
+              border: 1px solid #ddd;
+              background: transparent;
+              color: #333;
+              font-weight: 600;
+              cursor: pointer;
+              outline: none;
+              transition: background-color 0.2s, border-color 0.2s, color 0.2s, transform 0.1s;
+            }
 
-.pagination .page-btn:hover {
-  transform: translateY(-1px);
-  border-color: #ccc;
-}
+            .pagination .page-btn:hover {
+              transform: translateY(-1px);
+              border-color: #ccc;
+            }
 
-.pagination .page-btn.active {
-  background-color: #ff6f61;
-  color: #fff;
-  border-color: #ff6f61;
-}
+            .pagination .page-btn.active {
+              background-color: #ff6f61;
+              color: #fff;
+              border-color: #ff6f61;
+            }
 
             
             /* Ẩn tất cả các trang mặc định */
@@ -1304,168 +1341,166 @@
                 });
             });
             // Phân trang tĩnh: chỉ đổi trạng thái nút, không đổi nội dung
-document.addEventListener("DOMContentLoaded", () => {
-  const pageBtns = document.querySelectorAll(".pagination .page-btn");
-  pageBtns.forEach(btn => {
-    btn.addEventListener("click", (e) => {
-      e.preventDefault(); // đề phòng
-      pageBtns.forEach(b => b.classList.remove("active"));
-      btn.classList.add("active");
-      // Không gọi bất kỳ hàm đổi trang nào
-    });
-  });
-});
-document.addEventListener("DOMContentLoaded", () => {
-  const container = document.querySelector(".pagination");
-  const btns = [...container.querySelectorAll(".page-btn")];
-  const prev = container.querySelector(".page-prev");
-  const next = container.querySelector(".page-next");
-  const numberBtns = btns.filter(b => !b.classList.contains("page-prev") && !b.classList.contains("page-next"));
+            document.addEventListener("DOMContentLoaded", () => {
+              const pageBtns = document.querySelectorAll(".pagination .page-btn");
+              pageBtns.forEach(btn => {
+                btn.addEventListener("click", (e) => {
+                  e.preventDefault(); // đề phòng
+                  pageBtns.forEach(b => b.classList.remove("active"));
+                  btn.classList.add("active");
+                  // Không gọi bất kỳ hàm đổi trang nào
+                });
+              });
+            });
+            document.addEventListener("DOMContentLoaded", () => {
+              const container = document.querySelector(".pagination");
+              const btns = [...container.querySelectorAll(".page-btn")];
+              const prev = container.querySelector(".page-prev");
+              const next = container.querySelector(".page-next");
+              const numberBtns = btns.filter(b => !b.classList.contains("page-prev") && !b.classList.contains("page-next"));
 
-  function setActiveByIndex(idx){ // idx: 0..numberBtns.length-1
-    numberBtns.forEach(b => b.classList.remove("active"));
-    numberBtns[idx].classList.add("active");
-    // Khoá/mở mũi tên cho đẹp, KHÔNG đổi nội dung trang
-    prev.classList.toggle("is-disabled", idx === 0);
-    next.classList.toggle("is-disabled", idx === numberBtns.length - 1);
-  }
+              function setActiveByIndex(idx){ // idx: 0..numberBtns.length-1
+                numberBtns.forEach(b => b.classList.remove("active"));
+                numberBtns[idx].classList.add("active");
+                // Khoá/mở mũi tên cho đẹp, KHÔNG đổi nội dung trang
+                prev.classList.toggle("is-disabled", idx === 0);
+                next.classList.toggle("is-disabled", idx === numberBtns.length - 1);
+              }
 
-  // click số
-  numberBtns.forEach((b, i) => {
-    b.addEventListener("click", e => {
-      e.preventDefault();
-      setActiveByIndex(i);
-    });
-  });
+              // click số
+              numberBtns.forEach((b, i) => {
+                b.addEventListener("click", e => {
+                  e.preventDefault();
+                  setActiveByIndex(i);
+                });
+              });
 
-  // click mũi tên: chỉ đổi highlight
-  prev.addEventListener("click", e => {
-    e.preventDefault();
-    const cur = numberBtns.findIndex(b => b.classList.contains("active"));
-    if (cur > 0) setActiveByIndex(cur - 1);
-  });
+              // click mũi tên: chỉ đổi highlight
+              prev.addEventListener("click", e => {
+                e.preventDefault();
+                const cur = numberBtns.findIndex(b => b.classList.contains("active"));
+                if (cur > 0) setActiveByIndex(cur - 1);
+              });
 
-  next.addEventListener("click", e => {
-    e.preventDefault();
-    const cur = numberBtns.findIndex(b => b.classList.contains("active"));
-    if (cur < numberBtns.length - 1) setActiveByIndex(cur + 1);
-  });
+              next.addEventListener("click", e => {
+                e.preventDefault();
+                const cur = numberBtns.findIndex(b => b.classList.contains("active"));
+                if (cur < numberBtns.length - 1) setActiveByIndex(cur + 1);
+              });
 
-  // Khởi tạo
-  setActiveByIndex(0); // nút "1" sáng
-});
-function selectCategory(element) {
-  document.querySelectorAll(".category-filter a").forEach(a => a.classList.remove("active"));
-  element.classList.add("active");
-}
-
-
+              // Khởi tạo
+              setActiveByIndex(0); // nút "1" sáng
+            });
+            function selectCategory(element) {
+              document.querySelectorAll(".category-filter a").forEach(a => a.classList.remove("active"));
+              element.classList.add("active");
+            }
         </script>
         <script>
-  // Tạo/hiện toast nhanh
-  function showToast(msg, time = 1200){
-    let toast = document.querySelector('.toast-notification');
-    if(!toast){
-      toast = document.createElement('div');
-      toast.className = 'toast-notification';
-      document.body.appendChild(toast);
-    }
-    toast.textContent = msg;
-    toast.style.display = 'block';
-    toast.style.animation = 'slideIn .35s ease';
-    setTimeout(() => {
-      toast.style.animation = 'fadeOut .4s ease';
-      setTimeout(() => { toast.style.display = 'none'; }, 400);
-    }, time);
-  }
+          // Tạo/hiện toast nhanh
+          function showToast(msg, time = 1200){
+            let toast = document.querySelector('.toast-notification');
+            if(!toast){
+              toast = document.createElement('div');
+              toast.className = 'toast-notification';
+              document.body.appendChild(toast);
+            }
+            toast.textContent = msg;
+            toast.style.display = 'block';
+            toast.style.animation = 'slideIn .35s ease';
+            setTimeout(() => {
+              toast.style.animation = 'fadeOut .4s ease';
+              setTimeout(() => { toast.style.display = 'none'; }, 400);
+            }, time);
+          }
 
-  document.addEventListener('DOMContentLoaded', function(){
-    // 1) Gỡ onclick cũ để không hiện alert đăng nhập
-    document.querySelectorAll('.add-cart[onclick]').forEach(el => el.removeAttribute('onclick'));
+          document.addEventListener('DOMContentLoaded', function(){
+            // 1) Gỡ onclick cũ để không hiện alert đăng nhập
+            document.querySelectorAll('.add-cart[onclick]').forEach(el => el.removeAttribute('onclick'));
 
-    // 2) Bắt mọi click vào .add-cart (event delegation)
-    document.addEventListener('click', function(e){
-      const btn = e.target.closest('.add-cart');
-      if(!btn) return;
+            // 2) Bắt mọi click vào .add-cart (event delegation)
+            document.addEventListener('click', function(e){
+              const btn = e.target.closest('.add-cart');
+              if(!btn) return;
 
-      e.preventDefault(); // chặn nhảy trang theo href
-      e.stopPropagation();
+              e.preventDefault(); // chặn nhảy trang theo href
+              e.stopPropagation();
 
-      showToast('Thêm vào giỏ hàng thành công!');
-      setTimeout(() => {
-        window.location.href = 'cart.html';
-      }, 900);
-    });
-  });
-</script>
-<script>
-  // Ảnh cố định cho Quick View
-  const QV_FIXED_IMAGE = 'img/book8.webp';
+              showToast('Thêm vào giỏ hàng thành công!');
+              setTimeout(() => {
+                window.location.href = 'cart.html';
+              }, 900);
+            });
+          });
+        </script>
+        <script>
+          // Ảnh cố định cho Quick View
+          const QV_FIXED_IMAGE = 'img/book8.webp';
 
-  function ensureQuickViewRoot(){
-    let root = document.querySelector('.qv-overlay');
-    if(root) return root;
-    root = document.createElement('div');
-    root.className = 'qv-overlay';
-    document.body.appendChild(root);
-    return root;
-  }
+          function ensureQuickViewRoot(){
+            let root = document.querySelector('.qv-overlay');
+            if(root) return root;
+            root = document.createElement('div');
+            root.className = 'qv-overlay';
+            document.body.appendChild(root);
+            return root;
+          }
 
-  // Mở Quick View từ card sản phẩm (ảnh cố định)
-  function openQuickViewFromCard(card){
-    const titleEl = card.querySelector('.category-product-title, .new-product-title');
-    const priceEl = card.querySelector('.category-product-price, .new-product-price');
+          // Mở Quick View từ card sản phẩm (ảnh cố định)
+          function openQuickViewFromCard(card){
+            const titleEl = card.querySelector('.category-product-title, .new-product-title');
+            const priceEl = card.querySelector('.category-product-price, .new-product-price');
 
-    const title = titleEl?.textContent?.trim() || 'Tên sản phẩm';
-    const price = priceEl?.textContent?.trim() || '';
-    const alt   = title;                               // alt đơn giản theo tên
-    const src   = QV_FIXED_IMAGE;                      // <-- luôn dùng ảnh cố định
+            const title = titleEl?.textContent?.trim() || 'Tên sản phẩm';
+            const price = priceEl?.textContent?.trim() || '';
+            const alt   = title;                               // alt đơn giản theo tên
+            const src   = QV_FIXED_IMAGE;                      // <-- luôn dùng ảnh cố định
 
-    const root = ensureQuickViewRoot();
-    root.innerHTML = `
-      <div class="qv-card" role="dialog" aria-modal="true" aria-label="Xem nhanh sản phẩm">
-        <button class="qv-close" aria-label="Đóng">✖</button>
-        <div class="qv-body">
-          <div class="qv-img">
-            <img src="${src}" alt="${alt}">
-          </div>
-          <div class="qv-content">
-            <h2 class="qv-title">Mưa đỏ</h2>
-            <div class="qv-meta"><i class="fas fa-tag"></i><span>Tác Giả: <em>Chu Lai</em></span></div>
-            <div class="qv-price">Giá: 180,000 VND</div>
-            <div class="qv-desc">Mô tả : "Mưa Đỏ" là một trong những tiểu thuyết chiến tranh đặc sắc nhất về 81 ngày đêm đỏ lửa tại Thành cổ Quảng Trị năm 1972. Không chỉ tái hiện sự khốc liệt của một trong những trận đánh ác liệt nhất lịch sử, tác phẩm còn mở ra một không gian nhân văn, nơi người đọc được chạm đến cả nỗi đau, sự hy sinh và khát vọng hòa bình.</div>
-            <div class="qv-note"><i class="fas fa-id-card"></i><span>Nhận sản phẩm như mô tả. Thông tin thẻ của bạn được bảo mật và không được chia sẻ với người bán.</span></div>
-            <button class="qv-add"><i class="fa fa-shopping-cart"></i><span>thêm vào giỏ</span></button>
-          </div>
-        </div>
-      </div>
-    `;
+            const root = ensureQuickViewRoot();
+            root.innerHTML = `
+              <div class="qv-card" role="dialog" aria-modal="true" aria-label="Xem nhanh sản phẩm">
+                <button class="qv-close" aria-label="Đóng">✖</button>
+                <div class="qv-body">
+                  <div class="qv-img">
+                    <img src="${src}" alt="${alt}">
+                  </div>
+                  <div class="qv-content">
+                    <h2 class="qv-title">Mưa đỏ</h2>
+                    <div class="qv-meta"><i class="fas fa-tag"></i><span>Tác Giả: <em>Chu Lai</em></span></div>
+                    <div class="qv-price">Giá: 180,000 VND</div>
+                    <div class="qv-desc">Mô tả : "Mưa Đỏ" là một trong những tiểu thuyết chiến tranh đặc sắc nhất về 81 ngày đêm đỏ lửa tại Thành cổ Quảng Trị năm 1972. Không chỉ tái hiện sự khốc liệt của một trong những trận đánh ác liệt nhất lịch sử, tác phẩm còn mở ra một không gian nhân văn, nơi người đọc được chạm đến cả nỗi đau, sự hy sinh và khát vọng hòa bình.</div>
+                    <div class="qv-note"><i class="fas fa-id-card"></i><span>Nhận sản phẩm như mô tả. Thông tin thẻ của bạn được bảo mật và không được chia sẻ với người bán.</span></div>
+                    <button class="qv-add"><i class="fa fa-shopping-cart"></i><span>thêm vào giỏ</span></button>
+                  </div>
+                </div>
+              </div>
+            `;
 
-    root.style.display = 'flex';
+            root.style.display = 'flex';
 
-    const close = () => { root.style.display = 'none'; root.innerHTML = ''; };
-    root.addEventListener('click', (e) => { if(e.target === root) close(); });
-    root.querySelector('.qv-close').addEventListener('click', close);
-    const onEsc = (e) => { if(e.key === 'Escape') { close(); document.removeEventListener('keydown', onEsc);} };
-    document.addEventListener('keydown', onEsc);
+            const close = () => { root.style.display = 'none'; root.innerHTML = ''; };
+            root.addEventListener('click', (e) => { if(e.target === root) close(); });
+            root.querySelector('.qv-close').addEventListener('click', close);
+            const onEsc = (e) => { if(e.key === 'Escape') { close(); document.removeEventListener('keydown', onEsc);} };
+            document.addEventListener('keydown', onEsc);
 
-    root.querySelector('.qv-add').addEventListener('click', () => {
-      alert('Thêm vào giỏ hàng thành công!');
-      window.location.href = 'cart.html';
-    });
-  }
+            root.querySelector('.qv-add').addEventListener('click', () => {
+              alert('Thêm vào giỏ hàng thành công!');
+              window.location.href = 'cart.html';
+            });
+          }
 
-  document.addEventListener('click', function(e){
-    const viewBtn = e.target.closest('.view-detail');
-    if(!viewBtn) return;
-    e.preventDefault();
-    const card = viewBtn.closest('.category-product-item, .new-product-item');
-    if(!card) return;
-    openQuickViewFromCard(card);
-  });
+          document.addEventListener('click', function(e){
+            const viewBtn = e.target.closest('.view-detail');
+            if(!viewBtn) return;
+            e.preventDefault();
+            const card = viewBtn.closest('.category-product-item, .new-product-item');
+            if(!card) return;
+            openQuickViewFromCard(card);
+          });
 
-  ensureQuickViewRoot();
-</script>
+          ensureQuickViewRoot();
+        </script>
 
     </body>
 </html>
