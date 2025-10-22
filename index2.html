@@ -134,6 +134,8 @@
                 text-align: center;
                 position: relative;
                 overflow: hidden;
+                /* Thêm padding dưới để chứa nút hành động */
+                padding-bottom: 60px;
             }
             
             .new-product-item:hover {
@@ -192,24 +194,54 @@
                 margin-bottom: 10px;
             }
             
-            /* Nút hành động cho sản phẩm mới nhất */
+            /* Thông tin lượt mua, lượt bán và đánh giá */
+            .product-stats {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                margin: 10px 0;
+                font-size: 13px;
+                color: #666;
+            }
+            
+            .product-rating {
+                display: flex;
+                align-items: center;
+                gap: 5px;
+            }
+            
+            .rating-stars {
+                color: #ffc107;
+                display: flex;
+                gap: 2px;
+            }
+            
+            .rating-count {
+                color: #666;
+                font-weight: 500;
+            }
+            
+            .product-sales {
+                display: flex;
+                align-items: center;
+                gap: 5px;
+            }
+            
+            .sales-count {
+                color: #666;
+                font-weight: 500;
+            }
+            
+            .sales-icon {
+                color: #ff6f61;
+            }
+            
+            /* Nút hành động cho sản phẩm mới nhất - LUÔN HIỆN */
             .new-product-actions {
-                position: absolute;
-                bottom: 0;
-                left: 0;
-                right: 0;
-                background: rgba(255, 255, 255, 0.95);
-                padding: 15px;
                 display: flex;
                 justify-content: center;
                 gap: 10px;
-                transform: translateY(100%);
-                transition: transform 0.3s ease;
-                border-radius: 0 0 10px 10px;
-            }
-            
-            .new-product-item:hover .new-product-actions {
-                transform: translateY(0);
+                margin-top: 15px;
             }
             
             /* Style cho danh mục sản phẩm */
@@ -380,6 +412,8 @@
                 text-align: center;
                 position: relative;
                 overflow: hidden;
+                /* Thêm padding dưới để chứa nút hành động */
+                padding-bottom: 60px;
             }
             
             .category-product-item:hover {
@@ -438,24 +472,12 @@
                 margin-bottom: 10px;
             }
             
-            /* Nút hành động sản phẩm */
+            /* Nút hành động sản phẩm - LUÔN HIỆN */
             .product-actions {
-                position: absolute;
-                bottom: 0;
-                left: 0;
-                right: 0;
-                background: rgba(255, 255, 255, 0.95);
-                padding: 15px;
                 display: flex;
                 justify-content: center;
                 gap: 10px;
-                transform: translateY(100%);
-                transition: transform 0.3s ease;
-                border-radius: 0 0 10px 10px;
-            }
-            
-            .category-product-item:hover .product-actions {
-                transform: translateY(0);
+                margin-top: 15px;
             }
             
             .action-btn {
@@ -547,6 +569,11 @@
                 .br.paeadcrumb {
                     font-size: 14px;
                 }
+                
+                .product-stats {
+                    flex-direction: column;
+                    gap: 5px;
+                }
             }
         </style>
     </head>
@@ -630,8 +657,27 @@
                             <div class="new-product-title">Mưa đỏ</div>
                             <div class="new-product-price">99.000 đ</div>
                             <div class="freeship-badge">Freeship</div>
+                            
+                            <!-- Thêm thông tin lượt mua, lượt bán và đánh giá -->
+                            <div class="product-stats">
+                                <div class="product-rating">
+                                    <div class="rating-stars">
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star-half-alt"></i>
+                                    </div>
+                                    <span class="rating-count">4.5</span>
+                                </div>
+                                <div class="product-sales">
+                                    <i class="fas fa-shopping-cart sales-icon"></i>
+                                    <span class="sales-count">2.5k</span>
+                                </div>
+                            </div>
+                            
                             <div class="new-product-actions">
-                                <a href="login.html" class="action-btn add-cart" title="Thêm vào giỏ hàng" onclick="alert('Vui lòng đăng nhập để tiếp tục')">
+                                <a href="cart.html" class="action-btn add-cart" title="Thêm vào giỏ hàng">
                                     <i class="fa fa-shopping-cart"></i>
                                 </a>
                                 <a href="product-detail.html" class="action-btn view-detail" title="Xem chi tiết">
@@ -648,8 +694,27 @@
                             <div class="new-product-title">Khi hơi thở hóa thinh không</div>
                             <div class="new-product-price">60.000 đ</div>
                             <div class="freeship-badge">Freeship</div>
+                            
+                            <!-- Thêm thông tin lượt mua, lượt bán và đánh giá -->
+                            <div class="product-stats">
+                                <div class="product-rating">
+                                    <div class="rating-stars">
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="far fa-star"></i>
+                                    </div>
+                                    <span class="rating-count">4.0</span>
+                                </div>
+                                <div class="product-sales">
+                                    <i class="fas fa-shopping-cart sales-icon"></i>
+                                    <span class="sales-count">1.8k</span>
+                                </div>
+                            </div>
+                            
                             <div class="new-product-actions">
-                                <a href="login.html" class="action-btn add-cart" title="Thêm vào giỏ hàng" onclick="alert('Vui lòng đăng nhập để tiếp tục')">
+                                <a href="cart.html" class="action-btn add-cart" title="Thêm vào giỏ hàng">
                                     <i class="fa fa-shopping-cart"></i>
                                 </a>
                                 <a href="product-detail.html" class="action-btn view-detail" title="Xem chi tiết">
@@ -666,8 +731,27 @@
                             <div class="new-product-title">Cây cam ngọt của tôi</div>
                             <div class="new-product-price">200.000 đ</div>
                             <div class="freeship-badge">Freeship</div>
+                            
+                            <!-- Thêm thông tin lượt mua, lượt bán và đánh giá -->
+                            <div class="product-stats">
+                                <div class="product-rating">
+                                    <div class="rating-stars">
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                    </div>
+                                    <span class="rating-count">5.0</span>
+                                </div>
+                                <div class="product-sales">
+                                    <i class="fas fa-shopping-cart sales-icon"></i>
+                                    <span class="sales-count">3.2k</span>
+                                </div>
+                            </div>
+                            
                             <div class="new-product-actions">
-                                <a href="login.html" class="action-btn add-cart" title="Thêm vào giỏ hàng" onclick="alert('Vui lòng đăng nhập để tiếp tục')">
+                                <a href="cart.html" class="action-btn add-cart" title="Thêm vào giỏ hàng">
                                     <i class="fa fa-shopping-cart"></i>
                                 </a>
                                 <a href="product-detail.html" class="action-btn view-detail" title="Xem chi tiết">
@@ -684,8 +768,27 @@
                             <div class="new-product-title">Quá trẻ để chết</div>
                             <div class="new-product-price">220.000 đ</div>
                             <div class="freeship-badge">Freeship</div>
+                            
+                            <!-- Thêm thông tin lượt mua, lượt bán và đánh giá -->
+                            <div class="product-stats">
+                                <div class="product-rating">
+                                    <div class="rating-stars">
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star-half-alt"></i>
+                                        <i class="far fa-star"></i>
+                                    </div>
+                                    <span class="rating-count">3.5</span>
+                                </div>
+                                <div class="product-sales">
+                                    <i class="fas fa-shopping-cart sales-icon"></i>
+                                    <span class="sales-count">980</span>
+                                </div>
+                            </div>
+                            
                             <div class="new-product-actions">
-                                <a href="login.html" class="action-btn add-cart" title="Thêm vào giỏ hàng" onclick="alert('Vui lòng đăng nhập để tiếp tục')">
+                                <a href="cart.html" class="action-btn add-cart" title="Thêm vào giỏ hàng">
                                     <i class="fa fa-shopping-cart"></i>
                                 </a>
                                 <a href="product-detail.html" class="action-btn view-detail" title="Xem chi tiết">
@@ -747,8 +850,27 @@
                                         <div class="category-product-title">Hiểu về trái tim</div>
                                         <div class="category-product-price">120.000 đ</div>
                                         <div class="category-freeship-badge">Freeship</div>
+                                        
+                                        <!-- Thêm thông tin lượt mua, lượt bán và đánh giá -->
+                                        <div class="product-stats">
+                                            <div class="product-rating">
+                                                <div class="rating-stars">
+                                                    <i class="fas fa-star"></i>
+                                                    <i class="fas fa-star"></i>
+                                                    <i class="fas fa-star"></i>
+                                                    <i class="fas fa-star"></i>
+                                                    <i class="fas fa-star-half-alt"></i>
+                                                </div>
+                                                <span class="rating-count">4.5</span>
+                                            </div>
+                                            <div class="product-sales">
+                                                <i class="fas fa-shopping-cart sales-icon"></i>
+                                                <span class="sales-count">2.1k</span>
+                                            </div>
+                                        </div>
+                                        
                                         <div class="product-actions">
-                                            <a href="login.html" class="action-btn add-cart" title="Thêm vào giỏ hàng" onclick="alert('Vui lòng đăng nhập để tiếp tục')">
+                                            <a href="cart.html" class="action-btn add-cart" title="Thêm vào giỏ hàng">
                                                 <i class="fa fa-shopping-cart"></i>
                                             </a>
                                             <a href="product-detail.html" class="action-btn view-detail" title="Xem chi tiết">
@@ -765,8 +887,27 @@
                                         <div class="category-product-title">Cây cam ngọt của tôi</div>
                                         <div class="category-product-price">220.000 đ</div>
                                         <div class="category-freeship-badge">Freeship</div>
+                                        
+                                        <!-- Thêm thông tin lượt mua, lượt bán và đánh giá -->
+                                        <div class="product-stats">
+                                            <div class="product-rating">
+                                                <div class="rating-stars">
+                                                    <i class="fas fa-star"></i>
+                                                    <i class="fas fa-star"></i>
+                                                    <i class="fas fa-star"></i>
+                                                    <i class="fas fa-star"></i>
+                                                    <i class="fas fa-star"></i>
+                                                </div>
+                                                <span class="rating-count">5.0</span>
+                                            </div>
+                                            <div class="product-sales">
+                                                <i class="fas fa-shopping-cart sales-icon"></i>
+                                                <span class="sales-count">3.2k</span>
+                                            </div>
+                                        </div>
+                                        
                                         <div class="product-actions">
-                                            <a href="login.html" class="action-btn add-cart" title="Thêm vào giỏ hàng" onclick="alert('Vui lòng đăng nhập để tiếp tục')">
+                                            <a href="cart.html" class="action-btn add-cart" title="Thêm vào giỏ hàng">
                                                 <i class="fa fa-shopping-cart"></i>
                                             </a>
                                             <a href="product-detail.html" class="action-btn view-detail" title="Xem chi tiết">
@@ -783,8 +924,27 @@
                                         <div class="category-product-title">Làm bạn với bầu trời</div>
                                         <div class="category-product-price">139.000 đ</div>
                                         <div class="category-freeship-badge">Freeship</div>
+                                        
+                                        <!-- Thêm thông tin lượt mua, lượt bán và đánh giá -->
+                                        <div class="product-stats">
+                                            <div class="product-rating">
+                                                <div class="rating-stars">
+                                                    <i class="fas fa-star"></i>
+                                                    <i class="fas fa-star"></i>
+                                                    <i class="fas fa-star"></i>
+                                                    <i class="fas fa-star"></i>
+                                                    <i class="far fa-star"></i>
+                                                </div>
+                                                <span class="rating-count">4.0</span>
+                                            </div>
+                                            <div class="product-sales">
+                                                <i class="fas fa-shopping-cart sales-icon"></i>
+                                                <span class="sales-count">1.5k</span>
+                                            </div>
+                                        </div>
+                                        
                                         <div class="product-actions">
-                                            <a href="login.html" class="action-btn add-cart" title="Thêm vào giỏ hàng" onclick="alert('Vui lòng đăng nhập để tiếp tục')">
+                                            <a href="cart.html" class="action-btn add-cart" title="Thêm vào giỏ hàng">
                                                 <i class="fa fa-shopping-cart"></i>
                                             </a>
                                             <a href="product-detail.html" class="action-btn view-detail" title="Xem chi tiết">
@@ -801,8 +961,27 @@
                                         <div class="category-product-title">Bản du ca cuối cùng</div>
                                         <div class="category-product-price">150.000 đ</div>
                                         <div class="category-freeship-badge">Freeship</div>
+                                        
+                                        <!-- Thêm thông tin lượt mua, lượt bán và đánh giá -->
+                                        <div class="product-stats">
+                                            <div class="product-rating">
+                                                <div class="rating-stars">
+                                                    <i class="fas fa-star"></i>
+                                                    <i class="fas fa-star"></i>
+                                                    <i class="fas fa-star"></i>
+                                                    <i class="fas fa-star-half-alt"></i>
+                                                    <i class="far fa-star"></i>
+                                                </div>
+                                                <span class="rating-count">3.5</span>
+                                            </div>
+                                            <div class="product-sales">
+                                                <i class="fas fa-shopping-cart sales-icon"></i>
+                                                <span class="sales-count">890</span>
+                                            </div>
+                                        </div>
+                                        
                                         <div class="product-actions">
-                                            <a href="login.html" class="action-btn add-cart" title="Thêm vào giỏ hàng" onclick="alert('Vui lòng đăng nhập để tiếp tục')">
+                                            <a href="cart.html" class="action-btn add-cart" title="Thêm vào giỏ hàng">
                                                 <i class="fa fa-shopping-cart"></i>
                                             </a>
                                             <a href="product-detail.html" class="action-btn view-detail" title="Xem chi tiết">
@@ -819,8 +998,27 @@
                                         <div class="category-product-title">Ngôi nhà kỳ quái</div>
                                         <div class="category-product-price">180.000 đ</div>
                                         <div class="category-freeship-badge">Freeship</div>
+                                        
+                                        <!-- Thêm thông tin lượt mua, lượt bán và đánh giá -->
+                                        <div class="product-stats">
+                                            <div class="product-rating">
+                                                <div class="rating-stars">
+                                                    <i class="fas fa-star"></i>
+                                                    <i class="fas fa-star"></i>
+                                                    <i class="fas fa-star"></i>
+                                                    <i class="fas fa-star"></i>
+                                                    <i class="fas fa-star-half-alt"></i>
+                                                </div>
+                                                <span class="rating-count">4.5</span>
+                                            </div>
+                                            <div class="product-sales">
+                                                <i class="fas fa-shopping-cart sales-icon"></i>
+                                                <span class="sales-count">1.7k</span>
+                                            </div>
+                                        </div>
+                                        
                                         <div class="product-actions">
-                                            <a href="login.html" class="action-btn add-cart" title="Thêm vào giỏ hàng" onclick="alert('Vui lòng đăng nhập để tiếp tục')">
+                                            <a href="cart.html" class="action-btn add-cart" title="Thêm vào giỏ hàng">
                                                 <i class="fa fa-shopping-cart"></i>
                                             </a>
                                             <a href="product-detail.html" class="action-btn view-detail" title="Xem chi tiết">
@@ -837,6 +1035,25 @@
                                         <div class="category-product-title">Nụ hôn của sói</div>
                                         <div class="category-product-price">160.000 đ</div>
                                         <div class="category-freeship-badge">Freeship</div>
+                                        
+                                        <!-- Thêm thông tin lượt mua, lượt bán và đánh giá -->
+                                        <div class="product-stats">
+                                            <div class="product-rating">
+                                                <div class="rating-stars">
+                                                    <i class="fas fa-star"></i>
+                                                    <i class="fas fa-star"></i>
+                                                    <i class="fas fa-star"></i>
+                                                    <i class="fas fa-star"></i>
+                                                    <i class="far fa-star"></i>
+                                                </div>
+                                                <span class="rating-count">4.0</span>
+                                            </div>
+                                            <div class="product-sales">
+                                                <i class="fas fa-shopping-cart sales-icon"></i>
+                                                <span class="sales-count">1.2k</span>
+                                            </div>
+                                        </div>
+                                        
                                         <div class="product-actions">
                                             <a href="cart.html" class="action-btn add-cart" title="Thêm vào giỏ hàng">
                                                 <i class="fa fa-shopping-cart"></i>
