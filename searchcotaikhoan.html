@@ -24,6 +24,39 @@
         <link href="css/style.css" rel="stylesheet">
         <link href="css/fix.css" rel="stylesheet">
         <style>
+            .qv-overlay{
+  position: fixed; inset: 0; background: rgba(0,0,0,.45);
+  display: none; align-items: center; justify-content: center; z-index: 2000;
+}
+.qv-card{
+  background: #fff; border-radius: 14px; max-width: 980px; width: calc(100% - 32px);
+  box-shadow: 0 20px 60px rgba(0,0,0,.25); position: relative; padding: 28px;
+}
+.qv-close{
+  position: absolute; top: 12px; right: 12px; width: 40px; height: 40px;
+  border-radius: 50%; border: 2px solid #1e6bd6; color: #1e6bd6; background: #fff;
+  display: inline-flex; align-items: center; justify-content: center; font-size: 18px; cursor: pointer;
+}
+.qv-body{ display: grid; grid-template-columns: 1fr 1.2fr; gap: 24px; align-items: start; }
+.qv-img{
+  border: 2px solid #1e6bd6; border-radius: 8px; padding: 8px; display: grid; place-items: center;
+}
+.qv-img img{ max-width: 100%; height: auto; }
+.qv-title{ font-size: 28px; font-weight: 700; margin: 0 0 6px; }
+.qv-meta{ margin: 8px 0 14px; color: #1e6bd6; font-weight: 600; display: flex; gap: 8px; align-items: center; }
+.qv-price{ font-size: 28px; font-weight: 800; color: #ff6f61; margin: 0 0 14px; }
+.qv-desc{ color: #6b7280; line-height: 1.6; margin-bottom: 12px; }
+.qv-note{ color: #1e6bd6; margin: 8px 0 18px; display: flex; gap: 10px; align-items: flex-start; }
+.qv-add{
+  display: inline-flex; align-items: center; gap: 10px; border: none; cursor: pointer;
+  padding: 12px 20px; border-radius: 999px; background: #1e6bd6; color: #fff; font-weight: 700; font-size: 18px;
+}
+.qv-add i{ font-size: 18px; }
+
+/* Mobile */
+@media (max-width: 768px){
+  .qv-body{ grid-template-columns: 1fr; }
+}
             /* Toast notification styles */
             .toast-notification {
                 position: fixed;
@@ -370,11 +403,11 @@
                                         <div class="category-product-image">
                                             <img src="img/book1.webp" alt="Tôi Thấy Hoa Vàng Trên Cỏ Xanh">
                                         </div>
-                                        <div class="category-product-title">Tôi Thấy Hoa Vàng Trên Cỏ Xanh</div>
+                                        <div class="category-product-title">Hiểu về trái tim</div>
                                         <div class="category-product-price">99.000 đ</div>
                                         <div class="category-freeship-badge">Freeship</div>
                                         <div class="product-actions">
-                                            <a href="login.html" class="action-btn add-cart" title="Thêm vào giỏ hàng" onclick="alert('Vui lòng đăng nhập để tiếp tục')">
+                                            <a href="cart.html" class="action-btn add-cart" title="Thêm vào giỏ hàng" onclick="alert('Thêm vào giỏ hàng thành công!')">
                                                 <i class="fa fa-shopping-cart"></i>
                                             </a>
                                             <a href="product-detail.html" class="action-btn view-detail" title="Xem chi tiết">
@@ -392,7 +425,7 @@
                                         <div class="category-product-price">220.000 đ</div>
                                         <div class="category-freeship-badge">Freeship</div>
                                         <div class="product-actions">
-                                            <a href="login.html" class="action-btn add-cart" title="Thêm vào giỏ hàng" onclick="alert('Vui lòng đăng nhập để tiếp tục')">
+                                            <a href="cart.html" class="action-btn add-cart" title="Thêm vào giỏ hàng" onclick="alert('Thêm vào giỏ hàng thành công!')">
                                                 <i class="fa fa-shopping-cart"></i>
                                             </a>
                                             <a href="product-detail.html" class="action-btn view-detail" title="Xem chi tiết">
@@ -410,7 +443,7 @@
                                         <div class="category-product-price">139.000 đ</div>
                                         <div class="category-freeship-badge">Freeship</div>
                                         <div class="product-actions">
-                                            <a href="login.html" class="action-btn add-cart" title="Thêm vào giỏ hàng" onclick="alert('Vui lòng đăng nhập để tiếp tục')">
+                                            <a href="cart.html" class="action-btn add-cart" title="Thêm vào giỏ hàng" onclick="alert('thêm vào giỏ hàng thành công')">
                                                 <i class="fa fa-shopping-cart"></i>
                                             </a>
                                             <a href="product-detail.html" class="action-btn view-detail" title="Xem chi tiết">
@@ -600,5 +633,73 @@ document.addEventListener("DOMContentLoaded", () => {
                 });
             });
         </script>
+        <script>
+  // Ảnh cố định cho Quick View
+  const QV_FIXED_IMAGE = 'img/book8.webp';
+
+  function ensureQuickViewRoot(){
+    let root = document.querySelector('.qv-overlay');
+    if(root) return root;
+    root = document.createElement('div');
+    root.className = 'qv-overlay';
+    document.body.appendChild(root);
+    return root;
+  }
+
+  // Mở Quick View từ card sản phẩm (ảnh cố định)
+  function openQuickViewFromCard(card){
+    const titleEl = card.querySelector('.category-product-title, .new-product-title');
+    const priceEl = card.querySelector('.category-product-price, .new-product-price');
+
+    const title = titleEl?.textContent?.trim() || 'Tên sản phẩm';
+    const price = priceEl?.textContent?.trim() || '';
+    const alt   = title;                               // alt đơn giản theo tên
+    const src   = QV_FIXED_IMAGE;                      // <-- luôn dùng ảnh cố định
+
+    const root = ensureQuickViewRoot();
+    root.innerHTML = `
+      <div class="qv-card" role="dialog" aria-modal="true" aria-label="Xem nhanh sản phẩm">
+        <button class="qv-close" aria-label="Đóng">✖</button>
+        <div class="qv-body">
+          <div class="qv-img">
+            <img src="${src}" alt="${alt}">
+          </div>
+          <div class="qv-content">
+            <h2 class="qv-title">Mưa đỏ</h2>
+            <div class="qv-meta"><i class="fas fa-tag"></i><span>Tác Giả: <em>Chu Lai</em></span></div>
+            <div class="qv-price">Giá: 180,000 VND</div>
+            <div class="qv-desc">Mô tả : "Mưa Đỏ" là một trong những tiểu thuyết chiến tranh đặc sắc nhất về 81 ngày đêm đỏ lửa tại Thành cổ Quảng Trị năm 1972. Không chỉ tái hiện sự khốc liệt của một trong những trận đánh ác liệt nhất lịch sử, tác phẩm còn mở ra một không gian nhân văn, nơi người đọc được chạm đến cả nỗi đau, sự hy sinh và khát vọng hòa bình.</div>
+            <div class="qv-note"><i class="fas fa-id-card"></i><span>Nhận sản phẩm như mô tả. Thông tin thẻ của bạn được bảo mật và không được chia sẻ với người bán.</span></div>
+            <button class="qv-add"><i class="fa fa-shopping-cart"></i><span>thêm vào giỏ</span></button>
+          </div>
+        </div>
+      </div>
+    `;
+
+    root.style.display = 'flex';
+
+    const close = () => { root.style.display = 'none'; root.innerHTML = ''; };
+    root.addEventListener('click', (e) => { if(e.target === root) close(); });
+    root.querySelector('.qv-close').addEventListener('click', close);
+    const onEsc = (e) => { if(e.key === 'Escape') { close(); document.removeEventListener('keydown', onEsc);} };
+    document.addEventListener('keydown', onEsc);
+
+    root.querySelector('.qv-add').addEventListener('click', () => {
+      alert('Thêm vào giỏ hàng thành công!');
+      window.location.href = 'cart.html';
+    });
+  }
+
+  document.addEventListener('click', function(e){
+    const viewBtn = e.target.closest('.view-detail');
+    if(!viewBtn) return;
+    e.preventDefault();
+    const card = viewBtn.closest('.category-product-item, .new-product-item');
+    if(!card) return;
+    openQuickViewFromCard(card);
+  });
+
+  ensureQuickViewRoot();
+</script>
     </body>
 </html>
