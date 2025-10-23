@@ -1454,8 +1454,7 @@
             // Initialize pagination functionality
             initializePagination();
 
-            // Initialize search functionality
-            initializeSearch();
+
 
             // Initialize category selection
             initializeCategorySelection();
@@ -1531,26 +1530,24 @@
             setActiveByIndex(0);
         }
 
-        // Search functionality
-        function initializeSearch() {
+        // Xử lý tìm kiếm
+        document.addEventListener("DOMContentLoaded", () => {
             const searchBtn = document.getElementById("searchBtn");
             const searchInput = document.getElementById("searchInput");
 
-            if (searchBtn) {
-                searchBtn.addEventListener("click", () => {
-                    window.location.href = "searchkhongtk.html";
-                });
-            }
+            // Khi click nút tìm kiếm
+            searchBtn.addEventListener("click", () => {
+                window.location.href = "searchkhongtk.html";
+            });
 
-            if (searchInput) {
-                searchInput.addEventListener("keypress", (e) => {
-                    if (e.key === "Enter") {
-                        e.preventDefault();
-                        window.location.href = "searchkhongtk.html";
-                    }
-                });
-            }
-        }
+            // Khi nhấn Enter trong ô tìm kiếm
+            searchInput.addEventListener("keypress", (e) => {
+                if (e.key === "Enter") {
+                    e.preventDefault();
+                    window.location.href = "searchkhongtk.html";
+                }
+            });
+        });
 
         // Category selection functionality
         function initializeCategorySelection() {
@@ -1558,94 +1555,72 @@
             // This function can be used for additional logic if needed
         }
 
-        // Quick view functionality
-        function initializeQuickView() {
-            const QV_FIXED_IMAGE = 'img/book8.webp';
+        // Ảnh cố định cho Quick View
+        const QV_FIXED_IMAGE = 'img/book8.webp';
 
-            function ensureQuickViewRoot() {
-                let root = document.querySelector('.qv-overlay');
-                if (root) return root;
-                root = document.createElement('div');
-                root.className = 'qv-overlay';
-                document.body.appendChild(root);
-                return root;
-            }
+        function ensureQuickViewRoot(){
+            let root = document.querySelector('.qv-overlay');
+            if(root) return root;
+            root = document.createElement('div');
+            root.className = 'qv-overlay';
+            document.body.appendChild(root);
+            return root;
+        }
 
-            function openQuickViewFromCard(card) {
-                const titleEl = card.querySelector('.category-product-title, .new-product-title');
-                const priceEl = card.querySelector('.category-product-price, .new-product-price');
+        // Mở Quick View từ card sản phẩm (ảnh cố định)
+        function openQuickViewFromCard(card){
+            const titleEl = card.querySelector('.category-product-title, .new-product-title');
+            const priceEl = card.querySelector('.category-product-price, .new-product-price');
 
-                const title = titleEl?.textContent?.trim() || 'Tên sản phẩm';
-                const price = priceEl?.textContent?.trim() || '';
-                const alt = title;
-                const src = QV_FIXED_IMAGE;
+            const title = titleEl?.textContent?.trim() || 'Tên sản phẩm';
+            const price = priceEl?.textContent?.trim() || '';
+            const alt   = title;                               // alt đơn giản theo tên
+            const src   = QV_FIXED_IMAGE;                      // <-- luôn dùng ảnh cố định
 
-                const root = ensureQuickViewRoot();
-                root.innerHTML = `
-                    <div class="qv-card" role="dialog" aria-modal="true" aria-label="Xem nhanh sản phẩm">
-                        <button class="qv-close" aria-label="Đóng">✖</button>
-                        <div class="qv-body">
-                            <div class="qv-img">
-                                <img src="${src}" alt="${alt}">
-                            </div>
-                            <div class="qv-content">
-                                <h2 class="qv-title">Mưa đỏ</h2>
-                                <div class="qv-meta"><i class="fas fa-tag"></i><span>Tác Giả: <em>Chu Lai</em></span></div>
-                                <div class="qv-price">Giá: 180,000 VND</div>
-                                <div class="qv-desc">Mô tả: "Mưa Đỏ" là một trong những tiểu thuyết chiến tranh đặc sắc nhất về 81 ngày đêm đỏ lửa tại Thành cổ Quảng Trị năm 1972. Không chỉ tái hiện sự khốc liệt của một trong những trận đánh ác liệt nhất lịch sử, tác phẩm còn mở ra một không gian nhân văn, nơi người đọc được chạm đến cả nỗi đau, sự hy sinh và khát vọng hòa bình.</div>
-                                <div class="qv-note"><i class="fas fa-id-card"></i><span>Nhận sản phẩm như mô tả. Thông tin thẻ của bạn được bảo mật và không được chia sẻ với người bán.</span></div>
-                                <button class="qv-add"><i class="fa fa-shopping-cart"></i><span>thêm vào giỏ</span></button>
-                            </div>
+            const root = ensureQuickViewRoot();
+            root.innerHTML = `
+                <div class="qv-card" role="dialog" aria-modal="true" aria-label="Xem nhanh sản phẩm">
+                    <button class="qv-close" aria-label="Đóng">✖</button>
+                    <div class="qv-body">
+                        <div class="qv-img">
+                            <img src="${src}" alt="${alt}">
+                        </div>
+                        <div class="qv-content">
+                            <h2 class="qv-title">Mưa đỏ</h2>
+                            <div class="qv-meta"><i class="fas fa-tag"></i><span>Tác Giả: <em>Chu Lai</em></span></div>
+                            <div class="qv-price">Giá: 180,000 VND</div>
+                            <div class="qv-desc">Mô tả: "Mưa Đỏ" là một trong những tiểu thuyết chiến tranh đặc sắc nhất về 81 ngày đêm đỏ lửa tại Thành cổ Quảng Trị năm 1972. Không chỉ tái hiện sự khốc liệt của một trong những trận đánh ác liệt nhất lịch sử, tác phẩm còn mở ra một không gian nhân văn, nơi người đọc được chạm đến cả nỗi đau, sự hy sinh và khát vọng hòa bình.</div>
+                            <div class="qv-note"><i class="fas fa-id-card"></i><span>Nhận sản phẩm như mô tả. Thông tin thẻ của bạn được bảo mật và không được chia sẻ với người bán.</span></div>
+                            <button class="qv-add"><i class="fa fa-shopping-cart"></i><span>thêm vào giỏ</span></button>
                         </div>
                     </div>
-                `;
+                </div>
+            `;
 
-                root.style.display = 'flex';
+            root.style.display = 'flex';
 
-                const close = () => {
-                    root.style.display = 'none';
-                    root.innerHTML = '';
-                };
+            const close = () => { root.style.display = 'none'; root.innerHTML = ''; };
+            root.addEventListener('click', (e) => { if(e.target === root) close(); });
+            root.querySelector('.qv-close').addEventListener('click', close);
+            const onEsc = (e) => { if(e.key === 'Escape') { close(); document.removeEventListener('keydown', onEsc);} };
+            document.addEventListener('keydown', onEsc);
 
-                root.addEventListener('click', (e) => {
-                    if (e.target === root) close();
-                });
-
-                const closeBtn = root.querySelector('.qv-close');
-                if (closeBtn) {
-                    closeBtn.addEventListener('click', close);
-                }
-
-                const onEsc = (e) => {
-                    if (e.key === 'Escape') {
-                        close();
-                        document.removeEventListener('keydown', onEsc);
-                    }
-                };
-                document.addEventListener('keydown', onEsc);
-
-                const addBtn = root.querySelector('.qv-add');
-                if (addBtn) {
-                    addBtn.addEventListener('click', () => {
-                        alert('Vui lòng đăng nhập');
-                        window.location.href = 'login.html';
-                    });
-                }
-            }
-
-            // Add event listener for view detail buttons
-            document.addEventListener('click', function(e) {
-                const viewBtn = e.target.closest('.view-detail');
-                if (!viewBtn) return;
-                e.preventDefault();
-                const card = viewBtn.closest('.category-product-item, .new-product-item');
-                if (!card) return;
-                openQuickViewFromCard(card);
+            root.querySelector('.qv-add').addEventListener('click', () => {
+                alert('Vui lòng đăng nhập');
+                window.location.href = 'login.html';
             });
-
-            // Ensure quick view root exists
-            ensureQuickViewRoot();
         }
+
+        document.addEventListener('click', function(e){
+            const viewBtn = e.target.closest('.view-detail');
+            if(!viewBtn) return;
+            e.preventDefault();
+            const card = viewBtn.closest('.category-product-item, .new-product-item');
+            if(!card) return;
+            openQuickViewFromCard(card);
+        });
+
+        ensureQuickViewRoot();
 
         // Advanced search modal functionality
         function initializeAdvancedSearch() {
