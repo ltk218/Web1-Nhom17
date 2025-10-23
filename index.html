@@ -821,6 +821,7 @@
                 <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
                     <div class="navbar-nav mr-auto">
                         <a href="index.html" class="nav-item nav-link active">Trang chủ</a>
+
                         <a href="contactkhongtk.html" class="nav-item nav-link">Liên hệ</a>
                     </div>
                     <div class="navbar-nav ml-auto">
@@ -837,39 +838,39 @@
         </div>
     </div>
     
-    <div class="bottom-bar">
-        <div class="container-fluid">
-            <div class="row align-items-center">
-                <div class="col-md-3">
-                    <div class="logo">
-                        <a href="index.html">
-                            <img src="img/logo.png" alt="Logo">
-                        </a>
-                    </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="search-container">
-                        <div class="search">
-                            <input type="text" id="searchInput" placeholder="Tìm kiếm sản phẩm">
-                            <button id="searchBtn"><i class="fa fa-search"></i></button>
-                        </div>
-                        <div class="filter-button-container">
-                            <button id="filterBtn" class="filter-btn" title="Tìm kiếm nâng cao">
-                                <i class="fas fa-filter"></i>
-                            </button>
+        <div class="bottom-bar">
+            <div class="container-fluid">
+                <div class="row align-items-center">
+                    <div class="col-md-3">
+                        <div class="logo">
+                            <a href="index.html">
+                                <img src="img/logo.png" alt="Logo">
+                            </a>
                         </div>
                     </div>
-                </div>
-                <div class="col-md-3">
-                    <div class="user">
-                        <a href="login.html" class="btn cart" onclick="alert('Vui lòng đăng nhập để tiếp tục')">
-                            <i class="fa fa-shopping-cart"></i>
-                        </a>
+                    <div class="col-md-6">
+                        <div class="search-container">
+                            <div class="search">
+                                <input type="text" id="searchInput" placeholder="Tìm kiếm sản phẩm">
+                                <button id="searchBtn"><i class="fa fa-search"></i></button>
+                            </div>
+                            <div class="filter-button-container">
+                                <button id="filterBtn" class="filter-btn" title="Tìm kiếm nâng cao">
+                                    <i class="fas fa-filter"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="user">
+                            <a href="login.html" class="btn cart" onclick="alert('Vui lòng đăng nhập để tiếp tục')">
+                                <i class="fa fa-shopping-cart"></i>
+                            </a>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
 
     <!-- Main Slider Start -->
     <div class="header">
@@ -1064,14 +1065,16 @@
                 <!-- Phần lọc danh mục -->
                 <div class="col-md-3">
                     <div class="category-filter">
+                        
                         <ul>
-                            <li><a href="javascript:void(0)" class="cat-btn active" onclick="selectCategory(this)" role="button">Tất cả</a></li>
-                            <li><a href="javascript:void(0)" class="cat-btn" onclick="selectCategory(this)" role="button">Thiếu nhi</a></li>
-                            <li><a href="javascript:void(0)" class="cat-btn" onclick="selectCategory(this)" role="button">Tâm lý/tình cảm</a></li>
-                            <li><a href="javascript:void(0)" class="cat-btn" onclick="selectCategory(this)" role="button">Tôn giáo</a></li>
-                            <li><a href="javascript:void(0)" class="cat-btn" onclick="selectCategory(this)" role="button">Lịch sử</a></li>
-                            <li><a href="javascript:void(0)" class="cat-btn" onclick="selectCategory(this)" role="button">Văn học</a></li>
-                        </ul>
+      <li><a href="javascript:void(0)" class="cat-btn active" onclick="selectCategory(this)" role="button">Tất cả</a></li>
+      <li><a href="javascript:void(0)" class="cat-btn" onclick="selectCategory(this)" role="button">Thiếu nhi</a></li>
+      <li><a href="javascript:void(0)" class="cat-btn" onclick="selectCategory(this)" role="button">Tâm lý/tình cảm</a></li>
+      <li><a href="javascript:void(0)" class="cat-btn" onclick="selectCategory(this)" role="button">Tôn giáo</a></li>
+      <li><a href="javascript:void(0)" class="cat-btn" onclick="selectCategory(this)" role="button">Lịch sử</a></li>
+      <li><a href="javascript:void(0)" class="cat-btn" onclick="selectCategory(this)" role="button">Văn học</a></li>
+    </ul>
+
                     </div>
                 </div>
                 
@@ -1305,16 +1308,19 @@
                         </div>
                     </div>
                     
+                    <!-- ... (các trang sản phẩm khác giữ nguyên) ... -->
+                    
                     <!-- Phân trang -->
-                    <div class="pagination" role="navigation" aria-label="Phân trang (tĩnh)">
-                        <button type="button" class="page-btn page-prev" aria-label="Trang trước">«</button>
-                        <button type="button" class="page-btn active">1</button>
-                        <button type="button" class="page-btn">2</button>
-                        <button type="button" class="page-btn">3</button>
-                        <button type="button" class="page-btn">4</button>
-                        <button type="button" class="page-btn">5</button>
-                        <button type="button" class="page-btn page-next" aria-label="Trang sau">»</button>
-                    </div>
+                   <div class="pagination" role="navigation" aria-label="Phân trang (tĩnh)">
+      <button type="button" class="page-btn page-prev" aria-label="Trang trước">«</button>
+      <button type="button" class="page-btn active">1</button>
+      <button type="button" class="page-btn">2</button>
+      <button type="button" class="page-btn">3</button>
+      <button type="button" class="page-btn">4</button>
+      <button type="button" class="page-btn">5</button>
+      <button type="button" class="page-btn page-next" aria-label="Trang sau">»</button>
+    </div>
+
                 </div>
             </div>
         </div>
@@ -1430,61 +1436,6 @@
     <!-- Back to Top -->
     <a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>
 
-    <!-- Form tìm kiếm nâng cao -->
-    <div id="advancedSearchModal" class="advanced-search-modal">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h3>Tìm kiếm nâng cao</h3>
-                <button class="close-modal">&times;</button>
-            </div>
-            <div class="modal-body">
-                <form id="advancedSearchForm">
-                    <div class="form-group">
-                        <label>Từ khóa:</label>
-                        <input type="text" name="keyword" placeholder="Nhập từ khóa tìm kiếm...">
-                    </div>
-
-                    <div class="form-group">
-                        <label>Danh mục:</label>
-                        <select name="category">
-                            <option value="">Tất cả</option>
-                            <option value="thieunhi">Thiếu nhi</option>
-                            <option value="tamly">Tâm lý/tình cảm</option>
-                            <option value="tongiao">Tôn giáo</option>
-                            <option value="lichsu">Lịch sử</option>
-                            <option value="vanhoc">Văn học</option>
-                        </select>
-                    </div>
-
-                    <div class="form-group">
-                        <label>Khoảng giá:</label>
-                        <div class="price-range">
-                            <input type="number" name="minPrice" placeholder="Từ">
-                            <span>-</span>
-                            <input type="number" name="maxPrice" placeholder="Đến">
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <label>Sắp xếp theo:</label>
-                        <select name="sort">
-                            <option value="">Mặc định</option>
-                            <option value="price_asc">Giá tăng dần</option>
-                            <option value="price_desc">Giá giảm dần</option>
-                            <option value="name_asc">Tên A-Z</option>
-                            <option value="name_desc">Tên Z-A</option>
-                        </select>
-                    </div>
-
-                    <div class="form-actions">
-                        <button type="submit" class="btn-search">Tìm kiếm</button>
-                        <button type="button" class="btn-reset">Đặt lại</button>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
-
     <!-- JavaScript Libraries -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
@@ -1495,24 +1446,6 @@
     <script src="js/main.js"></script>
     
     <script>
-        // Hàm chọn danh mục
-        function selectCategory(clickedButton) {
-            // Lấy tất cả các nút danh mục
-            const categoryButtons = document.querySelectorAll('.cat-btn');
-            
-            // Loại bỏ lớp 'active' khỏi tất cả các nút
-            categoryButtons.forEach(button => {
-                button.classList.remove('active');
-            });
-            
-            // Thêm lớp 'active' vào nút được click
-            clickedButton.classList.add('active');
-            
-            // Ở đây bạn có thể thêm code để lọc sản phẩm theo danh mục
-            const category = clickedButton.textContent.trim();
-            console.log('Danh mục được chọn:', category);
-        }
-
         // Consolidated JavaScript for index.html (main page)
         document.addEventListener("DOMContentLoaded", function() {
             // Initialize slider
@@ -1521,14 +1454,16 @@
             // Initialize pagination functionality
             initializePagination();
 
+
+
+            // Initialize category selection
+            initializeCategorySelection();
+
             // Initialize quick view functionality
             initializeQuickView();
 
             // Initialize advanced search modal
             initializeAdvancedSearch();
-
-            // Initialize search functionality
-            initializeSearch();
         });
 
         // Slider initialization
@@ -1547,7 +1482,7 @@
             }
         }
 
-        // Pagination functionality - FIXED VERSION
+        // Pagination functionality
         function initializePagination() {
             const container = document.querySelector(".pagination");
             if (!container) return;
@@ -1558,15 +1493,10 @@
                 !b.classList.contains("page-prev") && !b.classList.contains("page-next"));
 
             function setActiveByIndex(idx) {
-                // Remove active from all buttons
                 numberBtns.forEach(b => b.classList.remove("active"));
-                
-                // Add active to clicked button
                 if (numberBtns[idx]) {
                     numberBtns[idx].classList.add("active");
                 }
-                
-                // Update prev/next button states
                 if (prev) prev.classList.toggle("is-disabled", idx === 0);
                 if (next) next.classList.toggle("is-disabled", idx === numberBtns.length - 1);
             }
@@ -1583,22 +1513,46 @@
             if (prev) {
                 prev.addEventListener("click", e => {
                     e.preventDefault();
-                    const currentActive = numberBtns.findIndex(b => b.classList.contains("active"));
-                    if (currentActive > 0) setActiveByIndex(currentActive - 1);
+                    const cur = numberBtns.findIndex(b => b.classList.contains("active"));
+                    if (cur > 0) setActiveByIndex(cur - 1);
                 });
             }
 
             if (next) {
                 next.addEventListener("click", e => {
                     e.preventDefault();
-                    const currentActive = numberBtns.findIndex(b => b.classList.contains("active"));
-                    if (currentActive < numberBtns.length - 1) setActiveByIndex(currentActive + 1);
+                    const cur = numberBtns.findIndex(b => b.classList.contains("active"));
+                    if (cur < numberBtns.length - 1) setActiveByIndex(cur + 1);
                 });
             }
 
             // Set initial active state
-            const initialActive = numberBtns.findIndex(b => b.classList.contains("active"));
-            setActiveByIndex(initialActive >= 0 ? initialActive : 0);
+            setActiveByIndex(0);
+        }
+
+        // Xử lý tìm kiếm
+        document.addEventListener("DOMContentLoaded", () => {
+            const searchBtn = document.getElementById("searchBtn");
+            const searchInput = document.getElementById("searchInput");
+
+            // Khi click nút tìm kiếm
+            searchBtn.addEventListener("click", () => {
+                window.location.href = "searchkhongtk.html";
+            });
+
+            // Khi nhấn Enter trong ô tìm kiếm
+            searchInput.addEventListener("keypress", (e) => {
+                if (e.key === "Enter") {
+                    e.preventDefault();
+                    window.location.href = "searchkhongtk.html";
+                }
+            });
+        });
+
+        // Category selection functionality
+        function initializeCategorySelection() {
+            // Category selection is handled inline via onclick attributes
+            // This function can be used for additional logic if needed
         }
 
         // Ảnh cố định cho Quick View
@@ -1657,18 +1611,16 @@
             });
         }
 
-        function initializeQuickView() {
-            document.addEventListener('click', function(e){
-                const viewBtn = e.target.closest('.view-detail');
-                if(!viewBtn) return;
-                e.preventDefault();
-                const card = viewBtn.closest('.category-product-item, .new-product-item');
-                if(!card) return;
-                openQuickViewFromCard(card);
-            });
+        document.addEventListener('click', function(e){
+            const viewBtn = e.target.closest('.view-detail');
+            if(!viewBtn) return;
+            e.preventDefault();
+            const card = viewBtn.closest('.category-product-item, .new-product-item');
+            if(!card) return;
+            openQuickViewFromCard(card);
+        });
 
-            ensureQuickViewRoot();
-        }
+        ensureQuickViewRoot();
 
         // Advanced search modal functionality
         function initializeAdvancedSearch() {
@@ -1737,25 +1689,149 @@
                 });
             }
         }
+    </script>
 
-        // Search functionality
-        function initializeSearch() {
-            const searchBtn = document.getElementById("searchBtn");
-            const searchInput = document.getElementById("searchInput");
+    <!-- Form tìm kiếm nâng cao -->
+    <div id="advancedSearchModal" class="advanced-search-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Tìm kiếm nâng cao</h3>
+                <button class="close-modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form id="advancedSearchForm">
+                    <div class="form-group">
+                        <label>Từ khóa:</label>
+                        <input type="text" name="keyword" placeholder="Nhập từ khóa tìm kiếm...">
+                    </div>
 
-            // Khi click nút tìm kiếm
-            searchBtn.addEventListener("click", () => {
-                window.location.href = "searchkhongtk.html";
+                    <div class="form-group">
+                        <label>Danh mục:</label>
+                        <select name="category">
+                            <option value="">Tất cả</option>
+                            <option value="thieunhi">Thiếu nhi</option>
+                            <option value="tamly">Tâm lý/tình cảm</option>
+                            <option value="tongiao">Tôn giáo</option>
+                            <option value="lichsu">Lịch sử</option>
+                            <option value="vanhoc">Văn học</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Khoảng giá:</label>
+                        <div class="price-range">
+                            <input type="number" name="minPrice" placeholder="Từ">
+                            <span>-</span>
+                            <input type="number" name="maxPrice" placeholder="Đến">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Sắp xếp theo:</label>
+                        <select name="sort">
+                            <option value="">Mặc định</option>
+                            <option value="price_asc">Giá tăng dần</option>
+                            <option value="price_desc">Giá giảm dần</option>
+                            <option value="name_asc">Tên A-Z</option>
+                            <option value="name_desc">Tên Z-A</option>
+                        </select>
+                    </div>
+
+                    <div class="form-actions">
+                        <button type="submit" class="btn-search">Tìm kiếm</button>
+                        <button type="button" class="btn-reset">Đặt lại</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // JavaScript cho nút phễu lọc và form tìm kiếm nâng cao
+        document.addEventListener('DOMContentLoaded', function() {
+            const filterBtn = document.getElementById('filterBtn');
+            const modal = document.getElementById('advancedSearchModal');
+            const closeModal = document.querySelector('.close-modal');
+            const form = document.getElementById('advancedSearchForm');
+            const resetBtn = document.querySelector('.btn-reset');
+
+            // Hiển thị modal khi click nút phễu
+            filterBtn.addEventListener('click', function() {
+                modal.style.display = 'block';
+                document.body.style.overflow = 'hidden'; // Ngăn cuộn trang
             });
 
-            // Khi nhấn Enter trong ô tìm kiếm
-            searchInput.addEventListener("keypress", (e) => {
-                if (e.key === "Enter") {
-                    e.preventDefault();
-                    window.location.href = "searchkhongtk.html";
+            // Đóng modal
+            function closeModalHandler() {
+                modal.style.display = 'none';
+                document.body.style.overflow = 'auto';
+            }
+
+            closeModal.addEventListener('click', closeModalHandler);
+
+            // Đóng modal khi click bên ngoài
+            window.addEventListener('click', function(event) {
+                if (event.target === modal) {
+                    closeModalHandler();
                 }
             });
-        }
+
+            // Đóng modal khi nhấn ESC
+            document.addEventListener('keydown', function(event) {
+                if (event.key === 'Escape' && modal.style.display === 'block') {
+                    closeModalHandler();
+                }
+            });
+
+            // Xử lý form submit
+            form.addEventListener('submit', function(e) {
+                e.preventDefault();
+
+                // Thu thập dữ liệu form
+                const formData = new FormData(form);
+                const searchParams = new URLSearchParams();
+
+                for (let [key, value] of formData.entries()) {
+                    if (value.trim() !== '') {
+                        searchParams.append(key, value);
+                    }
+                }
+
+                // Đóng modal và chuyển hướng
+                closeModalHandler();
+                window.location.href = 'searchkhongtk.html?' + searchParams.toString();
+            });
+
+            // Reset form
+            resetBtn.addEventListener('click', function() {
+                form.reset();
+            });
+        });
     </script>
+    <script>
+    // === THÊM HÀM NÀY Ở ĐÂY - BÊN NGOÀI DOMContentLoaded ===
+    function selectCategory(clickedButton) {
+        const categoryButtons = document.querySelectorAll('.cat-btn');
+        categoryButtons.forEach(button => {
+            button.classList.remove('active');
+        });
+        clickedButton.classList.add('active');
+        
+        const category = clickedButton.textContent.trim();
+        console.log('Danh mục được chọn:', category);
+        // Sau này thêm code lọc sản phẩm ở đây
+    }
+
+    // Consolidated JavaScript for index.html (main page)
+    document.addEventListener("DOMContentLoaded", function() {
+        // Các hàm khởi tạo khác giữ nguyên...
+        initializeSlider();
+        initializePagination();
+        initializeQuickView();
+        initializeAdvancedSearch();
+    });
+
+    // ... phần còn lại của JavaScript code ...
+</script>
 </body>
 </html>
