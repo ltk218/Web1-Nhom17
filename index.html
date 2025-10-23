@@ -1451,8 +1451,7 @@
             // Initialize slider
             initializeSlider();
 
-            // Initialize pagination functionality
-            initializePagination();
+
 
 
 
@@ -1482,53 +1481,7 @@
             }
         }
 
-        // Pagination functionality
-        function initializePagination() {
-            const container = document.querySelector(".pagination");
-            if (!container) return;
 
-            const prev = container.querySelector(".page-prev");
-            const next = container.querySelector(".page-next");
-            const numberBtns = [...container.querySelectorAll(".page-btn")].filter(b =>
-                !b.classList.contains("page-prev") && !b.classList.contains("page-next"));
-
-            function setActiveByIndex(idx) {
-                numberBtns.forEach(b => b.classList.remove("active"));
-                if (numberBtns[idx]) {
-                    numberBtns[idx].classList.add("active");
-                }
-                if (prev) prev.classList.toggle("is-disabled", idx === 0);
-                if (next) next.classList.toggle("is-disabled", idx === numberBtns.length - 1);
-            }
-
-            // Add click listeners to number buttons
-            numberBtns.forEach((b, i) => {
-                b.addEventListener("click", e => {
-                    e.preventDefault();
-                    setActiveByIndex(i);
-                });
-            });
-
-            // Add click listeners to prev/next buttons
-            if (prev) {
-                prev.addEventListener("click", e => {
-                    e.preventDefault();
-                    const cur = numberBtns.findIndex(b => b.classList.contains("active"));
-                    if (cur > 0) setActiveByIndex(cur - 1);
-                });
-            }
-
-            if (next) {
-                next.addEventListener("click", e => {
-                    e.preventDefault();
-                    const cur = numberBtns.findIndex(b => b.classList.contains("active"));
-                    if (cur < numberBtns.length - 1) setActiveByIndex(cur + 1);
-                });
-            }
-
-            // Set initial active state
-            setActiveByIndex(0);
-        }
 
         // Xử lý tìm kiếm
         document.addEventListener("DOMContentLoaded", () => {
@@ -1826,9 +1779,49 @@
     document.addEventListener("DOMContentLoaded", function() {
         // Các hàm khởi tạo khác giữ nguyên...
         initializeSlider();
-        initializePagination();
         initializeQuickView();
         initializeAdvancedSearch();
+    });
+
+    // Pagination logic from index2.html
+    document.addEventListener("DOMContentLoaded", () => {
+      const container = document.querySelector(".pagination");
+      const btns = [...container.querySelectorAll(".page-btn")];
+      const prev = container.querySelector(".page-prev");
+      const next = container.querySelector(".page-next");
+      const numberBtns = btns.filter(b => !b.classList.contains("page-prev") && !b.classList.contains("page-next"));
+
+      function setActiveByIndex(idx){ // idx: 0..numberBtns.length-1
+        numberBtns.forEach(b => b.classList.remove("active"));
+        numberBtns[idx].classList.add("active");
+        // Khoá/mở mũi tên cho đẹp, KHÔNG đổi nội dung trang
+        prev.classList.toggle("is-disabled", idx === 0);
+        next.classList.toggle("is-disabled", idx === numberBtns.length - 1);
+      }
+
+      // click số
+      numberBtns.forEach((b, i) => {
+        b.addEventListener("click", e => {
+          e.preventDefault();
+          setActiveByIndex(i);
+        });
+      });
+
+      // click mũi tên: chỉ đổi highlight
+      prev.addEventListener("click", e => {
+        e.preventDefault();
+        const cur = numberBtns.findIndex(b => b.classList.contains("active"));
+        if (cur > 0) setActiveByIndex(cur - 1);
+      });
+
+      next.addEventListener("click", e => {
+        e.preventDefault();
+        const cur = numberBtns.findIndex(b => b.classList.contains("active"));
+        if (cur < numberBtns.length - 1) setActiveByIndex(cur + 1);
+      });
+
+      // Khởi tạo
+      setActiveByIndex(0); // nút "1" sáng
     });
 
     // ... phần còn lại của JavaScript code ...
