@@ -23,8 +23,39 @@
   <link href="css/fix.css" rel="stylesheet">
 
   <style>
+        .search input,
+    .form-control {
+      color: #000;
+    }
+    .search input::placeholder,
+    .form-control::placeholder {
+      color: #000;
+      opacity: 1;
+    }
+    .search input::-webkit-input-placeholder {
+      color: #000;
+      opacity: 1;
+    }
+
+    /* Firefox 19+ */
+    .search input::-moz-placeholder {
+      color: #000;
+      opacity: 1;
+    }
+
+    /* IE 10+ */
+    .search input:-ms-input-placeholder {
+      color: #000;
+    }
+
+    /* Edge */
+    .search input::-ms-input-placeholder {
+      color: #000;
+    }
+
     .my-account {
         margin-bottom: 200px;
+        margin-top: 30px;
     }
     .section-title {
         font-size: 24px;
@@ -195,8 +226,8 @@
     }
 
     .modal-content {
-        background-color: white;
-        margin: 10% auto;
+                background-color: white;
+        margin: 3% auto;
         padding: 0;
         border-radius: 10px;
         width: 90%;
@@ -264,6 +295,8 @@
         border-radius: 5px;
         font-size: 14px;
     }
+
+
 
     .price-range {
         display: flex;
@@ -375,10 +408,9 @@
     <div class="container-fluid">
       <div class="row">
         <div class="col-md-8 offset-md-2">
-          <h2 class="section-title">Chỉnh Sửa Thông Tin Tài Khoản</h2>
-
           <div class="edit-form-container">
             <form id="editAccountForm" novalidate>
+              <h2 class="section-title">Chỉnh Sửa Thông Tin Tài Khoản</h2>
               <div class="form-group">
                 <label for="fullName">Họ và tên</label>
                 <input type="text" class="form-control" id="fullName" value="Huỳnh Hữu Đức" required>
@@ -404,9 +436,9 @@
                            value="123 Đường Mai Chí Thọ" placeholder="VD: 123 Đường Mai Chí Thọ" required>
                   </div>
                   <div class="form-group col-md-3">
-                    <label for="district">Quận/Huyện</label>
+                    <label for="district">Phường/Xã</label>
                     <input type="text" class="form-control" id="district"
-                           value="Quận Thủ Đức" placeholder="VD: Quận Thủ Đức" required>
+                           value="Phường Thủ Đức" placeholder="VD: Phường Thủ Đức" required>
                   </div>
                   <div class="form-group col-md-3">
                     <label for="city">Thành phố</label>

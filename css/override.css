@@ -106,3 +106,20 @@ html body .product-detail .product-content .action a.alert-btn {
     white-space: nowrap !important;
     text-align: center !important;
 }
+
+/* Override placeholder text styling - maximum specificity */
+html body .form-group input.form-control::placeholder,
+html body .edit-form-container .form-group input.form-control::placeholder,
+html body .my-account .form-group input.form-control::placeholder,
+html body div[class*="form-group"] input.form-control::placeholder {
+    font-weight: normal !important;
+    color: #000 !important;
+    opacity: 1 !important;
+}
+
+/* Additional override for any Bootstrap placeholder styling */
+input.form-control::placeholder {
+    font-weight: normal !important;
+    color: #000 !important;
+    opacity: 1 !important;
+}

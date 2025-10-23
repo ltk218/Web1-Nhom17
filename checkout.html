@@ -23,6 +23,40 @@
         <link href="css/style.css" rel="stylesheet">
         <link href="css/fix.css" rel="stylesheet">
         <style>
+            .search input,
+            .form-control {
+            color: #000; /* đảm bảo chữ nhập vào màu đen */
+            }
+
+            /* Modern browsers */
+            .search input::placeholder,
+            .form-control::placeholder {
+            color: #000;
+            opacity: 1; /* nhiều trình duyệt dùng opacity mặc định <1 */
+            }
+
+            /* WebKit (Chrome, Safari, newer) */
+            .search input::-webkit-input-placeholder {
+            color: #000;
+            opacity: 1;
+            }
+
+            /* Firefox 19+ */
+            .search input::-moz-placeholder {
+            color: #000;
+            opacity: 1;
+            }
+
+            /* IE 10+ */
+            .search input:-ms-input-placeholder {
+            color: #000;
+            }
+
+            /* Edge */
+            .search input::-ms-input-placeholder {
+            color: #000;
+            }
+
             /* Container tổng cho vùng search */
             .search-container {
                 display: flex;
@@ -122,7 +156,7 @@
 
             .modal-content {
                 background-color: white;
-                margin: 10% auto;
+                margin: 3% auto;
                 padding: 0;
                 border-radius: 10px;
                 width: 90%;
@@ -185,10 +219,12 @@
             .form-group input,
             .form-group select {
                 width: 100%;
-                padding: 10px;
+                padding: 8px 12px;
                 border: 1px solid #ddd;
                 border-radius: 5px;
                 font-size: 14px;
+                min-height: 42px;
+                box-sizing: border-box;
             }
 
             .price-range {
@@ -370,32 +406,63 @@
                                         </div>
                                         <div class="col-md-6">
                                             <div class="form-group">
-                                                <label>Quận/Huyện:</label>
+                                                <label>Phường/Xã:</label>
                                                 <select class="form-control" name="district" required>
-                                                    <option value="">Chọn Quận/Huyện</option>
-                                                    <option value="Quận 1">Quận 1</option>
-                                                    <option value="Quận 2">Quận 2</option>
-                                                    <option value="Quận 3">Quận 3</option>
-                                                    <option value="Quận 4">Quận 4</option>
-                                                    <option value="Quận 5">Quận 5</option>
-                                                    <option value="Quận 6">Quận 6</option>
-                                                    <option value="Quận 7">Quận 7</option>
-                                                    <option value="Quận 8">Quận 8</option>
-                                                    <option value="Quận 9">Quận 9</option>
-                                                    <option value="Quận 10">Quận 10</option>
-                                                    <option value="Quận 11">Quận 11</option>
-                                                    <option value="Quận 12">Quận 12</option>
-                                                    <option value="Quận Bình Thạnh">Quận Bình Thạnh</option>
-                                                    <option value="Quận Tân Bình">Quận Tân Bình</option>
-                                                    <option value="Quận Tân Phú">Quận Tân Phú</option>
-                                                    <option value="Quận Phú Nhuận">Quận Phú Nhuận</option>
-                                                    <option value="Quận Gò Vấp">Quận Gò Vấp</option>
-                                                    <option value="Quận Thủ Đức" selected>Quận Thủ Đức</option>
-                                                    <option value="Huyện Bình Chánh">Huyện Bình Chánh</option>
-                                                    <option value="Huyện Củ Chi">Huyện Củ Chi</option>
-                                                    <option value="Huyện Hóc Môn">Huyện Hóc Môn</option>
-                                                    <option value="Huyện Nhà Bè">Huyện Nhà Bè</option>
-                                                    <option value="Huyện Cần Giờ">Huyện Cần Giờ</option>
+                                                    <option value="">Chọn Phường/Xã</option>
+                                                    <option value="Phường 1">Phường 1</option>
+                                                    <option value="Phường 2">Phường 2</option>
+                                                    <option value="Phường 3" selected>Phường 3</option>
+                                                    <option value="Phường 4">Phường 4</option>
+                                                    <option value="Phường 5">Phường 5</option>
+                                                    <option value="Phường 6">Phường 6</option>
+                                                    <option value="Phường 7">Phường 7</option>
+                                                    <option value="Phường 8">Phường 8</option>
+                                                    <option value="Phường 9">Phường 9</option>
+                                                    <option value="Phường 10">Phường 10</option>
+                                                    <option value="Phường 11">Phường 11</option>
+                                                    <option value="Phường 12">Phường 12</option>
+                                                    <option value="Phường 13">Phường 13</option>
+                                                    <option value="Phường 14">Phường 14</option>
+                                                    <option value="Phường 15">Phường 15</option>
+                                                    <option value="Phường 16">Phường 16</option>
+                                                    <option value="Phường 17">Phường 17</option>
+                                                    <option value="Phường 18">Phường 18</option>
+                                                    <option value="Phường 19">Phường 19</option>
+                                                    <option value="Phường 20">Phường 20</option>
+                                                    <option value="Phường An Khánh">Phường An Khánh</option>
+                                                    <option value="Phường An Lợi Đông">Phường An Lợi Đông</option>
+                                                    <option value="Phường An Phú">Phường An Phú</option>
+                                                    <option value="Phường Bình An">Phường Bình An</option>
+                                                    <option value="Phường Bình Khánh">Phường Bình Khánh</option>
+                                                    <option value="Phường Bình Trưng Đông">Phường Bình Trưng Đông</option>
+                                                    <option value="Phường Bình Trưng Tây">Phường Bình Trưng Tây</option>
+                                                    <option value="Phường Cát Lái">Phường Cát Lái</option>
+                                                    <option value="Phường Long Bình">Phường Long Bình</option>
+                                                    <option value="Phường Long Phước">Phường Long Phước</option>
+                                                    <option value="Phường Long Thạnh Mỹ">Phường Long Thạnh Mỹ</option>
+                                                    <option value="Phường Long Trường">Phường Long Trường</option>
+                                                    <option value="Phường Phú Hữu">Phường Phú Hữu</option>
+                                                    <option value="Phường Phước Bình">Phường Phước Bình</option>
+                                                    <option value="Phường Phước Long A">Phường Phước Long A</option>
+                                                    <option value="Phường Phước Long B">Phường Phước Long B</option>
+                                                    <option value="Phường Tân Hưng">Phường Tân Hưng</option>
+                                                    <option value="Phường Tân Kiểng">Phường Tân Kiểng</option>
+                                                    <option value="Phường Tân Phong">Phường Tân Phong</option>
+                                                    <option value="Phường Tân Phú">Phường Tân Phú</option>
+                                                    <option value="Phường Tân Quy">Phường Tân Quy</option>
+                                                    <option value="Phường Tân Thuận Đông">Phường Tân Thuận Đông</option>
+                                                    <option value="Phường Tân Thuận Tây">Phường Tân Thuận Tây</option>
+                                                    <option value="Phường Thảo Điền">Phường Thảo Điền</option>
+                                                    <option value="Phường Thủ Thiêm">Phường Thủ Thiêm</option>
+                                                    <option value="Phường Trường Thạnh">Phường Trường Thạnh</option>
+                                                    <option value="Xã Bình Chánh">Xã Bình Chánh</option>
+                                                    <option value="Xã Cần Thạnh">Xã Cần Thạnh</option>
+                                                    <option value="Xã Long Hòa">Xã Long Hòa</option>
+                                                    <option value="Xã Lý Nhơn">Xã Lý Nhơn</option>
+                                                    <option value="Xã Nhơn Đức">Xã Nhơn Đức</option>
+                                                    <option value="Xã Phú Xuân">Xã Phú Xuân</option>
+                                                    <option value="Xã Vĩnh Lộc A">Xã Vĩnh Lộc A</option>
+                                                    <option value="Xã Vĩnh Lộc B">Xã Vĩnh Lộc B</option>
                                                 </select>
                                             </div>
                                         </div>
