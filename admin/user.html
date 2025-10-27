@@ -486,7 +486,7 @@
 
     deleteButtons.forEach(btn => btn.addEventListener('click', () => {
       const customerName = btn.closest('tr').querySelector('td:nth-child(2)').textContent.split('\n')[0];
-      if (confirm(`Bạn có chắc chắn muốn khóa tài khoản của ${customerName}?`)) {
+      if (confirm(`Bạn có chắc chắn muốn khóa tài khoản này`)) {
         alert('Đã khóa tài khoản thành công!');
       }
     }));

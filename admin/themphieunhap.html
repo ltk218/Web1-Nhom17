@@ -617,7 +617,7 @@
           </div>
         </div>
         <div class="product-price">
-          <input type="number" class="form-control price-input" placeholder="Giá nhập" min="0">
+          <input type="text" class="form-control price-input" placeholder="Giá nhập" min="0">
         </div>
         <div class="product-quantity">
           <input type="number" class="form-control quantity-input" placeholder="Số lượng" min="1" value="1">
@@ -649,7 +649,11 @@
       const priceInput = productRow.querySelector('.price-input');
       const quantityInput = productRow.querySelector('.quantity-input');
       
-      priceInput.addEventListener('input', calculateTotals);
+      priceInput.addEventListener('input', function() {
+        formatCurrencyInput(this);
+        calculateTotals();
+      });
+      
       quantityInput.addEventListener('input', calculateTotals);
       
       // Add event listener to remove button
@@ -668,8 +672,12 @@
       let totalValue = 0;
       
       document.querySelectorAll('.product-row').forEach(row => {
-        const price = parseFloat(row.querySelector('.price-input').value) || 0;
-        const quantity = parseInt(row.querySelector('.quantity-input').value) || 0;
+        const priceInput = row.querySelector('.price-input');
+        const quantityInput = row.querySelector('.quantity-input');
+        
+        // Lấy giá trị số từ input đã được format
+        const price = parseFloat(priceInput.value.replace(/\./g, '')) || 0;
+        const quantity = parseInt(quantityInput.value) || 0;
         const total = price * quantity;
         
         // Update row total
@@ -686,12 +694,25 @@
       document.getElementById('total-value').textContent = formatCurrency(totalValue);
     }
 
-    // Format currency
+    // Format currency for display
     function formatCurrency(amount) {
       return new Intl.NumberFormat('vi-VN', { 
-        style: 'currency', 
-        currency: 'VND' 
-      }).format(amount);
+        minimumFractionDigits: 0,
+        maximumFractionDigits: 0
+      }).format(amount) + ' VNĐ';
+    }
+
+    // Format currency input (thêm dấu chấm phân cách hàng nghìn)
+    function formatCurrencyInput(input) {
+      // Lấy giá trị và loại bỏ tất cả ký tự không phải số
+      let value = input.value.replace(/[^\d]/g, '');
+      
+      // Format số với dấu chấm phân cách hàng nghìn
+      if (value) {
+        value = parseInt(value).toLocaleString('vi-VN');
+      }
+      
+      input.value = value;
     }
 
     // Save import
@@ -706,7 +727,44 @@
       const products = [];
       let hasErrors = false;
       
+      document.querySelectorAll('.product-row').forEach((row, index) => {
+        const productSelect = row.querySelector('select');
+        const priceInput = row.querySelector('.price-input');
+        const quantityInput = row.querySelector('.quantity-input');
+        
+        if (!productSelect.value) {
+          alert(`Vui lòng chọn sản phẩm cho hàng ${index + 1}`);
+          hasErrors = true;
+          return;
+        }
+        
+        if (!priceInput.value || parseFloat(priceInput.value.replace(/\./g, '')) <= 0) {
+          alert(`Vui lòng nhập giá nhập hợp lệ cho hàng ${index + 1}`);
+          hasErrors = true;
+          return;
+        }
+        
+        if (!quantityInput.value || parseInt(quantityInput.value) <= 0) {
+          alert(`Vui lòng nhập số lượng hợp lệ cho hàng ${index + 1}`);
+          hasErrors = true;
+          return;
+        }
+        
+        products.push({
+          productId: productSelect.value,
+          productName: productSelect.options[productSelect.selectedIndex].text,
+          price: parseFloat(priceInput.value.replace(/\./g, '')),
+          quantity: parseInt(quantityInput.value),
+          total: parseFloat(priceInput.value.replace(/\./g, '')) * parseInt(quantityInput.value)
+        });
+      });
       
+      if (hasErrors) return;
+      
+      if (products.length === 0) {
+        alert('Vui lòng thêm ít nhất một sản phẩm');
+        return;
+      }
       
       // In a real application, you would send this data to the server
       console.log({
@@ -733,7 +791,11 @@
       const priceInput = firstProductRow.querySelector('.price-input');
       const quantityInput = firstProductRow.querySelector('.quantity-input');
       
-      priceInput.addEventListener('input', calculateTotals);
+      priceInput.addEventListener('input', function() {
+        formatCurrencyInput(this);
+        calculateTotals();
+      });
+      
       quantityInput.addEventListener('input', calculateTotals);
       
       firstProductRow.querySelector('.remove-product').addEventListener('click', function() {

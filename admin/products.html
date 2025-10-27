@@ -278,11 +278,11 @@
         <label class="search-label" for="product-category">Tìm theo danh mục</label>
         <select id="product-category" class="search-select">
           <option value="">Tất cả danh mục</option>
-          <option value="1">Văn học</option>
-          <option value="2">Kinh tế</option>
-          <option value="3">Khoa học</option>
-          <option value="4">Tiểu thuyết</option>
-          <option value="5">Truyện ngắn</option>
+          <option value="1">Thiếu nhi</option>
+          <option value="2">Tâm lý/tình cảm</option>
+          <option value="3">Tôn giáo</option>
+          <option value="4">Lịch sử</option>
+          <option value="5">Văn học</option>
         </select>
       </div>
       
@@ -410,7 +410,9 @@
     }));
 
     deleteButtons.forEach(btn => btn.addEventListener('click', () => {
-      alert('Xóa sản phẩm thành công!');
+      if (confirm(`Bạn có chắc chắn muốn xóa sản phẩm này`)) {
+        alert('Đã xóa sản phẩm thành công!');
+      }
     }));
 
     // Search functionality

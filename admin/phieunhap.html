@@ -101,32 +101,72 @@
       box-shadow: 0 6px 10px rgba(255, 152, 0, 0.4);
     }
 
-    /* ==== Search Form ==== */
+    /* ==== Compact Search Form ==== */
     .search-form {
       background: white;
-      padding: 1.5rem;
+      padding: 1rem;
       border-radius: 0.75rem;
       box-shadow: 0 4px 6px rgba(0,0,0,0.1);
       margin-bottom: 1.5rem;
     }
     
-    .form-group {
+    .search-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
       margin-bottom: 1rem;
+    }
+    
+    .search-title {
+      margin: 0;
+      color: #344767;
+      font-size: 1rem;
+      font-weight: 600;
+    }
+    
+    .toggle-search {
+      background: none;
+      border: none;
+      color: #e91e63;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      font-size: 0.875rem;
+      padding: 4px 8px;
+      border-radius: 4px;
+      transition: background-color 0.2s;
+    }
+    
+    .toggle-search:hover {
+      background-color: rgba(233, 30, 99, 0.1);
+    }
+    
+    .search-content {
+      display: grid;
+      grid-template-columns: 1fr 1fr auto;
+      gap: 12px;
+      align-items: end;
+    }
+    
+    .form-group {
+      margin-bottom: 0;
     }
     
     .form-label {
       display: block;
-      margin-bottom: 0.5rem;
+      margin-bottom: 0.25rem;
       font-weight: 600;
       color: #344767;
+      font-size: 0.8rem;
     }
     
     .form-control {
       width: 100%;
-      padding: 0.75rem;
+      padding: 0.5rem;
       border: 1px solid #d2d6da;
       border-radius: 0.5rem;
-      font-size: 0.875rem;
+      font-size: 0.8rem;
       transition: all 0.2s;
     }
     
@@ -136,16 +176,9 @@
       outline: none;
     }
     
-    .form-row {
+    .search-actions {
       display: flex;
-      flex-wrap: wrap;
-      margin: 0 -0.5rem;
-    }
-    
-    .form-col {
-      flex: 1;
-      padding: 0 0.5rem;
-      min-width: 200px;
+      gap: 8px;
     }
     
     /* ==== Nút tìm kiếm với màu xanh ==== */
@@ -183,19 +216,12 @@
       display: inline-flex;
       align-items: center;
       gap: 0.5rem;
-      margin-left: 0.5rem;
       font-size: 13px;
       height: 38px;
     }
     
     .btn-reset:hover {
       background: #5a6268;
-    }
-    
-    .form-actions {
-      display: flex;
-      justify-content: flex-end;
-      margin-top: 1rem;
     }
     
     /* ==== Phân trang ==== */
@@ -250,12 +276,11 @@
     
     /* Responsive */
     @media (max-width: 768px) {
-      .form-col {
-        flex: 100%;
-        margin-bottom: 1rem;
+      .search-content {
+        grid-template-columns: 1fr;
       }
       
-      .form-actions {
+      .search-actions {
         justify-content: center;
       }
       
@@ -308,40 +333,27 @@
 
     <!-- Search Form -->
     <div class="search-form">
-      <h3 style="margin-top: 0; color: #344767; margin-bottom: 1.5rem;">Tra cứu phiếu nhập</h3>
-      <div class="form-row">
-        <div class="form-col">
-          <div class="form-group">
-            <label class="form-label" for="from-date">Từ ngày</label>
-            <input type="date" id="from-date" class="form-control">
-          </div>
-        </div>
-        <div class="form-col">
-          <div class="form-group">
-            <label class="form-label" for="to-date">Đến ngày</label>
-            <input type="date" id="to-date" class="form-control">
-          </div>
-        </div>
-        <div class="form-col">
-          <div class="form-group">
-            <label class="form-label" for="min-total">Tổng giá trị từ</label>
-            <input type="number" id="min-total" class="form-control" placeholder="0" min="0">
-          </div>
-        </div>
-        <div class="form-col">
-          <div class="form-group">
-            <label class="form-label" for="max-total">Đến</label>
-            <input type="number" id="max-total" class="form-control" placeholder="100000000" min="0">
-          </div>
-        </div>
+      <div class="search-header">
+        <h3 class="search-title">Tra cứu phiếu nhập</h3>
+        
       </div>
-      <div class="form-actions">
-        <button class="btn-search" id="search-btn">
-          <i class="material-icons-round">search</i> Tìm kiếm
-        </button>
-        <button class="btn-reset" id="reset-btn">
-          <i class="material-icons-round">refresh</i> Đặt lại
-        </button>
+      <div class="search-content" id="search-content">
+        <div class="form-group">
+          <label class="form-label" for="from-date">Từ ngày</label>
+          <input type="date" id="from-date" class="form-control">
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="to-date">Đến ngày</label>
+          <input type="date" id="to-date" class="form-control">
+        </div>
+        <div class="search-actions">
+          <button class="btn-search" id="search-btn">
+            <i class="material-icons-round">search</i> Tìm kiếm
+          </button>
+          <button class="btn-reset" id="reset-btn">
+            <i class="material-icons-round">refresh</i> Đặt lại
+          </button>
+        </div>
       </div>
     </div>
 
@@ -432,18 +444,10 @@
     document.getElementById('search-btn').addEventListener('click', function() {
       const fromDate = document.getElementById('from-date').value;
       const toDate = document.getElementById('to-date').value;
-      const minTotal = document.getElementById('min-total').value;
-      const maxTotal = document.getElementById('max-total').value;
       
       // Kiểm tra nếu ngày bắt đầu lớn hơn ngày kết thúc
       if (fromDate && toDate && fromDate > toDate) {
         alert('Ngày bắt đầu không thể lớn hơn ngày kết thúc');
-        return;
-      }
-      
-      // Kiểm tra nếu giá trị tối thiểu lớn hơn giá trị tối đa
-      if (minTotal && maxTotal && parseInt(minTotal) > parseInt(maxTotal)) {
-        alert('Giá trị tối thiểu không thể lớn hơn giá trị tối đa');
         return;
       }
       
@@ -464,8 +468,6 @@
     document.getElementById('reset-btn').addEventListener('click', function() {
       document.getElementById('from-date').value = '';
       document.getElementById('to-date').value = '';
-      document.getElementById('min-total').value = '';
-      document.getElementById('max-total').value = '';
     });
 
     // Phân trang
@@ -509,6 +511,27 @@
       
       if (currentPage < 5) { // Trong thực tế, đây sẽ là trang cuối
         paginationBtns[currentPage].click();
+      }
+    });
+
+    // Toggle bộ lọc tìm kiếm
+    const toggleSearch = document.getElementById('toggle-search');
+    const searchContent = document.getElementById('search-content');
+    const toggleText = document.getElementById('toggle-text');
+    
+    let isSearchExpanded = true;
+    
+    toggleSearch.addEventListener('click', function() {
+      isSearchExpanded = !isSearchExpanded;
+      
+      if (isSearchExpanded) {
+        searchContent.style.display = 'grid';
+        toggleText.textContent = 'Bộ lọc';
+        toggleSearch.innerHTML = '<i class="material-icons-round">filter_list</i> <span id="toggle-text">Bộ lọc</span>';
+      } else {
+        searchContent.style.display = 'none';
+        toggleText.textContent = 'Hiện bộ lọc';
+        toggleSearch.innerHTML = '<i class="material-icons-round">filter_list_off</i> <span id="toggle-text">Hiện bộ lọc</span>';
       }
     });
   </script>

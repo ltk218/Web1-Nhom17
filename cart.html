@@ -245,7 +245,7 @@
                                     <a href="thongtintaikhoan.html" class="dropdown-item"><i class="fa fa-id-card me-2"></i>  &nbsp;Thông tin</a>
                                     <a href="lichsumuahang.html" class="dropdown-item"> <i class="fa fa-history me-2"></i>&nbsp;Lịch sử mua hàng</a>
 
-                                    <a href="index.html" class="dropdown-item"> <i class="fa fa-sign-out-alt me-2"></i>&nbsp;Đăng xuất</a>
+                                    <a href="login.html" class="dropdown-item"> <i class="fa fa-sign-out-alt me-2"></i>&nbsp;Đăng xuất</a>
                                 </div>
                             </div>
                         </div>
@@ -261,7 +261,7 @@
                 <div class="row align-items-center">
                     <div class="col-md-3">
                         <div class="logo">
-                            <a href="index.html">
+                            <a href="index2.html">
                                 <img src="img/logo.png" alt="Logo">
                             </a>
                         </div>
@@ -325,7 +325,11 @@
             <td>2</td>
             <td>70,000đ</td>
             <td>140,000đ</td>
-            <td><button class="btn btn-sm btn-danger" onclick="alert('Xóa sản phẩm thành công khỏi giỏ hàng')"><i class="fa fa-trash"></i></button></td>
+            <td>
+                <button class="btn btn-sm btn-danger" onclick="confirmDelete()">
+    <i class="fa fa-trash"></i>
+  </button>
+            </td>
         </tr>
         <tr>
              <td style="text-align:center;">
@@ -341,7 +345,11 @@
             <td>1</td>
             <td>150,000đ</td>
             <td>150,000đ</td>
-            <td><button class="btn btn-sm btn-danger" onclick="alert('xóa sản phẩm thành công khỏi giỏ hàng')"><i class="fa fa-trash"></i></button></td>
+            <td>
+  <button class="btn btn-sm btn-danger" onclick="confirmDelete()">
+    <i class="fa fa-trash"></i>
+  </button>
+</td>
         </tr>
        
     </tbody>
@@ -480,9 +488,9 @@
                         <div class="form-group">
                             <label>Khoảng giá:</label>
                             <div class="price-range">
-                                <input type="number" name="minPrice" placeholder="Từ">
+                                <input type="text" name="minPrice" placeholder="Từ">
                                 <span>-</span>
-                                <input type="number" name="maxPrice" placeholder="Đến">
+                                <input type="text" name="maxPrice" placeholder="Đến">
                             </div>
                         </div>
 
@@ -597,7 +605,43 @@
               }
             });
         </script>
+<script>
+  // Hàm xác nhận xóa
+  function confirmDelete() {
+    // Hiển thị hộp thoại xác nhận
+    if (confirm("Bạn có chắc chắn muốn xóa sản phẩm này ra khỏi giỏ hàng không?")) {
+      // Nếu người dùng chọn Yes
+      alert("Xóa sản phẩm thành công!");
+      // Chuyển hướng về trang cart.html
+      window.location.href = "cart.html";
+    } else {
+      // Nếu người dùng chọn No, không làm gì cả, vẫn ở lại trang hiện tại
+      window.location.href = "cart.html";
+    }
+  }
+</script>
+           <script>
+        // Hàm định dạng số
+        function formatNumber(value) {
+            return value.replace(/\B(?=(\d{3})+(?!\d))/g, '.');
+        }
 
-                
+        // Hàm xử lý sự kiện input
+        function handleInput(event) {
+            let input = event.target;
+            let value = input.value.replace(/[^0-9]/g, '');  // Loại bỏ các ký tự không phải là số
+            input.value = formatNumber(value);  // Áp dụng định dạng
+        }
+
+        // Gán sự kiện cho các input
+        window.onload = function() {
+            const minPriceInput = document.querySelector('input[name="minPrice"]');
+            const maxPriceInput = document.querySelector('input[name="maxPrice"]');
+            
+            minPriceInput.addEventListener('input', handleInput);
+            maxPriceInput.addEventListener('input', handleInput);
+        };
+    </script>
+             
     </body>
 </html>

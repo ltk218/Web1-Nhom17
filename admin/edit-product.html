@@ -226,7 +226,13 @@
                 <!-- Tên sản phẩm -->
                 <div class="form-group">
                   <label for="productName" class="form-label">Tên sản phẩm <span style="color: #dc3545;">*</span></label>
-                  <input type="text" class="form-control" id="productName" name="productName" value="Mưa đỏ: Chu Lai" required>
+                  <input type="text" class="form-control" id="productName" name="productName" value="Mưa đỏ" required>
+                </div>
+
+                <!-- Tác giả -->
+                <div class="form-group">
+                  <label for="productAuthor" class="form-label">Tác giả <span style="color: #dc3545;">*</span></label>
+                  <input type="text" class="form-control" id="productAuthor" name="productAuthor" value="Chu Lai" required>
                 </div>
 
                 <!-- Danh mục -->
@@ -245,7 +251,7 @@
                 <!-- Giá sản phẩm -->
                 <div class="form-group">
                   <label for="productPrice" class="form-label">Giá sản phẩm <span style="color: #dc3545;">*</span></label>
-                  <input type="number" class="form-control" id="productPrice" name="productPrice" min="0" step="1" value="120000">
+                  <input type="text" class="form-control" id="productPrice" name="productPrice" min="0" step="1" value="120.000">
                   <div class="form-text">Đơn vị: VNĐ</div>
                 </div>
 
@@ -313,5 +319,25 @@
       }
     });
   </script>
+  <script>
+        // Hàm định dạng số
+        function formatNumber(value) {
+            return value.replace(/\B(?=(\d{3})+(?!\d))/g, '.');
+        }
+
+        // Hàm xử lý sự kiện input
+        function handleInput(event) {
+            let input = event.target;
+            let value = input.value.replace(/[^0-9]/g, '');  // Loại bỏ các ký tự không phải là số
+            input.value = formatNumber(value);  // Áp dụng định dạng
+        }
+
+        // Gán sự kiện cho các input
+        window.onload = function() {
+            const minPriceInput = document.querySelector('input[name="productPrice"]');
+            
+            minPriceInput.addEventListener('input', handleInput);
+        };
+    </script>
 </body>
 </html>

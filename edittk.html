@@ -143,7 +143,10 @@
         display: flex;
         align-items: center;
     }
-
+.form-control {
+    min-height: 42px; /* Đảm bảo chiều cao tối thiểu */
+    line-height: 1.5; /* Đảm bảo chữ không bị cắt */
+}
     .search input {
         width: 100%;
         padding-right: 30px; /* Chừa chỗ cho nút search sát rìa */
@@ -351,7 +354,7 @@
               <div class="dropdown-menu">
                 <a href="thongtintaikhoan.html" class="dropdown-item"><i class="fa fa-id-card me-2"></i>  &nbsp;Thông tin</a>
                 <a href="lichsumuahang.html" class="dropdown-item"><i class="fa fa-history me-2"></i>&nbsp;Lịch sử mua hàng</a>
-                <a href="index.html" class="dropdown-item"><i class="fa fa-sign-out-alt me-2"></i>&nbsp;Đăng xuất</a>
+                <a href="login.html" class="dropdown-item"><i class="fa fa-sign-out-alt me-2"></i>&nbsp;Đăng xuất</a>
               </div>
             </div>
           </div>
@@ -365,7 +368,7 @@
       <div class="row align-items-center">
         <div class="col-md-3">
           <div class="logo">
-            <a href="index.html"><img src="img/logo.png" alt="Logo"></a>
+            <a href="index2.html"><img src="img/logo.png" alt="Logo"></a>
           </div>
         </div>
         <div class="col-md-6">
@@ -429,21 +432,98 @@
 
               <div class="address-group">
                 <label>Địa chỉ</label>
+                <div class="form-group">
+                  <label for="streetAddress">Số nhà & Tên đường</label>
+                  <input type="text" class="form-control" id="streetAddress"
+                         value="273 An Dương Vương" placeholder="VD: 123 Đường Mai Chí Thọ" required>
+                </div>
                 <div class="form-row">
                   <div class="form-group col-md-6">
-                    <label for="streetAddress">Số nhà & Tên đường</label>
-                    <input type="text" class="form-control" id="streetAddress"
-                           value="123 Đường Mai Chí Thọ" placeholder="VD: 123 Đường Mai Chí Thọ" required>
-                  </div>
-                  <div class="form-group col-md-3">
                     <label for="district">Phường/Xã</label>
-                    <input type="text" class="form-control" id="district"
-                           value="Phường An Khánh" placeholder="VD: Phường An Khánh" required>
+                    <select class="form-control" id="district" name="district" required>
+                      <option value="">Chọn Phường/Xã</option>
+                      <option value="Phường 1">Phường 1</option>
+                      <option value="Phường 2">Phường 2</option>
+                      <option value="Phường 3">Phường 3</option>
+                      <option value="Phường 4">Phường 4</option>
+                      <option value="Phường 5">Phường 5</option>
+                      <option value="Phường 6">Phường 6</option>
+                      <option value="Phường 7">Phường 7</option>
+                      <option value="Phường 8">Phường 8</option>
+                      <option value="Phường 9">Phường 9</option>
+                      <option value="Phường 10">Phường 10</option>
+                      <option value="Phường 11">Phường 11</option>
+                      <option value="Phường 12">Phường 12</option>
+                      <option value="Phường 13">Phường 13</option>
+                      <option value="Phường 14">Phường 14</option>
+                      <option value="Phường 15">Phường 15</option>
+                      <option value="Phường 16">Phường 16</option>
+                      <option value="Phường 17">Phường 17</option>
+                      <option value="Phường 18">Phường 18</option>
+                      <option value="Phường 19">Phường 19</option>
+                      <option value="Phường 20">Phường 20</option>
+                      <option value="Phường An Khánh">Phường An Khánh</option>
+                      <option value="Phường An Lợi Đông">Phường An Lợi Đông</option>
+                      <option value="Phường An Phú">Phường An Phú</option>
+                      <option value="Phường Bình An">Phường Bình An</option>
+                      <option value="Phường Bình Khánh">Phường Bình Khánh</option>
+                      <option value="Phường Bình Trưng Đông">Phường Bình Trưng Đông</option>
+                      <option value="Phường Bình Trưng Tây">Phường Bình Trưng Tây</option>
+                      <option value="Phường Cát Lái">Phường Cát Lái</option>
+                      <option value="Phường Long Bình">Phường Long Bình</option>
+                      <option value="Phường Long Phước">Phường Long Phước</option>
+                      <option value="Phường Long Thạnh Mỹ">Phường Long Thạnh Mỹ</option>
+                      <option value="Phường Long Trường">Phường Long Trường</option>
+                      <option value="Phường Phú Hữu">Phường Phú Hữu</option>
+                      <option value="Phường Phước Bình">Phường Phước Bình</option>
+                      <option value="Phường Phước Long A">Phường Phước Long A</option>
+                      <option value="Phường Phước Long B">Phường Phước Long B</option>
+                      <option value="Phường Tân Hưng">Phường Tân Hưng</option>
+                      <option value="Phường Tân Kiểng">Phường Tân Kiểng</option>
+                      <option value="Phường Tân Phong">Phường Tân Phong</option>
+                      <option value="Phường Tân Phú">Phường Tân Phú</option>
+                      <option value="Phường Tân Quy">Phường Tân Quy</option>
+                      <option value="Phường Tân Thuận Đông">Phường Tân Thuận Đông</option>
+                      <option value="Phường Tân Thuận Tây">Phường Tân Thuận Tây</option>
+                      <option value="Phường Thảo Điền">Phường Thảo Điền</option>
+                      <option value="Phường Chợ Quán" selected>Phường Chợ Quán</option>
+
+                      <option value="Phường Thủ Thiêm">Phường Thủ Thiêm</option>
+                      <option value="Phường Trường Thạnh">Phường Trường Thạnh</option>
+                      <option value="Xã Bình Chánh">Xã Bình Chánh</option>
+                      <option value="Xã Cần Thạnh">Xã Cần Thạnh</option>
+                      <option value="Xã Long Hòa">Xã Long Hòa</option>
+                      <option value="Xã Lý Nhơn">Xã Lý Nhơn</option>
+                      <option value="Xã Nhơn Đức">Xã Nhơn Đức</option>
+                      <option value="Xã Phú Xuân">Xã Phú Xuân</option>
+                      <option value="Xã Vĩnh Lộc A">Xã Vĩnh Lộc A</option>
+                      <option value="Xã Vĩnh Lộc B">Xã Vĩnh Lộc B</option>
+                    </select>
                   </div>
-                  <div class="form-group col-md-3">
+                  <div class="form-group col-md-6">
                     <label for="city">Thành phố</label>
-                    <input type="text" class="form-control" id="city"
-                           value="TP.Thủ Đức" placeholder="VD: TP.Thủ Đức" required>
+                    <select class="form-control" id="city" name="city" required>
+                      <option value="">Chọn Thành phố</option>
+                      <option value="Hồ Chí Minh" selected>Hồ Chí Minh</option>
+                      <option value="Hà Nội">Hà Nội</option>
+                      <option value="Đà Nẵng">Đà Nẵng</option>
+                      <option value="Cần Thơ">Cần Thơ</option>
+                      <option value="Hải Phòng">Hải Phòng</option>
+                      <option value="Nha Trang">Nha Trang</option>
+                      <option value="Đà Lạt">Đà Lạt</option>
+                      <option value="Vũng Tàu">Vũng Tàu</option>
+                      <option value="Huế">Huế</option>
+                      <option value="Buôn Ma Thuột">Buôn Ma Thuột</option>
+                      <option value="Vinh">Vinh</option>
+                      <option value="Quy Nhơn">Quy Nhơn</option>
+                      <option value="Long Xuyên">Long Xuyên</option>
+                      <option value="Thái Nguyên">Thái Nguyên</option>
+                      <option value="Nam Định">Nam Định</option>
+                      <option value="Rạch Giá">Rạch Giá</option>
+                      <option value="Thái Bình">Thái Bình</option>
+                      <option value="Thanh Hóa">Thanh Hóa</option>
+                      <option value="Hạ Long">Hạ Long</option>
+                    </select>
                   </div>
                 </div>
               </div>
@@ -586,9 +666,9 @@
                   <div class="form-group">
                       <label>Khoảng giá:</label>
                       <div class="price-range">
-                          <input type="number" name="minPrice" placeholder="Từ">
+                          <input type="text" name="minPrice" placeholder="Từ">
                           <span>-</span>
-                          <input type="number" name="maxPrice" placeholder="Đến">
+                          <input type="text" name="maxPrice" placeholder="Đến">
                       </div>
                   </div>
 
@@ -713,5 +793,28 @@
       }
     });
   </script>
+  <script>
+        // Hàm định dạng số
+        function formatNumber(value) {
+            return value.replace(/\B(?=(\d{3})+(?!\d))/g, '.');
+        }
+
+        // Hàm xử lý sự kiện input
+        function handleInput(event) {
+            let input = event.target;
+            let value = input.value.replace(/[^0-9]/g, '');  // Loại bỏ các ký tự không phải là số
+            input.value = formatNumber(value);  // Áp dụng định dạng
+        }
+
+        // Gán sự kiện cho các input
+        window.onload = function() {
+            const minPriceInput = document.querySelector('input[name="minPrice"]');
+            const maxPriceInput = document.querySelector('input[name="maxPrice"]');
+            
+            minPriceInput.addEventListener('input', handleInput);
+            maxPriceInput.addEventListener('input', handleInput);
+        };
+    </script>
+        
 </body>
 </html>

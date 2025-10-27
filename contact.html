@@ -245,7 +245,7 @@
                                     <a href="thongtintaikhoan.html" class="dropdown-item"><i class="fa fa-id-card me-2"></i>  &nbsp;Thông tin</a>
                                     <a href="lichsumuahang.html" class="dropdown-item"> <i class="fa fa-history me-2"></i>&nbsp;Lịch sử mua hàng</a>
 
-                                    <a href="index.html" class="dropdown-item"> <i class="fa fa-sign-out-alt me-2"></i>&nbsp;Đăng xuất</a>
+                                    <a href="login.html" class="dropdown-item"> <i class="fa fa-sign-out-alt me-2"></i>&nbsp;Đăng xuất</a>
                                 </div>
                             </div>
                         </div>
@@ -264,7 +264,7 @@
                 <div class="row align-items-center">
                     <div class="col-md-3">
                         <div class="logo">
-                            <a href="index.html">
+                            <a href="index2.html">
                                 <img src="img/logo.png" alt="Logo">
                             </a>
                         </div>
@@ -455,9 +455,9 @@
                         <div class="form-group">
                             <label>Khoảng giá:</label>
                             <div class="price-range">
-                                <input type="number" name="minPrice" placeholder="Từ">
+                                <input type="text" name="minPrice" placeholder="Từ">
                                 <span>-</span>
-                                <input type="number" name="maxPrice" placeholder="Đến">
+                                <input type="text" name="maxPrice" placeholder="Đến">
                             </div>
                         </div>
 
@@ -573,5 +573,28 @@
   });
 </script>
         <script src="js/main.js"></script>
+        <script>
+        // Hàm định dạng số
+        function formatNumber(value) {
+            return value.replace(/\B(?=(\d{3})+(?!\d))/g, '.');
+        }
+
+        // Hàm xử lý sự kiện input
+        function handleInput(event) {
+            let input = event.target;
+            let value = input.value.replace(/[^0-9]/g, '');  // Loại bỏ các ký tự không phải là số
+            input.value = formatNumber(value);  // Áp dụng định dạng
+        }
+
+        // Gán sự kiện cho các input
+        window.onload = function() {
+            const minPriceInput = document.querySelector('input[name="minPrice"]');
+            const maxPriceInput = document.querySelector('input[name="maxPrice"]');
+            
+            minPriceInput.addEventListener('input', handleInput);
+            maxPriceInput.addEventListener('input', handleInput);
+        };
+    </script>
+        
     </body>
 </html>

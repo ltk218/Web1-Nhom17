@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="vi">
 <head>
@@ -226,6 +225,45 @@
             border-radius: 5px;
             cursor: pointer;
         }
+        
+        /* Căn giữa cho phần tổng kết đơn hàng */
+        .table tfoot tr td {
+            text-align: center !important;
+        }
+        
+        /* Căn giữa tiêu đề card */
+        .card-header.text-center h4 {
+            margin: 0;
+            width: 100%;
+        }
+        
+        /* Căn giữa toàn bộ nội dung bảng */
+        .table {
+            text-align: center;
+        }
+
+        .table thead th,
+        .table tbody td,
+        .table tfoot td {
+            text-align: center;
+            vertical-align: middle;
+        }
+
+        /* Đảm bảo hình ảnh trong bảng cũng được căn giữa */
+        .table td img {
+            display: block;
+            margin: 0 auto;
+        }
+
+        /* Căn giữa tiêu đề các cột */
+        .table th {
+            text-align: center;
+        }
+
+        /* Đảm bảo các ô trong tfoot căn giữa hoàn toàn */
+        .table tfoot tr td {
+            text-align: center !important;
+        }
     </style>
 </head>
 
@@ -248,7 +286,7 @@
                                     <a href="thongtintaikhoan.html" class="dropdown-item"><i class="fa fa-id-card me-2"></i>  &nbsp;Thông tin</a>
                                     <a href="lichsumuahang.html" class="dropdown-item"> <i class="fa fa-history me-2"></i>&nbsp;Lịch sử mua hàng</a>
 
-                                    <a href="index.html" class="dropdown-item"> <i class="fa fa-sign-out-alt me-2"></i>&nbsp;Đăng xuất</a>
+                                    <a href="login.html" class="dropdown-item"> <i class="fa fa-sign-out-alt me-2"></i>&nbsp;Đăng xuất</a>
                                 </div>
                             </div>
                         </div>
@@ -261,7 +299,7 @@
             <div class="row align-items-center">
                 <div class="col-md-3">
                     <div class="logo">
-                        <a href="index.html">
+                        <a href="index2.html">
                             <img src="img/logo.png" alt="Logo">
                         </a>
                     </div>
@@ -297,7 +335,7 @@
             <ul class="breadcrumb">
                 <li class="breadcrumb-item"><a href="index2.html">Trang chủ</a></li>
                 <li class="breadcrumb-item"><a href="cart.html">Giỏ hàng</a></li>
-                <li class="breadcrumb-item active">Chi tiết đơn hàng</li>
+                <li class="breadcrumb-item active">Xác nhận đơn hàng</li>
             </ul>
         </div>
     </div>
@@ -312,8 +350,8 @@
             <!-- Order Detail Content Start -->
             <div class="col-md-8 offset-md-2">
                 <div class="card">
-                    <div class="card-header">
-                        <h4>Chi tiết đơn hàng #DH001</h4>
+                    <div class="card-header text-center">
+                        <h4>Xác nhận đơn hàng</h4>
                     </div>
                     <div class="card-body">
                         <div class="row mb-4">
@@ -331,7 +369,7 @@
                                 <p><strong>Họ tên:</strong> Huỳnh Hữu Đức</p>
                                 <p><strong>Email:</strong> huuduc123@gmail.com</p>
                                 <p><strong>Số điện thoại:</strong> 0123456789</p>
-                                <p><strong>Địa chỉ: </strong>123 Đường Mai Chí Thọ,Phường An Khánh,TP.Thủ Đức
+                                <p><strong>Địa chỉ: </strong>273 Đường An Dương Vương,Phường Chợ Quán,TP.HCM
 </p>
                             </div>
                         </div>
@@ -369,16 +407,16 @@
                                 </tbody>
                                 <tfoot>
                                     <tr>
-                                        <td colspan="3" class="text-right"><strong>Tiền hàng:</strong></td>
-                                        <td colspan="2"><strong>290.000đ</strong></td>
+                                        <td colspan="3" class="text-center"><strong>Tiền hàng:</strong></td>
+                                        <td colspan="2" class="text-center"><strong>290.000đ</strong></td>
                                     </tr>
                                     <tr>
-                                        <td colspan="3" class="text-right"><strong>Phí vận chuyển:</strong></td>
-                                        <td colspan="2"><strong>Freeship</strong></td>
+                                        <td colspan="3" class="text-center"><strong>Phí vận chuyển:</strong></td>
+                                        <td colspan="2" class="text-center"><strong>Freeship</strong></td>
                                     </tr>
                                     <tr>
-                                        <td colspan="3" class="text-right"><strong>Tổng cộng:</strong></td>
-                                        <td colspan="2"><strong>290.000đ</strong></td>
+                                        <td colspan="3" class="text-center"><strong>Tổng cộng:</strong></td>
+                                        <td colspan="2" class="text-center"><strong>290.000đ</strong></td>
                                     </tr>
                                 </tfoot>
                             </table>
@@ -390,7 +428,7 @@
      class="btn btn-secondary">Xác nhận</a>
 
   <a href="index2.html"
-     class="btn btn-outline-danger ml-2">Hủy</a>
+     class="btn btn-outline-danger ml-2">Quay về</a>
 </div>
 
                     </div>
@@ -429,9 +467,9 @@
                     <div class="form-group">
                         <label>Khoảng giá:</label>
                         <div class="price-range">
-                            <input type="number" name="minPrice" placeholder="Từ">
+                            <input type="text" name="minPrice" placeholder="Từ">
                             <span>-</span>
-                            <input type="number" name="maxPrice" placeholder="Đến">
+                            <input type="text" name="maxPrice" placeholder="Đến">
                         </div>
                     </div>
 
@@ -553,5 +591,28 @@
           }
         });
     </script>
+    <script>
+        // Hàm định dạng số
+        function formatNumber(value) {
+            return value.replace(/\B(?=(\d{3})+(?!\d))/g, '.');
+        }
+
+        // Hàm xử lý sự kiện input
+        function handleInput(event) {
+            let input = event.target;
+            let value = input.value.replace(/[^0-9]/g, '');  // Loại bỏ các ký tự không phải là số
+            input.value = formatNumber(value);  // Áp dụng định dạng
+        }
+
+        // Gán sự kiện cho các input
+        window.onload = function() {
+            const minPriceInput = document.querySelector('input[name="minPrice"]');
+            const maxPriceInput = document.querySelector('input[name="maxPrice"]');
+            
+            minPriceInput.addEventListener('input', handleInput);
+            maxPriceInput.addEventListener('input', handleInput);
+        };
+    </script>
+        
 </body>
 </html>
